@@ -9,10 +9,20 @@ export const rootSlice = createSlice({
     data: [],
     question: "",
     answer: "",
+    userAnswer: null,
     possibleAnswers: [],
     dataIsFetched: false,
   },
-  reducers: {},
+  reducers: {
+    setUserAnswer: (state, action) => {
+      state.userAnswer = action.payload.e;
+      // console.log(state.possibleAnswers);
+      // state.possibleAnswers = state.possibleAnswers.filter(
+      //   (x) => x == state.userAnswer
+      // );
+      // console.log(state.possibleAnswers);
+    },
+  },
   extraReducers: {
     [fetchData.fulfilled]: (state, action) => {
       state.data = action.payload;
@@ -44,7 +54,7 @@ export const rootSlice = createSlice({
   },
 });
 
-export const {} = rootSlice.actions;
+export const { setUserAnswer } = rootSlice.actions;
 
 export const selectQuestions = (state) => state.rootReducer.data;
 export default rootSlice.reducer;

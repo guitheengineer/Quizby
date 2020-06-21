@@ -4,6 +4,7 @@ import { fetchData } from "../../asyncActions/fetchQuestions";
 function Question({ data, dispatch }) {
   useEffect(() => {
     dispatch(fetchData());
+    console.log(data.question.length);
   }, []);
 
   return (

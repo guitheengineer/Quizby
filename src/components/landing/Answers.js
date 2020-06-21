@@ -1,24 +1,20 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { setUserAnswer } from "../../slices/rootSlice";
 
 function Answers({ data, dispatch }) {
-  console.log(data.possibleAnswers);
-  const [isClicked, setIsClicked] = useState(false);
-
-  function answerClicked(value, index) {
-    console.log(value + " " + index);
-    setIsClicked(true);
+  function optionClicked(e, index) {
+    dispatch(setUserAnswer({ e, index }));
   }
-
   return (
     <ul className="App__container--list">
       {data.possibleAnswers.map((ans, index) => (
         <li
           key={index}
-          onClick={(e) => answerClicked(e.target.textContent, index)}
+          onClick={(e) => optionClicked(e.target.textContent, index)}
           style={
-            isClicked
-              ? { backgroundColor: "red" }
+            data.userAnswer === ans
+              ? { backgroundColor: "#5255ca", color: "white" }
               : { backgroundColor: "initial" }
           }
           className="App__container--list--answer"
