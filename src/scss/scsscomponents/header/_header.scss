@@ -1,0 +1,20 @@
+.App__header {
+  //   height: 9.6%;
+  height: 7.7vh;
+  @include resp(700) {
+    height: 9vh;
+  }
+  display: flex;
+  align-items: center;
+  &--title {
+    margin-left: 3.5rem;
+    font-size: 1.4rem;
+    @include resp(700) {
+      font-size: 1.5rem;
+    }
+    color: #f3f3fb;
+  }
+  &--menu {
+    margin-right: 3.5rem;
+  }
+}

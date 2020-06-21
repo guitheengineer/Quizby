@@ -1,0 +1,128 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  font-family: Overpass; }
+  @media (min-width: 670px) {
+    html {
+      font-size: 66%; } }
+
+body {
+  box-sizing: border-box; }
+
+.App {
+  background: #5255ca;
+  display: flex;
+  flex-direction: column; }
+
+.info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.8rem; }
+
+.App__header {
+  height: 7.7vh;
+  display: flex;
+  align-items: center; }
+  @media (min-width: 700px) {
+    .App__header {
+      height: 9vh; } }
+  .App__header--title {
+    margin-left: 3.5rem;
+    font-size: 1.4rem;
+    color: #f3f3fb; }
+    @media (min-width: 700px) {
+      .App__header--title {
+        font-size: 1.5rem; } }
+  .App__header--menu {
+    margin-right: 3.5rem; }
+
+.App__container {
+  position: relative;
+  background: #f8faf7;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  @media (min-width: 700px) {
+    .App__container {
+      border-radius: 0; } }
+
+.App__container--list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.4vh;
+  list-style-type: none;
+  width: 77%;
+  align-items: center;
+  max-width: 38.2rem; }
+  @media (min-width: 375px) {
+    .App__container--list {
+      width: 71%; } }
+  .App__container--list--answer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    margin-top: 1.5rem;
+    border: 1px solid #c1d2e1;
+    border-radius: 8px;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #0a0a1f; }
+    .App__container--list--answer:hover {
+      border: 2px solid #7b61ff;
+      cursor: pointer; }
+    .App__container--list--answer span {
+      margin-left: 2.8rem;
+      margin-top: 0.3rem; }
+  .App__container--list--chevron {
+    position: absolute;
+    right: 2.1rem; }
+
+.App__container--infocounter {
+  position: absolute;
+  top: 2.9rem;
+  left: 4.4rem;
+  font-size: 1.4rem;
+  color: #b2b2cc;
+  font-family: Roboto; }
+  .App__container--infocounter span {
+    letter-spacing: 0.05em; }
+  .App__container--infocounter::after {
+    content: "";
+    display: block;
+    width: 46%;
+    margin-top: 0.5rem;
+    height: 0.14rem;
+    background-color: #d0d1eb;
+    position: absolute;
+    left: 0.2; }
+
+.App__container--question {
+  width: 77%;
+  font-size: 2.1rem;
+  line-height: 33px;
+  color: #0a0a1f;
+  max-width: 38.2rem; }
+  @media (min-width: 375px) {
+    .App__container--question {
+      width: 71%; } }
+  @media (min-width: 670px) {
+    .App__container--question {
+      line-height: 31px; } }
+  .App__container--question--bf {
+    position: absolute;
+    margin-left: -1.5rem;
+    font-size: 2.5rem;
+    color: #cccdef; }

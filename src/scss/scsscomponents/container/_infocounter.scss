@@ -1,0 +1,21 @@
+.App__container--infocounter {
+    position: absolute;
+    top: 2.9rem;
+    left: 4.4rem;
+    font-size: 1.4rem;
+    color: #b2b2cc;
+    font-family: Roboto;
+    span {
+        letter-spacing: 0.05em;
+    }
+    &::after {
+        content: "";
+        display: block;
+        width: 46%;
+        margin-top: 0.5rem;
+        height: 0.14rem;
+        background-color: #d0d1eb;
+        position: absolute;
+        left: 0.2;
+    }
+}

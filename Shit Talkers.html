@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <link rel="icon" href="http://localhost:3000/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Web site created using create-react-app">
+    <link rel="apple-touch-icon" href="http://localhost:3000/logo192.png">
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <link href="Shit%20Talkers_arquivos/css_002.css" rel="stylesheet">
+    <link href="Shit%20Talkers_arquivos/css_003.css" rel="stylesheet">
+    <link href="Shit%20Talkers_arquivos/css.css" rel="stylesheet">
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Shit Talkers</title>
+  <style type="text/css">*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  font-family: Overpass; }
+
+body {
+  box-sizing: border-box; }
+
+.App {
+  background: #5255ca;
+  display: flex;
+  flex-direction: column; }
+
+.info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.8rem; }
+
+.App__header {
+  height: 7.7vh;
+  display: flex;
+  align-items: center; }
+  @media (min-width: 700px) {
+    .App__header {
+      height: 9vh; } }
+  @media (min-width: 700px) {
+    .App__header {
+      height: 9vh; } }
+  .App__header--title {
+    margin-left: 3.5rem;
+    font-size: 1.4rem;
+    color: #f3f3fb; }
+    @media (min-width: 700px) {
+      .App__header--title {
+        font-size: 1.5rem; } }
+    @media (min-width: 700px) {
+      .App__header--title {
+        font-size: 1.5rem; } }
+  .App__header--menu {
+    margin-right: 3.5rem; }
+
+.App__container {
+  position: relative;
+  background: #f8faf7;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  @media (min-width: 700px) {
+    .App__container {
+      border-radius: 0; } }
+  @media (min-width: 700px) {
+    .App__container {
+      border-radius: 0; } }
+
+.App__container--list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.4vh;
+  list-style-type: none;
+  width: 77%;
+  align-items: center;
+  max-width: 38.2rem; }
+  @media (min-width: 375px) {
+    .App__container--list {
+      width: 71%; } }
+  .App__container--list--answer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    margin-top: 1.5rem;
+    border: 1px solid #c1d2e1;
+    border-radius: 8px;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #0a0a1f; }
+    .App__container--list--answer:hover {
+      border: 2px solid #7b61ff;
+      cursor: pointer; }
+    .App__container--list--answer span {
+      margin-left: 2.8rem;
+      margin-top: 0.3rem; }
+  .App__container--list--chevron {
+    position: absolute;
+    right: 2.1rem; }
+
+.App__container--infocounter {
+  position: absolute;
+  top: 2.9rem;
+  left: 4.4rem;
+  font-size: 1.4rem;
+  color: #b2b2cc;
+  font-family: Roboto; }
+  .App__container--infocounter span {
+    letter-spacing: 0.05em; }
+  .App__container--infocounter::after {
+    content: "";
+    display: block;
+    width: 46%;
+    margin-top: 0.5rem;
+    height: 0.14rem;
+    background-color: #d0d1eb;
+    position: absolute;
+    left: 0.2; }
+
+.App__container--question {
+  width: 77%;
+  font-size: 2.1rem;
+  line-height: 33px;
+  color: #0a0a1f;
+  max-width: 38.2rem; }
+  @media (min-width: 375px) {
+    .App__container--question {
+      width: 71%; } }
+  .App__container--question--bf {
+    position: absolute;
+    margin-left: -1.5rem;
+    font-size: 2.5rem;
+    color: #cccdef; }
+</style></head>
+  <body cz-shortcut-listen="true">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"><ul class="App__container--list"></ul><div class="App" style="height: 641px;"><div class="App__header"><span class="App__header--title">Lorem ipsum</span></div><div class="App__container"><div class="App__container--question"><span class="App__container--question--bf">-</span>O cara vem pedir dinheiro para mim para ajudar os aidéticos. Não vou ajudar porra nenhuma! Vou ajudar o garoto que é decente</div></div><div class="info">iH: 641  iW: 314 </div></div></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  <script src="Shit%20Talkers_arquivos/bundle.js"></script><script src="Shit%20Talkers_arquivos/1.js"></script><script src="Shit%20Talkers_arquivos/main.js"></script>
+
+</body></html>

@@ -1,0 +1,40 @@
+.App__container--list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.4vh;
+  list-style-type: none;
+  width: 77%;
+  @include resp(375) {
+    width: 71%;
+  }
+  align-items: center;
+  max-width: 38.2rem;
+
+  &--answer {
+    width: 100%;
+    display: flex;
+    &:hover {
+      border: 2px solid #7b61ff;
+      cursor: pointer;
+    }
+    align-items: center;
+    height: 5rem;
+    margin-top: 1.5rem;
+    border: 1px solid #c1d2e1;
+
+    border-radius: 8px;
+    font-size: 1.8rem;
+
+    font-weight: 400;
+    color: #0a0a1f;
+    span {
+      margin-left: 2.8rem;
+      margin-top: 0.3rem;
+    }
+  }
+  &--chevron {
+    position: absolute;
+    right: 2.1rem;
+  }
+}

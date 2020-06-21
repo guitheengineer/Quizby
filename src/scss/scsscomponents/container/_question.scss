@@ -1,0 +1,41 @@
+.App__container--question {
+  width: 77%;
+  @include resp(375) {
+    width: 71%;
+  }
+
+  font-size: 2.1rem;
+  line-height: 33px;
+  @include resp(670) {
+    line-height: 31px;
+  }
+  color: #0a0a1f;
+  max-width: 38.2rem;
+  &--bf {
+    position: absolute;
+    margin-left: -1.5rem;
+    font-size: 2.5rem;
+    color: #cccdef;
+  }
+  // &::before {
+  //   display: block;
+  //   content: "";
+  //   width: 25%;
+  //   height: 2px;
+  //   background: #5255ca;
+  //   position: relative;
+  //   top: -1.8rem;
+  // }
+  // &--quotes {
+  //     font: 3.5rem "Passion One";
+  //     color: #cccdef;
+  //     position: absolute;
+  //     margin-top: -0.6rem;
+  //     &--one {
+  //         margin-left: -2.5rem;
+  //     }
+  //     &--two {
+  //         margin-left: 0.7rem;
+  //     }
+  // }
+}
