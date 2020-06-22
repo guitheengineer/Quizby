@@ -1,0 +1,43 @@
+.App {
+  &__form {
+    width: 81.84%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    label {
+      font: 1.6rem Overpass;
+      color: #0a0a1f;
+      &:not(:first-child) {
+        margin-top: 2rem;
+      }
+    }
+    input {
+      border: 1px solid #5255ca;
+      border-radius: 5px;
+      width: 100%;
+      height: 4.4rem;
+      padding-left: 1.4rem;
+      background-color: #f8faf7;
+      font-size: 1.6rem;
+      margin-top: 0.8rem;
+    }
+    button {
+      background-color: #5255ca;
+      border-radius: 0.5rem;
+      height: 4.4rem;
+      width: 40%;
+      color: white;
+      border: 0;
+      margin-top: 2.3rem;
+      align-self: flex-end;
+      font-size: 1.6rem;
+      letter-spacing: 0.05rem;
+    }
+  }
+  &__registerAdvice {
+    font-size: 1.6rem;
+    color: #0a0a1f;
+    align-self: center;
+    margin-top: 4.2rem;
+  }
+}

@@ -5,12 +5,10 @@ import Question from "./Question";
 import { useSelector, useDispatch } from "react-redux";
 
 function Container() {
-  const data = useSelector((data) => data.rootReducer);
-  const dispatch = useDispatch();
   return (
     <div className="App__container">
-      <Question data={data} dispatch={dispatch} />
-      <Answers data={data} dispatch={dispatch} />
+      <Question />
+      <Answers />
     </div>
   );
 }

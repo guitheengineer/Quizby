@@ -12,8 +12,12 @@ export const rootSlice = createSlice({
     userAnswer: null,
     possibleAnswers: [],
     dataIsFetched: false,
+    logoIsShowing: true,
   },
   reducers: {
+    setLogoIsShowing: (state, action) => {
+      state.logoIsShowing = action.payload;
+    },
     setUserAnswer: (state, action) => {
       state.userAnswer = action.payload.e;
       // console.log(state.possibleAnswers);
@@ -54,7 +58,7 @@ export const rootSlice = createSlice({
   },
 });
 
-export const { setUserAnswer } = rootSlice.actions;
+export const { setUserAnswer, setLogoIsShowing } = rootSlice.actions;
 
 export const selectQuestions = (state) => state.rootReducer.data;
 export default rootSlice.reducer;

@@ -1,0 +1,13 @@
+.App__presentation {
+  color: white;
+  margin-left: 3.4rem;
+  position: relative;
+  &--title {
+    font: 2.4rem Overpass;
+  }
+  &--desc {
+    margin-top: 0.7rem;
+    font: 300 1.4rem Overpass;
+    width: 90%;
+  }
+}

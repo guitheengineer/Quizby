@@ -4,10 +4,12 @@ const questionSchema = new mongoose.Schema({
   question: {
     type: String,
     required: true,
+    maxlength: 140,
   },
   answer: {
     type: String,
     required: true,
+    maxlength: 23,
   },
 });
 
@@ -16,6 +18,7 @@ const possibleAnswersSchema = new mongoose.Schema({
     type: Array,
     required: true,
     unique: true,
+    maxlength: 23,
   },
 });
 
