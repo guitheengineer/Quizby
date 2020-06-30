@@ -7,7 +7,6 @@ function Question() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchData());
-    console.log(data.question.length);
   }, []);
 
   return (

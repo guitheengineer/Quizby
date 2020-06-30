@@ -1,7 +1,6 @@
-import { useSelector } from "react-redux";
 import { fetchData } from "../asyncActions/fetchQuestions";
-
-const { createSlice } = require("@reduxjs/toolkit");
+import { postSignup } from "../asyncActions/postSignup";
+import { createSlice } from "@reduxjs/toolkit";
 
 export const rootSlice = createSlice({
   name: "rootReducer",
@@ -28,6 +27,9 @@ export const rootSlice = createSlice({
     },
   },
   extraReducers: {
+    [fetchData.pending]: (state) => {
+      state.dataIsFetched = "loading";
+    },
     [fetchData.fulfilled]: (state, action) => {
       state.data = action.payload;
       const questionsFind = action.payload.questionsFind;
@@ -54,6 +56,19 @@ export const rootSlice = createSlice({
         state.answer,
       ];
       state.dataIsFetched = true;
+    },
+    [fetchData.rejected]: (state) => {
+      state.dataIsFetched = "error";
+    },
+    [postSignup.pending]: (state) => {
+      console.log("pending");
+    },
+    [postSignup.fulfilled]: (state, action) => {
+      console.log("fulfilled");
+      console.log(action.payload);
+    },
+    [postSignup.rejected]: (state) => {
+      console.log("postrejected");
     },
   },
 });

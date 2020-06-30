@@ -1,5 +1,7 @@
 .App__container--question {
   width: 77%;
+  // ANIMATION DEACTIVATED
+  // animation: fadeIn 2s backwards;
   @include resp(375) {
     width: 71%;
   }
@@ -38,4 +40,13 @@
   //         margin-left: 0.7rem;
   //     }
   // }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

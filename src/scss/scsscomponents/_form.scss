@@ -7,8 +7,9 @@
     label {
       font: 1.6rem Overpass;
       color: #0a0a1f;
+      margin-top: -0.5rem;
       &:not(:first-child) {
-        margin-top: 2rem;
+        margin-top: 2.3rem;
       }
     }
     input {
@@ -20,6 +21,11 @@
       background-color: #f8faf7;
       font-size: 1.6rem;
       margin-top: 0.8rem;
+      &:focus {
+        background-color: transparent;
+        outline: none;
+        box-shadow: 0 0 0 1px #3e40a0;
+      }
     }
     button {
       background-color: #5255ca;
@@ -28,10 +34,13 @@
       width: 40%;
       color: white;
       border: 0;
-      margin-top: 2.3rem;
+      margin-top: 3.5rem;
       align-self: flex-end;
       font-size: 1.6rem;
       letter-spacing: 0.05rem;
+      &:active {
+        box-shadow: inset 0px 6px 4px rgba(0, 0, 0, 0.13);
+      }
     }
   }
   &__registerAdvice {

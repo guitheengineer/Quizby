@@ -14,7 +14,8 @@ html {
       font-size: 66%; } }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  overflow-x: hidden; }
 
 .App {
   background: #5255ca;
@@ -28,6 +29,8 @@ body {
   font-size: 1.8rem; }
 
 .App__header {
+  min-height: 4rem;
+  max-height: 5.4rem;
   height: 7.7vh;
   display: flex;
   align-items: center; }
@@ -35,12 +38,19 @@ body {
     .App__header {
       height: 9vh; } }
   .App__header--title {
+    cursor: pointer;
     margin-left: 3.5rem;
     font-size: 1.4rem;
-    color: #f3f3fb; }
+    color: #f3f3fb;
+    border-color: #5255ca; }
     @media (min-width: 700px) {
       .App__header--title {
         font-size: 1.5rem; } }
+    .App__header--title:hover {
+      border: solid rgba(255, 255, 255, 0.89);
+      padding-bottom: 3px;
+      border-width: 0px 0px 1px 0px;
+      transition: all 0.5s; }
   .App__header--menu {
     margin-right: 3.5rem; }
 
@@ -90,6 +100,13 @@ body {
     position: absolute;
     right: 2.1rem; }
 
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(-200%, 0, 0);
+    visibility: visible; }
+  to {
+    transform: translate3d(0, 0, 0); } }
+
 .App__container--infocounter {
   position: absolute;
   top: 2.9rem;
@@ -127,6 +144,12 @@ body {
     font-size: 2.5rem;
     color: #cccdef; }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
 .App__presentation {
   color: white;
   margin-left: 3.4rem;
@@ -145,9 +168,10 @@ body {
   align-self: center; }
   .App__form label {
     font: 1.6rem Overpass;
-    color: #0a0a1f; }
+    color: #0a0a1f;
+    margin-top: -0.5rem; }
     .App__form label:not(:first-child) {
-      margin-top: 2rem; }
+      margin-top: 2.3rem; }
   .App__form input {
     border: 1px solid #5255ca;
     border-radius: 5px;
@@ -157,6 +181,10 @@ body {
     background-color: #f8faf7;
     font-size: 1.6rem;
     margin-top: 0.8rem; }
+    .App__form input:focus {
+      background-color: transparent;
+      outline: none;
+      box-shadow: 0 0 0 1px #3e40a0; }
   .App__form button {
     background-color: #5255ca;
     border-radius: 0.5rem;
@@ -164,13 +192,112 @@ body {
     width: 40%;
     color: white;
     border: 0;
-    margin-top: 2.3rem;
+    margin-top: 3.5rem;
     align-self: flex-end;
     font-size: 1.6rem;
     letter-spacing: 0.05rem; }
+    .App__form button:active {
+      box-shadow: inset 0px 6px 4px rgba(0, 0, 0, 0.13); }
 
 .App__registerAdvice {
   font-size: 1.6rem;
   color: #0a0a1f;
   align-self: center;
   margin-top: 4.2rem; }
+
+.App__notification {
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+  width: 64.5%;
+  max-width: 24.2rem;
+  background: #f8faf7;
+  border: 1px solid #8687b1;
+  box-shadow: 0px 3px 2px rgba(82, 85, 202, 0.07), 0px 4px 4px rgba(82, 85, 202, 0.05);
+  border-radius: 5px;
+  height: 7.8rem;
+  justify-content: center;
+  position: fixed;
+  bottom: 1.4rem;
+  right: 2rem;
+  animation: fadeInRight 1s ease forwards;
+  min-width: 20.3rem; }
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    right: -24.2rem; }
+  to {
+    opacity: 1;
+    right: 2rem; } }
+  .App__notification--text {
+    margin-left: 3.2rem;
+    margin-top: 0.2rem; }
+    .App__notification--text:before {
+      content: "";
+      display: block;
+      background: url("/error.svg") no-repeat right top;
+      width: 1.3rem;
+      height: 1.3rem;
+      position: absolute;
+      left: 1.2rem; }
+    .App__notification--text--title {
+      font: 600 1.4rem Overpass;
+      color: #0a0a1f; }
+    .App__notification--text--desc {
+      margin-top: 0.3rem;
+      width: 90%;
+      font: 1.2rem Overpass;
+      color: #4a4a76; }
+  .App__notification:before {
+    content: "";
+    display: block;
+    width: 100%;
+    position: absolute;
+    height: 0.2rem;
+    background: #ff0000;
+    top: -0.5px;
+    border-radius: 5px 5px 0px 0px; }
+
+.App__error {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .App__error--icon {
+    background: url("/reload.svg") no-repeat center;
+    height: 5.7rem;
+    width: 5.4rem;
+    cursor: pointer; }
+  .App__error--message {
+    width: 14rem;
+    margin-top: 1.8rem;
+    font: 2rem/138% Overpass;
+    text-align: center; }
+
+.App__fourhundred {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .App__fourhundred--message {
+    font-family: Overpass;
+    font-size: 3rem;
+    color: #0a0a1f; }
+  .App__fourhundred--button {
+    width: 20.3rem;
+    height: 4.5rem;
+    background: #5255ca;
+    border-radius: 8px;
+    color: white;
+    margin-top: 2.1rem;
+    border: 0;
+    font: 2rem Overpass;
+    cursor: pointer; }

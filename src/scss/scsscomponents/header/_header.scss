@@ -1,5 +1,7 @@
 .App__header {
   //   height: 9.6%;
+  min-height: 4rem;
+  max-height: 5.4rem;
   height: 7.7vh;
   @include resp(700) {
     height: 9vh;
@@ -7,12 +9,20 @@
   display: flex;
   align-items: center;
   &--title {
+    cursor: pointer;
     margin-left: 3.5rem;
     font-size: 1.4rem;
     @include resp(700) {
       font-size: 1.5rem;
     }
     color: #f3f3fb;
+    &:hover {
+      border: solid rgba(255, 255, 255, 0.89); //
+      padding-bottom: 3px;
+      border-width: 0px 0px 1px 0px;
+      transition: all 0.5s;
+    }
+    border-color: #5255ca;
   }
   &--menu {
     margin-right: 3.5rem;

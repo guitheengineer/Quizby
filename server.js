@@ -1,7 +1,15 @@
+process.on("uncaughtException", (err) => {
+  console.log("uncaughtException, shuting down the server");
+  console.log(err, " <<err");
+  process.exit(1);
+});
+
 const express = require("express");
 const cors = require("cors");
-const app = express();
 const mongoose = require("mongoose");
+const app = express();
+
+const globalErrorHandler = require("./controllers/errorController");
 require("dotenv").config();
 app.use(cors());
 const route = require("./routes/shitRoute");
@@ -23,9 +31,19 @@ const connectShit = async () => {
 connectShit();
 
 mongoose.connection.on("connected", () => {
-  console.log("mongoose");
+  console.log("mongoose is connected");
 });
 
-app.use("/api", route);
+app.use(express.json());
+app.use("/", route);
 
-app.listen(port, () => "server started");
+const server = app.listen(port, () => "server started");
+
+// app.use(globalErrorHandler);
+process.on("unhandledRejection", (err) => {
+  console.log("unhandledRejection, shuting down.");
+  console.log(err);
+  server.close(() => {
+    process.exit(1);
+  });
+});
