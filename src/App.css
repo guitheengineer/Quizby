@@ -168,8 +168,6 @@ body {
   align-self: center; }
   .App__form .MuiInputBase-root {
     font: 1.6rem Overpass; }
-  .App__form .MuiFormControl-root:not(:first-child) {
-    margin-top: 3vh; }
   .App__form .MuiInputLabel-root {
     color: #9fa0d5; }
   .App__form label {
@@ -192,7 +190,7 @@ body {
     width: 40%;
     color: white;
     border: 0;
-    margin-top: 3.5rem;
+    margin-top: 4.3vh;
     align-self: flex-end;
     font-size: 1.6rem;
     letter-spacing: 0.05rem; }
