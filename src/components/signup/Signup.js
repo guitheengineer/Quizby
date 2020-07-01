@@ -52,16 +52,21 @@ function Signup() {
             id="outlined-basic"
             label="Password"
             variant="outlined"
-            type={showPassword ? "Password" : "Text"}
+            type={showPassword ? "Text" : "Password"}
             InputProps={{
               endAdornment: (
                 <IconButton
+                  style={{ marginRight: "1rem" }}
                   aria-label="toggle password visibility"
-                  onClick={() => setPassword((prevState) => !prevState)}
+                  onClick={() => setShowPassword((prevState) => !prevState)}
                   // onMouseDown={handleMouseDownPassword}
                   edge="end"
                 >
-                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                  {showPassword ? (
+                    <Visibility style={{ fontSize: "23px" }} />
+                  ) : (
+                    <VisibilityOff style={{ fontSize: "23px" }} />
+                  )}
                 </IconButton>
               ),
             }}
