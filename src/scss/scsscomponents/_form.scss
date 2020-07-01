@@ -1,36 +1,47 @@
 .App {
   &__form {
     width: 81.84%;
+
     display: flex;
     flex-direction: column;
     align-self: center;
+    .MuiInputBase-root {
+      font: 1.6rem Overpass;
+    }
+    .MuiFormControl-root {
+      &:not(:first-child) {
+        margin-top: 3vh;
+      }
+    }
+    .MuiInputLabel-root {
+      color: #9fa0d5;
+    }
     label {
       font: 1.6rem Overpass;
-      color: #0a0a1f;
-      margin-top: -0.5rem;
-      &:not(:first-child) {
-        margin-top: 2.3rem;
-      }
     }
-    input {
-      border: 1px solid #5255ca;
-      border-radius: 5px;
-      width: 100%;
-      height: 4.4rem;
-      padding-left: 1.4rem;
-      background-color: #f8faf7;
-      font-size: 1.6rem;
-      margin-top: 0.8rem;
-      &:focus {
-        background-color: transparent;
-        outline: none;
-        box-shadow: 0 0 0 1px #3e40a0;
-      }
+    .MuiOutlinedInput-root:hover {
+      border-color: pink;
     }
-    button {
+    .MuiOutlinedInput-notchedOutline {
+      border-color: #5255ca;
+      border-width: 1px;
+    }
+
+    .MuiInputBase-input {
+      height: 1.4rem;
+    }
+
+    .PrivateNotchedOutline-legendLabelled-3 {
+      height: 11.2px;
+    }
+
+    .MuiInputBase-root {
+      margin-top: 0.3rem;
+    }
+    &--button {
       background-color: #5255ca;
       border-radius: 0.5rem;
-      height: 4.4rem;
+      height: 4.9rem;
       width: 40%;
       color: white;
       border: 0;
@@ -43,6 +54,22 @@
       }
     }
   }
+  //   input {
+  //     border: 1px solid #5255ca;
+  //     border-radius: 5px;
+  //     width: 100%;
+  //     height: 4.4rem;
+  //     padding-left: 1.4rem;
+  //     background-color: #f8faf7;
+  //     font-size: 1.6rem;
+  //     margin-top: 0.8rem;
+  //     &:focus {
+  //       background-color: transparent;
+  //       outline: none;
+  //       box-shadow: 0 0 0 1px #3e40a0;
+  //     }
+  //   }
+
   &__registerAdvice {
     font-size: 1.6rem;
     color: #0a0a1f;
