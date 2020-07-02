@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Presentation from "../Presentation";
 import { postLogin } from "../../asyncActions/postLogin";
 import BackgroundContainer from "../BackgroundContainer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import TextFieldModified from "../TextFieldModified";
+import TextFieldModifiedPassword from "../TextFieldModifiedPassword";
 
 function Login() {
+  const [email, setEmail] = useState({
+    focused: "false",
+    blur: "false",
+    value: "",
+  });
+  const [password, setPassword] = useState({
+    focused: "false",
+    blur: "false",
+    value: "",
+  });
   const dispatch = useDispatch();
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
@@ -14,7 +26,7 @@ function Login() {
         title="Login"
         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morboa."
       />
-      <BackgroundContainer mgTop={"3.2rem"}>
+      <BackgroundContainer mgTop={"3.2rem"} minHeight="35.7rem">
         <form
           onSubmit={(e) => {
             dispatch(
@@ -27,15 +39,20 @@ function Login() {
           }}
           className="App__form"
         >
-          <label>
-            E-mail
-            <input type="email" />
-          </label>
-          <label style={{ marginTop: "2.8rem" }}>
-            Senha
-            <input type="password" />
-          </label>
-          <button type="submit" style={{ marginTop: "3.5rem", width: "100%" }}>
+          <TextFieldModified
+            nameOfVar={email}
+            nameOfFunc={setEmail}
+            label="E-mail"
+          />
+          <TextFieldModifiedPassword
+            nameOfVar={password}
+            nameOfFunc={setPassword}
+          />
+          <button
+            className="App__form--button"
+            type="submit"
+            style={{ marginTop: "3.5rem", width: "100%" }}
+          >
             Login
           </button>
         </form>
