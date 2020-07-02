@@ -9,10 +9,10 @@ export default function TextFieldModifiedPassword({ nameOfVar, nameOfFunc }) {
     <TextField
       helperText={
         nameOfVar.blur === "true" &&
-        nameOfVar.value === "" &&
-        "Please, insert a password"
+        nameOfVar.value.length < 8 &&
+        "Please, insert a password with at least 8 characters"
       }
-      error={nameOfVar.blur === "true" && nameOfVar.value === "" && true}
+      error={nameOfVar.blur === "true" && nameOfVar.value.length < 8 && true}
       id="outlined-basic"
       label="Password"
       variant="outlined"

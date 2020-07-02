@@ -66,6 +66,11 @@ function Signup() {
           />
 
           <button
+            disabled={
+              username.value === "" ||
+              email.value === "" ||
+              (password.value.length < 8 && true)
+            }
             className="App__form--button"
             style={{ marginTop: "2.8rem", width: "100%" }}
             type="submit"
