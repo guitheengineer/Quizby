@@ -4,7 +4,7 @@ import { postLogin } from "../../asyncActions/postLogin";
 import BackgroundContainer from "../BackgroundContainer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import TextFieldModified from "../TextFieldModified";
+// import TextFieldModified from "../TextFieldModified";
 import TextFieldModifiedPassword from "../TextFieldModifiedPassword";
 
 function Login() {
@@ -39,16 +39,12 @@ function Login() {
           }}
           className="App__form"
         >
-          <TextFieldModified
-            nameOfVar={email}
-            nameOfFunc={setEmail}
-            label="E-mail"
-          />
-          <TextFieldModifiedPassword
+          {/* <TextFieldModifiedPassword
             nameOfVar={password}
             nameOfFunc={setPassword}
-          />
+          /> */}
           <button
+            disabled={email.value === "" || (password.value.length < 8 && true)}
             className="App__form--button"
             type="submit"
             style={{ marginTop: "3.5rem", width: "100%" }}

@@ -1,31 +1,45 @@
 import React, { useState } from "react";
 import { TextField, IconButton } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
-import { setOnBlur, setFieldValue } from "./TextFieldModified";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setOnBlur,
+  setOnFocus,
+  setFieldValue,
+  setPasswordVisibility,
+} from "../slices/formSlice";
 
 export default function TextFieldModifiedPassword({ nameOfVar, nameOfFunc }) {
-  const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+  const data = useSelector((data) => data.formReducer);
+  const { password } = data;
   return (
     <TextField
+      error={password.blur === "true" && password.value.length < 8}
       helperText={
-        nameOfVar.blur === "true" &&
-        nameOfVar.value.length < 8 &&
-        "Please, insert a password with at least 8 characters"
+        password.blur === "true" &&
+        password.value.length < 8 &&
+        "Password should have at least 8 characters"
       }
-      error={nameOfVar.blur === "true" && nameOfVar.value.length < 8 && true}
+      onBlur={(e) => {
+        dispatch(setOnBlur("Password"));
+      }}
       id="outlined-basic"
       label="Password"
       variant="outlined"
-      onBlur={() => setOnBlur(nameOfFunc)}
       onChange={(e) => {
-        const value = e.target.value;
-        setFieldValue(nameOfFunc, value);
+        let value = e.target.value;
+        dispatch(setFieldValue({ label: "Password", value }));
       }}
-      type={showPassword ? "Text" : "Password"}
+      onFocus={() => {
+        dispatch(setOnFocus("Password"));
+      }}
+      type={password.visible ? "Text" : "Password"}
       margin={"normal"}
       FormHelperTextProps={{
         style: {
           fontSize: "12px",
+          lineHeight: "1.55",
         },
       }}
       InputProps={{
@@ -33,11 +47,11 @@ export default function TextFieldModifiedPassword({ nameOfVar, nameOfFunc }) {
           <IconButton
             style={{ marginRight: "-.7rem" }}
             aria-label="toggle password visibility"
-            onClick={() => setShowPassword((prevState) => !prevState)}
+            onClick={() => dispatch(setPasswordVisibility())}
             // onMouseDown={handleMouseDownPassword}
             edge="end"
           >
-            {showPassword ? (
+            {password.visible ? (
               <Visibility
                 style={{
                   fontSize: "23px",
