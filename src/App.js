@@ -38,10 +38,10 @@ function App() {
             <Signup />
             {/* <Redirect from="/signup" to="/login">*/}
           </Route>
-          {/* <Route path="/login">
+          <Route path="/login">
             <Header logo={false} />
             <Login />
-          </Route> */}
+          </Route>
           <Route>
             <Header logo={true} />
             <BackgroundContainer>

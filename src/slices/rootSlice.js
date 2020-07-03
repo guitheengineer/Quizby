@@ -1,5 +1,6 @@
 import { fetchData } from "../asyncActions/fetchQuestions";
 import { postSignup } from "../asyncActions/postSignup";
+import { postLogin } from "../asyncActions/postLogin";
 import { createSlice } from "@reduxjs/toolkit";
 
 export const rootSlice = createSlice({
@@ -69,6 +70,15 @@ export const rootSlice = createSlice({
     },
     [postSignup.rejected]: (state) => {
       console.log("postrejected");
+    },
+    [postLogin.pending]: (state) => {
+      console.log("postlogin pending");
+    },
+    [postLogin.fulfilled]: (state, action) => {
+      console.log("postlogin fulfilled", action.payload);
+    },
+    [postLogin.rejected]: (state) => {
+      console.log("postlogin rejected");
     },
   },
 });

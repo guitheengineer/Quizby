@@ -13,19 +13,12 @@ export default function TextFieldEmail() {
     <TextField
       error={errorExistsEmail.errorExists}
       helperText={errorExistsEmail.errorDesc}
-      onBlur={(e) => {
-        console.log(errorExistsEmail.errorExists);
-        dispatch(setOnBlur("Email"));
-      }}
       id="outlined-basic"
       label="Email"
       variant="outlined"
       onChange={(e) => {
         let value = e.target.value;
         dispatch(setFieldValue({ label: "Email", value }));
-      }}
-      onFocus={() => {
-        dispatch(setOnFocus("Email"));
       }}
       type="Email"
       margin={"normal"}

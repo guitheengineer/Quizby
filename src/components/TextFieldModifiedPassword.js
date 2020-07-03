@@ -12,27 +12,17 @@ import {
 export default function TextFieldModifiedPassword({ nameOfVar, nameOfFunc }) {
   const dispatch = useDispatch();
   const data = useSelector((data) => data.formReducer);
-  const { password } = data;
+  const { password, errorExistsPassword } = data;
   return (
     <TextField
-      error={password.blur === "true" && password.value.length < 8}
-      helperText={
-        password.blur === "true" &&
-        password.value.length < 8 &&
-        "Password should have at least 8 characters"
-      }
-      onBlur={(e) => {
-        dispatch(setOnBlur("Password"));
-      }}
+      error={errorExistsPassword.errorExists}
+      helperText={errorExistsPassword.errorDesc}
       id="outlined-basic"
       label="Password"
       variant="outlined"
       onChange={(e) => {
         let value = e.target.value;
         dispatch(setFieldValue({ label: "Password", value }));
-      }}
-      onFocus={() => {
-        dispatch(setOnFocus("Password"));
       }}
       type={password.visible ? "Text" : "Password"}
       margin={"normal"}

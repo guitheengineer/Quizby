@@ -3,22 +3,15 @@ import Presentation from "../Presentation";
 import { postLogin } from "../../asyncActions/postLogin";
 import BackgroundContainer from "../BackgroundContainer";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import TextFieldModified from "../TextFieldModified";
 import TextFieldModifiedPassword from "../TextFieldModifiedPassword";
+import TextFieldModifiedEmail from "../TextFieldModifiedEmail";
+import { onSubmitForm } from "../../slices/formSlice";
 
 function Login() {
-  const [email, setEmail] = useState({
-    focused: "false",
-    blur: "false",
-    value: "",
-  });
-  const [password, setPassword] = useState({
-    focused: "false",
-    blur: "false",
-    value: "",
-  });
   const dispatch = useDispatch();
+
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <Presentation
@@ -29,22 +22,20 @@ function Login() {
       <BackgroundContainer mgTop={"3.2rem"} minHeight="35.7rem">
         <form
           onSubmit={(e) => {
+            dispatch(onSubmitForm());
             dispatch(
               postLogin({
                 email: e.target[0].value,
-                password: e.target[1].value,
+                password: e.target[2].value,
               })
             );
             e.preventDefault();
           }}
           className="App__form"
         >
-          {/* <TextFieldModifiedPassword
-            nameOfVar={password}
-            nameOfFunc={setPassword}
-          /> */}
+          <TextFieldModifiedEmail />
+          <TextFieldModifiedPassword />
           <button
-            disabled={email.value === "" || (password.value.length < 8 && true)}
             className="App__form--button"
             type="submit"
             style={{ marginTop: "3.5rem", width: "100%" }}

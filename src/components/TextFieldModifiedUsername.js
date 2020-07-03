@@ -13,22 +13,12 @@ export default function TextFieldUsername() {
     <TextField
       error={errorExistsUsername.errorExists || usernameExists}
       helperText={errorExistsUsername.errorDesc}
-      onBlur={(e) => {
-        const value = e.target.value;
-
-        dispatch(checkIfUserExists(value));
-        console.log(errorExistsUsername.errorExists);
-        dispatch(setOnBlur("Username"));
-      }}
       id="outlined-basic"
       label="Username"
       variant="outlined"
       onChange={(e) => {
         let value = e.target.value;
         dispatch(setFieldValue({ label: "Username", value }));
-      }}
-      onFocus={() => {
-        dispatch(setOnFocus("Username"));
       }}
       type="Username"
       margin={"normal"}

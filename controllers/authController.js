@@ -12,11 +12,11 @@ const signToken = (id) => {
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
+  console.log(req.body);
   const newUser = await userModel.create({
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
-    passwordChangedAt: req.body.passwordChangedAt,
   });
 
   const token = signToken(newUser._id);
@@ -26,16 +26,31 @@ exports.signup = catchAsync(async (req, res, next) => {
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
-  if (!email || !password)
-    Resp(res, 200, next, "err", "Please, provide both email and password");
+  if (!email || !password) {
+    res.status(500).json({
+      status: "error",
+      message: "Email or password doesn't exists",
+    });
+    next();
+  }
 
   const user = await userModel.findOne({ email }).select("+password");
 
-  if (!user || !(await user.correctPassword(password, user.password)))
-    Resp(res, 200, next, "err", "User doesn't exists or incorrect password");
-
+  if (!user || !(await user.correctPassword(password, user.password))) {
+    res.status(500).json({
+      status: "error",
+      message: "User doesn't exists or incorrect password",
+    });
+    next();
+  }
   const token = signToken(user._id);
-  Resp(res, 200, next, "success", null, token);
+
+  res.status(200).json({
+    status: "success",
+    message: "Successful login",
+    token,
+  });
+  next();
 });
 
 exports.protect = catchAsync(async (req, res, next) => {

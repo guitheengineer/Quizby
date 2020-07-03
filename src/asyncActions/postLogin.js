@@ -3,7 +3,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const postLogin = createAsyncThunk(
   "rootReducer/postLogin",
   async ({ email, password }) => {
-    console.log(password);
     const response = await fetch("/login", {
       method: "POST",
       headers: {
