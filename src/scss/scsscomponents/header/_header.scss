@@ -1,5 +1,7 @@
 .App__header {
   //   height: 9.6%;
+  align-self: center;
+  width: 80%;
   min-height: 4rem;
   max-height: 5.4rem;
   height: 7.7vh;
@@ -10,7 +12,6 @@
   align-items: center;
   &--title {
     cursor: pointer;
-    margin-left: 3.5rem;
     font-size: 1.4rem;
     @include resp(700) {
       font-size: 1.5rem;

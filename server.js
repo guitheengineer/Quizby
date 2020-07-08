@@ -8,12 +8,12 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
-
-const globalErrorHandler = require("./controllers/errorController");
 require("dotenv").config();
+const route = require("./routes/appRoute");
+const userRoute = require("./routes/userRoute");
+const path = require("path");
 app.use(cors());
-const route = require("./routes/shitRoute");
-
+app.use(express.static(path.join(__dirname, "build")));
 const port = process.env.PORT || 5000;
 
 const DB = process.env.DB.replace("<PASSWORD>", process.env.DB_PASSWORD);
@@ -36,8 +36,13 @@ mongoose.connection.on("connected", () => {
 
 app.use(express.json());
 app.use("/", route);
+app.use("/user", userRoute);
 
 const server = app.listen(port, () => "server started");
+
+process.on("SIGINT", function () {
+  server.close();
+});
 
 // app.use(globalErrorHandler);
 process.on("unhandledRejection", (err) => {

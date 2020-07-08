@@ -29,6 +29,8 @@ body {
   font-size: 1.8rem; }
 
 .App__header {
+  align-self: center;
+  width: 80%;
   min-height: 4rem;
   max-height: 5.4rem;
   height: 7.7vh;
@@ -39,7 +41,6 @@ body {
       height: 9vh; } }
   .App__header--title {
     cursor: pointer;
-    margin-left: 3.5rem;
     font-size: 1.4rem;
     color: #f3f3fb;
     border-color: #5255ca; }
@@ -74,14 +75,19 @@ body {
   margin-top: 1.4vh;
   list-style-type: none;
   width: 77%;
+  user-select: none;
   align-items: center;
   max-width: 38.2rem; }
+  .App__container--list input[type="button"]:focus {
+    outline: none; }
   @media (min-width: 375px) {
     .App__container--list {
       width: 71%; } }
   .App__container--list--answer {
     width: 100%;
     display: flex;
+    background-color: transparent;
+    padding-left: 8%;
     align-items: center;
     height: 5rem;
     margin-top: 1.5rem;
@@ -89,20 +95,79 @@ body {
     border-radius: 8px;
     font-size: 1.8rem;
     font-weight: 400;
-    color: #0a0a1f; }
+    color: #0a0a1f;
+    padding-left: 2.8rem; }
+
+@keyframes opacityZero {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+    .App__container--list--answer:nth-child(1) {
+      animation-delay: 0.6s; }
+    .App__container--list--answer:nth-child(2) {
+      animation-delay: 0.4s; }
+    .App__container--list--answer:nth-child(3) {
+      animation-delay: 0.2s; }
     .App__container--list--answer:hover {
       border: 2px solid #7b61ff;
       cursor: pointer; }
-    .App__container--list--answer span {
-      margin-left: 2.8rem;
-      margin-top: 0.3rem; }
   .App__container--list--chevron {
     position: absolute;
-    right: 2.1rem; }
+    right: 8%;
+    top: 3rem; }
+
+.App__container--correct {
+  width: 10rem;
+  height: auto;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+  animation: opacityOne 0.3s normal forwards; }
+
+.slideInLeft {
+  animation: slideInLeft 0.6s ease normal backwards; }
+
+.slideInRight {
+  animation: slideInRight 0.6s ease normal backwards; }
+
+.slideOutLeft {
+  animation: slideOutLeft 0.6s ease 1s normal backwards; }
+
+.blur {
+  animation: blur 0.3s ease normal forwards; }
+
+@keyframes opacityOne {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes blur {
+  from {
+    filter: blur(0); }
+  to {
+    filter: blur(1px); } }
 
 @keyframes slideInLeft {
   from {
     transform: translate3d(-200%, 0, 0);
+    visibility: visible; }
+  to {
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes slideOutLeft {
+  from {
+    transform: translate3d(0, 0, 0); }
+  to {
+    transform: translate3d(-200%, 0, 0);
+    visibility: visible; } }
+
+@keyframes slideInRight {
+  from {
+    transform: translate3d(200%, 0, 0);
     visibility: visible; }
   to {
     transform: translate3d(0, 0, 0); } }
@@ -152,17 +217,20 @@ body {
 
 .App__presentation {
   color: white;
-  margin-left: 3.4rem;
+  width: 80%;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
   position: relative; }
   .App__presentation--title {
     font: 2.4rem Overpass; }
   .App__presentation--desc {
-    margin-top: 0.7rem;
+    margin: 0.7rem 0 0 0.2rem;
     font: 300 1.4rem Overpass;
     width: 90%; }
 
 .App__form {
-  width: 81.84%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-self: center; }
@@ -299,3 +367,33 @@ body {
     border: 0;
     font: 2rem Overpass;
     cursor: pointer; }
+
+.App__quizzes--container {
+  width: 80%;
+  align-self: center;
+  justify-self: normal; }
+  .App__quizzes--container--title {
+    font-size: 2rem;
+    color: #0a0a1f;
+    margin-top: 3.4rem; }
+  .App__quizzes--container--list {
+    display: grid;
+    grid-template: 1fr 1fr/ 1fr 1fr;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+    list-style-type: none; }
+    .App__quizzes--container--list--item {
+      padding-top: 100%;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      background-color: darkgrey;
+      position: relative;
+      border-radius: 3px; }
+      .App__quizzes--container--list--item--quiztitle {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        font: 300 1.6rem Overpass;
+        position: absolute; }

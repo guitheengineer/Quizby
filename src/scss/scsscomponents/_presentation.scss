@@ -1,12 +1,15 @@
 .App__presentation {
   color: white;
-  margin-left: 3.4rem;
+  width: 80%;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
   position: relative;
   &--title {
     font: 2.4rem Overpass;
   }
   &--desc {
-    margin-top: 0.7rem;
+    margin: 0.7rem 0 0 0.2rem;
     font: 300 1.4rem Overpass;
     width: 90%;
   }

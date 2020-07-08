@@ -1,6 +1,6 @@
 import React from "react";
 
-function BackgroundContainer({ mgTop, minHeight, children }) {
+function BackgroundContainer({ mgTop, minHeight, children, justifyContent }) {
   return (
     <div
       style={{
@@ -14,7 +14,7 @@ function BackgroundContainer({ mgTop, minHeight, children }) {
         flexDirection: "column",
         marginTop: mgTop,
         minHeight,
-        justifyContent: "center",
+        justifyContent: justifyContent ? justifyContent : "center",
       }}
     >
       {children}

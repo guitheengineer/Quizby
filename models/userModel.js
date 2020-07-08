@@ -24,6 +24,10 @@ const userSchema = mongoose.Schema({
     minlength: 8,
     select: false,
   },
+  avatar: {
+    data: Buffer,
+    contentType: String,
+  },
   passwordChangedAt: Date,
 });
 

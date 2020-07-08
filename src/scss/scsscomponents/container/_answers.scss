@@ -5,6 +5,10 @@
   margin-top: 1.4vh;
   list-style-type: none;
   width: 77%;
+  user-select: none;
+  input[type="button"]:focus {
+    outline: none;
+  }
   @include resp(375) {
     width: 71%;
   }
@@ -14,17 +18,26 @@
   &--answer {
     width: 100%;
     display: flex;
-    // ANIMATION SCHEME DEACTIVATED
-    // animation: slideInLeft 2s ease normal backwards;
-    // &:nth-child(1) {
-    //   animation-delay: 0.6s;
-    // }
-    // &:nth-child(2) {
-    //   animation-delay: 0.4s;
-    // }
-    // &:nth-child(3) {
-    //   animation-delay: 0.2s;
-    // }
+    background-color: transparent;
+    padding-left: 8%;
+
+    @keyframes opacityZero {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    &:nth-child(1) {
+      animation-delay: 0.6s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.2s;
+    }
     &:hover {
       border: 2px solid #7b61ff;
       cursor: pointer;
@@ -39,20 +52,81 @@
 
     font-weight: 400;
     color: #0a0a1f;
-    span {
-      margin-left: 2.8rem;
-      margin-top: 0.3rem;
-    }
+    padding-left: 2.8rem;
   }
   &--chevron {
     position: absolute;
-    right: 2.1rem;
+    right: 8%;
+    top: 3rem;
+  }
+}
+.App__container--correct {
+  width: 10rem;
+  height: auto;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+  animation: opacityOne 0.3s normal forwards;
+}
+.slideInLeft {
+  animation: slideInLeft 0.6s ease normal backwards;
+}
+.slideInRight {
+  animation: slideInRight 0.6s ease normal backwards;
+}
+.slideOutLeft {
+  animation: slideOutLeft 0.6s ease 1s normal backwards;
+}
+
+.blur {
+  animation: blur 0.3s ease normal forwards;
+}
+
+@keyframes opacityOne {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes blur {
+  from {
+    filter: blur(0);
+  }
+  to {
+    filter: blur(1px);
   }
 }
 
 @keyframes slideInLeft {
   from {
     transform: translate3d(-200%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-200%, 0, 0);
+    visibility: visible;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translate3d(200%, 0, 0);
     visibility: visible;
   }
 
