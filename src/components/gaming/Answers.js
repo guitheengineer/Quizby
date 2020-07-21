@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { setUserAnswer, nextQuestion } from "../../slices/quizzesSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { isMobile } from "react-device-detect";
 
 function Answers() {
+  const [isHover, setIsHover] = useState({ hovering: true, ans: null });
   const {
     currentQuiz,
     currentQuestion,
@@ -12,6 +14,7 @@ function Answers() {
     currentQuestionAnswered,
   } = useSelector((d) => d.quizzesReducer);
 
+  console.log(currentQuestionAnswered);
   const dispatch = useDispatch();
   function optionClicked(e) {
     dispatch(setUserAnswer(e));
@@ -27,6 +30,10 @@ function Answers() {
         backgroundColor: "initial",
         border: "2px solid #f00",
       };
+
+    if (isHover.hovering && ans === isHover.ans) {
+      return { border: "2px solid #7b61ff", cursor: "pointer" };
+    }
   }
 
   function getContainerStyle() {
@@ -45,26 +52,29 @@ function Answers() {
 
   return (
     <form
-      onAnimationStart={(e) => {
+      onAnimationEnd={(e) => {
         if (currentQuestionAnswered) {
-          console.log("ended");
           dispatch(nextQuestion());
         }
       }}
-      style={getContainerStyle()}
-      className={`App__container--list ${
-        currentQuestionAnswered ? "slideOutLeft" : "slideInRight"
-      }`}
+      style={{ userSelect: "none" }}
+      className="App__container--list"
     >
       {currentAnswers.map((ans, index) => (
-        <div key={index} style={{ position: "relative", width: "100%" }}>
+        <div
+          key={index}
+          onMouseEnter={() => !isMobile && setIsHover({ hovering: true, ans })}
+          onMouseLeave={() => !isMobile && setIsHover({ hovering: false, ans })}
+          style={{ position: "relative", width: "100%" }}
+          onClick={(e) => {
+            optionClicked(ans);
+          }}
+          className={currentQuestionAnswered ? "slideOutLeft" : "slideInRight"}
+        >
           <input
             disabled={currentQuestionAnswered}
             type="button"
             value={ans}
-            onClick={(e) => {
-              optionClicked(e.target.value);
-            }}
             style={getBackgroundColor(ans)}
             className="App__container--list--answer"
           />

@@ -74,27 +74,24 @@ body {
   flex-direction: column;
   margin-top: 1.4vh;
   list-style-type: none;
-  width: 77%;
+  width: 80%;
   user-select: none;
   align-items: center;
   max-width: 38.2rem; }
+  .App__container--list div {
+    margin-top: 1.5rem; }
   .App__container--list input[type="button"]:focus {
     outline: none; }
-  @media (min-width: 375px) {
-    .App__container--list {
-      width: 71%; } }
   .App__container--list--answer {
     width: 100%;
     display: flex;
     background-color: transparent;
-    padding-left: 8%;
+    padding-top: 0.3rem;
     align-items: center;
     height: 5rem;
-    margin-top: 1.5rem;
     border: 1px solid #c1d2e1;
     border-radius: 8px;
-    font-size: 1.8rem;
-    font-weight: 400;
+    font: 400 1.8rem Overpass;
     color: #0a0a1f;
     padding-left: 2.8rem; }
 
@@ -109,13 +106,10 @@ body {
       animation-delay: 0.4s; }
     .App__container--list--answer:nth-child(3) {
       animation-delay: 0.2s; }
-    .App__container--list--answer:hover {
-      border: 2px solid #7b61ff;
-      cursor: pointer; }
   .App__container--list--chevron {
     position: absolute;
     right: 8%;
-    top: 3rem; }
+    top: 1.5rem; }
 
 .App__container--correct {
   width: 10rem;
@@ -125,7 +119,7 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 99999;
-  animation: opacityOne 0.3s normal forwards; }
+  animation: opacityOne 0.3s ease-in forwards; }
 
 .slideInLeft {
   animation: slideInLeft 0.6s ease normal backwards; }
@@ -134,10 +128,7 @@ body {
   animation: slideInRight 0.6s ease normal backwards; }
 
 .slideOutLeft {
-  animation: slideOutLeft 0.6s ease 1s normal backwards; }
-
-.blur {
-  animation: blur 0.3s ease normal forwards; }
+  animation: slideOutLeft 0.6s 0.6s ease normal forwards; }
 
 @keyframes opacityOne {
   from {
@@ -192,14 +183,11 @@ body {
     left: 0.2; }
 
 .App__container--question {
-  width: 77%;
+  width: 80%;
   font-size: 2.1rem;
   line-height: 33px;
   color: #0a0a1f;
   max-width: 38.2rem; }
-  @media (min-width: 375px) {
-    .App__container--question {
-      width: 71%; } }
   @media (min-width: 670px) {
     .App__container--question {
       line-height: 31px; } }
@@ -397,3 +385,31 @@ body {
         width: 80%;
         font: 300 1.6rem Overpass;
         position: absolute; }
+
+.App__listanswers {
+  display: flex;
+  width: 84%;
+  top: 3vh;
+  overflow: scroll auto;
+  height: 3.5rem;
+  align-items: center;
+  margin-bottom: 2vh;
+  position: absolute;
+  list-style-type: none; }
+  .App__listanswers::-webkit-scrollbar {
+    display: none; }
+  .App__listanswers li:first-child {
+    margin: 0 0 0 2.5%; }
+  .App__listanswers li:not(:first-child) {
+    margin-left: 0.7rem; }
+  .App__listanswers li img {
+    width: 1.6rem; }
+
+@keyframes tinyScale {
+  0% {
+    transform: scale(1); }
+  50% {
+    overflow: visible;
+    transform: scale(1.2); }
+  100% {
+    transform: scale(1); } }

@@ -18,7 +18,7 @@ function Quizzes({ history }) {
 
   function quizClicked(quiz) {
     dispatch(setQuiz(quiz));
-    history.push(`/play:${quiz._id}`);
+    history.push(`/play/${quiz._id}`);
   }
 
   return (

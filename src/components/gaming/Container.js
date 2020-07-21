@@ -5,6 +5,7 @@ import Question from "./Question";
 import { useSelector, useDispatch } from "react-redux";
 import { ClipLoader } from "react-spinners";
 import { getCurrentQuiz } from "../../asyncActions/getQuizzes";
+import ListAnswers from "./ListAnswers";
 
 function Container() {
   const {
@@ -21,11 +22,16 @@ function Container() {
 
   return (
     <>
-      <div className={`App__container ${currentQuestionAnswered && "blur"}`}>
+      <div className="App__container">
+        {/* <div className={`App__container ${currentQuestionAnswered && "blur"}`}> */}
         <ClipLoader loading={!quizFetched} color="#5255CA" />
-
-        <Question />
-        <Answers />
+        {quizFetched && (
+          <>
+            <ListAnswers />
+            <Question />
+            <Answers />
+          </>
+        )}
       </div>
       {userAnsweredCorrect ? (
         <img

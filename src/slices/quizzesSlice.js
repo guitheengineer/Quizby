@@ -33,6 +33,7 @@ const quizzesSlice = createSlice({
     userAnsweredCorrect: false,
     userAnsweredWrong: false,
     quizFetched: false,
+    historicOfAnswers: [],
   },
   reducers: {
     setQuiz: (state, action) => {
@@ -45,11 +46,12 @@ const quizzesSlice = createSlice({
       if (action.payload === answer) {
         state.userStats.correctAnswers += 1;
         state.userAnsweredCorrect = true;
-        console.log("correct");
+        state.historicOfAnswers[state.currentQuestion] = "correct";
+        console.log(state.currentQuestion);
       } else {
         state.userStats.wrongAnswers += 1;
         state.userAnsweredWrong = true;
-        console.log("wrong");
+        state.historicOfAnswers[state.currentQuestion] = "wrong";
       }
       state.currentQuestionAnswered = true;
     },
@@ -87,7 +89,6 @@ const quizzesSlice = createSlice({
       if (action.payload.status === "success") {
         const quiz = action.payload.quiz;
         state.currentQuiz = quiz;
-        state.quizFetched = true;
         const answer = quiz.questions[state.currentQuestion].answer;
         const possibleAnswers =
           quiz.questions[state.currentQuestion].possibleAnswers;
@@ -101,7 +102,7 @@ const quizzesSlice = createSlice({
         }
 
         shuffleArray(groupAnswers);
-
+        console.log("fullfilled");
         state.currentAnswers = groupAnswers;
         state.quizFetched = true;
       }

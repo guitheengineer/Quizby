@@ -1,10 +1,10 @@
 .App__container--question {
-  width: 77%;
+  width: 80%;
   // ANIMATION DEACTIVATED
   // animation: fadeIn 2s backwards;
-  @include resp(375) {
-    width: 71%;
-  }
+  // @include resp(375) {
+  //   width: 71%;
+  // }
 
   font-size: 2.1rem;
   line-height: 33px;

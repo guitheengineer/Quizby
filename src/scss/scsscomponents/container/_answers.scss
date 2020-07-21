@@ -4,14 +4,17 @@
   flex-direction: column;
   margin-top: 1.4vh;
   list-style-type: none;
-  width: 77%;
+  width: 80%;
   user-select: none;
+  div {
+    margin-top: 1.5rem;
+  }
   input[type="button"]:focus {
     outline: none;
   }
-  @include resp(375) {
-    width: 71%;
-  }
+  // @include resp(375) {
+  //   width: 71%;
+  // }
   align-items: center;
   max-width: 38.2rem;
 
@@ -19,7 +22,7 @@
     width: 100%;
     display: flex;
     background-color: transparent;
-    padding-left: 8%;
+    padding-top: 0.3rem;
 
     @keyframes opacityZero {
       from {
@@ -38,26 +41,19 @@
     &:nth-child(3) {
       animation-delay: 0.2s;
     }
-    &:hover {
-      border: 2px solid #7b61ff;
-      cursor: pointer;
-    }
+
     align-items: center;
     height: 5rem;
-    margin-top: 1.5rem;
     border: 1px solid #c1d2e1;
-
     border-radius: 8px;
-    font-size: 1.8rem;
-
-    font-weight: 400;
+    font: 400 1.8rem Overpass;
     color: #0a0a1f;
     padding-left: 2.8rem;
   }
   &--chevron {
     position: absolute;
     right: 8%;
-    top: 3rem;
+    top: 1.5rem;
   }
 }
 .App__container--correct {
@@ -66,11 +62,11 @@
   position: fixed;
   left: 50%;
   top: 50%;
-
   transform: translate(-50%, -50%);
   z-index: 99999;
-  animation: opacityOne 0.3s normal forwards;
+  animation: opacityOne 0.3s ease-in forwards;
 }
+
 .slideInLeft {
   animation: slideInLeft 0.6s ease normal backwards;
 }
@@ -78,12 +74,12 @@
   animation: slideInRight 0.6s ease normal backwards;
 }
 .slideOutLeft {
-  animation: slideOutLeft 0.6s ease 1s normal backwards;
+  animation: slideOutLeft 0.6s 0.6s ease normal forwards;
 }
 
-.blur {
-  animation: blur 0.3s ease normal forwards;
-}
+// .blur {
+//   animation: blur 0.3s ease normal forwards;
+// }
 
 @keyframes opacityOne {
   from {
