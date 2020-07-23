@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const validator = require("validator");
-const bcrypt = require("bcrypt");
+const mongoose = require('mongoose');
+const validator = require('validator');
+const bcrypt = require('bcrypt');
 
 const userSchema = mongoose.Schema({
   username: {
@@ -31,30 +31,27 @@ const userSchema = mongoose.Schema({
   passwordChangedAt: Date,
 });
 
-userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) return next();
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
 
   this.password = await bcrypt.hash(this.password, 12);
-  next();
+  return next();
 });
 
 userSchema.methods.correctPassword = async function (loginPwd, hashPwd) {
-  return await bcrypt.compare(loginPwd, hashPwd);
+  const comparingPassword = await bcrypt.compare(loginPwd, hashPwd);
+  return comparingPassword;
 };
 
 userSchema.methods.changedPasswordAfter = function (JWTTimeStamp) {
   if (this.passwordChangedAt) {
-    const changedTimestamp = parseInt(
-      this.passwordChangedAt.getTime() / 1000,
-      10
-    );
+    const changedTimestamp = parseInt(this.passwordChangedAt.getTime() / 1000, 10);
 
     return JWTTimeStamp < changedTimestamp;
   }
-
   return false;
 };
 
-const userModel = mongoose.model("User", userSchema);
+const userModel = mongoose.model('User', userSchema);
 
 module.exports = userModel;

@@ -4,8 +4,10 @@ module.exports = {
     es2020: true,
   },
   extends: [
-    'plugin:react/recommended',
+    'plugin:prettier/recommended',
     'airbnb',
+    'prettier',
+    'prettier/react',
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -14,9 +16,12 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-  ],
+  plugins: ['react', 'prettier'],
   rules: {
+    'prettier/prettier': 'error',
+    'no-underscore-dangle': 'off',
+    'no-param-reassign': 'off',
+    'react/forbid-prop-types': 'off',
+    'react-hooks/exhaustive-deps': 'off',
   },
 };

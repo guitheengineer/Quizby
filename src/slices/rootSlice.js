@@ -1,16 +1,14 @@
-import { fetchData } from "../asyncActions/fetchQuestions";
-import { postSignup } from "../asyncActions/postSignup";
-import { postLogin } from "../asyncActions/postLogin";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+// import { fetchData, postSignup, postLogin } from '../asyncActions';
 
 export const rootSlice = createSlice({
-  name: "rootReducer",
+  name: 'rootReducer',
   initialState: {
-    logoIsShowing: true,
+    logoShouldAppear: true,
   },
   reducers: {
-    setLogoIsShowing: (state, action) => {
-      state.logoIsShowing = action.payload;
+    setLogo: (state, action) => {
+      state.logoShouldAppear = action.payload;
     },
   },
   extraReducers: {

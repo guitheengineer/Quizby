@@ -1,17 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { checkIfUserExists } from "../asyncActions/checkIfUserExists";
+import { createSlice } from '@reduxjs/toolkit';
+import { checkIfUserExists } from '../asyncActions';
 
 export const formSlice = createSlice({
-  name: "formReducer",
+  name: 'formReducer',
   initialState: {
     username: {
-      value: "",
+      value: '',
     },
     email: {
-      value: "",
+      value: '',
     },
     password: {
-      value: "",
+      value: '',
       visible: false,
     },
     errorExistsUsername: {
@@ -33,12 +33,11 @@ export const formSlice = createSlice({
       state[labelLowercase].value = action.payload.value;
     },
     onSubmitForm: (state, action) => {
-      let regexUsernameValidator = /^(?=.{3,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
+      const regexUsernameValidator = /^(?=.{3,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
       if (!regexUsernameValidator.test(state.username.value)) {
         state.errorExistsUsername = {
           errorExists: true,
-          errorDesc:
-            "Usernames should have at least 3 digits with no special characters",
+          errorDesc: 'Usernames should have at least 3 digits with no special characters',
         };
       } else {
         state.errorExistsUsername = {
@@ -47,11 +46,11 @@ export const formSlice = createSlice({
         };
       }
 
-      let regexEmailValidator = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const regexEmailValidator = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!regexEmailValidator.test(state.email.value)) {
         state.errorExistsEmail = {
           errorExists: true,
-          errorDesc: "Please, enter a valid email",
+          errorDesc: 'Please, enter a valid email',
         };
       } else {
         state.errorExistsEmail = {
@@ -62,7 +61,7 @@ export const formSlice = createSlice({
       if (state.password.value < 8) {
         state.errorExistsPassword = {
           errorExists: true,
-          errorDesc: "Password should be at least 8 characters long",
+          errorDesc: 'Password should be at least 8 characters long',
         };
       } else {
         state.errorExistsPassword = {
@@ -112,8 +111,8 @@ export const formSlice = createSlice({
     // },
     setOnFocus: (state, action) => {
       const labelLowercase = `${action.payload}`.toLowerCase();
-      state[labelLowercase].blur = "false";
-      state[labelLowercase].focused = "true";
+      state[labelLowercase].blur = 'false';
+      state[labelLowercase].focused = 'true';
     },
     setPasswordVisibility: (state, action) => {
       state.password.visible = !state.password.visible;
@@ -125,7 +124,7 @@ export const formSlice = createSlice({
       if (action.payload.userExists) {
         state.errorExistsUsername = {
           errorExists: true,
-          errorDesc: "Username already exists",
+          errorDesc: 'Username already exists',
         };
       }
     },

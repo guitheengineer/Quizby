@@ -1,14 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
-import {
-  getMostPlayedQuizzes,
-  getCurrentQuiz,
-} from "../asyncActions/getQuizzes";
+import { createSlice } from '@reduxjs/toolkit';
+import { getMostPlayedQuizzes, getCurrentQuiz } from '../asyncActions';
 
 const quizzesSlice = createSlice({
-  name: "quizzesReducer",
+  name: 'quizzesReducer',
   initialState: {
     topPlayedQuizzes: [],
-    userAnswer: "",
+    userAnswer: '',
     currentAnswers: [],
     userStats: {
       correctAnswers: 0,
@@ -17,12 +14,12 @@ const quizzesSlice = createSlice({
       toBeAnswered: 0,
     },
     currentQuiz: {
-      creator: "",
-      name: "",
+      creator: '',
+      name: '',
       questions: [
         {
-          question: "",
-          answer: "",
+          question: '',
+          answer: '',
           possibleAnswers: [],
         },
       ],
@@ -41,35 +38,35 @@ const quizzesSlice = createSlice({
     },
     setUserAnswer: (state, action) => {
       state.userAnswer = action.payload;
-      const answer = state.currentQuiz.questions[state.currentQuestion].answer;
+      const { answer } = state.currentQuiz.questions[state.currentQuestion];
 
       if (action.payload === answer) {
         state.userStats.correctAnswers += 1;
         state.userAnsweredCorrect = true;
-        state.historicOfAnswers[state.currentQuestion] = "correct";
+        state.historicOfAnswers[state.currentQuestion] = 'correct';
         console.log(state.currentQuestion);
       } else {
         state.userStats.wrongAnswers += 1;
         state.userAnsweredWrong = true;
-        state.historicOfAnswers[state.currentQuestion] = "wrong";
+        state.historicOfAnswers[state.currentQuestion] = 'wrong';
       }
       state.currentQuestionAnswered = true;
     },
-    nextQuestion: (state, action) => {
-      state.userAnswer = "";
+    nextQuestion: (state) => {
+      state.userAnswer = '';
       state.userAnsweredCorrect = false;
       state.userAnsweredWrong = false;
       state.currentQuestionAnswered = false;
       state.currentQuestion += 1;
       if (state.currentQuestion === state.currentQuiz.questions.length) {
-        console.log("gameisdone");
+        console.log('gameisdone');
         state.currentQuiz = {
-          creator: "",
-          name: "",
+          creator: '',
+          name: '',
           questions: [
             {
-              question: "",
-              answer: "",
+              question: '',
+              answer: '',
               possibleAnswers: [],
             },
           ],
@@ -82,18 +79,16 @@ const quizzesSlice = createSlice({
   },
   extraReducers: {
     [getMostPlayedQuizzes.fulfilled]: (state, action) => {
-      if (action.payload.status === "success")
-        state.topPlayedQuizzes = action.payload.sortedQuizzes;
+      if (action.payload.status === 'success') state.topPlayedQuizzes = action.payload.sortedQuizzes;
     },
     [getCurrentQuiz.fulfilled]: (state, action) => {
-      if (action.payload.status === "success") {
-        const quiz = action.payload.quiz;
+      if (action.payload.status === 'success') {
+        const { quiz } = action.payload;
         state.currentQuiz = quiz;
-        const answer = quiz.questions[state.currentQuestion].answer;
-        const possibleAnswers =
-          quiz.questions[state.currentQuestion].possibleAnswers;
+        const { answer } = quiz.questions[state.currentQuestion];
+        const { possibleAnswers } = quiz.questions[state.currentQuestion];
 
-        let groupAnswers = [...possibleAnswers, answer];
+        const groupAnswers = [...possibleAnswers, answer];
         function shuffleArray(array) {
           for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -102,7 +97,7 @@ const quizzesSlice = createSlice({
         }
 
         shuffleArray(groupAnswers);
-        console.log("fullfilled");
+        console.log('fullfilled');
         state.currentAnswers = groupAnswers;
         state.quizFetched = true;
       }
