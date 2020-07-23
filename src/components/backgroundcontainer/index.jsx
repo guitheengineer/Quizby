@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function BackgroundContainer({
-  mgTop, minHeight, children, justifyContent,
-}) {
+function BackgroundContainer({ mgTop, minHeight, children, justifyContent }) {
   return (
     <div
       style={{
@@ -17,7 +15,7 @@ function BackgroundContainer({
         flexDirection: 'column',
         marginTop: mgTop,
         minHeight,
-        justifyContent: justifyContent || 'center',
+        justifyContent,
       }}
     >
       {children}
@@ -26,10 +24,15 @@ function BackgroundContainer({
 }
 
 BackgroundContainer.propTypes = {
-  mgTop: PropTypes.string.isRequired,
-  minHeight: PropTypes.string.isRequired,
-  justifyContent: PropTypes.string.isRequired,
+  minHeight: PropTypes.string,
+  justifyContent: PropTypes.string,
   children: PropTypes.object.isRequired,
+  mgTop: PropTypes.string,
 };
 
+BackgroundContainer.defaultProps = {
+  mgTop: '0px',
+  minHeight: '0px',
+  justifyContent: 'center',
+};
 export default BackgroundContainer;

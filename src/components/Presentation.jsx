@@ -13,7 +13,11 @@ function Presentation({ title, desc, mgTop }) {
 Presentation.propTypes = {
   title: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
-  mgTop: PropTypes.string.isRequired,
+  mgTop: PropTypes.string,
+};
+
+Presentation.defaultProps = {
+  mgTop: '0px',
 };
 
 export default Presentation;

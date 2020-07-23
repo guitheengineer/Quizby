@@ -1,18 +1,29 @@
 .App__fourhundred {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    &--illustration {
+        width: 22rem;
+        height: 18.7rem;
+        font: 11.6rem Overpass;
+        color: #cccdef;
+        display: flex;
+        align-items: center;
+        img {
+            left: 50%;
+            transform: translateX(-50%);
+            position: absolute;
+            filter: drop-shadow(1px 4px 4px rgba(0, 0, 0, 0.22));
+        }
+    }
     &--message {
-        font-family: Overpass;
-        font-size: 3rem;
-        color: #0a0a1f;
+        margin-top: 2.5rem;
+        font: 2rem Overpass;
+        color: #7a7ba2;
     }
     &--button {
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 2px 1px rgba(0, 0, 0, 0.16);
         width: 20.3rem;
         height: 4.5rem;
         background: #5255ca;
