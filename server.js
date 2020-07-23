@@ -20,7 +20,7 @@ const port = process.env.PORT || 5000;
 
 const DB = process.env.DB.replace('<PASSWORD>', process.env.DB_PASSWORD);
 
-const connectShit = async () => {
+const connectApp = async () => {
   try {
     await mongoose.connect(DB, {
       useNewUrlParser: false,
@@ -30,7 +30,7 @@ const connectShit = async () => {
     console.log(err);
   }
 };
-connectShit();
+connectApp();
 
 mongoose.connection.on('connected', () => {
   console.log('mongoose is connected');
