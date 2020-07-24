@@ -4,11 +4,11 @@ import { ClipLoader } from 'react-spinners';
 import Answers from '../gaming/Answers';
 import Question from '../gaming/Question';
 import { getCurrentQuiz } from '../../asyncActions';
-import ListAnswers from '../gaming/ListAnswers';
+import ListAnswers from '../gaming/ListIconAnswers';
 
 function Container() {
   const { quizFetched, userAnsweredCorrect, userAnsweredWrong } = useSelector(
-    (d) => d.quizzesReducer,
+    (d) => d.quizzesReducer
   );
   const dispatch = useDispatch();
   useEffect(() => {
@@ -29,10 +29,18 @@ function Container() {
         )}
       </div>
       {userAnsweredCorrect ? (
-        <img src="../../../correct.svg" className="App__container--correct" alt="Correct answer" />
+        <img
+          src="../../../correct.svg"
+          className="App__container--correct"
+          alt="Correct answer"
+        />
       ) : (
         userAnsweredWrong && (
-          <img src="../../../wrong.svg" className="App__container--correct" alt="Wrong answer" />
+          <img
+            src="../../../wrong.svg"
+            className="App__container--correct"
+            alt="Wrong answer"
+          />
         )
       )}
     </>
