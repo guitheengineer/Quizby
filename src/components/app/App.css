@@ -72,14 +72,11 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-top: 1.4vh;
-  list-style-type: none;
+  margin-top: 2.9vh;
   width: 80%;
   user-select: none;
   align-items: center;
   max-width: 38.2rem; }
-  .App__container--list div {
-    margin-top: 1.5rem; }
   .App__container--list input[type='button']:focus {
     outline: none; }
   .App__container--list--answer {
@@ -164,7 +161,7 @@ body {
   to {
     transform: translate3d(0, 0, 0); } }
 
-.App__listanswers {
+.App__listiconanswers {
   display: flex;
   width: 84%;
   top: 3vh;
@@ -174,13 +171,13 @@ body {
   margin-bottom: 2vh;
   position: absolute;
   list-style-type: none; }
-  .App__listanswers::-webkit-scrollbar {
+  .App__listiconanswers::-webkit-scrollbar {
     display: none; }
-  .App__listanswers li:first-child {
+  .App__listiconanswers li:first-child {
     margin: 0 0 0 2.5%; }
-  .App__listanswers li:not(:first-child) {
+  .App__listiconanswers li:not(:first-child) {
     margin-left: 0.7rem; }
-  .App__listanswers li img {
+  .App__listiconanswers li img {
     width: 1.6rem; }
 
 @keyframes tinyScale {

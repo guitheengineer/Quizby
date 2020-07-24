@@ -32,8 +32,8 @@
     "validator": "^13.1.1"
   },
   "scripts": {
-    "sass": "node-sass src/scss/main.scss src/App.css -w",
-    "server": "nodemon server.js",
+    "sass": "node-sass src/basescss/main.scss src/components/app/App.css -w",
+    "server": "nodemon -r dotenv/config server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

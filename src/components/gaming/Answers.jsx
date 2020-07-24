@@ -52,7 +52,7 @@ function Answers() {
   // }
 
   return (
-    <form
+    <div
       onAnimationEnd={() => {
         if (currentQuestionAnswered) {
           dispatch(nextQuestion());
@@ -64,24 +64,27 @@ function Answers() {
       {currentAnswers.map((ans) => (
         <button
           type="button"
+          disabled={currentQuestionAnswered}
           key={ans}
           onMouseEnter={() => !isMobile && setIsHover({ hovering: true, ans })}
           onMouseLeave={() => !isMobile && setIsHover({ hovering: false, ans })}
-          style={{ position: 'relative', width: '100%' }}
+          style={getBackgroundColor(ans)}
           onClick={() => optionClicked(ans)}
-          className={currentQuestionAnswered ? 'slideOutLeft' : 'slideInRight'}
+          className={
+            currentQuestionAnswered
+              ? 'App__container--list--answer slideOutLeft'
+              : 'App__container--list--answer slideInRight'
+          }
         >
-          <input
-            disabled={currentQuestionAnswered}
-            type="button"
-            value={ans}
-            style={getBackgroundColor(ans)}
-            className="App__container--list--answer"
+          {ans}
+          <img
+            alt=""
+            className="App__container--list--chevron"
+            src="../../../chevron.png"
           />
-          <img alt="" className="App__container--list--chevron" src="../../../chevron.png" />
         </button>
       ))}
-    </form>
+    </div>
   );
 }
 
