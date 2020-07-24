@@ -1,7 +1,7 @@
 @import 'base';
-@import '../components/app/app';
-@import '../components/header/header';
-@import '../components/container/container';
+@import '../components/app/styles';
+@import '../components/header/styles';
+@import '../pages/playing/styles';
 @import '../components/gaming/answers';
 @import '../components/gaming/listiconanswers';
 @import '../components/gaming/infocounter';
@@ -9,6 +9,6 @@
 @import '../components/forms/presentation';
 @import '../components/forms/form';
 @import '../components/notification';
-@import '../components/errors/error';
-@import '../pages/fourhundredfour/fourhundred';
-@import '../components/quizzes/quizzes';
+@import '../components/errors/styles';
+@import '../pages/fourhundredfour/styles';
+@import '../components/quizzes/styles';
