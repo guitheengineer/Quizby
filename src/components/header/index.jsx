@@ -1,20 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-function Header() {
-  const logoShouldAppear = useSelector(
-    (data) => data.rootReducer.logoShouldAppear
-  );
+function RouteWithHeader({ showlogo, component: Component }) {
   return (
-    <div className="App__header">
-      {logoShouldAppear && (
-        <Link style={{ textDecoration: 'none' }} to="/">
-          <span className="App__header--title">Lorem ipsum</span>
-        </Link>
+    <Route
+      render={(props) => (
+        <>
+          <div className="App__header">
+            {showlogo && (
+              <Link style={{ textDecoration: 'none' }} to="/">
+                <span className="App__header--title">Lorem ipsum</span>
+              </Link>
+            )}
+          </div>
+          <Component {...props} />
+        </>
       )}
-    </div>
+    />
   );
 }
 
-export default Header;
+RouteWithHeader.propTypes = {
+  showlogo: PropTypes.bool,
+  component: PropTypes.func.isRequired,
+};
+
+RouteWithHeader.defaultProps = {
+  showlogo: true,
+};
+
+export default RouteWithHeader;
