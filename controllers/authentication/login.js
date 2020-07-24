@@ -2,11 +2,12 @@ const jwt = require('jsonwebtoken');
 const { userModel } = require('../../models');
 const { catchAsync } = require('../../utils');
 
-const signToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, {
-  expiresIn: process.env.JWT_EXPIRES_IN,
-});
+const signToken = (id) =>
+  jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
 
-exports.login = catchAsync(async (req, res, next) => {
+module.exports = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
     res.status(500).json({

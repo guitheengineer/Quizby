@@ -1,2 +1,7 @@
-export * from './changePhoto';
-export * from './checkIfUserExists';
+const changePhoto = require('./changePhoto');
+const checkIfUserExists = require('./checkIfUserExists');
+
+module.exports = {
+  changePhoto,
+  checkIfUserExists,
+};

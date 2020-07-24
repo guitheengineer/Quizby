@@ -1,2 +1,7 @@
-export * from './quizModel';
-export * from './userModel';
+const quizModel = require('./quizModel');
+const userModel = require('./userModel');
+
+module.exports = {
+  quizModel,
+  userModel,
+};

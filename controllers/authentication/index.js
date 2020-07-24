@@ -1,3 +1,9 @@
-export * from './login';
-export * from './protect';
-export * from './signup';
+const login = require('./login');
+const protect = require('./protect');
+const signup = require('./signup');
+
+module.exports = {
+  login,
+  protect,
+  signup,
+};

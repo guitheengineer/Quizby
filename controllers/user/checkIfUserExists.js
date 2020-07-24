@@ -1,6 +1,6 @@
 const { userModel } = require('../../models');
 
-exports.checkIfUserExists = async (req, res) => {
+module.exports = async (req, res) => {
   try {
     const userExists = await userModel.exists({ username: req.body.username });
     if (userExists) {

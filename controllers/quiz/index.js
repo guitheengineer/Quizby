@@ -1,3 +1,9 @@
-export * from './currentQuiz';
-export * from './getPopularQuizzes';
-export * from './newQuiz';
+const currentQuiz = require('./currentQuiz');
+const getPopularQuizzes = require('./getPopularQuizzes');
+const newQuiz = require('./newQuiz');
+
+module.exports = {
+  currentQuiz,
+  getPopularQuizzes,
+  newQuiz,
+};

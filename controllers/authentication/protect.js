@@ -4,9 +4,12 @@ const { userModel } = require('../../models');
 const { catchAsync } = require('../../utils');
 const { AppError } = require('../../utils');
 
-exports.protect = catchAsync(async (req, res, next) => {
+module.exports = catchAsync(async (req, res, next) => {
   let token;
-  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith('Bearer')
+  ) {
     // eslint-disable-next-line prefer-destructuring
     token = req.headers.authorization.split(' ')[1];
   }

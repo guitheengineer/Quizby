@@ -11,8 +11,8 @@ const mongoose = require('mongoose');
 const app = express();
 require('dotenv').config();
 const path = require('path');
-const { route } = require('./serverroute');
-const { userRoute } = require('./serverroute');
+const { appRoute } = require('./serverroutes');
+const { userRoute } = require('./serverroutes');
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'build')));
@@ -37,7 +37,7 @@ mongoose.connection.on('connected', () => {
 });
 
 app.use(express.json());
-app.use('/', route);
+app.use('/', appRoute);
 app.use('/user', userRoute);
 
 const server = app.listen(port, () => 'server started');

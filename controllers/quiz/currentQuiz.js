@@ -1,6 +1,6 @@
 const { quizModel } = require('../../models');
 
-exports.currentQuiz = async (req, res) => {
+module.exports = async (req, res) => {
   const id = req.params.id.substring(1);
   console.log(id);
   const quiz = await quizModel.findById(id);

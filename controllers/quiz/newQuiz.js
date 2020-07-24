@@ -1,9 +1,7 @@
 const { quizModel } = require('../../models');
 
-exports.newQuiz = async (req, res) => {
-  const {
-    creatorName, userId, name, questions,
-  } = req.body;
+module.exports = async (req, res) => {
+  const { creatorName, userId, name, questions } = req.body;
 
   // const userIdentification = await userModel.findById(userId);
 

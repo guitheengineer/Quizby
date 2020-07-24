@@ -2,7 +2,7 @@ const fs = require('fs');
 const { userModel } = require('../../models');
 
 const pathImg = '';
-exports.changePhoto = async (req, res) => {
+module.exports = async (req, res) => {
   const { id } = req.body;
   const data = fs.readFileSync(pathImg);
   const contentType = 'image/png';
