@@ -23,5 +23,6 @@ module.exports = {
     'no-param-reassign': 'off',
     'react/forbid-prop-types': 'off',
     'react-hooks/exhaustive-deps': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 };
