@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 function Question() {
   const { currentQuiz, currentQuestion, currentQuestionAnswered } = useSelector(
-    (d) => d.quizzesReducer,
+    (d) => d.quizzesReducer
   );
 
   return (
@@ -15,7 +15,7 @@ function Question() {
       //     ? { fontSize: "2.4rem" }
       //     : { fontSize: "2.1rem" }
       // }
-      className={`App__container--question ${
+      className={`App__playing--question ${
         currentQuestionAnswered ? 'slideOutLeft' : 'slideInRight'
       }`}
     >
@@ -29,7 +29,7 @@ function Question() {
       >
         {/* {data.question.length} */}
       </span>
-      <span className="App__container--question--bf">-</span>
+      <span className="App__playing--question--bf">-</span>
       {currentQuiz.questions[currentQuestion].question}
     </div>
   );
