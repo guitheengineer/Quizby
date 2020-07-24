@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
-import Routes from './routes';
+import Routes from '../../routes';
 // import Error from "./components/errors/Error";
 // import {} from "./slices/rootSlice";
 

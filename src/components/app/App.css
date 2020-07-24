@@ -80,7 +80,7 @@ body {
   max-width: 38.2rem; }
   .App__container--list div {
     margin-top: 1.5rem; }
-  .App__container--list input[type="button"]:focus {
+  .App__container--list input[type='button']:focus {
     outline: none; }
   .App__container--list--answer {
     width: 100%;
@@ -94,6 +94,8 @@ body {
     font: 400 1.8rem Overpass;
     color: #0a0a1f;
     padding-left: 2.8rem; }
+    .App__container--list--answer:not(:last-child) {
+      margin-bottom: 2vh; }
 
 @keyframes opacityZero {
   from {
@@ -108,8 +110,7 @@ body {
       animation-delay: 0.2s; }
   .App__container--list--chevron {
     position: absolute;
-    right: 8%;
-    top: 1.5rem; }
+    right: 8%; }
 
 .App__container--correct {
   width: 10rem;
@@ -162,6 +163,34 @@ body {
     visibility: visible; }
   to {
     transform: translate3d(0, 0, 0); } }
+
+.App__listanswers {
+  display: flex;
+  width: 84%;
+  top: 3vh;
+  overflow: scroll auto;
+  height: 3.5rem;
+  align-items: center;
+  margin-bottom: 2vh;
+  position: absolute;
+  list-style-type: none; }
+  .App__listanswers::-webkit-scrollbar {
+    display: none; }
+  .App__listanswers li:first-child {
+    margin: 0 0 0 2.5%; }
+  .App__listanswers li:not(:first-child) {
+    margin-left: 0.7rem; }
+  .App__listanswers li img {
+    width: 1.6rem; }
+
+@keyframes tinyScale {
+  0% {
+    transform: scale(1); }
+  50% {
+    overflow: visible;
+    transform: scale(1.2); }
+  100% {
+    transform: scale(1); } }
 
 .App__container--infocounter {
   position: absolute;
@@ -386,7 +415,9 @@ body {
       text-align: center;
       background-color: darkgrey;
       position: relative;
-      border-radius: 3px; }
+      border-radius: 3px;
+      border: 0;
+      cursor: pointer; }
       .App__quizzes--container--list--item--quiztitle {
         left: 50%;
         top: 50%;
@@ -394,31 +425,3 @@ body {
         width: 80%;
         font: 300 1.6rem Overpass;
         position: absolute; }
-
-.App__listanswers {
-  display: flex;
-  width: 84%;
-  top: 3vh;
-  overflow: scroll auto;
-  height: 3.5rem;
-  align-items: center;
-  margin-bottom: 2vh;
-  position: absolute;
-  list-style-type: none; }
-  .App__listanswers::-webkit-scrollbar {
-    display: none; }
-  .App__listanswers li:first-child {
-    margin: 0 0 0 2.5%; }
-  .App__listanswers li:not(:first-child) {
-    margin-left: 0.7rem; }
-  .App__listanswers li img {
-    width: 1.6rem; }
-
-@keyframes tinyScale {
-  0% {
-    transform: scale(1); }
-  50% {
-    overflow: visible;
-    transform: scale(1.2); }
-  100% {
-    transform: scale(1); } }

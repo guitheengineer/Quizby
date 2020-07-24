@@ -1,12 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import Presentation from '../Presentation';
-import BackgroundContainer from '../backgroundcontainer';
-import { postSignup, checkIfUserExists } from '../../asyncActions';
-import TextFieldModifiedUsername from '../textfields/TextFieldModifiedUsername';
-import TextFieldModifiedPassword from '../textfields/TextFieldModifiedPassword';
-import TextFieldModifiedEmail from '../textfields/TextFieldModifiedEmail';
-import { onSubmitForm } from '../../slices/formSlice';
+import BackgroundContainer from '../../backgroundcontainer';
+import { postSignup, checkIfUserExists } from '../../../asyncActions';
+import TextFieldModifiedUsername from '../../textfields/TextFieldModifiedUsername';
+import TextFieldModifiedPassword from '../../textfields/TextFieldModifiedPassword';
+import TextFieldModifiedEmail from '../../textfields/TextFieldModifiedEmail';
+import { onSubmitForm } from '../../../slices/formSlice';
 
 function Signup() {
   const dispatch = useDispatch();

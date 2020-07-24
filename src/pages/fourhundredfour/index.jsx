@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BackgroundContainer from '../backgroundcontainer';
+import BackgroundContainer from '../../components/backgroundcontainer';
 
 export default function FourHundredFour() {
   return (

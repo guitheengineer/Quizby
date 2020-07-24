@@ -9,7 +9,7 @@
   div {
     margin-top: 1.5rem;
   }
-  input[type="button"]:focus {
+  input[type='button']:focus {
     outline: none;
   }
   // @include resp(375) {
@@ -23,7 +23,9 @@
     display: flex;
     background-color: transparent;
     padding-top: 0.3rem;
-
+    &:not(:last-child) {
+      margin-bottom: 2vh;
+    }
     @keyframes opacityZero {
       from {
         opacity: 0;
@@ -53,8 +55,8 @@
   &--chevron {
     position: absolute;
     right: 8%;
-    top: 1.5rem;
   }
+  // STYLE AGAIN <3
 }
 .App__container--correct {
   width: 10rem;

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import FourHundredFour from '../components/errors/FourHundredFour';
-import Signup from '../components/signup';
+import FourHundredFour from '../pages/fourhundredfour';
+import Signup from '../components/forms/signup';
 import Container from '../components/container';
-import Login from '../components/login';
+import Login from '../components/forms/login';
 import Quizzes from '../components/quizzes';
 import Header from '../components/header';
 

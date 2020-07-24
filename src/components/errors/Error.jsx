@@ -9,8 +9,14 @@ function Error() {
   }
   return (
     <div className="App__error">
-      <button type="button" className="App__error--icon" onClick={errorClicked}>
-        <p className="App__error--message">An error has occurred</p>
+      <img className="App__error--illustration" alt="" src="./errorfetch" />
+      <p className="App__error--message">An error ocurred</p>
+      <button
+        type="button"
+        onClick={errorClicked}
+        className="App__fourhundred--button"
+      >
+        Try again
       </button>
     </div>
   );

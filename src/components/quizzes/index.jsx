@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import BackgroundContainer from '../backgroundcontainer';
 
 import { getMostPlayedQuizzes } from '../../asyncActions';
 import { setQuiz } from '../../slices/quizzesSlice';
 
-function Quizzes({ history }) {
+function Quizzes() {
   const dispatch = useDispatch();
   const topPlayedQuizzes = useSelector(
-    (selectorData) => selectorData.quizzesReducer.topPlayedQuizzes,
+    (selectorData) => selectorData.quizzesReducer.topPlayedQuizzes
   );
-
+  const history = useHistory();
   useEffect(() => {
     dispatch(getMostPlayedQuizzes());
   }, []);
@@ -34,7 +33,9 @@ function Quizzes({ history }) {
               className="App__quizzes--container--list--item"
               onClick={() => quizClicked(quiz)}
             >
-              <p className="App__quizzes--container--list--item--quiztitle">{quiz.name}</p>
+              <p className="App__quizzes--container--list--item--quiztitle">
+                {quiz.name}
+              </p>
             </button>
           ))}
         </ul>
@@ -43,10 +44,4 @@ function Quizzes({ history }) {
   );
 }
 
-Quizzes.propTypes = {
-  history: PropTypes.object.isRequired,
-};
-
-const QuizzesWithRouter = withRouter(Quizzes);
-
-export default QuizzesWithRouter;
+export default Quizzes;
