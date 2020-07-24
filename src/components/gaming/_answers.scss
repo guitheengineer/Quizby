@@ -1,4 +1,4 @@
-.App__container--list {
+.App__playing--list {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -54,7 +54,7 @@
     right: 8%;
   }
 }
-.App__container--correct {
+.App__playing--correct {
   width: 10rem;
   height: auto;
   position: fixed;

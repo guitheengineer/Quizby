@@ -59,7 +59,7 @@ function Answers() {
         }
       }}
       style={{ userSelect: 'none' }}
-      className="App__container--list"
+      className="App__playing--list"
     >
       {currentAnswers.map((ans) => (
         <button
@@ -72,14 +72,14 @@ function Answers() {
           onClick={() => optionClicked(ans)}
           className={
             currentQuestionAnswered
-              ? 'App__container--list--answer slideOutLeft'
-              : 'App__container--list--answer slideInRight'
+              ? 'App__playing--list--answer slideOutLeft'
+              : 'App__playing--list--answer slideInRight'
           }
         >
           {ans}
           <img
             alt=""
-            className="App__container--list--chevron"
+            className="App__playing--list--chevron"
             src="../../../chevron.png"
           />
         </button>

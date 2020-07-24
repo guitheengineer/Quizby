@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ClipLoader } from 'react-spinners';
-import Answers from '../gaming/Answers';
-import Question from '../gaming/Question';
+import Answers from '../../components/gaming/Answers';
+import Question from '../../components/gaming/Question';
 import { getCurrentQuiz } from '../../asyncActions';
-import ListAnswers from '../gaming/ListIconAnswers';
+import ListAnswers from '../../components/gaming/ListIconAnswers';
 
-function Container() {
+function Playing() {
   const { quizFetched, userAnsweredCorrect, userAnsweredWrong } = useSelector(
     (d) => d.quizzesReducer
   );
@@ -18,7 +18,7 @@ function Container() {
 
   return (
     <>
-      <div className="App__container">
+      <div className="App__playing">
         <ClipLoader loading={!quizFetched} color="#5255CA" />
         {quizFetched && (
           <>
@@ -31,14 +31,14 @@ function Container() {
       {userAnsweredCorrect ? (
         <img
           src="../../../correct.svg"
-          className="App__container--correct"
+          className="App__playing--correct"
           alt="Correct answer"
         />
       ) : (
         userAnsweredWrong && (
           <img
             src="../../../wrong.svg"
-            className="App__container--correct"
+            className="App__playing--correct"
             alt="Wrong answer"
           />
         )
@@ -47,4 +47,4 @@ function Container() {
   );
 }
 
-export default Container;
+export default Playing;
