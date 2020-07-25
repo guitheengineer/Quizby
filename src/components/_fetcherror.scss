@@ -1,4 +1,4 @@
-.App__error {
+.App__fetcherror {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -6,18 +6,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  &--icon {
-    background: url("/reload.svg") no-repeat center;
-    height: 5.7rem;
-    width: 5.4rem;
-    cursor: pointer;
+
+  img {
+    width: 20.3rem;
   }
-
   &--message {
-    width: 14rem;
-
-    margin-top: 1.8rem;
+    margin-top: 2.5rem;
     font: 2rem/138% Overpass;
     text-align: center;
+    font-family: Overpass;
+    color: #7a7ba2;
   }
 }
