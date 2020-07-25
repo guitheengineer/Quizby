@@ -3,6 +3,7 @@
     width: 80%;
     align-self: center;
     justify-self: normal;
+    height: 100%;
     &--title {
       font-size: 2rem;
       color: #0a0a1f;
@@ -13,7 +14,6 @@
       grid-template: 1fr 1fr/ 1fr 1fr;
       gap: 1.2rem;
       margin-top: 1.5rem;
-      list-style-type: none;
       &--item {
         padding-top: 100%;
         display: flex;
