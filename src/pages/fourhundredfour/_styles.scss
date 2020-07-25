@@ -10,6 +10,8 @@
         color: #cccdef;
         display: flex;
         align-items: center;
+        user-select: none;
+        pointer-events: none;
         img {
             left: 50%;
             transform: translateX(-50%);
@@ -18,7 +20,7 @@
         }
     }
     &--message {
-        margin-top: 2.5rem;
+        margin-top: 2.8rem;
         font: 2rem Overpass;
         color: #7a7ba2;
     }

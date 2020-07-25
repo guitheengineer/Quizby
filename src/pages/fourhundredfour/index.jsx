@@ -10,7 +10,9 @@ export default function FourHundredFour() {
           <img alt="" src="./404illustration.png" />
           404
         </div>
-        <p className="App__fourhundred--message">Page not found</p>
+        <p className="App__fourhundred--message">
+          This page doesn&apos;t exists
+        </p>
         <Link to="/">
           <button type="button" className="App__fourhundred--button">
             Go home
