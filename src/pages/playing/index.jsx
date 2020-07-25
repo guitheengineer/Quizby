@@ -5,11 +5,15 @@ import Answers from '../../components/gaming/Answers';
 import Question from '../../components/gaming/Question';
 import { getCurrentQuiz } from '../../asyncActions';
 import ListAnswers from '../../components/gaming/ListIconAnswers';
+import FetchError from '../../components/FetchError';
 
 function Playing() {
-  const { quizFetched, userAnsweredCorrect, userAnsweredWrong } = useSelector(
-    (d) => d.quizzesReducer
-  );
+  const {
+    quizFetchState,
+    userAnsweredCorrect,
+    userAnsweredWrong,
+  } = useSelector((d) => d.quizzesReducer);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCurrentQuiz(window.location.pathname.substring(6)));
@@ -19,13 +23,16 @@ function Playing() {
   return (
     <>
       <div className="App__playing">
-        <ClipLoader loading={!quizFetched} color="#5255CA" />
-        {quizFetched && (
+        <ClipLoader loading={quizFetchState === 'loading'} color="#5255CA" />
+        {quizFetchState === 'fetched' && (
           <>
             <ListAnswers />
             <Question />
             <Answers />
           </>
+        )}
+        {quizFetchState === 'error' && (
+          <FetchError fetchFunction={getCurrentQuiz} />
         )}
       </div>
       {userAnsweredCorrect ? (
