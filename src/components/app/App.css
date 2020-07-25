@@ -339,7 +339,7 @@ body {
     top: -0.5px;
     border-radius: 5px 5px 0px 0px; }
 
-.App__error {
+.App__fetcherror {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -347,16 +347,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center; }
-  .App__error--icon {
-    background: url("/reload.svg") no-repeat center;
-    height: 5.7rem;
-    width: 5.4rem;
-    cursor: pointer; }
-  .App__error--message {
-    width: 14rem;
-    margin-top: 1.8rem;
+  .App__fetcherror img {
+    width: 20.3rem; }
+  .App__fetcherror--message {
+    margin-top: 2.5rem;
     font: 2rem/138% Overpass;
-    text-align: center; }
+    text-align: center;
+    font-family: Overpass;
+    color: #7a7ba2; }
 
 .App__fourhundred {
   display: flex;
@@ -369,14 +367,16 @@ body {
     font: 11.6rem Overpass;
     color: #cccdef;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    user-select: none;
+    pointer-events: none; }
     .App__fourhundred--illustration img {
       left: 50%;
       transform: translateX(-50%);
       position: absolute;
       filter: drop-shadow(1px 4px 4px rgba(0, 0, 0, 0.22)); }
   .App__fourhundred--message {
-    margin-top: 2.5rem;
+    margin-top: 2.8rem;
     font: 2rem Overpass;
     color: #7a7ba2; }
   .App__fourhundred--button {
@@ -391,21 +391,21 @@ body {
     font: 2rem Overpass;
     cursor: pointer; }
 
-.App__quizzes--playing {
+.App__quizzes--container {
   width: 80%;
   align-self: center;
-  justify-self: normal; }
-  .App__quizzes--playing--title {
+  justify-self: normal;
+  height: 100%; }
+  .App__quizzes--container--title {
     font-size: 2rem;
     color: #0a0a1f;
     margin-top: 3.4rem; }
-  .App__quizzes--playing--list {
+  .App__quizzes--container--list {
     display: grid;
     grid-template: 1fr 1fr/ 1fr 1fr;
     gap: 1.2rem;
-    margin-top: 1.5rem;
-    list-style-type: none; }
-    .App__quizzes--playing--list--item {
+    margin-top: 1.5rem; }
+    .App__quizzes--container--list--item {
       padding-top: 100%;
       display: flex;
       align-items: center;
@@ -415,7 +415,7 @@ body {
       border-radius: 3px;
       border: 0;
       cursor: pointer; }
-      .App__quizzes--playing--list--item--quiztitle {
+      .App__quizzes--container--list--item--quiztitle {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
