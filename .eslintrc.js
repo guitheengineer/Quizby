@@ -24,5 +24,6 @@ module.exports = {
     'react/forbid-prop-types': 'off',
     'react-hooks/exhaustive-deps': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'no-plusplus': 'off',
   },
 };
