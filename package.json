@@ -33,7 +33,7 @@
   },
   "scripts": {
     "sass": "node-sass src/basescss/main.scss src/components/app/App.css -w",
-    "server": "nodemon -r dotenv/config server.js",
+    "server": "nodemon server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

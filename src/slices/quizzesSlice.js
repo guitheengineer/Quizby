@@ -1,6 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getMostPlayedQuizzes, getCurrentQuiz } from '../asyncActions';
 
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
 const quizzesSlice = createSlice({
   name: 'quizzesReducer',
   initialState: {
@@ -29,7 +36,8 @@ const quizzesSlice = createSlice({
     currentQuestionAnswered: false,
     userAnsweredCorrect: false,
     userAnsweredWrong: false,
-    quizFetched: false,
+    topPlayedFetchState: false,
+    quizFetchState: false,
     historicOfAnswers: [],
   },
   reducers: {
@@ -78,8 +86,20 @@ const quizzesSlice = createSlice({
     },
   },
   extraReducers: {
+    [getMostPlayedQuizzes.pending]: (state) => {
+      state.topPlayedFetchState = 'loading';
+    },
     [getMostPlayedQuizzes.fulfilled]: (state, action) => {
-      if (action.payload.status === 'success') state.topPlayedQuizzes = action.payload.sortedQuizzes;
+      if (action.payload.status === 'success')
+        state.topPlayedQuizzes = action.payload.sortedQuizzes;
+      state.topPlayedFetchState = 'fetched';
+    },
+    [getMostPlayedQuizzes.rejected]: (state) => {
+      state.topPlayedFetchState = 'error';
+    },
+
+    [getCurrentQuiz.pending]: (state) => {
+      state.quizFetchState = 'loading';
     },
     [getCurrentQuiz.fulfilled]: (state, action) => {
       if (action.payload.status === 'success') {
@@ -89,18 +109,14 @@ const quizzesSlice = createSlice({
         const { possibleAnswers } = quiz.questions[state.currentQuestion];
 
         const groupAnswers = [...possibleAnswers, answer];
-        function shuffleArray(array) {
-          for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-          }
-        }
-
         shuffleArray(groupAnswers);
         console.log('fullfilled');
         state.currentAnswers = groupAnswers;
-        state.quizFetched = true;
+        state.quizFetchState = 'fetched';
       }
+    },
+    [getCurrentQuiz.rejected]: (state) => {
+      state.quizFetchState = 'error';
     },
   },
 });
