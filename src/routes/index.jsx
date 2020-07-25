@@ -4,7 +4,7 @@ import FourHundredFour from '../pages/fourhundredfour';
 import Signup from '../components/forms/signup';
 import Playing from '../pages/playing';
 import Login from '../components/forms/login';
-import Quizzes from '../components/quizzes';
+import Quizzes from '../pages/quizzes';
 import RouteWithHeader from '../components/header';
 
 function Routes() {
