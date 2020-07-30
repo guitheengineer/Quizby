@@ -3,14 +3,8 @@ const { userModel } = require('../../models');
 module.exports = async (req, res) => {
   try {
     const userExists = await userModel.exists({ username: req.body.username });
-    if (userExists) {
-      return res.status(200).json({
-        userExists: true,
-      });
-    }
-
     return res.status(200).json({
-      userExists: false,
+      userExists,
     });
   } catch (err) {
     return res.status(500).json({
