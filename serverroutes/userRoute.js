@@ -6,6 +6,5 @@ const { protect } = require('../controllers/authentication');
 const { newQuiz } = require('../controllers/quiz');
 
 router.post('/changephoto', protect, changePhoto);
-router.post('/createquiz', newQuiz);
-
+router.post('/createquiz', protect, newQuiz);
 module.exports = router;
