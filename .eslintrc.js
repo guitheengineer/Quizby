@@ -25,5 +25,6 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'off',
     'react/jsx-props-no-spreading': 'off',
     'no-plusplus': 'off',
+    'no-console': 'off',
   },
 };
