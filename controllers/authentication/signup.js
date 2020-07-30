@@ -16,7 +16,7 @@ module.exports = catchAsync(async (req, res) => {
 
   const token = signToken(newUser._id);
 
-  res.send(201).json({
+  res.status(201).json({
     status: 'success',
     data: {
       user: newUser,
