@@ -40,6 +40,7 @@
       margin-top: 0.3rem;
     }
     &--button {
+      box-shadow: 3px 3px 2px rgba(136, 136, 136, 0.45);
       background-color: #5255ca;
       border-radius: 0.5rem;
       height: 4.9rem;
@@ -53,8 +54,16 @@
       &:active {
         box-shadow: inset 0px 6px 4px rgba(0, 0, 0, 0.13);
       }
+      cursor: pointer;
+    }
+
+    &--loginerror {
+      margin-bottom: 1.5rem;
+      font: 1.5rem Roboto;
+      color: red;
     }
   }
+
   //   input {
   //     border: 1px solid #5255ca;
   //     border-radius: 5px;
