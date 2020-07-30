@@ -24,14 +24,14 @@ module.exports = catchAsync(async (req, res, next) => {
       status: 'error',
       message: "User doesn't exists or incorrect password",
     });
-    next();
+    return next();
   }
   const token = signToken(user._id);
-
   res.status(200).json({
     status: 'success',
     message: 'Successful login',
     token,
+    user,
   });
-  next();
+  return next();
 });
