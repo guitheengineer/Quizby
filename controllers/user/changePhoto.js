@@ -17,5 +17,4 @@ module.exports = async (req, res) => {
     status: 'success',
     doc,
   });
-  console.log(doc);
 };

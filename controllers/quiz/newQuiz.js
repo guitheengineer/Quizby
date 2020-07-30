@@ -16,5 +16,4 @@ module.exports = async (req, res) => {
     status: 'success',
     data: quizCreate,
   });
-  console.log(quizCreate);
 };

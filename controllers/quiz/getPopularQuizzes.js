@@ -6,5 +6,4 @@ module.exports = async (req, res) => {
     status: 'success',
     sortedQuizzes,
   });
-  console.log(sortedQuizzes);
 };
