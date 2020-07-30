@@ -1,0 +1,63 @@
+.App__menu {
+  width: 80%;
+  align-self: center;
+  position: absolute;
+  top: 7rem;
+
+  div {
+    position: relative;
+    svg {
+      font-size: 1.9rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY((-50%));
+      left: 2rem;
+      color: rgba(255, 255, 255, 0.72);
+    }
+    input {
+      &::placeholder {
+        color: rgba(243, 243, 243, 0.8);
+        font: 1.8rem Overpass;
+      }
+
+      font: 1.8rem Overpass;
+      color: white;
+      width: 100%;
+      border: 0;
+      padding: 0 1.5rem 0 6rem;
+      height: 5.4rem;
+      background: #5c60e7;
+      border-radius: 7px;
+    }
+  }
+  ul {
+    list-style-type: none;
+
+    li {
+      &:hover {
+        background: #0a0a1f;
+        opacity: 1;
+        transition: all 0.3s;
+      }
+
+      opacity: 0.9;
+      cursor: pointer;
+      letter-spacing: 0.02rem;
+      border-radius: 7px;
+      margin-top: 0.5rem;
+      &:first-child {
+        margin-top: 2.5rem;
+      }
+      height: 5.3rem;
+      display: flex;
+      align-items: center;
+      font: 1.8rem Overpass;
+      color: #f3f3fb;
+      svg {
+        font-size: 1.9rem;
+        margin-left: 2rem;
+        margin: 0 2.2rem 0 2rem;
+      }
+    }
+  }
+}

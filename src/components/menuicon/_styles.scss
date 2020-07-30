@@ -1,0 +1,45 @@
+.App--menuicon {
+  height: 1.1rem;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  margin-left: auto;
+  div {
+    transition: all 2s;
+    width: 1.8rem;
+    height: 0.2rem;
+    &:not(:first-child) {
+      margin-top: 0.3rem;
+    }
+    background-color: white;
+    border-radius: 0.9rem;
+    &.clicked {
+      &:nth-child(1) {
+        transform: rotate(-45deg) translate(-4px, 3px);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:nth-child(3) {
+        transform: rotate(45deg) translate(-4px, -3px);
+      }
+    }
+  }
+}
+
+.childrenAnimation {
+  animation: children 0.7s alternate forwards;
+}
+
+@keyframes children {
+  from {
+    opacity: 1;
+    position: relative;
+    top: 0rem;
+  }
+  to {
+    position: relative;
+    top: 1rem;
+    opacity: 0;
+  }
+}
