@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { checkIfUserExists } from '../asyncActions';
+import {
+  checkIfUserExists,
+  checkIfEmailExists,
+  postLogin,
+} from '../asyncActions';
 
 export const formSlice = createSlice({
   name: 'formReducer',
   initialState: {
-    username: {
-      value: '',
-    },
-    email: {
-      value: '',
-    },
+    username: '',
+    email: '',
     password: {
       value: '',
       visible: false,
@@ -26,18 +26,31 @@ export const formSlice = createSlice({
       errorExists: false,
       errorDesc: null,
     },
+    loginError: {
+      errorExists: false,
+      errorDes: null,
+    },
+    loginState: '',
   },
   reducers: {
-    setFieldValue: (state, action) => {
-      const labelLowercase = `${action.payload.label}`.toLowerCase();
-      state[labelLowercase].value = action.payload.value;
-    },
+    // setFieldValue: (state, action) => {
+    //   const labelLowercase = `${action.payload.label}`.toLowerCase();
+    //   state[labelLowercase].value = action.payload.value;
+    // },
     onSubmitForm: (state, action) => {
+      const { username, email, password } = action.payload;
+
+      state.username = username;
+      state.email = email;
+      state.password.value = password;
+
       const regexUsernameValidator = /^(?=.{3,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
-      if (!regexUsernameValidator.test(state.username.value)) {
+
+      if (!regexUsernameValidator.test(state.username)) {
         state.errorExistsUsername = {
           errorExists: true,
-          errorDesc: 'Usernames should have at least 3 digits with no special characters',
+          errorDesc:
+            'Usernames should have at least 3 digits with no special characters',
         };
       } else {
         state.errorExistsUsername = {
@@ -47,7 +60,7 @@ export const formSlice = createSlice({
       }
 
       const regexEmailValidator = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!regexEmailValidator.test(state.email.value)) {
+      if (!regexEmailValidator.test(state.email)) {
         state.errorExistsEmail = {
           errorExists: true,
           errorDesc: 'Please, enter a valid email',
@@ -58,7 +71,7 @@ export const formSlice = createSlice({
           errorDesc: null,
         };
       }
-      if (state.password.value < 8) {
+      if (state.password.value.length < 8) {
         state.errorExistsPassword = {
           errorExists: true,
           errorDesc: 'Password should be at least 8 characters long',
@@ -70,56 +83,11 @@ export const formSlice = createSlice({
         };
       }
     },
-    // setOnBlur: (state, action) => {
-    //   const labelLowercase = `${action.payload}`.toLowerCase();
-    //   state[labelLowercase].blur = "true";
-    //   state[labelLowercase].focused = "false";
-
-    //   let regexUsernameValidator = /^(?=.{3,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
-
-    //   if (
-    //     !regexUsernameValidator.test(state.username.value) &&
-    //     state.username.blur === "true"
-    //   ) {
-    //     state.errorExistsUsername = {
-    //       errorExists: true,
-    //       errorDesc:
-    //         "Usernames should have at least 3 digits with no special characters",
-    //     };
-    //   } else {
-    //     state.errorExistsUsername = {
-    //       errorExists: false,
-    //       errorDesc: null,
-    //     };
-    //   }
-
-    //   let regexEmailValidator = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    //   if (
-    //     !regexEmailValidator.test(state.email.value) &&
-    //     state.email.blur === "true"
-    //   ) {
-    //     state.errorExistsEmail = {
-    //       errorExists: true,
-    //       errorDesc: "Please, enter a valid email",
-    //     };
-    //   } else {
-    //     state.errorExistsEmail = {
-    //       errorExists: false,
-    //       errorDesc: null,
-    //     };
-    //   }
-    // },
-    setOnFocus: (state, action) => {
-      const labelLowercase = `${action.payload}`.toLowerCase();
-      state[labelLowercase].blur = 'false';
-      state[labelLowercase].focused = 'true';
-    },
-    setPasswordVisibility: (state, action) => {
+    setPasswordVisibility: (state) => {
       state.password.visible = !state.password.visible;
     },
   },
   extraReducers: {
-    [checkIfUserExists.pending]: (state, action) => {},
     [checkIfUserExists.fulfilled]: (state, action) => {
       if (action.payload.userExists) {
         state.errorExistsUsername = {
@@ -128,13 +96,46 @@ export const formSlice = createSlice({
         };
       }
     },
-    [checkIfUserExists.rejected]: (state, action) => {},
+    [checkIfEmailExists.fulfilled]: (state, action) => {
+      if (action.payload.emailExists) {
+        state.errorExistsEmail = {
+          errorExists: true,
+          errorDesc: 'Email already exists',
+        };
+      }
+    },
+    [postLogin.pending]: (state) => {
+      state.loginState = 'loading';
+    },
+    [postLogin.fulfilled]: (state, action) => {
+      const { status, message, token } = action.payload;
+      if (status === 'error') {
+        state.loginError = {
+          errorExists: true,
+          errorDes: message,
+        };
+      }
+      if (status === 'success') {
+        state.loginError = {
+          errorExists: false,
+          errorDes: null,
+        };
+        localStorage.setItem('TOKEN', token);
+
+        state.loginState = 'fulfilled';
+      }
+    },
+    [postLogin.rejected]: (state) => {
+      state.loginError = {
+        errorExists: true,
+        errorDes: 'An error has been ocurred, try again later',
+      };
+      state.loginState = 'rejected';
+    },
   },
 });
 
 export const {
-  setOnBlur,
-  setOnFocus,
   setFieldValue,
   setPasswordVisibility,
   onSubmitForm,
