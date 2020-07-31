@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 export default function ListAnswers() {
   const { historicOfAnswers } = useSelector((d) => d.quizzesReducer);
-  console.log(historicOfAnswers);
   return (
     <ul className="App__listiconanswers">
       {historicOfAnswers.map((answers) =>
