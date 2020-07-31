@@ -14,7 +14,6 @@ function Answers() {
     currentQuestionAnswered,
   } = useSelector((d) => d.quizzesReducer);
 
-  console.log(currentQuestionAnswered);
   const dispatch = useDispatch();
   function optionClicked(e) {
     dispatch(setUserAnswer(e));
@@ -54,6 +53,7 @@ function Answers() {
   return (
     <div
       onAnimationEnd={() => {
+        console.log('animationEnded');
         if (currentQuestionAnswered) {
           dispatch(nextQuestion());
         }
