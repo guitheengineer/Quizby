@@ -66,7 +66,7 @@ export default function Login() {
             <span>Login</span>
             <ClipLoader
               loading={loginState === 'loading'}
-              size="14"
+              size="14px"
               color="white"
               css={`
                 margin-left: 5px;
