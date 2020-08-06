@@ -53,7 +53,6 @@ function Answers() {
   return (
     <div
       onAnimationEnd={() => {
-        console.log('animationEnded');
         if (currentQuestionAnswered) {
           dispatch(nextQuestion());
         }
