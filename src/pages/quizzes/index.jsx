@@ -1,60 +1,63 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
 import BackgroundContainer from '../../components/backgroundcontainer';
-import { getMostPlayedQuizzes } from '../../asyncActions';
-import { setQuiz } from '../../slices/quizzesSlice';
+import { getQuizzes, searchQuizzes } from '../../asyncActions';
 import FetchError from '../../components/FetchError';
+import SearchQuizzes from '../../components/SearchQuizzes';
+import Categories from '../../components/quizzes/Categories';
+import Recommended from '../../components/quizzes/Recommended';
+import MostPlayed from '../../components/quizzes/MostPlayed';
+import QuizzesSearched from '../../components/quizzes/QuizzesSearched';
 
 function Quizzes() {
   const dispatch = useDispatch();
-  const { topPlayedFetchState, topPlayedQuizzes } = useSelector(
-    (selectorData) => selectorData.quizzesReducer
+  const { quizzesFetchState, query } = useSelector(
+    (data) => data.quizzesReducer
   );
-  const history = useHistory();
-  useEffect(() => {
-    dispatch(getMostPlayedQuizzes());
-  }, []);
 
-  function quizClicked(quiz) {
-    dispatch(setQuiz(quiz));
-    history.push(`/play/${quiz._id}`);
+  useEffect(() => {
+    if (query === '') {
+      dispatch(getQuizzes());
+    } else {
+      dispatch(searchQuizzes(window.location.search.substring(3)));
+    }
+  }, [query]);
+
+  function conditionalRendering() {
+    if (quizzesFetchState === 'fulfilled' && query === '') {
+      return (
+        <>
+          <Recommended />
+          <MostPlayed />
+          <Categories />
+        </>
+      );
+    }
+    if (quizzesFetchState === 'error') {
+      return <FetchError fetchFunction={getQuizzes} />;
+    }
+    if (query !== '') return <QuizzesSearched />;
+    return null;
   }
   return (
-    <BackgroundContainer justifyContent="normal">
+    <BackgroundContainer
+      justifyContent="normal"
+      alignItems="center"
+      overflow="visible"
+    >
       <ClipLoader
         css={`
-          position: relative;
+          position: absolute;
           top: 46%;
           margin: auto;
         `}
-        loading={topPlayedFetchState === 'loading'}
+        loading={quizzesFetchState === 'loading' && query === ''}
         color="#5255CA"
       />
-      <div className="App__quizzes--container">
-        {topPlayedFetchState === 'error' && (
-          <FetchError fetchFunction={getMostPlayedQuizzes} />
-        )}
-        {topPlayedFetchState === 'fetched' && (
-          <>
-            <div className="App__quizzes--container--title">Top played</div>
-            <div className="App__quizzes--container--list">
-              {topPlayedQuizzes.map((quiz) => (
-                <button
-                  type="button"
-                  key={quiz._id}
-                  className="App__quizzes--container--list--item"
-                  onClick={() => quizClicked(quiz)}
-                >
-                  <p className="App__quizzes--container--list--item--quiztitle">
-                    {quiz.name}
-                  </p>
-                </button>
-              ))}
-            </div>
-          </>
-        )}
+      <div className="Quizzes__container">
+        {quizzesFetchState !== 'error' && <SearchQuizzes />}
+        {conditionalRendering()}
       </div>
     </BackgroundContainer>
   );

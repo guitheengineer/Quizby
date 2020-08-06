@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
-const shortid = require("shortid");
+const shortid = require('shortid');
 
 const quizSchema = new Schema({
   _id: {
@@ -10,7 +10,7 @@ const quizSchema = new Schema({
   },
   creator: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
   },
   creatorName: {
     type: String,
@@ -27,6 +27,7 @@ const quizSchema = new Schema({
     default: 0,
   },
   createdAt: Date,
+  category: String,
   questions: [
     {
       question: {
@@ -49,6 +50,6 @@ const quizSchema = new Schema({
   ],
 });
 
-const quizModel = mongoose.model("Quiz", quizSchema);
+const quizModel = mongoose.model('Quiz', quizSchema);
 
 module.exports = quizModel;

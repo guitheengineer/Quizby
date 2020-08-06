@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 const app = express();
 require('dotenv').config();
 const path = require('path');
-const { appRoute } = require('./serverroutes');
+const { appRoute, quizzesRoute } = require('./serverroutes');
 const { userRoute } = require('./serverroutes');
 
 app.use(cors());
@@ -39,6 +39,7 @@ mongoose.connection.on('connected', () => {
 app.use(express.json());
 app.use('/', appRoute);
 app.use('/user', userRoute);
+app.use('/quizzes', quizzesRoute);
 
 const server = app.listen(port, () => 'server started');
 

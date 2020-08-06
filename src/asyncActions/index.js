@@ -4,7 +4,7 @@ export const checkIfUserExists = createAsyncThunk(
   'formReducer/checkIfUserExists',
   async (value) => {
     try {
-      const response = await fetch('/userExists', {
+      const response = await fetch('/userexists', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -19,22 +19,19 @@ export const checkIfUserExists = createAsyncThunk(
   }
 );
 
-export const fetchData = createAsyncThunk(
-  'quizzesReducer/fetchQuestions',
+export const getQuizzes = createAsyncThunk(
+  'quizzesReducer/getQuizzes',
   async () => {
-    try {
-      const response = await fetch('/api');
-      return await response.json();
-    } catch (err) {
-      return err;
-    }
+    const response = await fetch('/quizzes');
+    const data = await response.json();
+    return data;
   }
 );
 
-export const getMostPlayedQuizzes = createAsyncThunk(
-  'quizzesReducer/getMostPlayedQuizzes',
-  async () => {
-    const response = await fetch('/getPopularQuizzes');
+export const searchQuizzes = createAsyncThunk(
+  'quizzesReducer/searchQuizzes',
+  async (name) => {
+    const response = await fetch(`/quizzes/search?q=${name}`);
     const data = await response.json();
     return data;
   }
@@ -43,7 +40,7 @@ export const getMostPlayedQuizzes = createAsyncThunk(
 export const getCurrentQuiz = createAsyncThunk(
   'quizzesReducer/getCurrentQuiz',
   async (id) => {
-    const response = await fetch(`/play/:${id}`);
+    const response = await fetch(`/quizzes/play/:${id}`);
     const data = await response.json();
     return data;
   }
@@ -84,7 +81,7 @@ export const postSignup = createAsyncThunk(
 export const checkIfEmailExists = createAsyncThunk(
   'formReducer/checkIfEmailExists',
   async (email) => {
-    const response = await fetch('/emailExists', {
+    const response = await fetch('/emailexists', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

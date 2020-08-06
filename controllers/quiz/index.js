@@ -1,9 +1,11 @@
 const currentQuiz = require('./currentQuiz');
-const getPopularQuizzes = require('./getPopularQuizzes');
 const newQuiz = require('./newQuiz');
+const getQuizzes = require('./getQuizzes');
+const searchQuizzes = require('./searchQuizzes');
 
 module.exports = {
   currentQuiz,
-  getPopularQuizzes,
   newQuiz,
+  getQuizzes,
+  searchQuizzes,
 };

@@ -2,18 +2,15 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser,
-  faSearch,
   faSignOutAlt,
   faChartLine,
 } from '@fortawesome/free-solid-svg-icons';
+import SearchQuizzes from '../SearchQuizzes';
 
 function Menu() {
   return (
     <div className="App__menu">
-      <div>
-        <FontAwesomeIcon icon={faSearch} />
-        <input type="text" placeholder="Search for quizzes" />
-      </div>
+      <SearchQuizzes />
       <ul>
         <li>
           <FontAwesomeIcon icon={faUser} />

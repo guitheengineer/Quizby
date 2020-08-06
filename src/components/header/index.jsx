@@ -1,33 +1,27 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import MenuIcon from '../menuicon';
 
-function RouteWithHeader({ showlogo, component: Component }) {
-  return (
-    <Route
-      render={(props) => (
-        <>
-          <div className="App__header">
-            {showlogo && (
-              <Link style={{ textDecoration: 'none' }} to="/">
-                <span className="App__header--title">Lorem ipsum</span>
-              </Link>
-            )}
-          </div>
-          <Component {...props} />
-        </>
-      )}
-    />
+function Header({ showlogo }) {
+  return showlogo ? (
+    <div className="App__header">
+      <Link style={{ textDecoration: 'none' }} to="/">
+        <span className="App__header--title">Lorem ipsum</span>
+      </Link>
+      <MenuIcon />)
+    </div>
+  ) : (
+    <div style={{ marginTop: '4rem' }} />
   );
 }
 
-RouteWithHeader.propTypes = {
+Header.propTypes = {
   showlogo: PropTypes.bool,
-  component: PropTypes.func.isRequired,
 };
 
-RouteWithHeader.defaultProps = {
-  showlogo: true,
+Header.defaultProps = {
+  showlogo: false,
 };
 
-export default RouteWithHeader;
+export default Header;
