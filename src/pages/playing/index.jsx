@@ -6,6 +6,7 @@ import Question from '../../components/gaming/Question';
 import { getCurrentQuiz } from '../../asyncActions';
 import ListAnswers from '../../components/gaming/ListIconAnswers';
 import FetchError from '../../components/FetchError';
+import BackgroundContainer from '../../components/backgroundcontainer';
 
 function Playing() {
   const {
@@ -15,26 +16,28 @@ function Playing() {
   } = useSelector((d) => d.quizzesReducer);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(getCurrentQuiz(window.location.pathname.substring(6)));
-    console.log(window.location.pathname.substring(6));
+    dispatch(getCurrentQuiz(window.location.pathname.substring(14)));
   }, []);
 
   return (
     <>
-      <div className="App__playing">
-        <ClipLoader loading={quizFetchState === 'loading'} color="#5255CA" />
-        {quizFetchState === 'fetched' && (
-          <>
-            <ListAnswers />
-            <Question />
-            <Answers />
-          </>
-        )}
-        {quizFetchState === 'error' && (
-          <FetchError fetchFunction={getCurrentQuiz} />
-        )}
-      </div>
+      <BackgroundContainer>
+        <div className="App__playing">
+          <ClipLoader loading={quizFetchState === 'loading'} color="#5255CA" />
+          {quizFetchState === 'fetched' && (
+            <>
+              <ListAnswers />
+              <Question />
+              <Answers />
+            </>
+          )}
+          {quizFetchState === 'error' && (
+            <FetchError fetchFunction={getCurrentQuiz} />
+          )}
+        </div>
+      </BackgroundContainer>
       {userAnsweredCorrect ? (
         <img
           src="../../../correct.svg"
