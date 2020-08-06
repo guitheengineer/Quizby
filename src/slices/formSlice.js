@@ -3,6 +3,7 @@ import {
   checkIfUserExists,
   checkIfEmailExists,
   postLogin,
+  postSignup,
 } from '../asyncActions';
 
 export const formSlice = createSlice({
@@ -31,6 +32,7 @@ export const formSlice = createSlice({
       errorDes: null,
     },
     loginState: '',
+    signupState: '',
   },
   reducers: {
     // setFieldValue: (state, action) => {
@@ -121,7 +123,6 @@ export const formSlice = createSlice({
           errorDes: null,
         };
         localStorage.setItem('TOKEN', token);
-
         state.loginState = 'fulfilled';
       }
     },
@@ -131,6 +132,15 @@ export const formSlice = createSlice({
         errorDes: 'An error has been ocurred, try again later',
       };
       state.loginState = 'rejected';
+    },
+    [postSignup.pending]: (state) => {
+      state.signupState = 'loading';
+    },
+    [postSignup.fulfilled]: (state) => {
+      state.signupState = 'fullfilled';
+    },
+    [postSignup.rejected]: (state) => {
+      state.signupState = 'rejected';
     },
   },
 });
