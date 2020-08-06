@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
       <div className="App" style={{ height: `${innerHeight}px` }}>
         <Routes />
-        <div className="info">{`iH: ${window.innerHeight}  iW: ${window.innerWidth} `}</div>
+        {/* <div className="info">{`iH: ${window.innerHeight}  iW: ${window.innerWidth} `}</div> */}
       </div>
     </BrowserRouter>
   );
