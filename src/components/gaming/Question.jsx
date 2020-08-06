@@ -5,18 +5,21 @@ function Question() {
   const { currentQuiz, currentQuestion, currentQuestionAnswered } = useSelector(
     (d) => d.quizzesReducer
   );
-
+  function questionTitleStyle() {
+    const questionLength =
+      currentQuiz.questions[currentQuestion].question.length;
+    if (questionLength <= 25) {
+      return { marginBottom: '1rem', fontSize: 'clamp(2rem, 6vw, 2.4rem)' };
+    }
+    return null;
+  }
   return (
     <div
-      // style={
-      //   data.question.length <= 30
-      //     ? { fontSize: "3.1rem" }
-      //     : data.question.length <= 50
-      //     ? { fontSize: "2.4rem" }
-      //     : { fontSize: "2.1rem" }
-      // }
+      style={questionTitleStyle()}
       className={`App__playing--question ${
-        currentQuestionAnswered ? 'slideOutLeft' : 'slideInRight'
+        currentQuestionAnswered
+          ? 'slideOutLeftQuestion'
+          : 'slideInRightQuestion'
       }`}
     >
       <span
@@ -26,9 +29,7 @@ function Question() {
           right: '0',
           fontSize: '18px',
         }}
-      >
-        {/* {data.question.length} */}
-      </span>
+      />
       <span className="App__playing--question--bf">-</span>
       {currentQuiz.questions[currentQuestion].question}
     </div>
