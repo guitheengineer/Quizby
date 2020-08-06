@@ -4,14 +4,23 @@ const { verifyUser } = require('../asyncActions');
 export const userSlice = createSlice({
   name: 'userReducer',
   initialState: {
-    isAuthenticated: true,
+    isAuthenticated: '',
+    checkAuth: false,
     username: '',
     email: '',
   },
-  reducers: {},
+  reducers: {
+    setIsAuthenticated: (state, action) => {
+      state.isAuthenticated = action.payload;
+    },
+  },
   extraReducers: {
+    [verifyUser.pending]: (state) => {
+      state.checkAuth = false;
+    },
     [verifyUser.fulfilled]: (state, action) => {
       const { username, email } = action.payload.user;
+      console.log(action.payload);
       if (action.payload.status === 'success') {
         state.isAuthenticated = true;
         state.username = username;
@@ -19,10 +28,13 @@ export const userSlice = createSlice({
       } else {
         state.isAuthenticated = false;
       }
+      state.checkAuth = true;
+    },
+    [verifyUser.rejected]: (state) => {
+      state.isAuthenticated = false;
+      state.checkAuth = true;
     },
   },
 });
-
-// export const {} = userSlice.actions;
 
 export default userSlice.reducer;
