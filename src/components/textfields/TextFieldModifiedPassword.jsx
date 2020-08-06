@@ -2,7 +2,7 @@ import React from 'react';
 import { TextField, IconButton } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFieldValue, setPasswordVisibility } from '../../slices/formSlice';
+import { setPasswordVisibility } from '../../slices/formSlice';
 
 export default function TextFieldModifiedPassword() {
   const dispatch = useDispatch();
@@ -15,10 +15,6 @@ export default function TextFieldModifiedPassword() {
       id="outlined-basic"
       label="Password"
       variant="outlined"
-      onChange={(e) => {
-        const { value } = e.target;
-        dispatch(setFieldValue({ label: 'Password', value }));
-      }}
       type={password.visible ? 'Text' : 'Password'}
       margin="normal"
       FormHelperTextProps={{

@@ -1,10 +1,8 @@
 import React from 'react';
 import { TextField } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
-import { setFieldValue } from '../../slices/formSlice';
+import { useSelector } from 'react-redux';
 
 export default function TextFieldUsername() {
-  const dispatch = useDispatch();
   const data = useSelector((selectorData) => selectorData.formReducer);
   const { errorExistsUsername, usernameExists } = data;
 
@@ -15,10 +13,6 @@ export default function TextFieldUsername() {
       id="outlined-basic"
       label="Username"
       variant="outlined"
-      onChange={(e) => {
-        const { value } = e.target;
-        dispatch(setFieldValue({ label: 'Username', value }));
-      }}
       type="Username"
       margin="normal"
       FormHelperTextProps={{
