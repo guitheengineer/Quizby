@@ -5,15 +5,16 @@ import Signup from '../components/forms/signup';
 import Playing from '../pages/playing';
 import Login from '../components/forms/login';
 import Quizzes from '../pages/quizzes';
-import RouteWithHeader from '../components/header';
+import RouteWithHeader from './RouteWithHeader';
+import PrivateRoute from './PrivateRoute';
 
 function Routes() {
   return (
     <Switch>
-      <RouteWithHeader showlogo path="/play" component={Playing} />
+      <RouteWithHeader showlogo path="/quizzes/play" component={Playing} />
       <RouteWithHeader path="/signup" component={Signup} />
       <RouteWithHeader path="/login" component={Login} />
-      <RouteWithHeader showlogo path="/quizzes" component={Quizzes} />
+      <PrivateRoute showlogo path="/quizzes" component={Quizzes} />
       <RouteWithHeader showlogo component={FourHundredFour} />
     </Switch>
   );
