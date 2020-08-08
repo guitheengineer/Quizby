@@ -9,7 +9,7 @@ function ButtonQuiz({ quiz }) {
   const dispatch = useDispatch();
 
   function quizClicked() {
-    history.push(`/quizzes/play/${quiz._id}`);
+    history.push(`/quizzes/show/${quiz._id}`);
     dispatch(setQuery(''));
   }
 
