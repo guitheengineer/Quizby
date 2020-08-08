@@ -584,3 +584,44 @@ body {
       transform: translateX(-50%);
       bottom: 10%;
       color: white; }
+
+.Show {
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  flex: 1; }
+  .Show__image {
+    flex: 1 1 40%;
+    background-color: red; }
+  .Show div .Show__playarea {
+    width: 80%; }
+    .Show div .Show__playarea h1 {
+      margin-top: 4.8rem;
+      font: 700 3rem/120% Lato;
+      font-family: Lato;
+      color: #161645; }
+      .Show div .Show__playarea h1::before {
+        position: absolute;
+        top: 3.2rem;
+        display: block;
+        content: "";
+        width: 14%;
+        height: 3px;
+        background-color: #161645; }
+    .Show div .Show__playarea p {
+      margin: 1.6rem 0 0 0.2rem;
+      font: 1.6rem/150% Lato;
+      color: rgba(22, 22, 69, 0.63); }
+    .Show div .Show__playarea button {
+      width: 11.6rem;
+      height: 5.3rem;
+      margin-top: 2.4rem;
+      border: 0;
+      font: 2rem Lato;
+      color: #f8faf7;
+      letter-spacing: 0.03rem;
+      background: #161645;
+      box-shadow: 3px 3px 2px rgba(136, 136, 136, 0.25);
+      border-radius: 5px; }
+  .Show div .Quizzes__sectiontwo {
+    width: 80%; }

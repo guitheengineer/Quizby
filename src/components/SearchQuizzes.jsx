@@ -8,7 +8,7 @@ import { setQuery } from '../slices/quizzesSlice';
 import { changeMenu } from '../slices/generalSlice';
 
 function SearchQuizzes() {
-  const [menuSearchHappened, setMenuSearchHappened] = useState(false);
+  const [menuSearched, setMenuSearched] = useState(false);
 
   const { query, quizSearchFetchState } = useSelector(
     (data) => data.quizzesReducer
@@ -20,10 +20,17 @@ function SearchQuizzes() {
 
   function searchText(e) {
     dispatch(setQuery(e.target.value));
+    history.push(`/quizzes/search?q=${e.target.value}`);
     if (menuIsActive === true) {
       dispatch(changeMenu(false));
     }
   }
+
+  useEffect(() => {
+    if (menuIsActive === false && query.length > 0) {
+      setMenuSearched(true);
+    }
+  }, [query]);
 
   useEffect(() => {
     let value;
@@ -36,18 +43,15 @@ function SearchQuizzes() {
     dispatch(setQuery(value));
   }, []);
 
-  useEffect(() => {
-    history.push(`/quizzes/search?q=${query}`);
-    if (menuIsActive === false) setMenuSearchHappened(true);
-  }, [query]);
-
   return (
     <div className="Quizzes__search">
       <FontAwesomeIcon icon={faSearch} />
       <input
         value={query}
+        // onBlur={() => setInputFocus(false)}
+        key="searchquiz"
         ref={(input) => {
-          if (menuSearchHappened && input) input.focus();
+          if (input && menuSearched) input.focus();
         }}
         type="text"
         onChange={searchText}
