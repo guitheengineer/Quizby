@@ -4,8 +4,10 @@
     flex-direction: column;
     flex: 1;
     &__image {
+        position: relative;
         flex: 1 1 40%;
         background-color: red;
+        transform: scaleY(1.2);
     }
     div {
         .Show__playarea {
@@ -45,6 +47,7 @@
         }
         .Quizzes__sectiontwo {
             width: 80%;
+            margin-top: 5.4rem;
         }
     }
 }

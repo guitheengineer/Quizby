@@ -1,11 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import BackgroundContainer from '../../components/backgroundcontainer';
 import MostPlayed from '../../components/quizzes/MostPlayed';
 
 function Show() {
+  const menuIsActive = useSelector((data) => data.generalReducer.menuIsActive);
   return (
     <div className="Show">
-      <div className="Show__image" />
+      <div
+        style={{ background: menuIsActive && '#5255ca' }}
+        className="Show__image"
+      />
       <BackgroundContainer
         justifyContent="normal"
         alignItems="center"
@@ -20,6 +25,7 @@ function Show() {
           <button type="button">Play</button>
         </div>
         <MostPlayed />
+        {/* This mostplayed has to be a flexible component capable of serving chosen queries and titles */}
       </BackgroundContainer>
     </div>
   );

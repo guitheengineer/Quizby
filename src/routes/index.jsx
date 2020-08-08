@@ -17,7 +17,7 @@ function Routes() {
       <RouteWithHeader path="/login" component={Login} />
       <RouteWithHeader
         showlogo
-        style={{ position: 'absolute' }}
+        style={{ position: 'absolute', zIndex: 1 }}
         path="/quizzes/show"
         component={Show}
       />

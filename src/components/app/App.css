@@ -591,8 +591,10 @@ body {
   flex-direction: column;
   flex: 1; }
   .Show__image {
+    position: relative;
     flex: 1 1 40%;
-    background-color: red; }
+    background-color: red;
+    transform: scaleY(1.2); }
   .Show div .Show__playarea {
     width: 80%; }
     .Show div .Show__playarea h1 {
@@ -624,4 +626,5 @@ body {
       box-shadow: 3px 3px 2px rgba(136, 136, 136, 0.25);
       border-radius: 5px; }
   .Show div .Quizzes__sectiontwo {
-    width: 80%; }
+    width: 80%;
+    margin-top: 5.4rem; }
