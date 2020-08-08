@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ClipLoader } from 'react-spinners';
+import { Route } from 'react-router-dom';
 import BackgroundContainer from '../../components/backgroundcontainer';
 import { getQuizzes, searchQuizzes } from '../../asyncActions';
 import FetchError from '../../components/FetchError';
@@ -24,7 +25,7 @@ function Quizzes() {
     }
   }, [query]);
 
-  function conditionalRendering() {
+  function shouldQuizzesListAppear() {
     if (quizzesFetchState === 'fulfilled' && query === '') {
       return (
         <>
@@ -37,7 +38,16 @@ function Quizzes() {
     if (quizzesFetchState === 'error') {
       return <FetchError fetchFunction={getQuizzes} />;
     }
-    if (query !== '') return <QuizzesSearched />;
+    return null;
+  }
+
+  function shouldSearchAppear() {
+    if (quizzesFetchState !== 'error') return <SearchQuizzes />;
+    return null;
+  }
+
+  function shouldQuizzesSearchAppear() {
+    if (query !== '') return <Route render={() => <QuizzesSearched />} />;
     return null;
   }
   return (
@@ -56,8 +66,9 @@ function Quizzes() {
         color="#5255CA"
       />
       <div className="Quizzes__container">
-        {quizzesFetchState !== 'error' && <SearchQuizzes />}
-        {conditionalRendering()}
+        {shouldSearchAppear()}
+        {shouldQuizzesListAppear()}
+        {shouldQuizzesSearchAppear()}
       </div>
     </BackgroundContainer>
   );
