@@ -10,14 +10,14 @@ function PrivateRoute({ showlogo, title, component: Component, ...rest }) {
   const { isAuthenticated, checkAuth } = useSelector(
     (data) => data.userReducer
   );
-  console.log('private route is rendering');
+
   useEffect(() => {
     document.title = title;
 
     const token = localStorage.getItem('TOKEN');
-    console.log('token exists');
     dispatch(verifyUser(token));
   }, []);
+
   return (
     checkAuth && (
       <Route
