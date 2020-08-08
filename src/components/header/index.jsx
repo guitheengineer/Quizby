@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import MenuIcon from '../menuicon';
 
-function Header({ showlogo }) {
+function Header({ showlogo, style }) {
   return showlogo ? (
-    <div className="App__header">
+    <div style={style} className="App__header">
       <Link style={{ textDecoration: 'none' }} to="/">
         <span className="App__header--title">Lorem ipsum</span>
       </Link>
-      <MenuIcon />)
+      <MenuIcon />
     </div>
   ) : (
     <div style={{ marginTop: '4rem' }} />
@@ -18,10 +18,12 @@ function Header({ showlogo }) {
 
 Header.propTypes = {
   showlogo: PropTypes.bool,
+  style: PropTypes.object,
 };
 
 Header.defaultProps = {
   showlogo: false,
+  style: {},
 };
 
 export default Header;
