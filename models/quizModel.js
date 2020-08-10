@@ -16,11 +16,19 @@ const quizSchema = new Schema({
     type: String,
     required: true,
   },
+  image: {
+    data: String,
+    contentType: String,
+  },
   name: {
     type: String,
     required: true,
     minlength: 4,
     maxlength: 35,
+  },
+  description: {
+    type: String,
+    maxlength: 120,
   },
   timesPlayed: {
     type: Number,
