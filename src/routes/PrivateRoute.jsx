@@ -4,12 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/header';
 import { verifyUser } from '../asyncActions';
+import { selectUserReducer } from '../slices/userSlice';
 
 function PrivateRoute({ showlogo, title, component: Component, ...rest }) {
   const dispatch = useDispatch();
-  const { isAuthenticated, checkAuth } = useSelector(
-    (data) => data.userReducer
-  );
+  const { isAuthenticated, checkAuth } = useSelector(selectUserReducer);
 
   useEffect(() => {
     document.title = title;
