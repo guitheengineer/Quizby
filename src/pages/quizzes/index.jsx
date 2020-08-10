@@ -8,14 +8,13 @@ import FetchError from '../../components/FetchError';
 import SearchQuizzes from '../../components/SearchQuizzes';
 import Categories from '../../components/quizzes/Categories';
 import Recommended from '../../components/quizzes/Recommended';
-import MostPlayed from '../../components/quizzes/MostPlayed';
+import QuizList from '../../components/quizzes/QuizList';
 import QuizzesSearched from '../../components/quizzes/QuizzesSearched';
+import { selectQuizReducer } from '../../slices/quizzesSlice';
 
 function Quizzes() {
   const dispatch = useDispatch();
-  const { quizzesFetchState, query } = useSelector(
-    (data) => data.quizzesReducer
-  );
+  const { quizzesFetchState, query } = useSelector(selectQuizReducer);
 
   useEffect(() => {
     if (query === '') {
@@ -30,7 +29,7 @@ function Quizzes() {
       return (
         <>
           <Recommended />
-          <MostPlayed />
+          <QuizList type="mostPlayed" />
           <Categories />
         </>
       );
