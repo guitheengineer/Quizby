@@ -61,11 +61,6 @@ function Signup() {
           <TextFieldModifiedEmail />
           <TextFieldModifiedPassword />
           <button
-            // disabled={
-            //   errorExistsEmail.errorExists ||
-            //   errorExistsUsername.errorExists ||
-            //   password.value.length < 8
-            // }
             className="App__form--button"
             style={{
               marginTop: '2.8rem',
