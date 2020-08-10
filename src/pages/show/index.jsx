@@ -17,9 +17,9 @@ function Show() {
     dispatch(setQuery(''));
   }
   function displayQuizImage() {
-    if (!menuIsActive && image.data) {
+    if (!menuIsActive && image) {
       return {
-        backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0.27)), url('data:image/png;base64,${image.data}')`,
+        backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0.27)), url('data:${image.contentType};base64,${image.data}')`,
       };
     }
     if (menuIsActive) {
