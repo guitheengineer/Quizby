@@ -6,7 +6,8 @@
     &__image {
         position: relative;
         flex: 1 1 40%;
-        background-color: red;
+        background-size: cover;
+        background-repeat: no-repeat;
         transform: scaleY(1.2);
     }
     div {
@@ -35,7 +36,6 @@
             button {
                 width: 11.6rem;
                 height: 5.3rem;
-                margin-top: 2.4rem;
                 border: 0;
                 font: 2rem Lato;
                 color: #f8faf7;
