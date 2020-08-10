@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { isMobile } from 'react-device-detect';
-import { setUserAnswer, nextQuestion } from '../../slices/quizzesSlice';
+import {
+  setUserAnswer,
+  nextQuestion,
+  selectQuizReducer,
+} from '../../slices/quizzesSlice';
 
 function Answers() {
   const [isHover, setIsHover] = useState({ hovering: true, ans: null });
@@ -12,43 +15,31 @@ function Answers() {
     currentAnswers,
     userAnswer,
     currentQuestionAnswered,
-  } = useSelector((d) => d.quizzesReducer);
+  } = useSelector(selectQuizReducer);
 
   const dispatch = useDispatch();
   function optionClicked(e) {
     dispatch(setUserAnswer(e));
   }
-  function getBackgroundColor(ans) {
+  function getBackgroundColor(clickedAnswer) {
     const { answer } = currentQuiz.questions[currentQuestion];
 
-    if (userAnswer === answer && ans === answer) {
+    if (userAnswer === answer && clickedAnswer === answer) {
       return { backgroundColor: '#5255ca', color: 'white' };
     }
 
-    if (userAnswer !== answer && userAnswer === ans) {
+    if (userAnswer !== answer && userAnswer === clickedAnswer) {
       return {
         backgroundColor: 'initial',
         border: '2px solid #f00',
       };
     }
 
-    if (isHover.hovering && ans === isHover.ans) {
+    if (isHover.hovering && clickedAnswer === isHover.ans) {
       return { border: '2px solid #7b61ff', cursor: 'pointer' };
     }
     return null;
   }
-
-  // function getContainerStyle() {
-  //   const { length } = currentQuiz.questions[currentQuestion].question;
-
-  //   if (currentQuestionAnswered) {
-  //     return { userSelect: 'none', pointerEvents: 'none' };
-  //   }
-  //   if (length <= 30) {
-  //     return { marginTop: '4.4vh' };
-  //   }
-  //   return { marginTop: '1.4vh' };
-  // }
 
   return (
     <div

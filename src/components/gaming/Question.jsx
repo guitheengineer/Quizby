@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { selectQuizReducer } from '../../slices/quizzesSlice';
 
 function Question() {
   const { currentQuiz, currentQuestion, currentQuestionAnswered } = useSelector(
-    (d) => d.quizzesReducer
+    selectQuizReducer
   );
   function questionTitleStyle() {
     const questionLength =
@@ -22,14 +23,6 @@ function Question() {
           : 'slideInRightQuestion'
       }`}
     >
-      <span
-        style={{
-          position: 'absolute',
-          top: '0',
-          right: '0',
-          fontSize: '18px',
-        }}
-      />
       <span className="App__playing--question--bf">-</span>
       {currentQuiz.questions[currentQuestion].question}
     </div>

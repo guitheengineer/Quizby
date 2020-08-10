@@ -1,17 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { selectQuizReducer } from '../../slices/quizzesSlice';
 
 export default function ListAnswers() {
-  const { historicOfAnswers } = useSelector((d) => d.quizzesReducer);
+  const { historicOfAnswers } = useSelector(selectQuizReducer);
   return (
     <ul className="App__listiconanswers">
-      {historicOfAnswers.map((answers) =>
+      {historicOfAnswers.map((answers, i) =>
         answers === 'correct' ? (
-          <li className="App__listanswers--item">
+          <li key={i} className="App__listanswers--item">
             <img src="../../rightanswericon.svg" alt="correct" />
           </li>
         ) : (
-          <li className="App__listanswers--item">
+          <li key={i} className="App__listanswers--item">
             <img src="../../wronganswericon.svg" alt="wrong" />
           </li>
         )

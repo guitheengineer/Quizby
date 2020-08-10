@@ -2,6 +2,7 @@ import React, { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import Menu from '../menu';
+import { selectGeneralReducer } from '../../slices/generalSlice';
 
 function BackgroundContainer({
   mgTop,
@@ -11,7 +12,7 @@ function BackgroundContainer({
   overflow,
   alignItems,
 }) {
-  const { menuIsActive } = useSelector((data) => data.generalReducer);
+  const { menuIsActive } = useSelector(selectGeneralReducer);
 
   const commonStyles = {
     position: 'relative',

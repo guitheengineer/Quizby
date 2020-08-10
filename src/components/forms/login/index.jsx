@@ -9,11 +9,32 @@ import BackgroundContainer from '../../backgroundcontainer';
 // import TextFieldModified from "../TextFieldModified";
 import TextFieldModifiedPassword from '../../textfields/TextFieldModifiedPassword';
 import TextFieldModifiedEmail from '../../textfields/TextFieldModifiedEmail';
-import { onSubmitForm } from '../../../slices/formSlice';
+import { onSubmitForm, selectFormReducer } from '../../../slices/formSlice';
 
 export default function Login() {
   const dispatch = useDispatch();
-  const { loginError, loginState } = useSelector((data) => data.formReducer);
+  const { loginError, loginState } = useSelector(selectFormReducer);
+
+  function onFormSubmit(e) {
+    const email = e.target[0].value;
+    const password = e.target[2].value;
+    dispatch(
+      onSubmitForm({
+        email,
+        password,
+      })
+    );
+    const regexEmailValidator = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (regexEmailValidator.test(email) && password.length >= 8) {
+      dispatch(
+        postLogin({
+          email,
+          password,
+        })
+      );
+    }
+    e.preventDefault();
+  }
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -23,30 +44,7 @@ export default function Login() {
         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morboa."
       />
       <BackgroundContainer mgTop="3.2rem" minHeight="35.7rem">
-        <form
-          onSubmit={(e) => {
-            const email = e.target[0].value;
-            const password = e.target[2].value;
-            dispatch(
-              onSubmitForm({
-                email,
-                password,
-              })
-            );
-            const regexEmailValidator = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (regexEmailValidator.test(email) && password.length >= 8) {
-              dispatch(
-                postLogin({
-                  email,
-                  password,
-                })
-              );
-            }
-
-            e.preventDefault();
-          }}
-          className="App__form"
-        >
+        <form onSubmit={onFormSubmit} className="App__form">
           {loginError && (
             <p className="App__form--loginerror">{loginError.errorDes}</p>
           )}
