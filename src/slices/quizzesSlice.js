@@ -12,7 +12,7 @@ export const quizzesSlice = createSlice({
   name: 'quizzesReducer',
   initialState: {
     quizzes: {
-      mostPlayedQuizzes: [],
+      mostPlayed: [],
       quizzesSearchedData: [],
     },
     userAnswer: '',
@@ -24,7 +24,7 @@ export const quizzesSlice = createSlice({
       toBeAnswered: 0,
     },
     currentQuiz: {
-      creator: '',
+      creatorName: '',
       name: '',
       questions: [
         {
@@ -34,6 +34,7 @@ export const quizzesSlice = createSlice({
         },
       ],
       timesPlayed: 0,
+      image: {},
     },
     currentQuestion: 0,
     currentQuestionAnswered: false,
@@ -140,5 +141,8 @@ export const {
   nextQuestion,
   setQuery,
 } = quizzesSlice.actions;
+
+export const selectQuizReducer = (state) => state.quizzesReducer;
+export const selectQuiz = (state) => state.quizzesReducer.currentQuiz;
 
 export default quizzesSlice.reducer;

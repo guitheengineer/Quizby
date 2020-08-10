@@ -20,7 +20,6 @@ export const userSlice = createSlice({
     },
     [verifyUser.fulfilled]: (state, action) => {
       const { username, email } = action.payload.user;
-      console.log(action.payload);
       if (action.payload.status === 'success') {
         state.isAuthenticated = true;
         state.username = username;
@@ -36,5 +35,7 @@ export const userSlice = createSlice({
     },
   },
 });
+
+export const selectUserReducer = (state) => state.userReducer;
 
 export default userSlice.reducer;

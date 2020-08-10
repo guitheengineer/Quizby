@@ -35,10 +35,6 @@ export const formSlice = createSlice({
     signupState: '',
   },
   reducers: {
-    // setFieldValue: (state, action) => {
-    //   const labelLowercase = `${action.payload.label}`.toLowerCase();
-    //   state[labelLowercase].value = action.payload.value;
-    // },
     onSubmitForm: (state, action) => {
       const { username, email, password } = action.payload;
 
@@ -123,8 +119,8 @@ export const formSlice = createSlice({
           errorDes: null,
         };
         localStorage.setItem('TOKEN', token);
-        state.loginState = 'fulfilled';
       }
+      state.loginState = 'fulfilled';
     },
     [postLogin.rejected]: (state) => {
       state.loginError = {
@@ -137,7 +133,7 @@ export const formSlice = createSlice({
       state.signupState = 'loading';
     },
     [postSignup.fulfilled]: (state) => {
-      state.signupState = 'fullfilled';
+      state.signupState = 'fulfilled';
     },
     [postSignup.rejected]: (state) => {
       state.signupState = 'rejected';
@@ -150,5 +146,7 @@ export const {
   setPasswordVisibility,
   onSubmitForm,
 } = formSlice.actions;
+
+export const selectFormReducer = (state) => state.formReducer;
 
 export default formSlice.reducer;

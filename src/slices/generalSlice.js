@@ -15,4 +15,8 @@ export const generalSlice = createSlice({
 
 export const { changeMenu } = generalSlice.actions;
 
+export const selectMenuIsActive = (state) => state.generalReducer.menuIsActive;
+
+export const selectGeneralReducer = (state) => state.generalReducer;
+
 export default generalSlice.reducer;
