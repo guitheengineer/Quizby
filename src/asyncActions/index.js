@@ -39,8 +39,9 @@ export const searchQuizzes = createAsyncThunk(
 
 export const getCurrentQuiz = createAsyncThunk(
   'quizzesReducer/getCurrentQuiz',
-  async (id) => {
-    const response = await fetch(`/quizzes/play/:${id}`);
+  async () => {
+    const id = window.location.pathname.split('/').pop();
+    const response = await fetch(`/quizzes/play/${id}`);
     const data = await response.json();
     return data;
   }
