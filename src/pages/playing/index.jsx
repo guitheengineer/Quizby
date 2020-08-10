@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { ClipLoader } from 'react-spinners';
 import Answers from '../../components/gaming/Answers';
 import Question from '../../components/gaming/Question';
@@ -7,24 +7,22 @@ import { getCurrentQuiz } from '../../asyncActions';
 import ListAnswers from '../../components/gaming/ListIconAnswers';
 import FetchError from '../../components/FetchError';
 import BackgroundContainer from '../../components/backgroundcontainer';
+import { getQuiz } from '../../customhooks';
+import { selectQuizReducer } from '../../slices/quizzesSlice';
 
 function Playing() {
   const {
     quizFetchState,
     userAnsweredCorrect,
     userAnsweredWrong,
-  } = useSelector((d) => d.quizzesReducer);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getCurrentQuiz(window.location.pathname.substring(14)));
-  }, []);
+    currentQuestionAnswered,
+  } = useSelector(selectQuizReducer);
+  getQuiz();
 
   return (
     <>
       <BackgroundContainer>
-        <div className="App__playing">
+        <div className={`App__playing ${currentQuestionAnswered && 'fade'}`}>
           <ClipLoader loading={quizFetchState === 'loading'} color="#5255CA" />
           {quizFetchState === 'fetched' && (
             <>

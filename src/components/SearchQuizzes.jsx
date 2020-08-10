@@ -4,16 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { setQuery } from '../slices/quizzesSlice';
+import { setQuery, selectQuizReducer } from '../slices/quizzesSlice';
 import { changeMenu } from '../slices/generalSlice';
+import { getMenuIsActive } from '../customhooks';
 
 function SearchQuizzes() {
   const [menuSearched, setMenuSearched] = useState(false);
 
-  const { query, quizSearchFetchState } = useSelector(
-    (data) => data.quizzesReducer
-  );
-  const menuIsActive = useSelector((data) => data.generalReducer.menuIsActive);
+  const { query, quizSearchFetchState } = useSelector(selectQuizReducer);
+  const menuIsActive = getMenuIsActive();
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -48,7 +47,6 @@ function SearchQuizzes() {
       <FontAwesomeIcon icon={faSearch} />
       <input
         value={query}
-        // onBlur={() => setInputFocus(false)}
         key="searchquiz"
         ref={(input) => {
           if (input && menuSearched) input.focus();

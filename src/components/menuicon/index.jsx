@@ -1,10 +1,12 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { changeMenu } from '../../slices/generalSlice';
+import { getMenuIsActive } from '../../customhooks';
 
 function MenuIcon() {
   const dispatch = useDispatch();
-  const menuIsActive = useSelector((data) => data.generalReducer.menuIsActive);
+  const menuIsActive = getMenuIsActive();
+
   return (
     <button
       type="button"
