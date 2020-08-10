@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function Notification({ type }) {
   return (
@@ -12,5 +13,9 @@ function Notification({ type }) {
     </div>
   );
 }
+
+Notification.propTypes = {
+  type: PropTypes.string.isRequired,
+};
 
 export default Notification;
