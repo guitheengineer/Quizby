@@ -2,12 +2,15 @@ import React from 'react';
 import { TextField, IconButton } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPasswordVisibility } from '../../slices/formSlice';
+import {
+  setPasswordVisibility,
+  selectFormReducer,
+} from '../../slices/formSlice';
 
 export default function TextFieldModifiedPassword() {
   const dispatch = useDispatch();
-  const data = useSelector((selectorData) => selectorData.formReducer);
-  const { password, errorExistsPassword } = data;
+  const { password, errorExistsPassword } = useSelector(selectFormReducer);
+
   return (
     <TextField
       error={errorExistsPassword.errorExists}

@@ -1,10 +1,10 @@
 import React from 'react';
 import { TextField } from '@material-ui/core';
 import { useSelector } from 'react-redux';
+import { selectFormReducer } from '../../slices/formSlice';
 
 export default function TextFieldEmail() {
-  const data = useSelector((selectorData) => selectorData.formReducer);
-  const { errorExistsEmail } = data;
+  const { errorExistsEmail } = useSelector(selectFormReducer);
 
   return (
     <TextField

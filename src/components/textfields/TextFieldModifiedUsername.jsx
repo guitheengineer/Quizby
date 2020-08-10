@@ -1,10 +1,12 @@
 import React from 'react';
 import { TextField } from '@material-ui/core';
 import { useSelector } from 'react-redux';
+import { selectFormReducer } from '../../slices/formSlice';
 
 export default function TextFieldUsername() {
-  const data = useSelector((selectorData) => selectorData.formReducer);
-  const { errorExistsUsername, usernameExists } = data;
+  const { errorExistsUsername, usernameExists } = useSelector(
+    selectFormReducer
+  );
 
   return (
     <TextField
