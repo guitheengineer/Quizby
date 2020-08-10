@@ -12,13 +12,13 @@ import Show from '../pages/show';
 function Routes() {
   return (
     <Switch>
-      <RouteWithHeader showlogo path="/quizzes/play" component={Playing} />
+      <RouteWithHeader showlogo path="/quizzes/play/:id" component={Playing} />
       <RouteWithHeader path="/signup" component={Signup} />
       <RouteWithHeader path="/login" component={Login} />
       <RouteWithHeader
         showlogo
         style={{ position: 'absolute', zIndex: 1 }}
-        path="/quizzes/show"
+        path="/quizzes/show/:id"
         component={Show}
       />
       <PrivateRoute showlogo path="/quizzes" component={Quizzes} />
