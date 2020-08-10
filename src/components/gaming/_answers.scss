@@ -6,7 +6,7 @@
   width: 80%;
   user-select: none;
 
-  input[type='button']:focus {
+  input[type="button"]:focus {
     outline: none;
   }
   // @include resp(375) {
@@ -85,24 +85,12 @@
   animation: slideOutLeft 0.6s ease normal forwards;
 }
 
-// .blur {
-//   animation: blur 0.3s ease normal forwards;
-// }
-
 @keyframes opacityOne {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
-  }
-}
-@keyframes blur {
-  from {
-    filter: blur(0);
-  }
-  to {
-    filter: blur(1px);
   }
 }
 
