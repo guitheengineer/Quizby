@@ -21,13 +21,8 @@ function ButtonQuiz({ quiz }) {
 }
 
 ButtonQuiz.propTypes = {
-  quiz: PropTypes.exact({
-    creator: PropTypes.string,
-    creatorName: PropTypes.string,
+  quiz: PropTypes.shape({
     name: PropTypes.string,
-    questions: PropTypes.array,
-    timesPlayed: PropTypes.number,
-    __v: PropTypes.number,
     _id: PropTypes.string,
   }).isRequired,
 };
