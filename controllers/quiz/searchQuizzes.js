@@ -8,7 +8,6 @@ module.exports = async (req, res) => {
   };
 
   const quizzesSearchedData = await quizModel.find(query).limit(8);
-  console.log(quizzesSearchedData);
   res.status(200).json({
     status: 'success',
     quizzesSearchedData,
