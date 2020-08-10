@@ -12,7 +12,6 @@ function ButtonQuiz({ quiz }) {
     history.push(`/quizzes/show/${quiz._id}`);
     dispatch(setQuery(''));
   }
-
   return (
     <button type="button" onClick={quizClicked}>
       <span>{quiz.name}</span>

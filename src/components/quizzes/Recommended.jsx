@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import ButtonQuiz from './ButtonQuiz';
+import { getRecommendedQuiz } from '../../asyncActions';
 
 function Recommended() {
+  const dispatch = useDispatch();
+  const { recommended } = useSelector((state) => state.quizzesReducer.quizzes);
+
+  const { recommendedQuizFetchState } = useSelector(
+    (state) => state.quizzesReducer
+  );
+
+  useEffect(() => {
+    dispatch(getRecommendedQuiz());
+  }, []);
   return (
-    <div className="Quizzes__recommended">
-      <span>Recommended</span>
-      <div>
-        <span>
-          Inazuma Eleven best players best players best players best players
-        </span>
+    recommendedQuizFetchState === 'fulfilled' && (
+      <div className="Quizzes__recommended">
+        <span>Recommended</span>
+        <ButtonQuiz quiz={recommended} />
       </div>
-    </div>
+    )
   );
 }
 

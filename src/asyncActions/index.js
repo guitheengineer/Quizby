@@ -47,6 +47,15 @@ export const getCurrentQuiz = createAsyncThunk(
   }
 );
 
+export const getRecommendedQuiz = createAsyncThunk(
+  'quizzesReducer/getRecommendedQuiz',
+  async () => {
+    const response = await fetch(`/quizzes/recommended`);
+    const data = await response.json();
+    return data;
+  }
+);
+
 export const postLogin = createAsyncThunk(
   'formReducer/postLogin',
   async ({ email, password }) => {

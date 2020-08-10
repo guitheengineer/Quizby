@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getQuizzes, getCurrentQuiz, searchQuizzes } from '../asyncActions';
+import {
+  getQuizzes,
+  getCurrentQuiz,
+  searchQuizzes,
+  getRecommendedQuiz,
+} from '../asyncActions';
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -14,6 +19,7 @@ export const quizzesSlice = createSlice({
     quizzes: {
       mostPlayed: [],
       quizzesSearchedData: [],
+      recommended: {},
     },
     userAnswer: '',
     currentAnswers: [],
@@ -43,6 +49,7 @@ export const quizzesSlice = createSlice({
     quizzesFetchState: false,
     quizzesSearchedData: false,
     quizFetchState: false,
+    recommendedQuizFetchState: false,
     historicOfAnswers: [],
     query: '',
   },
@@ -131,6 +138,10 @@ export const quizzesSlice = createSlice({
     },
     [searchQuizzes.rejected]: (state) => {
       state.quizSearchFetchState = 'error';
+    },
+    [getRecommendedQuiz.fulfilled]: (state, action) => {
+      state.quizzes.recommended = action.payload.recommendedQuiz;
+      state.recommendedQuizFetchState = 'fulfilled';
     },
   },
 });
