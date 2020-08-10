@@ -16,6 +16,8 @@ function ButtonQuiz({ quiz }) {
     if (quiz.image) {
       return {
         backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0.27)), url('data:${quiz.image.contentType};base64,${quiz.image.data}')`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
       };
     }
     return null;
