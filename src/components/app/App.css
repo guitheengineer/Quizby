@@ -19,6 +19,90 @@ body {
   overflow-x: hidden;
   background: #f8faf7; }
 
+.App--menuicon {
+  height: 1.1rem;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  margin-left: auto; }
+  .App--menuicon div {
+    transition: all 2s;
+    width: 1.8rem;
+    height: 0.2rem;
+    background-color: white;
+    border-radius: 0.9rem; }
+    .App--menuicon div:not(:first-child) {
+      margin-top: 0.3rem; }
+    .App--menuicon div.clicked:nth-child(1) {
+      transform: rotate(-45deg) translate(-4px, 3px); }
+    .App--menuicon div.clicked:nth-child(2) {
+      opacity: 0; }
+    .App--menuicon div.clicked:nth-child(3) {
+      transform: rotate(45deg) translate(-4px, -3px); }
+
+.childrenAnimation {
+  animation: children 0.7s alternate forwards; }
+
+@keyframes children {
+  from {
+    opacity: 1;
+    position: relative;
+    top: 0rem; }
+  to {
+    position: relative;
+    top: 1rem;
+    opacity: 0; } }
+
+.App__menu {
+  width: 80%;
+  align-self: center;
+  position: absolute;
+  top: 7rem; }
+  .App__menu div {
+    position: relative; }
+    .App__menu div svg {
+      font-size: 1.9rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 2rem;
+      color: rgba(255, 255, 255, 0.72); }
+    .App__menu div input {
+      font: 1.8rem Overpass;
+      color: white;
+      width: 100%;
+      border: 0;
+      padding: 0 1.5rem 0 6rem;
+      height: 5.4rem;
+      background: #5c60e7;
+      border-radius: 7px; }
+      .App__menu div input::placeholder {
+        color: rgba(243, 243, 243, 0.8);
+        font: 1.8rem Overpass; }
+  .App__menu ul {
+    list-style-type: none; }
+    .App__menu ul li {
+      opacity: 0.9;
+      cursor: pointer;
+      letter-spacing: 0.02rem;
+      border-radius: 7px;
+      margin-top: 0.5rem;
+      height: 5.3rem;
+      display: flex;
+      align-items: center;
+      font: 1.8rem Overpass;
+      color: #f3f3fb; }
+      .App__menu ul li:hover {
+        background: #0a0a1f;
+        opacity: 1;
+        transition: all 0.3s; }
+      .App__menu ul li:first-child {
+        margin-top: 2.5rem; }
+      .App__menu ul li svg {
+        font-size: 1.9rem;
+        margin-left: 2rem;
+        margin: 0 2.2rem 0 2rem; }
+
 .App {
   background: #5255ca;
   display: flex;
@@ -58,28 +142,175 @@ body {
   .App__header--menu {
     margin-right: 3.5rem; }
 
-.App__playing {
-  position: relative;
-  background: #f8faf7;
-  border-radius: 20px 20px 0 0;
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: all 2s; }
-  @media (min-width: 700px) {
-    .App__playing {
-      border-radius: 0; } }
-
-.fade::after {
-  display: block;
-  content: "";
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+.App__playing--infocounter {
   position: absolute;
-  background-color: #ffffffa6; }
+  top: 2.9rem;
+  left: 4.4rem;
+  font-size: 1.4rem;
+  color: #b2b2cc;
+  font-family: Roboto; }
+  .App__playing--infocounter span {
+    letter-spacing: 0.05em; }
+  .App__playing--infocounter::after {
+    content: '';
+    display: block;
+    width: 46%;
+    margin-top: 0.5rem;
+    height: 0.14rem;
+    background-color: #d0d1eb;
+    position: absolute;
+    left: 0.2; }
+
+.App__playing--question {
+  width: 80%;
+  font-size: clamp(100%, 3.2vh, 2.4rem);
+  color: #0a0a1f;
+  max-width: 38.2rem;
+  line-height: calc(1.1em + 1vw); }
+  .App__playing--question--bf {
+    position: absolute;
+    margin-left: -1.5rem;
+    font-size: 2.5rem;
+    color: #cccdef; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.App__presentation {
+  color: white;
+  width: 80%;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  position: relative; }
+  .App__presentation--title {
+    font: 2.4rem Overpass; }
+  .App__presentation--desc {
+    margin: 0.7rem 0 0 0.2rem;
+    font: 300 1.4rem Overpass;
+    width: 90%; }
+
+.App__form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-self: center; }
+  .App__form .MuiInputBase-root {
+    font: 1.6rem Overpass; }
+  .App__form .MuiInputLabel-root {
+    color: #9fa0d5; }
+  .App__form label {
+    font: 1.6rem Overpass; }
+  .App__form .MuiOutlinedInput-root:hover {
+    border-color: pink; }
+  .App__form .MuiOutlinedInput-notchedOutline {
+    border-color: #5255ca;
+    border-width: 1px; }
+  .App__form .MuiInputBase-input {
+    height: 1.4rem; }
+  .App__form .PrivateNotchedOutline-legendLabelled-3 {
+    height: 11.2px; }
+  .App__form .MuiInputBase-root {
+    margin-top: 0.3rem; }
+  .App__form--button {
+    box-shadow: 3px 3px 2px rgba(136, 136, 136, 0.45);
+    background-color: #5255ca;
+    border-radius: 0.5rem;
+    height: 4.9rem;
+    width: 40%;
+    color: white;
+    border: 0;
+    margin-top: 4.3vh;
+    align-self: flex-end;
+    font-size: 1.6rem;
+    letter-spacing: 0.05rem;
+    cursor: pointer; }
+    .App__form--button:active {
+      box-shadow: inset 0px 6px 4px rgba(0, 0, 0, 0.13); }
+  .App__form--loginerror {
+    margin-bottom: 1.5rem;
+    font: 1.5rem Roboto;
+    color: red; }
+
+.App__registerAdvice {
+  font-size: 1.6rem;
+  color: #0a0a1f;
+  align-self: center;
+  margin-top: 4.2rem; }
+
+.App__notification {
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+  width: 64.5%;
+  max-width: 24.2rem;
+  background: #f8faf7;
+  border: 1px solid #8687b1;
+  box-shadow: 0px 3px 2px rgba(82, 85, 202, 0.07), 0px 4px 4px rgba(82, 85, 202, 0.05);
+  border-radius: 5px;
+  height: 7.8rem;
+  justify-content: center;
+  position: fixed;
+  bottom: 1.4rem;
+  right: 2rem;
+  animation: fadeInRight 1s ease forwards;
+  min-width: 20.3rem; }
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    right: -24.2rem; }
+  to {
+    opacity: 1;
+    right: 2rem; } }
+  .App__notification--text {
+    margin-left: 3.2rem;
+    margin-top: 0.2rem; }
+    .App__notification--text:before {
+      content: "";
+      display: block;
+      background: url("/error.svg") no-repeat right top;
+      width: 1.3rem;
+      height: 1.3rem;
+      position: absolute;
+      left: 1.2rem; }
+    .App__notification--text--title {
+      font: 600 1.4rem Overpass;
+      color: #0a0a1f; }
+    .App__notification--text--desc {
+      margin-top: 0.3rem;
+      width: 90%;
+      font: 1.2rem Overpass;
+      color: #4a4a76; }
+  .App__notification:before {
+    content: "";
+    display: block;
+    width: 100%;
+    position: absolute;
+    height: 0.2rem;
+    background: #ff0000;
+    top: -0.5px;
+    border-radius: 5px 5px 0px 0px; }
+
+.App__fetcherror {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .App__fetcherror img {
+    width: 20.3rem; }
+  .App__fetcherror--message {
+    margin-top: 2.5rem;
+    font: 2rem/138% Overpass;
+    text-align: center;
+    font-family: Overpass;
+    color: #7a7ba2; }
 
 .App__playing--list {
   position: relative;
@@ -205,259 +436,31 @@ body {
   100% {
     transform: scale(1); } }
 
-.App__playing--infocounter {
-  position: absolute;
-  top: 2.9rem;
-  left: 4.4rem;
-  font-size: 1.4rem;
-  color: #b2b2cc;
-  font-family: Roboto; }
-  .App__playing--infocounter span {
-    letter-spacing: 0.05em; }
-  .App__playing--infocounter::after {
-    content: '';
-    display: block;
-    width: 46%;
-    margin-top: 0.5rem;
-    height: 0.14rem;
-    background-color: #d0d1eb;
-    position: absolute;
-    left: 0.2; }
+.Done__donut {
+  margin: 0 auto;
+  border-radius: 50%;
+  display: block; }
+  .Done__donut--track {
+    fill: transparent;
+    stroke: #dfdff1;
+    stroke-width: 26; }
+  .Done__donut--indicator {
+    fill: transparent;
+    stroke: #5255ca;
+    stroke-dasharray: 0 10000;
+    transition: all 2s ease;
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.15); }
 
-.App__playing--question {
-  width: 80%;
-  font-size: clamp(100%, 3.2vh, 2.4rem);
-  color: #0a0a1f;
-  max-width: 38.2rem;
-  line-height: calc(1.1em + 1vw); }
-  .App__playing--question--bf {
-    position: absolute;
-    margin-left: -1.5rem;
-    font-size: 2.5rem;
-    color: #cccdef; }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-
-.App__presentation {
-  color: white;
-  width: 80%;
-  display: flex;
-  align-self: center;
-  flex-direction: column;
-  position: relative; }
-  .App__presentation--title {
-    font: 2.4rem Overpass; }
-  .App__presentation--desc {
-    margin: 0.7rem 0 0 0.2rem;
-    font: 300 1.4rem Overpass;
-    width: 90%; }
-
-.App__form {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-self: center; }
-  .App__form .MuiInputBase-root {
-    font: 1.6rem Overpass; }
-  .App__form .MuiInputLabel-root {
-    color: #9fa0d5; }
-  .App__form label {
-    font: 1.6rem Overpass; }
-  .App__form .MuiOutlinedInput-root:hover {
-    border-color: pink; }
-  .App__form .MuiOutlinedInput-notchedOutline {
-    border-color: #5255ca;
-    border-width: 1px; }
-  .App__form .MuiInputBase-input {
-    height: 1.4rem; }
-  .App__form .PrivateNotchedOutline-legendLabelled-3 {
-    height: 11.2px; }
-  .App__form .MuiInputBase-root {
-    margin-top: 0.3rem; }
-  .App__form--button {
-    box-shadow: 3px 3px 2px rgba(136, 136, 136, 0.45);
-    background-color: #5255ca;
-    border-radius: 0.5rem;
-    height: 4.9rem;
-    width: 40%;
-    color: white;
-    border: 0;
-    margin-top: 4.3vh;
-    align-self: flex-end;
-    font-size: 1.6rem;
-    letter-spacing: 0.05rem;
-    cursor: pointer; }
-    .App__form--button:active {
-      box-shadow: inset 0px 6px 4px rgba(0, 0, 0, 0.13); }
-  .App__form--loginerror {
-    margin-bottom: 1.5rem;
-    font: 1.5rem Roboto;
-    color: red; }
-
-.App__registerAdvice {
-  font-size: 1.6rem;
-  color: #0a0a1f;
-  align-self: center;
-  margin-top: 4.2rem; }
-
-.App--menuicon {
-  height: 1.1rem;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-  margin-left: auto; }
-  .App--menuicon div {
-    transition: all 2s;
-    width: 1.8rem;
-    height: 0.2rem;
-    background-color: white;
-    border-radius: 0.9rem; }
-    .App--menuicon div:not(:first-child) {
-      margin-top: 0.3rem; }
-    .App--menuicon div.clicked:nth-child(1) {
-      transform: rotate(-45deg) translate(-4px, 3px); }
-    .App--menuicon div.clicked:nth-child(2) {
-      opacity: 0; }
-    .App--menuicon div.clicked:nth-child(3) {
-      transform: rotate(45deg) translate(-4px, -3px); }
-
-.childrenAnimation {
-  animation: children 0.7s alternate forwards; }
-
-@keyframes children {
-  from {
-    opacity: 1;
-    position: relative;
-    top: 0rem; }
-  to {
-    position: relative;
-    top: 1rem;
-    opacity: 0; } }
-
-.App__menu {
-  width: 80%;
-  align-self: center;
-  position: absolute;
-  top: 7rem; }
-  .App__menu div {
-    position: relative; }
-    .App__menu div svg {
-      font-size: 1.9rem;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 2rem;
-      color: rgba(255, 255, 255, 0.72); }
-    .App__menu div input {
-      font: 1.8rem Overpass;
-      color: white;
-      width: 100%;
-      border: 0;
-      padding: 0 1.5rem 0 6rem;
-      height: 5.4rem;
-      background: #5c60e7;
-      border-radius: 7px; }
-      .App__menu div input::placeholder {
-        color: rgba(243, 243, 243, 0.8);
-        font: 1.8rem Overpass; }
-  .App__menu ul {
-    list-style-type: none; }
-    .App__menu ul li {
-      opacity: 0.9;
-      cursor: pointer;
-      letter-spacing: 0.02rem;
-      border-radius: 7px;
-      margin-top: 0.5rem;
-      height: 5.3rem;
-      display: flex;
-      align-items: center;
-      font: 1.8rem Overpass;
-      color: #f3f3fb; }
-      .App__menu ul li:hover {
-        background: #0a0a1f;
-        opacity: 1;
-        transition: all 0.3s; }
-      .App__menu ul li:first-child {
-        margin-top: 2.5rem; }
-      .App__menu ul li svg {
-        font-size: 1.9rem;
-        margin-left: 2rem;
-        margin: 0 2.2rem 0 2rem; }
-
-.App__notification {
-  display: flex;
-  flex-direction: column;
-  background-color: red;
-  width: 64.5%;
-  max-width: 24.2rem;
-  background: #f8faf7;
-  border: 1px solid #8687b1;
-  box-shadow: 0px 3px 2px rgba(82, 85, 202, 0.07), 0px 4px 4px rgba(82, 85, 202, 0.05);
-  border-radius: 5px;
-  height: 7.8rem;
-  justify-content: center;
-  position: fixed;
-  bottom: 1.4rem;
-  right: 2rem;
-  animation: fadeInRight 1s ease forwards;
-  min-width: 20.3rem; }
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    right: -24.2rem; }
-  to {
-    opacity: 1;
-    right: 2rem; } }
-  .App__notification--text {
-    margin-left: 3.2rem;
-    margin-top: 0.2rem; }
-    .App__notification--text:before {
-      content: "";
-      display: block;
-      background: url("/error.svg") no-repeat right top;
-      width: 1.3rem;
-      height: 1.3rem;
-      position: absolute;
-      left: 1.2rem; }
-    .App__notification--text--title {
-      font: 600 1.4rem Overpass;
-      color: #0a0a1f; }
-    .App__notification--text--desc {
-      margin-top: 0.3rem;
-      width: 90%;
-      font: 1.2rem Overpass;
-      color: #4a4a76; }
-  .App__notification:before {
-    content: "";
-    display: block;
-    width: 100%;
-    position: absolute;
-    height: 0.2rem;
-    background: #ff0000;
-    top: -0.5px;
-    border-radius: 5px 5px 0px 0px; }
-
-.App__fetcherror {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
-  .App__fetcherror img {
-    width: 20.3rem; }
-  .App__fetcherror--message {
-    margin-top: 2.5rem;
-    font: 2rem/138% Overpass;
-    text-align: center;
-    font-family: Overpass;
-    color: #7a7ba2; }
+.Done__text {
+  fill: #5255ca;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
+  .Done__text--value {
+    font-size: 22px;
+    font: bold 6rem Lato; }
+  .Done__text--percent {
+    font-size: 14px; }
+  .Done__text--label {
+    font-size: 12px; }
 
 .App__fourhundred {
   display: flex;
@@ -635,3 +638,63 @@ body {
   .Show div .Quizzes__sectiontwo {
     width: 80%;
     margin-top: 5.4rem; }
+
+.Done__phrase {
+  font: 500 2.4rem Lato;
+  color: rgba(10, 10, 31, 0.9);
+  margin-top: 3.2rem; }
+
+.Done__text {
+  fill: #5255ca;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
+  .Done__text--value {
+    font-size: 2.2rem;
+    font: bold 60px Lato; }
+  .Done__text--percent {
+    font-size: 1.4rem; }
+  .Done__text--label {
+    font-size: 1.2rem; }
+
+.Done__button {
+  margin-top: 3.2rem;
+  display: flex; }
+  .Done__button--playagain {
+    cursor: pointer;
+    width: 4.3rem;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    background-color: transparent; }
+  .Done__button--home {
+    width: 11rem;
+    margin-left: 1.2rem;
+    font: 1.8rem Lato;
+    color: #ffffff;
+    background-color: #5255ca;
+    border: 0;
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    height: 4.2rem;
+    cursor: pointer; }
+
+.App__playing {
+  position: relative;
+  background: #f8faf7;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 2s; }
+  @media (min-width: 700px) {
+    .App__playing {
+      border-radius: 0; } }
+
+.fade::after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  background-color: #ffffffa6; }

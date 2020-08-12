@@ -8,6 +8,7 @@ import Quizzes from '../pages/quizzes';
 import RouteWithHeader from './RouteWithHeader';
 import PrivateRoute from './PrivateRoute';
 import Show from '../pages/show';
+import Done from '../pages/done';
 
 function Routes() {
   return (
@@ -21,6 +22,7 @@ function Routes() {
         path="/quizzes/show/:id"
         component={Show}
       />
+      <RouteWithHeader showlogo path="/quizzes/done/:id" component={Done} />
       <PrivateRoute showlogo path="/quizzes" component={Quizzes} />
       <RouteWithHeader showlogo component={FourHundredFour} />
     </Switch>

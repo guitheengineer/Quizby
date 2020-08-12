@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { ClipLoader } from 'react-spinners';
+import { useHistory } from 'react-router-dom';
 import Answers from '../../components/gaming/Answers';
 import Question from '../../components/gaming/Question';
 import { getCurrentQuiz } from '../../asyncActions';
@@ -16,8 +17,21 @@ function Playing() {
     userAnsweredCorrect,
     userAnsweredWrong,
     currentQuestionAnswered,
+    userStats,
+    currentQuiz,
   } = useSelector(selectQuizReducer);
+  const history = useHistory();
+  const { _id } = currentQuiz;
+  const { done } = userStats;
   getQuiz();
+
+  function animationEnd() {
+    if (done) {
+      setTimeout(() => {
+        history.push(`/quizzes/done/${_id}`);
+      }, 1200);
+    }
+  }
 
   return (
     <>
@@ -38,6 +52,7 @@ function Playing() {
       </BackgroundContainer>
       {userAnsweredCorrect ? (
         <img
+          onAnimationEnd={animationEnd}
           src="../../../correct.svg"
           className="App__playing--correct"
           alt="Correct answer"
@@ -45,6 +60,7 @@ function Playing() {
       ) : (
         userAnsweredWrong && (
           <img
+            onAnimationEnd={animationEnd}
             src="../../../wrong.svg"
             className="App__playing--correct"
             alt="Wrong answer"

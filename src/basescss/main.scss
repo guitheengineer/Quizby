@@ -1,17 +1,26 @@
-@import "base";
-@import "../components/app/styles";
-@import "../components/header/styles";
-@import "../pages/playing/styles";
-@import "../components/gaming/answers";
-@import "../components/gaming/listiconanswers";
-@import "../components/gaming/infocounter";
-@import "../components/gaming/question";
-@import "../components/forms/presentation";
-@import "../components/forms/form";
-@import "../components/menuicon/styles";
-@import "../components/menu/styles";
-@import "../components/notification";
-@import "../components/fetcherror";
-@import "../pages/fourhundredfour/styles";
-@import "../pages/quizzes/styles";
-@import "../pages/show/styles";
+// Base scss
+@import 'base';
+
+// Main components
+@import '../components/menuicon/styles';
+@import '../components/menu/styles';
+@import '../components/app/styles';
+@import '../components/header/styles';
+
+// Misc components
+@import '../components/gaming/infocounter';
+@import '../components/gaming/question';
+@import '../components/forms/presentation';
+@import '../components/forms/form';
+@import '../components/notification';
+@import '../components/fetcherror';
+@import '../components/gaming/answers';
+@import '../components/gaming/listiconanswers';
+@import '../components/done/donut';
+
+// Pages
+@import '../pages/fourhundredfour/styles';
+@import '../pages/quizzes/styles';
+@import '../pages/show/styles';
+@import '../pages/done/styles';
+@import '../pages/playing/styles';
