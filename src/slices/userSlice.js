@@ -1,5 +1,5 @@
 const { createSlice } = require('@reduxjs/toolkit');
-const { verifyUser } = require('../asyncActions');
+const { verifyUser, saveQuizResult } = require('../asyncActions');
 
 export const userSlice = createSlice({
   name: 'userReducer',
@@ -8,10 +8,12 @@ export const userSlice = createSlice({
     checkAuth: false,
     username: '',
     email: '',
+    id: '',
+    saveQuizFetchState: '',
   },
   reducers: {
-    setIsAuthenticated: (state, action) => {
-      state.isAuthenticated = action.payload;
+    setUser: (state) => {
+      state.id = localStorage.getItem('USER');
     },
   },
   extraReducers: {
@@ -19,11 +21,12 @@ export const userSlice = createSlice({
       state.checkAuth = false;
     },
     [verifyUser.fulfilled]: (state, action) => {
-      const { username, email } = action.payload.user;
+      const { username, email, _id } = action.payload.user;
       if (action.payload.status === 'success') {
         state.isAuthenticated = true;
         state.username = username;
         state.email = email;
+        state.id = _id;
       } else {
         state.isAuthenticated = false;
       }
@@ -33,8 +36,19 @@ export const userSlice = createSlice({
       state.isAuthenticated = false;
       state.checkAuth = true;
     },
+    [saveQuizResult.rejected]: (state) => {
+      state.saveQuizFetchState = 'error';
+    },
+    [saveQuizResult.fulfilled]: (state) => {
+      state.saveQuizFetchState = 'fulfilled';
+    },
+    [saveQuizResult.pending]: (state) => {
+      state.saveQuizFetchState = 'pending';
+    },
   },
 });
+
+export const { setUser } = userSlice.actions;
 
 export const selectUserReducer = (state) => state.userReducer;
 

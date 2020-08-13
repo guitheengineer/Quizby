@@ -106,7 +106,7 @@ export const formSlice = createSlice({
       state.loginState = 'loading';
     },
     [postLogin.fulfilled]: (state, action) => {
-      const { status, message, token } = action.payload;
+      const { status, message, token, user } = action.payload;
       if (status === 'error') {
         state.loginError = {
           errorExists: true,
@@ -119,6 +119,7 @@ export const formSlice = createSlice({
           errorDes: null,
         };
         localStorage.setItem('TOKEN', token);
+        localStorage.setItem('USER', user._id);
       }
       state.loginState = 'fulfilled';
     },
