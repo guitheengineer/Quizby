@@ -16,13 +16,13 @@ function Routes() {
       <RouteWithHeader showlogo path="/quizzes/play/:id" component={Playing} />
       <RouteWithHeader path="/signup" component={Signup} />
       <RouteWithHeader path="/login" component={Login} />
-      <RouteWithHeader
+      <PrivateRoute
         showlogo
         style={{ position: 'absolute', zIndex: 1 }}
         path="/quizzes/show/:id"
         component={Show}
       />
-      <RouteWithHeader showlogo path="/quizzes/done/:id" component={Done} />
+      <PrivateRoute showlogo path="/quizzes/done/:id" component={Done} />
       <PrivateRoute showlogo path="/quizzes" component={Quizzes} />
       <RouteWithHeader showlogo component={FourHundredFour} />
     </Switch>

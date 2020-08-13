@@ -4,15 +4,29 @@ import { useSelector, useDispatch } from 'react-redux';
 import Donut from '../../components/done/Donut';
 import BackgroundContainer from '../../components/backgroundcontainer';
 import { resetUserStats } from '../../slices/quizzesSlice';
+import { saveQuizResult } from '../../asyncActions';
+import { setUser, selectUserReducer } from '../../slices/userSlice';
 
 function Done() {
   const { done, percentage } = useSelector(
     (state) => state.quizzesReducer.userStats
   );
+  const { isAuthenticated } = useSelector(selectUserReducer);
+  const userId = useSelector((state) => state.userReducer.id);
   const dispatch = useDispatch();
   const history = useHistory();
+  const quizId = window.location.pathname.split('/').pop();
+  console.log(isAuthenticated);
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(setUser());
+    }
+  }, []);
 
   useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(saveQuizResult({ percentage, quizId, userId }));
+    }
     if (!done) {
       history.goBack();
     }
@@ -36,8 +50,7 @@ function Done() {
 
   function restartGame() {
     dispatch(resetUserStats());
-    const id = window.location.pathname.split('/').pop();
-    history.push(`/quizzes/play/${id}`);
+    history.push(`/quizzes/play/${quizId}`);
   }
 
   return (

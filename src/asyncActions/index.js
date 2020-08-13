@@ -118,3 +118,17 @@ export const verifyUser = createAsyncThunk(
     return data;
   }
 );
+
+export const saveQuizResult = createAsyncThunk(
+  'userReducer/savequiz',
+  async ({ percentage, quizId, userId }) => {
+    await fetch('/user/savequiz', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ percentage, quizId, userId }),
+    });
+  }
+);

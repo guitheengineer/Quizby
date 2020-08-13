@@ -24,14 +24,18 @@ export const quizzesSlice = createSlice({
     userAnswer: '',
     currentAnswers: [],
     userStats: {
-      correctAnswers: 0,
-      wrongAnswers: 0,
-      totalAnswered: 0,
-      toBeAnswered: 0,
+      correctAnswers: null,
+      wrongAnswers: null,
+      totalAnswered: null,
+      toBeAnswered: null,
+      totalOfAnswers: null,
+      percentage: null,
+      done: false,
     },
     currentQuiz: {
       creatorName: '',
       name: '',
+      _id: '',
       questions: [
         {
           question: '',
@@ -68,6 +72,16 @@ export const quizzesSlice = createSlice({
         state.historicOfAnswers[state.currentQuestion] = 'wrong';
       }
       state.currentQuestionAnswered = true;
+      state.userStats.totalAnswered += 1;
+
+      state.userStats.totalOfAnswers = state.currentQuiz.questions.length;
+      state.userStats.toBeAnswered =
+        state.userStats.totalOfAnswers - state.userStats.totalAnswered;
+      state.userStats.percentage =
+        (100 * state.userStats.correctAnswers) / state.userStats.totalOfAnswers;
+      if (state.userStats.totalOfAnswers === state.userStats.totalAnswered) {
+        state.userStats.done = true;
+      }
     },
     nextQuestion: (state) => {
       state.userAnswer = '';
@@ -94,6 +108,23 @@ export const quizzesSlice = createSlice({
     },
     setQuery: (state, action) => {
       state.query = action.payload;
+    },
+    resetUserStats: (state) => {
+      state.userStats = {
+        correctAnswers: null,
+        wrongAnswers: null,
+        totalAnswered: null,
+        toBeAnswered: null,
+        totalOfAnswers: null,
+        percentage: null,
+        done: false,
+      };
+      state.currentQuestion = 0;
+      state.currentQuestionAnswered = false;
+      state.userAnsweredCorrect = false;
+      state.userAnsweredWrong = false;
+      state.historicOfAnswers = [];
+      state.userAnswer = '';
     },
   },
   extraReducers: {
@@ -151,6 +182,7 @@ export const {
   setUserAnswer,
   nextQuestion,
   setQuery,
+  resetUserStats,
 } = quizzesSlice.actions;
 
 export const selectQuizReducer = (state) => state.quizzesReducer;

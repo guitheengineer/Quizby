@@ -28,6 +28,18 @@ const userSchema = mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
+  quizzesPlayed: [
+    {
+      creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        unique: true,
+      },
+      name: String,
+      _id: String,
+      image: Object,
+      score: Number,
+    },
+  ],
   passwordChangedAt: Date,
 });
 
