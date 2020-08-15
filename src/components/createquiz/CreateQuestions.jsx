@@ -50,7 +50,7 @@ function CreateQuestions() {
             id={quiz.id}
           />
           <TextFieldCommon
-            type="realAnswer"
+            type="answer"
             label="Real Answer"
             multiline
             required

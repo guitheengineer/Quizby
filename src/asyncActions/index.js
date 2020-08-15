@@ -135,15 +135,16 @@ export const saveQuizResult = createAsyncThunk(
 
 export const sendForm = createAsyncThunk(
   'manipulateReducer/sendForm',
-  async (data) => {
-    console.log(data);
-    // await fetch('/createquiz', {
-    //   method: 'POST',
-    //   headers: {
-    //     Accept: 'application/json',
-    //     'Content-type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ id, quizinfo }),
-    // });
+  async (quizData) => {
+    const response = await fetch('/user/:id/createquiz', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(quizData),
+    });
+    const data = response.json();
+    return data;
   }
 );

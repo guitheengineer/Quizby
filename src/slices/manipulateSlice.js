@@ -18,7 +18,6 @@ const manipulateSlice = createSlice({
     ],
   },
   reducers: {
-    formQuizInserted: (state, action) => {},
     addCreationQuiz: (state) => {
       const newQuiz = {
         id: shortid.generate(),
@@ -37,9 +36,8 @@ const manipulateSlice = createSlice({
       state.creationQuizzes = filteredArray;
     },
     changeInput: (state, action) => {
-      console.log(action.payload);
       const { value, type, id } = action.payload;
-      if (id === undefined) {
+      if (id === '') {
         state[type] = value;
       } else {
         const newArray = state.creationQuizzes.map((data) => {
@@ -53,18 +51,18 @@ const manipulateSlice = createSlice({
         });
         state.creationQuizzes = newArray;
       }
-      console.log(state.creationQuizzes);
     },
   },
   extraReducers: {
-    [sendForm.fulfilled]: (state) => {},
+    [sendForm.fulfilled]: (state, action) => {
+      console.log(action.payload);
+    },
   },
 });
 
 export const {
   addCreationQuiz,
   removeCreatedQuiz,
-  formQuizInserted,
   changeInput,
 } = manipulateSlice.actions;
 

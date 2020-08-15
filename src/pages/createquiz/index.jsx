@@ -3,7 +3,7 @@ import QuizInfo from '../../components/createquiz/QuizInfo';
 import CreateQuestions from '../../components/createquiz/CreateQuestions';
 import BackgroundContainer from '../../components/backgroundcontainer';
 import CreateButton from '../../components/createquiz/CreateButton';
-import Button from '../../components/Button';
+import ButtonSaveQuiz from '../../components/createquiz/ButtonSaveQuiz';
 
 function CreateQuiz() {
   return (
@@ -16,7 +16,7 @@ function CreateQuiz() {
         <QuizInfo />
         <CreateQuestions />
         <CreateButton />
-        <Button title="Save quiz" />
+        <ButtonSaveQuiz title="Save quiz" />
       </div>
     </BackgroundContainer>
   );

@@ -1,11 +1,8 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  changeInput,
-  selectManipulateReducer,
-} from '../../slices/manipulateSlice';
+import { useDispatch } from 'react-redux';
+import { changeInput } from '../../slices/manipulateSlice';
 
 export default function TextFieldCommon({
   label,
@@ -17,7 +14,7 @@ export default function TextFieldCommon({
   id,
 }) {
   const dispatch = useDispatch();
-  console.log(useSelector(selectManipulateReducer));
+
   function textChange(e) {
     dispatch(changeInput({ value: e.target.value, type, id }));
   }
@@ -43,6 +40,8 @@ TextFieldCommon.propTypes = {
   multiline: PropTypes.bool,
   style: PropTypes.object,
   maxLength: PropTypes.number,
+  type: PropTypes.string.isRequired,
+  id: PropTypes.string,
 };
 TextFieldCommon.defaultProps = {
   label: 'Text',
@@ -50,4 +49,5 @@ TextFieldCommon.defaultProps = {
   multiline: false,
   maxLength: 140,
   style: {},
+  id: '',
 };
