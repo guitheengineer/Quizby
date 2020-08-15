@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 import { useSelector } from 'react-redux';
 import { selectFormReducer } from '../../slices/formSlice';
 
@@ -17,6 +17,7 @@ export default function TextFieldUsername() {
       variant="outlined"
       type="Username"
       margin="normal"
+      required
       FormHelperTextProps={{
         style: {
           fontSize: '12px',

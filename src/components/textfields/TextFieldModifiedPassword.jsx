@@ -15,6 +15,7 @@ export default function TextFieldModifiedPassword() {
     <TextField
       error={errorExistsPassword.errorExists}
       helperText={errorExistsPassword.errorDesc}
+      required
       id="outlined-basic"
       label="Password"
       variant="outlined"
