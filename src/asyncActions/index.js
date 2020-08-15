@@ -132,3 +132,18 @@ export const saveQuizResult = createAsyncThunk(
     });
   }
 );
+
+export const sendForm = createAsyncThunk(
+  'manipulateReducer/sendForm',
+  async (data) => {
+    console.log(data);
+    // await fetch('/createquiz', {
+    //   method: 'POST',
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-type': 'application/json',
+    //   },
+    //   body: JSON.stringify({ id, quizinfo }),
+    // });
+  }
+);
