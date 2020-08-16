@@ -13,7 +13,6 @@ require('dotenv').config();
 const path = require('path');
 const { appRoute, quizzesRoute } = require('./serverroutes');
 const { userRoute } = require('./serverroutes');
-const { protect } = require('./controllers/authentication');
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'build')));
@@ -39,7 +38,7 @@ mongoose.connection.on('connected', () => {
 
 app.use(express.json());
 app.use('/', appRoute);
-app.use('/user', userRoute, protect);
+app.use('/user', userRoute);
 app.use('/quizzes', quizzesRoute);
 
 const server = app.listen(port, () => 'server started');
