@@ -13,6 +13,8 @@ html {
   @media (min-width: 670px) {
     html {
       font-size: 66%; } }
+  html ul {
+    list-style-type: none; }
 
 body {
   box-sizing: border-box;
@@ -798,3 +800,57 @@ body {
     height: 11.2px; }
   .Create-quiz .MuiInputBase-root {
     margin-top: 0.3rem; }
+
+.User {
+  width: 80%; }
+  .User__profile {
+    margin-top: 3rem;
+    display: flex; }
+  .User__image {
+    min-width: 7rem;
+    height: 7rem;
+    position: relative;
+    background-color: blue;
+    border-radius: 50%; }
+  .User__stats {
+    display: flex;
+    justify-content: center;
+    width: 73%; }
+  .User__numbers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative; }
+    .User__numbers:first-child::after {
+      content: "";
+      margin: auto;
+      position: absolute;
+      width: 2px;
+      background-color: #f1f1f1;
+      left: 95%;
+      height: 5.4rem; }
+  .User__label {
+    font: 2.4rem Overpass;
+    color: #5a5a72; }
+  .User__description {
+    font: 1.4rem Overpass;
+    color: #80819c; }
+  .User__played {
+    margin-top: 4.6rem;
+    height: 25.8rem; }
+  .User__title {
+    font: 1.6rem Overpass;
+    color: #0a0a1f; }
+  .User__quizzes {
+    margin-top: 1.2rem;
+    display: grid;
+    grid-template: 1fr 1fr/1fr 1fr;
+    gap: 0.9rem; }
+  .User__item {
+    background-color: #c4c4c4;
+    border-radius: 5px;
+    height: 10.9rem; }
+  .User__created {
+    margin-top: 3.6rem; }

@@ -37,6 +37,9 @@ html {
   // }
   font-family: Overpass;
   line-height: calc(1.5em + (1.55 - 1.5) * ((100vw - 21em) / (35 - 21)));
+  ul {
+    list-style-type: none;
+  }
 }
 
 body {
