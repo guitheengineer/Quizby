@@ -30,20 +30,24 @@ html {
   @include resp(670) {
     font-size: 66%;
   }
-
   box-sizing: border-box;
   // @include respond(200) {
   //   font-size: 62.5%;
   // }
-  font-family: Overpass;
   line-height: calc(1.5em + (1.55 - 1.5) * ((100vw - 21em) / (35 - 21)));
-  ul {
-    list-style-type: none;
-  }
 }
 
 body {
   box-sizing: border-box;
   overflow-x: hidden;
   background: rgb(248, 250, 247);
+  font: 1.6rem Overpass;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
 }
