@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 function CategoriesButton({ title }) {
+  const history = useHistory();
+  function buttonClicked() {
+    history.push(`/quizzes/category/${title.toLowerCase()}`);
+  }
   return (
-    <button type="button">
+    <button onClick={buttonClicked} type="button">
       <span>{title}</span>
     </button>
   );
