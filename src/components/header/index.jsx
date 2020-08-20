@@ -7,7 +7,7 @@ function Header({ showlogo, style }) {
   return showlogo ? (
     <div style={style} className="App__header">
       <Link style={{ textDecoration: 'none' }} to="/">
-        <span className="App__header--title">Lorem ipsum</span>
+        <span className="App__header--title">Quizby</span>
       </Link>
       <MenuIcon />
     </div>
@@ -22,7 +22,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  showlogo: false,
+  showlogo: true,
   style: {},
 };
 
