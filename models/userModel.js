@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
+const shortid = require('shortid');
 
 const userSchema = mongoose.Schema({
   username: {
@@ -40,6 +41,74 @@ const userSchema = mongoose.Schema({
       score: Number,
     },
   ],
+  quizzesCreated: [
+    {
+      _id: {
+        type: String,
+        default: shortid.generate,
+      },
+      creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
+      creatorName: {
+        type: String,
+        required: true,
+      },
+      image: {
+        data: String,
+        contentType: String,
+      },
+      name: {
+        type: String,
+        required: true,
+        minlength: 4,
+        maxlength: 35,
+      },
+      description: {
+        type: String,
+        maxlength: 120,
+      },
+      timesPlayed: {
+        type: Number,
+        default: 0,
+      },
+      createdAt: Date,
+      category: String,
+      questions: [
+        {
+          question: {
+            type: String,
+            required: true,
+            minlength: 3,
+            maxlength: 140,
+          },
+          answer: {
+            type: String,
+            required: true,
+            minlength: 3,
+            maxlength: 20,
+          },
+          fakeAnswer1: {
+            type: String,
+            required: true,
+            maxlength: 20,
+          },
+          fakeAnswer2: {
+            type: String,
+            required: true,
+            maxlength: 20,
+          },
+          fakeAnswer3: {
+            type: String,
+            required: true,
+            maxlength: 20,
+          },
+        },
+      ],
+    },
+  ],
+
   passwordChangedAt: Date,
 });
 

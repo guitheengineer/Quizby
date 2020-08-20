@@ -35,7 +35,10 @@ const quizSchema = new Schema({
     default: 0,
   },
   createdAt: Date,
-  category: String,
+  category: {
+    type: String,
+    lowercase: true,
+  },
   questions: [
     {
       question: {
@@ -48,11 +51,22 @@ const quizSchema = new Schema({
         type: String,
         required: true,
         minlength: 3,
+        maxlength: 20,
       },
-      possibleAnswers: {
-        type: Array,
+      fakeAnswer1: {
+        type: String,
         required: true,
-        minlength: 3,
+        maxlength: 20,
+      },
+      fakeAnswer2: {
+        type: String,
+        required: true,
+        maxlength: 20,
+      },
+      fakeAnswer3: {
+        type: String,
+        required: true,
+        maxlength: 20,
       },
     },
   ],
