@@ -6,7 +6,13 @@ import Header from '../components/header';
 import { verifyUser } from '../asyncActions';
 import { selectUserReducer } from '../slices/userSlice';
 
-function PrivateRoute({ showlogo, title, component: Component, ...rest }) {
+function PrivateRoute({
+  showlogo,
+  style,
+  title,
+  component: Component,
+  ...rest
+}) {
   const dispatch = useDispatch();
   const { isAuthenticated, checkAuth } = useSelector(selectUserReducer);
 
@@ -24,7 +30,7 @@ function PrivateRoute({ showlogo, title, component: Component, ...rest }) {
         render={(props) =>
           isAuthenticated ? (
             <>
-              <Header showlogo={showlogo} />
+              <Header showlogo={showlogo} style={style} />
               <Component {...props} />
             </>
           ) : (
@@ -40,12 +46,14 @@ PrivateRoute.propTypes = {
   showlogo: PropTypes.bool,
   component: PropTypes.func.isRequired,
   title: PropTypes.string,
+  style: PropTypes.object,
   location: PropTypes.object,
 };
 
 PrivateRoute.defaultProps = {
-  showlogo: false,
+  showlogo: true,
   title: 'Quizby',
+  style: {},
   location: {},
 };
 
