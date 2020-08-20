@@ -20,8 +20,8 @@ function Signup() {
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <Presentation
         mgTop="-1.1rem"
-        title="Registrar-se"
-        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morboa."
+        title="Signup"
+        desc="Register now and start playing quizzes from the community"
       />
       <BackgroundContainer mgTop="2.7rem" minHeight="38.7rem">
         <form
@@ -71,7 +71,7 @@ function Signup() {
             }}
             type="submit"
           >
-            <span>Registrar</span>
+            <span>Signup</span>
             <ClipLoader
               loading={signupState === 'loading'}
               size="14px"

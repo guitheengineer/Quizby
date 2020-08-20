@@ -1,12 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { Link } from 'react-router-dom';
 
 import Presentation from '../Presentation';
 import { postLogin } from '../../../asyncActions';
 import BackgroundContainer from '../../backgroundcontainer';
-
-// import TextFieldModified from "../TextFieldModified";
 import TextFieldModifiedPassword from '../../textfields/TextFieldModifiedPassword';
 import TextFieldModifiedEmail from '../../textfields/TextFieldModifiedEmail';
 import { onSubmitForm, selectFormReducer } from '../../../slices/formSlice';
@@ -41,7 +40,7 @@ export default function Login() {
       <Presentation
         mgTop="0rem"
         title="Login"
-        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morboa."
+        desc="Enter to start creating and sharing fun quizzes to your friends!"
       />
       <BackgroundContainer mgTop="3.2rem" minHeight="35.7rem">
         <form onSubmit={onFormSubmit} className="App__form">
@@ -73,8 +72,10 @@ export default function Login() {
           </button>
         </form>
         <div className="App__registerAdvice">
-          Não tem uma conta?
-          <em>Registre-se</em>
+          Still not registered?
+          <Link to="/signup">
+            <em className="App__call">Signup</em>
+          </Link>
         </div>
       </BackgroundContainer>
     </div>
