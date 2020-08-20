@@ -1,71 +1,80 @@
 .User {
-    width: 80%;
+  width: 80%;
+  &__profile {
+    margin-top: 3.2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  &__stats {
+    margin-top: 3.2rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-self: center;
+  }
 
-    &__profile {
-        margin-top: 3rem;
-        display: flex;
+  &__numbers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    height: 8.4rem;
+    &:not(:last-child) {
+      &::after {
+        content: '';
+        margin: auto;
+        position: absolute;
+        width: 2px;
+        background-color: #f1f1f1;
+        left: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 6.2rem;
+      }
     }
-    &__image {
-        min-width: 7rem;
-        height: 7rem;
-        position: relative;
-        background-color: blue;
-        border-radius: 50%;
+  }
+  &__label {
+    margin-top: 0.9rem;
+    font: 1.8rem Overpass;
+    color: #5a5a72;
+  }
+  &__description {
+    font: 1.4rem Overpass;
+    color: #80819c;
+  }
+  &__played {
+    margin-top: 4.6rem;
+  }
+  &__title {
+    font: 1.6rem Overpass;
+    color: #0a0a1f;
+  }
+  &__quizzes {
+    margin-top: 1.2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.9rem;
+  }
+  &__item {
+    background-color: #c4c4c4;
+    border-radius: 5px;
+    padding-top: 71.8%;
+    position: relative;
+    border: 0;
+    text-align: left;
+    span {
+      position: absolute;
+      font: 1.4rem Overpass;
+      font-size: clamp(1.4rem, 4.2vw, 1.8rem);
+      left: 10%;
+      bottom: 10%;
+      color: white;
     }
-    &__stats {
-        display: flex;
-        justify-content: center;
-        width: 73%;
-    }
+  }
 
-    &__numbers {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        position: relative;
-
-        &:first-child {
-            &::after {
-                content: "";
-                margin: auto;
-                position: absolute;
-                width: 2px;
-                background-color: #f1f1f1;
-                left: 95%;
-                height: 5.4rem;
-            }
-        }
-    }
-    &__label {
-        font: 2.4rem Overpass;
-        color: #5a5a72;
-    }
-    &__description {
-        font: 1.4rem Overpass;
-        color: #80819c;
-    }
-    &__played {
-        margin-top: 4.6rem;
-        height: 25.8rem;
-    }
-    &__title {
-        font: 1.6rem Overpass;
-        color: #0a0a1f;
-    }
-    &__quizzes {
-        margin-top: 1.2rem;
-        display: grid;
-        grid-template: 1fr 1fr/1fr 1fr;
-        gap: 0.9rem;
-    }
-    &__item {
-        background-color: #c4c4c4;
-        border-radius: 5px;
-        height: 10.9rem;
-    }
-    &__created {
-        margin-top: 3.6rem;
-    }
+  &__created {
+    margin-top: 3.6rem;
+  }
 }

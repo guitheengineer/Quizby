@@ -16,12 +16,15 @@
         width: inherit;
         height: inherit;
         cursor: pointer;
-        border: 1px dashed #7ca0c0;
         content: "play";
         color: transparent;
         &::-webkit-file-upload-button {
             visibility: hidden;
         }
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-size: cover !important;
+        border-radius: 5px;
     }
     &__add {
         margin-top: 0.6rem;
@@ -82,13 +85,17 @@
     &__illustration {
         display: flex;
         flex-direction: column;
+        z-index: 9999;
     }
     &__insert {
         margin-top: 0.7rem;
         font: 1.6rem Overpass;
         color: rgba(10, 10, 31, 0.84);
     }
-
+    .MuiSelect-selectMenu {
+        margin-top: -0.4rem;
+        min-height: 0.8em;
+    }
     .MuiInputBase-root {
         font: 1.6rem Overpass;
     }
