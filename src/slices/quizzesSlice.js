@@ -4,6 +4,8 @@ import {
   getCurrentQuiz,
   searchQuizzes,
   getRecommendedQuiz,
+  getUserQuizzes,
+  getCategoryQuiz,
 } from '../asyncActions';
 
 function shuffleArray(array) {
@@ -20,6 +22,7 @@ export const quizzesSlice = createSlice({
       mostPlayed: [],
       quizzesSearchedData: [],
       recommended: {},
+      category: [],
     },
     userAnswer: '',
     currentAnswers: [],
@@ -39,8 +42,10 @@ export const quizzesSlice = createSlice({
       questions: [
         {
           question: '',
+          fakeAnswer1: '',
+          fakeAnswer2: '',
+          fakeAnswer3: '',
           answer: '',
-          possibleAnswers: [],
         },
       ],
       timesPlayed: 0,
@@ -56,6 +61,27 @@ export const quizzesSlice = createSlice({
     recommendedQuizFetchState: false,
     historicOfAnswers: [],
     query: '',
+    quizzesPlayed: [
+      {
+        creator: '',
+        image: { data: '', contentType: '' },
+        name: '',
+        score: null,
+        _id: '',
+      },
+    ],
+    quizzesCreated: [
+      {
+        creator: '',
+        image: { data: '', contentType: '' },
+        name: '',
+        score: null,
+        _id: '',
+      },
+    ],
+    quizAverage: '',
+    countQuizzesPlayed: '',
+    countQuizzesCreated: '',
   },
   reducers: {
     setUserAnswer: (state, action) => {
@@ -96,8 +122,10 @@ export const quizzesSlice = createSlice({
           questions: [
             {
               question: '',
+              fakeAnswer1: '',
+              fakeAnswer2: '',
+              fakeAnswer3: '',
               answer: '',
-              possibleAnswers: [],
             },
           ],
           timesPlayed: 0,
@@ -148,10 +176,14 @@ export const quizzesSlice = createSlice({
       if (action.payload.status === 'success') {
         const { quiz } = action.payload;
         state.currentQuiz = quiz;
-        const { answer } = quiz.questions[state.currentQuestion];
-        const { possibleAnswers } = quiz.questions[state.currentQuestion];
+        const {
+          answer,
+          fakeAnswer1,
+          fakeAnswer2,
+          fakeAnswer3,
+        } = quiz.questions[state.currentQuestion];
 
-        const groupAnswers = [...possibleAnswers, answer];
+        const groupAnswers = [fakeAnswer1, fakeAnswer2, fakeAnswer3, answer];
         shuffleArray(groupAnswers);
         state.currentAnswers = groupAnswers;
         state.quizFetchState = 'fetched';
@@ -170,9 +202,26 @@ export const quizzesSlice = createSlice({
     [searchQuizzes.rejected]: (state) => {
       state.quizSearchFetchState = 'error';
     },
+    // handle errors and loading
     [getRecommendedQuiz.fulfilled]: (state, action) => {
       state.quizzes.recommended = action.payload.recommendedQuiz;
       state.recommendedQuizFetchState = 'fulfilled';
+    },
+    [getUserQuizzes.fulfilled]: (state, action) => {
+      const {
+        quizzes,
+        quizAverage,
+        countQuizzesCreated,
+        countQuizzesPlayed,
+      } = action.payload;
+      state.quizzesPlayed = quizzes.quizzesPlayed;
+      state.quizzesCreated = quizzes.quizzesCreated;
+      state.quizAverage = quizAverage;
+      state.countQuizzesCreated = countQuizzesCreated;
+      state.countQuizzesPlayed = countQuizzesPlayed;
+    },
+    [getCategoryQuiz.fulfilled]: (state, action) => {
+      state.quizzes.category = action.payload;
     },
   },
 });

@@ -148,3 +148,22 @@ export const sendForm = createAsyncThunk(
     return data;
   }
 );
+
+export const getUserQuizzes = createAsyncThunk(
+  'quizzesReducer/getUserQuizzes',
+  async () => {
+    const username = window.location.pathname.split('/').pop();
+    const response = await fetch(`/user/${username}`);
+    const data = await response.json();
+    return data;
+  }
+);
+
+export const getCategoryQuiz = createAsyncThunk(
+  'quizzesReducer/getCategoryQuiz',
+  async (category) => {
+    const response = await fetch(`/quizzes/category/${category}`);
+    const data = await response.json();
+    return data;
+  }
+);

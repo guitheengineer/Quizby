@@ -1,14 +1,19 @@
 const express = require('express');
-const { searchQuizzes } = require('../controllers/quiz');
-const { currentQuiz } = require('../controllers/quiz');
-const { getQuizzes } = require('../controllers/quiz');
-const { getRecommendedQuiz } = require('../controllers/quiz');
+
+const {
+  getQuizzes,
+  getRecommendedQuiz,
+  currentQuiz,
+  searchQuizzes,
+  categoryQuiz,
+} = require('../controllers/quiz');
 
 const router = express.Router();
 
-router.get('/search', searchQuizzes);
 router.get('/play/:id', currentQuiz);
+router.get('/search', searchQuizzes);
 router.get('/recommended', getRecommendedQuiz);
+router.get('/category/:category', categoryQuiz);
 router.get('/', getQuizzes);
 
 module.exports = router;

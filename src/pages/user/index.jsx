@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Clipboard, Crosshair, Coffee } from 'react-feather';
 import BackgroundContainer from '../../components/backgroundcontainer';
+import { selectUserReducer } from '../../slices/userSlice';
+import { getUserQuizzes } from '../../asyncActions';
+import { selectQuizReducer } from '../../slices/quizzesSlice';
+import ButtonQuiz from '../../components/quizzes/ButtonQuiz';
+import Stats from '../../components/user/Number';
 
 function User() {
-  // useEffect(() => {
-  //     effect
-  //     return () => {
-  //         cleanup
-  //     }
-  // }, [input])
+  const { username } = useSelector(selectUserReducer);
+  const {
+    quizzesPlayed,
+    quizzesCreated,
+    quizAverage,
+    countQuizzesPlayed,
+    countQuizzesCreated,
+  } = useSelector(selectQuizReducer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserQuizzes());
+  }, [username]);
+
   return (
     <BackgroundContainer
       justifyContent="normal"
@@ -16,34 +31,35 @@ function User() {
     >
       <div className="User">
         <section className="User__profile">
-          <div className="User__image" />
+          <h4 className="User__title">User profile</h4>
           <ul className="User__stats">
-            <li className="User__numbers">
-              <div className="User__label">75%</div>
-              <p className="User__description">Hit rate</p>
-            </li>
-            <li className="User__numbers User__numbers--nowrap">
-              <div className="User__label">11/24</div>
-              <p className="User__description">Questions</p>
-            </li>
+            <Stats
+              icon={Clipboard}
+              label={countQuizzesCreated}
+              description="Created"
+            />
+            <Stats icon={Crosshair} label={quizAverage} description="Rating" />
+            <Stats
+              icon={Coffee}
+              label={countQuizzesPlayed}
+              description="Games"
+            />
           </ul>
         </section>
         <section className="User__played">
           <h4 className="User__title">Played recently</h4>
           <ul className="User__quizzes">
-            <li className="User__item" />
-            <li className="User__item" />
-            <li className="User__item" />
-            <li className="User__item" />
+            {quizzesPlayed.map((quiz) => (
+              <ButtonQuiz key={quiz.id} className="User__item" quiz={quiz} />
+            ))}
           </ul>
         </section>
         <section className="User__created">
           <h4 className="User__title">Created</h4>
           <ul className="User__quizzes">
-            <li className="User__item" />
-            <li className="User__item" />
-            <li className="User__item" />
-            <li className="User__item" />
+            {quizzesCreated.map((quiz) => (
+              <ButtonQuiz key={quiz.id} className="User__item" quiz={quiz} />
+            ))}
           </ul>
         </section>
       </div>
