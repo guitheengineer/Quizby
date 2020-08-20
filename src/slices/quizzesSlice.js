@@ -79,9 +79,9 @@ export const quizzesSlice = createSlice({
         _id: '',
       },
     ],
-    quizAverage: '',
-    countQuizzesPlayed: '',
-    countQuizzesCreated: '',
+    quizAverage: 0,
+    countQuizzesPlayed: 0,
+    countQuizzesCreated: 0,
   },
   reducers: {
     setUserAnswer: (state, action) => {
