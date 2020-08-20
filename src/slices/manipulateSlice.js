@@ -5,14 +5,22 @@ import { sendForm } from '../asyncActions';
 const manipulateSlice = createSlice({
   name: 'manipulateReducer',
   initialState: {
+    saveQuizFetchState: '',
+    id: '',
     name: '',
     description: '',
+    category: '',
+    image: {
+      data: '',
+      contentType: '',
+    },
     creationQuizzes: [
       {
         id: shortid.generate(),
         question: '',
         fakeAnswer1: '',
         fakeAnswer2: '',
+        fakeAnswer3: '',
         answer: '',
       },
     ],
@@ -22,8 +30,9 @@ const manipulateSlice = createSlice({
       const newQuiz = {
         id: shortid.generate(),
         question: '',
-        fakeanswer1: '',
-        fakeanswer2: '',
+        fakeAnswer1: '',
+        fakeAnswer2: '',
+        fakeAnswer3: '',
         answer: '',
       };
       state.creationQuizzes.push(newQuiz);
@@ -34,6 +43,11 @@ const manipulateSlice = createSlice({
         (quiz) => quiz.id !== id
       );
       state.creationQuizzes = filteredArray;
+    },
+    changeImage: (state, action) => {
+      const { contentType, data } = action.payload;
+      state.image.contentType = contentType;
+      state.image.data = data;
     },
     changeInput: (state, action) => {
       const { value, type, id } = action.payload;
@@ -54,8 +68,16 @@ const manipulateSlice = createSlice({
     },
   },
   extraReducers: {
+    [sendForm.pending]: (state) => {
+      state.saveQuizFetchState = 'pending';
+    },
     [sendForm.fulfilled]: (state, action) => {
-      console.log(action.payload);
+      console.log(action.payload.data.newQuiz._id);
+      state.id = action.payload.data.newQuiz._id;
+      state.saveQuizFetchState = 'fulfilled';
+    },
+    [sendForm.rejected]: (state) => {
+      state.saveQuizFetchState = 'rejected';
     },
   },
 });
@@ -64,6 +86,7 @@ export const {
   addCreationQuiz,
   removeCreatedQuiz,
   changeInput,
+  changeImage,
 } = manipulateSlice.actions;
 
 export const selectManipulateReducer = (state) => state.manipulateReducer;

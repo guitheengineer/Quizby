@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
+import ClipLoader from 'react-spinners/ClipLoader';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendForm } from '../../asyncActions';
 import { selectManipulateReducer } from '../../slices/manipulateSlice';
@@ -7,13 +9,35 @@ import { selectUserReducer } from '../../slices/userSlice';
 
 function ButtonSaveQuiz({ title }) {
   const dispatch = useDispatch();
-  const { name, description, creationQuizzes } = useSelector(
-    selectManipulateReducer
-  );
-  const { id } = useSelector(selectUserReducer);
+  const history = useHistory();
+  const {
+    name,
+    description,
+    creationQuizzes,
+    image,
+    category,
+    saveQuizFetchState,
+    id: quizId,
+  } = useSelector(selectManipulateReducer);
+  const { id, username } = useSelector(selectUserReducer);
 
+  useEffect(() => {
+    if (saveQuizFetchState === 'fulfilled') {
+      history.push(`/quizzes/show/${quizId}`);
+    }
+  }, [saveQuizFetchState]);
   function saveQuiz() {
-    dispatch(sendForm({ id, name, description, creationQuizzes }));
+    dispatch(
+      sendForm({
+        id,
+        image,
+        username,
+        name,
+        description,
+        category,
+        creationQuizzes,
+      })
+    );
   }
 
   return (
@@ -30,14 +54,14 @@ function ButtonSaveQuiz({ title }) {
       }}
     >
       <span>{title}</span>
-      {/* <ClipLoader
-          loading={loginState === 'loading'}
-          size="14px"
-          color="white"
-          css={`
-            margin-left: 5px;
-          `}
-        /> */}
+      <ClipLoader
+        loading={saveQuizFetchState === 'loading'}
+        size="14px"
+        color="white"
+        css={`
+          margin-left: 5px;
+        `}
+      />
     </button>
   );
 }

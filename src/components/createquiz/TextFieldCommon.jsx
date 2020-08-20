@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import MenuItem from '@material-ui/core/MenuItem';
 import { changeInput } from '../../slices/manipulateSlice';
 
 export default function TextFieldCommon({
@@ -12,9 +13,10 @@ export default function TextFieldCommon({
   maxLength,
   type,
   id,
+  select,
+  currencies,
 }) {
   const dispatch = useDispatch();
-
   function textChange(e) {
     dispatch(changeInput({ value: e.target.value, type, id }));
   }
@@ -28,9 +30,17 @@ export default function TextFieldCommon({
       onChange={textChange}
       required={required}
       style={style}
+      select={select}
       multiline={multiline}
       inputProps={{ maxLength }}
-    />
+    >
+      {select &&
+        currencies.map((option) => (
+          <MenuItem key={option.value} value={option.value || ''}>
+            {option.value}
+          </MenuItem>
+        ))}
+    </TextField>
   );
 }
 
@@ -42,6 +52,8 @@ TextFieldCommon.propTypes = {
   maxLength: PropTypes.number,
   type: PropTypes.string.isRequired,
   id: PropTypes.string,
+  select: PropTypes.bool,
+  currencies: PropTypes.array,
 };
 TextFieldCommon.defaultProps = {
   label: 'Text',
@@ -49,5 +61,7 @@ TextFieldCommon.defaultProps = {
   multiline: false,
   maxLength: 140,
   style: {},
+  select: false,
+  currencies: [],
   id: '',
 };

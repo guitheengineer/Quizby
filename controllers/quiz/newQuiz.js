@@ -1,19 +1,41 @@
-const { quizModel } = require('../../models');
+const { userModel, quizModel } = require('../../models');
 
 module.exports = async (req, res) => {
-  const data = req.body;
-  console.log(data);
-  // const userIdentification = await userModel.findById(userId);
+  const {
+    id,
+    image,
+    username,
+    name,
+    description,
+    creationQuizzes,
+    category,
+  } = req.body;
+  const quizCreated = {
+    creator: id,
+    creatorName: username,
+    name,
+    description,
+    image,
+    category,
+    questions: creationQuizzes,
+  };
 
-  // const quizCreate = await quizModel.create({
-  //   creator: userId,
-  //   creatorName,
-  //   name,
-  //   questions,
-  // });
+  const newUser = await userModel.findByIdAndUpdate(
+    id,
+    {
+      $push: {
+        quizzesCreated: quizCreated,
+      },
+    },
+    { new: true }
+  );
+  const newQuiz = await quizModel.create(quizCreated);
 
   res.status(200).json({
     status: 'success',
-    data: quizCreate,
+    data: {
+      newUser,
+      newQuiz,
+    },
   });
 };
