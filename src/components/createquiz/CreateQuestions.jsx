@@ -1,10 +1,17 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import TextFieldCommon from '../textfields/TextFieldCommon';
+import TextFieldCommon from './TextFieldCommon';
 import {
   selectManipulateReducer,
   removeCreatedQuiz,
 } from '../../slices/manipulateSlice';
+
+const commonProps = {
+  multiline: true,
+  required: true,
+  maxLength: 20,
+  style: { marginTop: '1.6rem' },
+};
 
 function CreateQuestions() {
   const { creationQuizzes } = useSelector(selectManipulateReducer);
@@ -12,6 +19,7 @@ function CreateQuestions() {
   function close(i) {
     dispatch(removeCreatedQuiz(i));
   }
+
   return (
     <>
       <h6 className="Create-quiz__title Create-quiz__title--questions">
@@ -19,7 +27,7 @@ function CreateQuestions() {
       </h6>
       {creationQuizzes.map((quiz, i) => (
         <fieldset key={quiz.id} className="Create-quiz__quiz-creation">
-          <legend className="Create-quiz__quiz-legend">Quiz {i + 1}</legend>
+          <legend className="Create-quiz__quiz-legend">Question {i + 1}</legend>
           <button
             type="button"
             onClick={() => close(quiz.id)}
@@ -29,33 +37,34 @@ function CreateQuestions() {
           <TextFieldCommon
             type="question"
             label="Question"
-            multiline
             required
+            multiline
+            maxLength={140}
             id={quiz.id}
           />
           <TextFieldCommon
             type="fakeAnswer1"
             label="Fake Answer"
-            multiline
-            required
-            style={{ marginTop: '1.6rem' }}
             id={quiz.id}
+            {...commonProps}
           />
           <TextFieldCommon
             type="fakeAnswer2"
-            label="Fake Answer"
-            multiline
-            required
-            style={{ marginTop: '1.6rem' }}
+            label="Fake Answer 2"
             id={quiz.id}
+            {...commonProps}
+          />
+          <TextFieldCommon
+            type="fakeAnswer3"
+            label="Fake Answer 3"
+            id={quiz.id}
+            {...commonProps}
           />
           <TextFieldCommon
             type="answer"
             label="Real Answer"
-            multiline
-            required
-            style={{ marginTop: '1.6rem' }}
             id={quiz.id}
+            {...commonProps}
           />
         </fieldset>
       ))}
