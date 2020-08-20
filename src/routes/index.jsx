@@ -11,28 +11,33 @@ import Show from '../pages/show';
 import Done from '../pages/done';
 import CreateQuiz from '../pages/createquiz';
 import User from '../pages/user';
+import PrivateRouteUser from './PrivateRouteUser';
+import Category from '../pages/category';
 
 function Routes() {
   return (
     <Switch>
-      <RouteWithHeader showlogo path="/quizzes/play/:id" component={Playing} />
-      <RouteWithHeader path="/signup" component={Signup} />
-      <RouteWithHeader path="/login" component={Login} />
+      <RouteWithHeader path="/quizzes/play/:id" component={Playing} />
+      <RouteWithHeader showlogo={false} path="/signup" component={Signup} />
+      <RouteWithHeader showlogo={false} path="/login" component={Login} />
       <PrivateRoute
-        showlogo
         style={{ position: 'absolute', zIndex: 1 }}
         path="/quizzes/show/:id"
         component={Show}
       />
-      <PrivateRoute showlogo path="/quizzes/done/:id" component={Done} />
-      <PrivateRoute showlogo path="/quizzes" component={Quizzes} />
-      <RouteWithHeader showlogo path="/user/:username" component={User} />
-      <PrivateRoute
-        showlogo
+      <PrivateRoute path="/quizzes/done/:id" component={Done} />
+      <RouteWithHeader
+        path="/quizzes/category/:category"
+        component={Category}
+      />
+      <PrivateRoute path="/quizzes" component={Quizzes} />
+      <PrivateRouteUser
         path="/user/:username/createquiz"
         component={CreateQuiz}
       />
-      <RouteWithHeader showlogo component={FourHundredFour} />
+      <RouteWithHeader path="/user/:username" component={User} />
+
+      <RouteWithHeader component={FourHundredFour} />
     </Switch>
   );
 }
