@@ -29,7 +29,7 @@ function Quizzes() {
       return (
         <>
           <Recommended />
-          <QuizList type="mostPlayed" />
+          <QuizList label="Most played" type="mostPlayed" />
           <Categories />
         </>
       );

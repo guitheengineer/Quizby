@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import BackgroundContainer from '../../components/backgroundcontainer';
 import { setQuery } from '../../slices/quizzesSlice';
 import QuizList from '../../components/quizzes/QuizList';
 import { getQuiz, getMenuIsActive } from '../../customhooks';
+import { getQuizzes } from '../../asyncActions';
 
 function Show() {
   const menuIsActive = getMenuIsActive();
   const dispatch = useDispatch();
   const history = useHistory();
   const { name, image, description, _id } = getQuiz();
+
+  useEffect(() => {
+    dispatch(getQuizzes());
+  }, []);
 
   function playButton() {
     history.push(`/quizzes/play/${_id}`);
