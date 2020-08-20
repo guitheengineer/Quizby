@@ -59,7 +59,7 @@ Donut.propTypes = {
 
 Donut.defaultProps = {
   value: 0,
-  valueLabel: 'Correct',
+  valueLabel: '',
   size: 187,
-  strokeWidth: 13,
+  strokeWidth: 10,
 };
