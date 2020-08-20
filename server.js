@@ -11,6 +11,7 @@ const mongoose = require('mongoose');
 const app = express();
 require('dotenv').config();
 const path = require('path');
+const bodyParser = require('body-parser');
 const { appRoute, quizzesRoute } = require('./serverroutes');
 const { userRoute } = require('./serverroutes');
 
@@ -36,7 +37,9 @@ mongoose.connection.on('connected', () => {
   console.log('mongoose is connected');
 });
 
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
+app.use(express.json({ limit: '50mb' }));
+
 app.use('/', appRoute);
 app.use('/user', userRoute);
 app.use('/quizzes', quizzesRoute);
