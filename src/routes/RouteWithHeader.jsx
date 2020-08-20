@@ -34,7 +34,7 @@ RouteWithHeader.propTypes = {
 };
 
 RouteWithHeader.defaultProps = {
-  showlogo: false,
+  showlogo: true,
   title: 'Quizby',
   style: {},
 };
