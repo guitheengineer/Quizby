@@ -3,7 +3,8 @@
 *::after {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; }
+  box-sizing: inherit;
+  border: 0; }
 
 html {
   font-size: 62.5%;
@@ -224,21 +225,6 @@ button {
     height: 11.2px; }
   .App__form .MuiInputBase-root {
     margin-top: 0.3rem; }
-  .App__form--button {
-    box-shadow: 3px 3px 2px rgba(136, 136, 136, 0.45);
-    background-color: #5255ca;
-    border-radius: 0.5rem;
-    height: 4.9rem;
-    width: 40%;
-    color: white;
-    border: 0;
-    margin-top: 4.3vh;
-    align-self: flex-end;
-    font-size: 1.6rem;
-    letter-spacing: 0.05rem;
-    cursor: pointer; }
-    .App__form--button:active {
-      box-shadow: inset 0px 6px 4px rgba(0, 0, 0, 0.13); }
   .App__form--loginerror {
     margin-bottom: 1.5rem;
     font: 1.5rem Roboto;
@@ -474,6 +460,135 @@ button {
   .Done__text--label {
     font-size: 12px; }
 
+.button {
+  box-shadow: 3px 3px 2px rgba(136, 136, 136, 0.45);
+  background-color: #5255ca;
+  border-radius: 0.5rem;
+  height: 4.9rem;
+  color: white;
+  border: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.05rem;
+  margin-top: 3.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; }
+  .button:active {
+    box-shadow: inset 0px 6px 4px rgba(0, 0, 0, 0.13); }
+  .button--signup {
+    margin-top: 2.8rem; }
+  .button--save-quiz {
+    margin-bottom: 4rem; }
+
+.Quiz-form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  font-family: Overpass; }
+  .Quiz-form__container {
+    position: relative;
+    width: 100%;
+    height: 16.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .Quiz-form__input-image {
+    width: inherit;
+    height: inherit;
+    cursor: pointer;
+    content: "play";
+    color: transparent;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+    border-radius: 5px; }
+    .Quiz-form__input-image::-webkit-file-upload-button {
+      visibility: hidden; }
+  .Quiz-form__add {
+    margin-top: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: -1; }
+  .Quiz-form__text {
+    margin-top: 0.5rem;
+    font: 1.6rem Overpass;
+    color: rgba(125, 126, 159, 0.89); }
+  .Quiz-form__title {
+    margin: 3rem 0 0.8rem 0;
+    font: 1.6rem Overpass;
+    color: #0a0a1f; }
+    .Quiz-form__title--questions {
+      margin-bottom: -0.5rem; }
+  .Quiz-form__quiz-creation {
+    margin-top: 1.6rem;
+    padding: 1.8rem 2.8rem 2.3rem 2.8rem;
+    border: 1px solid rgba(193, 210, 225, 0.59);
+    border-radius: 5px;
+    position: relative; }
+  .Quiz-form__quiz-legend {
+    font: 1.3rem Overpass;
+    padding: 0 0.5rem;
+    color: #7e7f9e;
+    position: relative; }
+  .Quiz-form__close {
+    position: absolute;
+    top: -0.2rem;
+    right: -0.8rem;
+    border: 0;
+    width: 2rem;
+    height: 2rem;
+    background: url("/x.svg") no-repeat;
+    cursor: pointer; }
+  .Quiz-form__create {
+    width: 100%;
+    height: 15.3rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(193, 210, 225, 0.3);
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
+    margin-top: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .Quiz-form__illustration {
+    display: flex;
+    flex-direction: column;
+    z-index: 9999; }
+  .Quiz-form__insert {
+    margin-top: 0.7rem;
+    font: 1.6rem Overpass;
+    color: rgba(10, 10, 31, 0.84); }
+  .Quiz-form .MuiSelect-selectMenu {
+    margin-top: -0.4rem;
+    min-height: 0.8em; }
+  .Quiz-form .MuiInputBase-root {
+    font: 1.6rem Overpass; }
+  .Quiz-form .MuiOutlinedInput-multiline {
+    padding: 12.5px 14px; }
+  .Quiz-form .MuiInputLabel-root {
+    color: #9fa0d5; }
+  .Quiz-form .PrivateNotchedOutline-root-1 {
+    top: -8px; }
+  .Quiz-form .MuiInputLabel-formControl {
+    top: -4px; }
+  .Quiz-form label {
+    font: 1.6rem Overpass; }
+  .Quiz-form .MuiOutlinedInput-root:hover {
+    border-color: pink; }
+  .Quiz-form .MuiOutlinedInput-notchedOutline {
+    border-color: #5255ca;
+    border-width: 1px; }
+  .Quiz-form .MuiInputBase-input {
+    height: 1rem; }
+  .Quiz-form .PrivateNotchedOutline-legendLabelled-3 {
+    height: 11.2px; }
+  .Quiz-form .MuiInputBase-root {
+    margin-top: 0.3rem; }
+
 .App__fourhundred {
   display: flex;
   flex-direction: column;
@@ -549,7 +664,7 @@ button {
   position: relative;
   width: 100%;
   border: 0;
-  margin-top: 0.9rem;
+  margin-top: 0.8rem;
   background-color: green;
   padding-top: 48.3%;
   min-height: 14.5rem;
@@ -564,11 +679,14 @@ button {
     width: 87%;
     text-align: left; }
 
+.Quizzes__sectiontwo--show {
+  margin-bottom: 5.5rem; }
+
 .Quizzes__sectiontwo div {
   display: grid;
   grid-template: 1fr 1fr/ 1fr 1fr;
-  gap: 0.8rem;
-  margin-top: 0.9rem; }
+  gap: 1rem;
+  margin-top: 0.8rem; }
   .Quizzes__sectiontwo div button {
     position: relative;
     padding-top: 65%;
@@ -591,7 +709,7 @@ button {
   display: grid;
   grid-template: 1fr 1fr/ 1fr 1fr 1fr 1fr;
   gap: 8px;
-  margin-top: 0.9rem;
+  margin-top: 0.8rem;
   margin-bottom: 5rem; }
   .Quizzes__sectionthree div button {
     position: relative;
@@ -712,112 +830,20 @@ button {
   position: absolute;
   background-color: #ffffffa6; }
 
-.Create-quiz {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
+.User__item, .User__item-container {
+  background-color: #c4c4c4;
   border-radius: 5px;
-  font-family: Overpass; }
-  .Create-quiz__container {
-    position: relative;
-    width: 100%;
-    height: 16.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-  .Create-quiz__input-image {
-    width: inherit;
-    height: inherit;
-    cursor: pointer;
-    content: "play";
-    color: transparent;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-size: cover !important;
-    border-radius: 5px; }
-    .Create-quiz__input-image::-webkit-file-upload-button {
-      visibility: hidden; }
-  .Create-quiz__add {
-    margin-top: 0.6rem;
-    display: flex;
-    flex-direction: column;
+  padding-top: 71.8%;
+  position: relative;
+  border: 0;
+  text-align: left; }
+  .User__item span, .User__item-container span {
     position: absolute;
-    z-index: -1; }
-  .Create-quiz__text {
-    margin-top: 0.5rem;
-    font: 1.6rem Overpass;
-    color: rgba(125, 126, 159, 0.89); }
-  .Create-quiz__title {
-    margin: 3rem 0 0.8rem 0;
-    font: 1.6rem Overpass;
-    color: #0a0a1f; }
-    .Create-quiz__title--questions {
-      margin-bottom: -0.5rem; }
-  .Create-quiz__quiz-creation {
-    margin-top: 1.6rem;
-    padding: 1.8rem 2.8rem 2.3rem 2.8rem;
-    border: 1px solid rgba(193, 210, 225, 0.59);
-    border-radius: 5px;
-    position: relative; }
-  .Create-quiz__quiz-legend {
-    font: 1.3rem Overpass;
-    padding: 0 0.5rem;
-    color: #7e7f9e;
-    position: relative; }
-  .Create-quiz__close {
-    position: absolute;
-    top: -0.2rem;
-    right: -0.8rem;
-    border: 0;
-    width: 2rem;
-    height: 2rem;
-    background: url("/x.svg") no-repeat;
-    cursor: pointer; }
-  .Create-quiz__create {
-    width: 100%;
-    height: 15.3rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(193, 210, 225, 0.3);
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.04);
-    border-radius: 5px;
-    margin-top: 1.8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-  .Create-quiz__illustration {
-    display: flex;
-    flex-direction: column;
-    z-index: 9999; }
-  .Create-quiz__insert {
-    margin-top: 0.7rem;
-    font: 1.6rem Overpass;
-    color: rgba(10, 10, 31, 0.84); }
-  .Create-quiz .MuiSelect-selectMenu {
-    margin-top: -0.4rem;
-    min-height: 0.8em; }
-  .Create-quiz .MuiInputBase-root {
-    font: 1.6rem Overpass; }
-  .Create-quiz .MuiOutlinedInput-multiline {
-    padding: 12.5px 14px; }
-  .Create-quiz .MuiInputLabel-root {
-    color: #9fa0d5; }
-  .Create-quiz .PrivateNotchedOutline-root-1 {
-    top: -8px; }
-  .Create-quiz .MuiInputLabel-formControl {
-    top: -4px; }
-  .Create-quiz label {
-    font: 1.6rem Overpass; }
-  .Create-quiz .MuiOutlinedInput-root:hover {
-    border-color: pink; }
-  .Create-quiz .MuiOutlinedInput-notchedOutline {
-    border-color: #5255ca;
-    border-width: 1px; }
-  .Create-quiz .MuiInputBase-input {
-    height: 1rem; }
-  .Create-quiz .PrivateNotchedOutline-legendLabelled-3 {
-    height: 11.2px; }
-  .Create-quiz .MuiInputBase-root {
-    margin-top: 0.3rem; }
+    font: 1.4rem Overpass;
+    font-size: clamp(1.4rem, 4.2vw, 1.8rem);
+    left: 10%;
+    bottom: 10%;
+    color: white; }
 
 .User {
   width: 80%; }
@@ -840,7 +866,7 @@ button {
     position: relative;
     height: 8.4rem; }
     .User__numbers:not(:last-child)::after {
-      content: '';
+      content: "";
       margin: auto;
       position: absolute;
       width: 2px;
@@ -850,7 +876,7 @@ button {
       transform: translateY(-50%);
       height: 6.2rem; }
   .User__label {
-    margin-top: 0.9rem;
+    margin-top: 0.8rem;
     font: 1.8rem Overpass;
     color: #5a5a72; }
   .User__description {
@@ -862,23 +888,36 @@ button {
     font: 1.6rem Overpass;
     color: #0a0a1f; }
   .User__quizzes {
-    margin-top: 1.2rem;
+    margin-top: 0.8rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     gap: 0.9rem; }
-  .User__item {
-    background-color: #c4c4c4;
+    .User__quizzes--created {
+      gap: 5.2rem 1.2rem; }
+  .User__created-quiz {
+    height: 100%;
+    top: 0;
     border-radius: 5px;
-    padding-top: 71.8%;
-    position: relative;
-    border: 0;
-    text-align: left; }
-    .User__item span {
-      position: absolute;
-      font: 1.4rem Overpass;
-      font-size: clamp(1.4rem, 4.2vw, 1.8rem);
-      left: 10%;
-      bottom: 10%;
-      color: white; }
+    position: absolute;
+    text-align: left;
+    width: 100%; }
+  .User__action-buttons {
+    width: 100%;
+    height: 3rem;
+    margin-top: 0.8rem;
+    position: absolute;
+    display: flex;
+    justify-content: space-between; }
+  .User__action-button {
+    border-radius: 5px;
+    width: 48%;
+    height: inherit;
+    color: white; }
+    .User__action-button--edit {
+      color: black;
+      border: 1px solid black;
+      background: transparent; }
+    .User__action-button--delete {
+      background-color: #f92f2f; }
   .User__created {
     margin-top: 3.6rem; }
