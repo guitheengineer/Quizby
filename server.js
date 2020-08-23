@@ -40,9 +40,9 @@ mongoose.connection.on('connected', () => {
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 app.use(express.json({ limit: '50mb' }));
 
-app.use('/', appRoute);
-app.use('/user', userRoute);
-app.use('/quizzes', quizzesRoute);
+app.use('/api', appRoute);
+app.use('/api/user', userRoute);
+app.use('/api/quizzes', quizzesRoute);
 
 const server = app.listen(port, () => 'server started');
 
