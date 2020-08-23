@@ -49,17 +49,7 @@ export default function Login() {
           )}
           <TextFieldModifiedEmail />
           <TextFieldModifiedPassword />
-          <button
-            className="App__form--button"
-            type="submit"
-            style={{
-              marginTop: '3.5rem',
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
+          <button className="button" type="submit">
             <span>Login</span>
             <ClipLoader
               loading={loginState === 'loading'}

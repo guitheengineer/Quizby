@@ -60,17 +60,7 @@ function Signup() {
           <TextFieldModifiedUsername />
           <TextFieldModifiedEmail />
           <TextFieldModifiedPassword />
-          <button
-            className="App__form--button"
-            style={{
-              marginTop: '2.8rem',
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-            type="submit"
-          >
+          <button className="button--signup" type="submit">
             <span>Signup</span>
             <ClipLoader
               loading={signupState === 'loading'}
