@@ -16,23 +16,23 @@ const commonProps = {
 function CreateQuestions() {
   const { creationQuizzes } = useSelector(selectManipulateReducer);
   const dispatch = useDispatch();
-  function close(i) {
-    dispatch(removeCreatedQuiz(i));
+  function close(id) {
+    dispatch(removeCreatedQuiz(id));
   }
 
   return (
     <>
-      <h6 className="Create-quiz__title Create-quiz__title--questions">
+      <h6 className="Quiz-form__title Quiz-form__title--questions">
         Questions
       </h6>
       {creationQuizzes.map((quiz, i) => (
-        <fieldset key={quiz.id} className="Create-quiz__quiz-creation">
-          <legend className="Create-quiz__quiz-legend">Question {i + 1}</legend>
+        <fieldset key={quiz.id} className="Quiz-form__quiz-creation">
+          <legend className="Quiz-form__quiz-legend">Question {i + 1}</legend>
           <button
             type="button"
             onClick={() => close(quiz.id)}
             aria-label="Close quiz"
-            className="Create-quiz__close"
+            className="Quiz-form__close"
           />
           <TextFieldCommon
             type="question"
@@ -40,31 +40,31 @@ function CreateQuestions() {
             required
             multiline
             maxLength={140}
-            id={quiz.id}
+            index={i}
           />
           <TextFieldCommon
             type="fakeAnswer1"
             label="Fake Answer"
-            id={quiz.id}
             {...commonProps}
+            index={i}
           />
           <TextFieldCommon
             type="fakeAnswer2"
             label="Fake Answer 2"
-            id={quiz.id}
             {...commonProps}
+            index={i}
           />
           <TextFieldCommon
             type="fakeAnswer3"
             label="Fake Answer 3"
-            id={quiz.id}
             {...commonProps}
+            index={i}
           />
           <TextFieldCommon
             type="answer"
             label="Real Answer"
-            id={quiz.id}
             {...commonProps}
+            index={i}
           />
         </fieldset>
       ))}

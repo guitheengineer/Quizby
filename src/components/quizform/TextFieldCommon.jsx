@@ -1,8 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import MenuItem from '@material-ui/core/MenuItem';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeInput } from '../../slices/manipulateSlice';
 
 export default function TextFieldCommon({
@@ -12,35 +11,39 @@ export default function TextFieldCommon({
   multiline,
   maxLength,
   type,
-  id,
-  select,
-  currencies,
+  index,
 }) {
+  const quizValue = useSelector((state) => {
+    if (
+      type === 'question' ||
+      type === 'fakeAnswer1' ||
+      type === 'fakeAnswer2' ||
+      type === 'fakeAnswer3' ||
+      type === 'answer'
+    ) {
+      return state.manipulateReducer.creationQuizzes[index][type];
+    }
+    return state.manipulateReducer[type];
+  });
+
   const dispatch = useDispatch();
   function textChange(e) {
-    dispatch(changeInput({ value: e.target.value, type, id }));
+    dispatch(changeInput({ value: e.target.value, type, index }));
   }
 
   return (
     <TextField
       variant="outlined"
-      className="Create-quiz__name"
+      className="Quiz-form__name"
       fullWidth
       label={label}
       onChange={textChange}
       required={required}
+      value={quizValue}
       style={style}
-      select={select}
       multiline={multiline}
       inputProps={{ maxLength }}
-    >
-      {select &&
-        currencies.map((option) => (
-          <MenuItem key={option.value} value={option.value || ''}>
-            {option.value}
-          </MenuItem>
-        ))}
-    </TextField>
+    />
   );
 }
 
@@ -51,9 +54,7 @@ TextFieldCommon.propTypes = {
   style: PropTypes.object,
   maxLength: PropTypes.number,
   type: PropTypes.string.isRequired,
-  id: PropTypes.string,
-  select: PropTypes.bool,
-  currencies: PropTypes.array,
+  index: PropTypes.number,
 };
 TextFieldCommon.defaultProps = {
   label: 'Text',
@@ -61,7 +62,5 @@ TextFieldCommon.defaultProps = {
   multiline: false,
   maxLength: 140,
   style: {},
-  select: false,
-  currencies: [],
-  id: '',
+  index: 0,
 };

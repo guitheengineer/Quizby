@@ -13,8 +13,7 @@ export default function ImageInput() {
 
   function imageChanged(e) {
     const file = e.target.files[0];
-
-    if (file.size > 50000) {
+    if (file && file.size > 5242880) {
       return setImageError(true);
     }
     const reader = new FileReader();
@@ -29,8 +28,8 @@ export default function ImageInput() {
   return (
     <>
       <input
-        className="Create-quiz__input
-          Create-quiz__input-image"
+        className="Quiz-form__input
+          Quiz-form__input-image"
         alt=""
         type="file"
         accept="image/*"
@@ -42,13 +41,13 @@ export default function ImageInput() {
         }}
         onChange={imageChanged}
       />
-      <div className="Create-quiz__add">
+      <div className="Quiz-form__add">
         <img
           alt="Insert file"
           src="/put-image.svg"
-          className="Create-quiz__put-image"
+          className="Quiz-form__put-image"
         />
-        <span className="Create-quiz__text">Add image</span>
+        <span className="Quiz-form__text">Add image</span>
       </div>
       {imageError && (
         <Notification

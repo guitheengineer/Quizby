@@ -9,10 +9,10 @@ function CreateButton() {
   }
 
   return (
-    <button type="button" onClick={addQuiz} className="Create-quiz__create">
-      <div className="Create-quiz__illustration">
-        <img alt="" src="/add.svg" className="Create-quiz__put-icon" />
-        <p className="Create-quiz__insert">Add quiz</p>
+    <button type="button" onClick={addQuiz} className="Quiz-form__create">
+      <div className="Quiz-form__illustration">
+        <img alt="" src="/add.svg" className="Quiz-form__put-icon" />
+        <p className="Quiz-form__insert">Add quiz</p>
       </div>
     </button>
   );

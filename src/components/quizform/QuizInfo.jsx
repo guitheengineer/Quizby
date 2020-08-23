@@ -7,9 +7,9 @@ const textFieldStyle = { marginTop: '2rem', font: '1.6rem Overpass' };
 
 function QuizInfo() {
   return (
-    <section className="Create-quiz__section Create-quiz__section-two">
-      <h6 className="Create-quiz__title">Quiz Info</h6>
-      <div className="Create-quiz__container">
+    <section className="Quiz-form__section Quiz-form__section-two">
+      <h6 className="Quiz-form__title">Quiz Info</h6>
+      <div className="Quiz-form__container">
         <ImageInput />
       </div>
       <TextFieldCommon

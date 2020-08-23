@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { useDispatch, useSelector } from 'react-redux';
-import { sendForm } from '../../asyncActions';
-import { selectManipulateReducer } from '../../slices/manipulateSlice';
+import {
+  selectManipulateReducer,
+  quizSaved,
+} from '../../slices/manipulateSlice';
 import { selectUserReducer } from '../../slices/userSlice';
 
-function ButtonSaveQuiz({ title }) {
+function ButtonSaveQuiz({ title, functionType, loadingState }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const {
@@ -16,19 +18,21 @@ function ButtonSaveQuiz({ title }) {
     creationQuizzes,
     image,
     category,
-    saveQuizFetchState,
     id: quizId,
   } = useSelector(selectManipulateReducer);
   const { id, username } = useSelector(selectUserReducer);
 
   useEffect(() => {
-    if (saveQuizFetchState === 'fulfilled') {
+    if (loadingState === 'fulfilled') {
       history.push(`/quizzes/show/${quizId}`);
+      dispatch(quizSaved());
     }
-  }, [saveQuizFetchState]);
+  }, [loadingState]);
+
   function saveQuiz() {
     dispatch(
-      sendForm({
+      functionType({
+        quizId,
         id,
         image,
         username,
@@ -43,19 +47,12 @@ function ButtonSaveQuiz({ title }) {
   return (
     <button
       onClick={saveQuiz}
-      className="App__form--button"
+      className="button button--save-quiz"
       type="submit"
-      style={{
-        marginTop: '3.5rem',
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
     >
       <span>{title}</span>
       <ClipLoader
-        loading={saveQuizFetchState === 'loading'}
+        loading={loadingState === 'pending'}
         size="14px"
         color="white"
         css={`
@@ -68,6 +65,8 @@ function ButtonSaveQuiz({ title }) {
 
 ButtonSaveQuiz.propTypes = {
   title: PropTypes.string,
+  functionType: PropTypes.func.isRequired,
+  loadingState: PropTypes.string.isRequired,
 };
 
 ButtonSaveQuiz.defaultProps = {
