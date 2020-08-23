@@ -34,7 +34,7 @@ function BackgroundContainer({
           menuIsActive
             ? {
                 ...commonStyles,
-                overflow: 'hidden',
+                overflowY: 'hidden',
                 marginTop: 'auto',
                 height: '4rem',
               }
@@ -49,7 +49,7 @@ function BackgroundContainer({
       >
         {Children.map(children, (child) =>
           cloneElement(child, {
-            className: `${child.props.className} ${
+            className: `${child.props ? child.props.className : ''} ${
               menuIsActive && 'childrenAnimation'
             }`,
           })
