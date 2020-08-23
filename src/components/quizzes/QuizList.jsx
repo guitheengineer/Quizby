@@ -4,12 +4,10 @@ import { useSelector } from 'react-redux';
 import ButtonQuiz from './ButtonQuiz';
 
 function QuizList({ type, label }) {
-  console.log(useSelector((state) => state.quizzesReducer.quizzes.category));
-
   const quizData = useSelector((state) => state.quizzesReducer.quizzes[type]);
 
   return (
-    <div className="Quizzes__sectiontwo">
+    <div className="Quizzes__sectiontwo Quizzes__sectiontwo--show">
       <span>{label}</span>
       <div>
         {quizData.map((quiz) => (
