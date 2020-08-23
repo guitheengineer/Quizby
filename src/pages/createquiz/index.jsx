@@ -1,24 +1,18 @@
 import React from 'react';
-import QuizInfo from '../../components/createquiz/QuizInfo';
-import CreateQuestions from '../../components/createquiz/CreateQuestions';
-import BackgroundContainer from '../../components/backgroundcontainer';
-import CreateButton from '../../components/createquiz/CreateButton';
-import ButtonSaveQuiz from '../../components/createquiz/ButtonSaveQuiz';
+import { useSelector } from 'react-redux';
+import QuizForm from '../../components/quizform';
+import { sendForm } from '../../asyncActions';
+import { selectManipulateReducer } from '../../slices/manipulateSlice';
 
 function CreateQuiz() {
+  const { saveQuizFetchState } = useSelector(selectManipulateReducer);
+
   return (
-    <BackgroundContainer
-      overflow="normal"
-      justifyContent="normal"
-      alignItems="center"
-    >
-      <div className="Create-quiz">
-        <QuizInfo />
-        <CreateQuestions />
-        <CreateButton />
-        <ButtonSaveQuiz title="Save quiz" />
-      </div>
-    </BackgroundContainer>
+    <QuizForm
+      functionType={sendForm}
+      type="create"
+      loadingState={saveQuizFetchState}
+    />
   );
 }
 
