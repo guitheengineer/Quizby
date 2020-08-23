@@ -16,7 +16,7 @@ function Done() {
   const dispatch = useDispatch();
   const history = useHistory();
   const quizId = window.location.pathname.split('/').pop();
-  console.log(isAuthenticated);
+
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(setUser());
