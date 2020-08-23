@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { useDispatch, useSelector } from 'react-redux';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useParams } from 'react-router-dom';
+import capitalize from '../appUtils/capitalize';
 
 import {
   changeInput,
@@ -44,7 +45,9 @@ export default function TextFieldCategory({ variant, style }) {
   const { category } = useSelector(selectManipulateReducer);
 
   useEffect(() => {
-    dispatch(changeInput({ value: categoryParam, type: 'category', id: '' }));
+    if (categoryParam !== undefined) {
+      dispatch(changeInput({ value: categoryParam, type: 'category', id: '' }));
+    }
   }, []);
 
   function changeCategory(e) {
@@ -54,7 +57,7 @@ export default function TextFieldCategory({ variant, style }) {
   return (
     <TextField
       variant={variant}
-      className="Create-quiz__name"
+      className="Quiz-form__name"
       fullWidth
       label="Category"
       required
@@ -65,7 +68,7 @@ export default function TextFieldCategory({ variant, style }) {
     >
       {currencies.map((option) => (
         <MenuItem key={option.value} value={option.value}>
-          {option.value.charAt(0).toUpperCase() + option.value.slice(1)}
+          {capitalize(option.value)}
         </MenuItem>
       ))}
     </TextField>
