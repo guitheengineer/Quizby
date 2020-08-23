@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { json } from 'body-parser';
 
 export const checkIfUserExists = createAsyncThunk(
   'formReducer/checkIfUserExists',
