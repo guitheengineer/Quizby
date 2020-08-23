@@ -10,7 +10,7 @@ const {
 
 const router = express.Router();
 
-router.get('/play/:id', currentQuiz);
+router.get('/quiz/:id', currentQuiz);
 router.get('/search', searchQuizzes);
 router.get('/recommended', getRecommendedQuiz);
 router.get('/category/:category', categoryQuiz);
