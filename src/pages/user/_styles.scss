@@ -1,3 +1,20 @@
+%button-quiz {
+  background-color: #c4c4c4;
+  border-radius: 5px;
+  padding-top: 71.8%;
+  position: relative;
+  border: 0;
+  text-align: left;
+  span {
+    position: absolute;
+    font: 1.4rem Overpass;
+    font-size: clamp(1.4rem, 4.2vw, 1.8rem);
+    left: 10%;
+    bottom: 10%;
+    color: white;
+  }
+}
+
 .User {
   width: 80%;
   &__profile {
@@ -23,7 +40,7 @@
     height: 8.4rem;
     &:not(:last-child) {
       &::after {
-        content: '';
+        content: "";
         margin: auto;
         position: absolute;
         width: 2px;
@@ -36,7 +53,7 @@
     }
   }
   &__label {
-    margin-top: 0.9rem;
+    margin-top: 0.8rem;
     font: 1.8rem Overpass;
     color: #5a5a72;
   }
@@ -52,25 +69,46 @@
     color: #0a0a1f;
   }
   &__quizzes {
-    margin-top: 1.2rem;
+    margin-top: 0.8rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     gap: 0.9rem;
+    &--created {
+      gap: 5.2rem 1.2rem;
+    }
   }
-  &__item {
-    background-color: #c4c4c4;
+  &__item,
+  &__item-container {
+    @extend %button-quiz;
+  }
+  &__created-quiz {
+    height: 100%;
+    top: 0;
     border-radius: 5px;
-    padding-top: 71.8%;
-    position: relative;
-    border: 0;
+    position: absolute;
     text-align: left;
-    span {
-      position: absolute;
-      font: 1.4rem Overpass;
-      font-size: clamp(1.4rem, 4.2vw, 1.8rem);
-      left: 10%;
-      bottom: 10%;
-      color: white;
+    width: 100%;
+  }
+  &__action-buttons {
+    width: 100%;
+    height: 3rem;
+    margin-top: 0.8rem;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__action-button {
+    border-radius: 5px;
+    width: 48%;
+    height: inherit;
+    color: white;
+    &--edit {
+      color: black;
+      border: 1px solid black;
+      background: transparent;
+    }
+    &--delete {
+      background-color: #f92f2f;
     }
   }
 
