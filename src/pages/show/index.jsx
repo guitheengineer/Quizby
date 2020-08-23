@@ -21,17 +21,21 @@ function Show() {
     history.push(`/quizzes/play/${_id}`);
     dispatch(setQuery(''));
   }
+
   function displayQuizImage() {
     if (!menuIsActive && image) {
       return {
-        backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0.27)), url('data:${image.contentType};base64,${image.data}')`,
+        backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0.27)), url('data:${image.contentType};base64,${image.data}')
+        `,
+        flex: '1 1 40%',
       };
     }
     if (menuIsActive) {
-      return { backgroundColor: '#5255ca' };
+      return { backgroundColor: '#5255ca', flex: '0 0 90%' };
     }
     return null;
   }
+
   return (
     <div className="Show">
       <div style={displayQuizImage()} className="Show__image" />
@@ -51,7 +55,7 @@ function Show() {
             Play
           </button>
         </div>
-        <QuizList type="mostPlayed" />
+        <QuizList label="Other quizzes" type="mostPlayed" />
       </BackgroundContainer>
     </div>
   );
