@@ -3,7 +3,9 @@ const validator = require('validator');
 const bcrypt = require('bcrypt');
 const shortid = require('shortid');
 
-const userSchema = mongoose.Schema({
+const { Schema } = require('mongoose');
+
+const userSchema = Schema({
   username: {
     type: String,
     required: true,
@@ -32,7 +34,7 @@ const userSchema = mongoose.Schema({
   quizzesPlayed: [
     {
       creator: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         unique: true,
       },
       name: String,
@@ -48,7 +50,7 @@ const userSchema = mongoose.Schema({
         default: shortid.generate,
       },
       creator: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
       },
       creatorName: {
