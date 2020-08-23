@@ -33,9 +33,26 @@ module.exports = async (req, res) => {
     { $project: { _id: 0, quizAvg: { $avg: '$quizzesPlayed.score' } } },
   ]);
 
-  const quizAverage = quizAvg[0].quizAvg;
-  const countQuizzesCreated = quantityQuizzesCreated[0].count;
-  const countQuizzesPlayed = quantityQuizzesPlayed[0].count;
+  let countQuizzesCreated;
+  let countQuizzesPlayed;
+  let quizAverage;
+
+  if (quizAvg[0].quizAvg === null) {
+    quizAverage = 0;
+  } else {
+    quizAverage = quizAvg[0].quizAvg;
+  }
+
+  if (quantityQuizzesCreated[0]) {
+    countQuizzesCreated = quantityQuizzesCreated[0].count;
+  } else {
+    countQuizzesCreated = 0;
+  }
+  if (quantityQuizzesPlayed[0]) {
+    countQuizzesPlayed = quantityQuizzesPlayed[0].count;
+  } else {
+    countQuizzesPlayed = 0;
+  }
 
   res.status(200).json({
     status: 'success',

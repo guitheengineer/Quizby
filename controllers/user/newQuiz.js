@@ -1,7 +1,9 @@
 const { userModel, quizModel } = require('../../models');
+const AppError = require('../../utils/AppError');
 
 module.exports = async (req, res) => {
   const {
+    quizId,
     id,
     image,
     username,
@@ -10,7 +12,15 @@ module.exports = async (req, res) => {
     creationQuizzes,
     category,
   } = req.body;
+
+  const quizExists = await quizModel.exists({ _id: quizId });
+
+  if (quizExists) {
+    return new AppError('Quiz already exists', 409);
+  }
+
   const quizCreated = {
+    _id: quizId,
     creator: id,
     creatorName: username,
     name,
