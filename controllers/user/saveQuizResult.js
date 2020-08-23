@@ -26,7 +26,6 @@ module.exports = async (req, res) => {
   );
 
   if (doc === null) {
-    console.log('yes');
     doc = await userModel.findByIdAndUpdate(
       userId,
       {
@@ -37,25 +36,6 @@ module.exports = async (req, res) => {
       }
     );
   }
-
-  //   const n = doc.quizzesPlayed.map((data) => {
-  //     if (data.creator === userId) {
-  //       data = quizData;
-  //     }
-  //   });
-  //   doc = n;
-  // doc.quizzesPlayed.push(quizData);
-
-  //   doc.save();
-  // if (doc.quizzesPlayed.creator === quizId)
-
-  // doc.save();
-
-  // user.quizzesPlayed.map((data) => {
-  //   if (data._id === quizId) {
-  //     data = { pao: 'teste' };
-  //   }
-  // });
 
   res.status(200).json({
     status: 'success',
