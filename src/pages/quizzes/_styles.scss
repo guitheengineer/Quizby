@@ -52,7 +52,7 @@
       position: relative;
       width: 100%;
       border: 0;
-      margin-top: 0.9rem;
+      margin-top: 0.8rem;
       background-color: green;
       padding-top: 48.3%;
       min-height: 14.5rem;
@@ -71,11 +71,14 @@
   }
   &__sectiontwo {
     @extend %section;
+    &--show {
+      margin-bottom: 5.5rem;
+    }
     div {
       display: grid;
       grid-template: 1fr 1fr/ 1fr 1fr;
-      gap: 0.8rem;
-      margin-top: 0.9rem;
+      gap: 1rem;
+      margin-top: 0.8rem;
       button {
         position: relative;
         padding-top: 65%;
@@ -103,7 +106,7 @@
       display: grid;
       grid-template: 1fr 1fr/ 1fr 1fr 1fr 1fr;
       gap: 8px;
-      margin-top: 0.9rem;
+      margin-top: 0.8rem;
       margin-bottom: 5rem;
       button {
         position: relative;
