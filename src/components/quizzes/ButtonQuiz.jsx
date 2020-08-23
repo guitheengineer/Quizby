@@ -11,7 +11,7 @@ function ButtonQuiz({ quiz, className, maxLength }) {
 
   function quizClicked() {
     history.push(`/quizzes/show/${quiz._id}`);
-    dispatch(getCurrentQuiz());
+    dispatch(getCurrentQuiz(quiz._id));
     dispatch(setQuery(''));
   }
   function getQuizBackground() {
@@ -32,7 +32,7 @@ function ButtonQuiz({ quiz, className, maxLength }) {
       type="button"
       onClick={quizClicked}
     >
-      <span>{`${quiz.name.slice(1, maxLength)}...`}</span>
+      <span>{`${quiz.name.slice(0, maxLength)}...`}</span>
     </button>
   ) : null;
 }
@@ -49,7 +49,7 @@ ButtonQuiz.propTypes = {
 
 ButtonQuiz.defaultProps = {
   className: '',
-  maxLength: 20,
+  maxLength: 40,
 };
 
 export default ButtonQuiz;
