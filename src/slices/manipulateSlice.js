@@ -1,15 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 import shortid from 'shortid';
-import { sendForm } from '../asyncActions';
+import { sendForm, editQuizThunk } from '../asyncActions';
 
 const manipulateSlice = createSlice({
   name: 'manipulateReducer',
   initialState: {
     saveQuizFetchState: '',
-    id: '',
+    editQuizFetchState: '',
+    id: shortid.generate(),
     name: '',
     description: '',
     category: '',
+    isEditing: false,
     image: {
       data: '',
       contentType: '',
@@ -37,6 +39,24 @@ const manipulateSlice = createSlice({
       };
       state.creationQuizzes.push(newQuiz);
     },
+    setEditQuiz: (state, action) => {
+      const {
+        category,
+        description,
+        image,
+        questions,
+        _id,
+        name,
+      } = action.payload;
+      state.category = category;
+      state.name = name;
+      state.id = _id;
+      state.description = description;
+      state.image.data = image.data;
+      state.image.contentType = image.contentType;
+      state.creationQuizzes = questions;
+      state.isEditing = true;
+    },
     removeCreatedQuiz: (state, action) => {
       const id = action.payload;
       const filteredArray = state.creationQuizzes.filter(
@@ -50,21 +70,25 @@ const manipulateSlice = createSlice({
       state.image.data = data;
     },
     changeInput: (state, action) => {
-      const { value, type, id } = action.payload;
-      if (id === '') {
-        state[type] = value;
+      const { value, type, index } = action.payload;
+      if (
+        type === 'question' ||
+        type === 'fakeAnswer1' ||
+        type === 'fakeAnswer2' ||
+        type === 'fakeAnswer3' ||
+        type === 'answer'
+      ) {
+        state.creationQuizzes[index][type] = value;
       } else {
-        const newArray = state.creationQuizzes.map((data) => {
-          if (data.id === id) {
-            data = {
-              ...data,
-              [type]: value,
-            };
-          }
-          return data;
-        });
-        state.creationQuizzes = newArray;
+        state[type] = value;
       }
+    },
+    setNewQuizId: (state, action) => {
+      state.id = action.payload;
+    },
+    quizSaved: (state) => {
+      state.saveQuizFetchState = 'saved';
+      state.editQuizFetchState = 'saved';
     },
   },
   extraReducers: {
@@ -72,12 +96,20 @@ const manipulateSlice = createSlice({
       state.saveQuizFetchState = 'pending';
     },
     [sendForm.fulfilled]: (state, action) => {
-      console.log(action.payload.data.newQuiz._id);
       state.id = action.payload.data.newQuiz._id;
       state.saveQuizFetchState = 'fulfilled';
     },
     [sendForm.rejected]: (state) => {
       state.saveQuizFetchState = 'rejected';
+    },
+    [editQuizThunk.pending]: (state) => {
+      state.editQuizFetchState = 'pending';
+    },
+    [editQuizThunk.fulfilled]: (state) => {
+      state.editQuizFetchState = 'fulfilled';
+    },
+    [editQuizThunk.rejected]: (state) => {
+      state.editQuizFetchState = 'rejected';
     },
   },
 });
@@ -87,6 +119,9 @@ export const {
   removeCreatedQuiz,
   changeInput,
   changeImage,
+  quizSaved,
+  setEditQuiz,
+  setNewQuizId,
 } = manipulateSlice.actions;
 
 export const selectManipulateReducer = (state) => state.manipulateReducer;

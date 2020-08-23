@@ -6,6 +6,7 @@ import {
   getRecommendedQuiz,
   getUserQuizzes,
   getCategoryQuiz,
+  deleteQuiz,
 } from '../asyncActions';
 
 function shuffleArray(array) {
@@ -24,6 +25,7 @@ export const quizzesSlice = createSlice({
       recommended: {},
       category: [],
     },
+    getUserQuizzesState: '',
     userAnswer: '',
     currentAnswers: [],
     userStats: {
@@ -35,22 +37,7 @@ export const quizzesSlice = createSlice({
       percentage: null,
       done: false,
     },
-    currentQuiz: {
-      creatorName: '',
-      name: '',
-      _id: '',
-      questions: [
-        {
-          question: '',
-          fakeAnswer1: '',
-          fakeAnswer2: '',
-          fakeAnswer3: '',
-          answer: '',
-        },
-      ],
-      timesPlayed: 0,
-      image: {},
-    },
+    currentQuiz: {},
     currentQuestion: 0,
     currentQuestionAnswered: false,
     userAnsweredCorrect: false,
@@ -59,26 +46,11 @@ export const quizzesSlice = createSlice({
     quizzesSearchedData: false,
     quizFetchState: false,
     recommendedQuizFetchState: false,
+    deleteQuizFetchState: '',
     historicOfAnswers: [],
     query: '',
-    quizzesPlayed: [
-      {
-        creator: '',
-        image: { data: '', contentType: '' },
-        name: '',
-        score: null,
-        _id: '',
-      },
-    ],
-    quizzesCreated: [
-      {
-        creator: '',
-        image: { data: '', contentType: '' },
-        name: '',
-        score: null,
-        _id: '',
-      },
-    ],
+    quizzesPlayed: [],
+    quizzesCreated: [],
     quizAverage: 0,
     countQuizzesPlayed: 0,
     countQuizzesCreated: 0,
@@ -207,6 +179,15 @@ export const quizzesSlice = createSlice({
       state.quizzes.recommended = action.payload.recommendedQuiz;
       state.recommendedQuizFetchState = 'fulfilled';
     },
+    [deleteQuiz.rejected]: (state) => {
+      state.deleteQuizFetchState = 'rejected';
+    },
+    [deleteQuiz.fulfilled]: (state) => {
+      state.deleteQuizFetchState = 'fulfilled';
+    },
+    [deleteQuiz.pending]: (state) => {
+      state.deleteQuizFetchState = 'pending';
+    },
     [getUserQuizzes.fulfilled]: (state, action) => {
       const {
         quizzes,
@@ -219,6 +200,8 @@ export const quizzesSlice = createSlice({
       state.quizAverage = quizAverage;
       state.countQuizzesCreated = countQuizzesCreated;
       state.countQuizzesPlayed = countQuizzesPlayed;
+      state.getUserQuizzesState = 'fulfilled';
+      state.deleteQuizFetchState = '';
     },
     [getCategoryQuiz.fulfilled]: (state, action) => {
       state.quizzes.category = action.payload;
