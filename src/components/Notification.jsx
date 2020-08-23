@@ -13,12 +13,13 @@ function Notification({ callbackfunction, message }) {
 }
 
 Notification.propTypes = {
-  message: PropTypes.string.isRequired,
+  message: PropTypes.string,
   callbackfunction: PropTypes.func,
 };
 
 Notification.defaultProps = {
   callbackfunction: () => {},
+  message: 'An error has ocurred, try again later',
 };
 
 export default Notification;
