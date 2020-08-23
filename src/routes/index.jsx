@@ -13,6 +13,7 @@ import CreateQuiz from '../pages/createquiz';
 import User from '../pages/user';
 import PrivateRouteUser from './PrivateRouteUser';
 import Category from '../pages/category';
+import EditQuiz from '../pages/editquiz';
 
 function Routes() {
   return (
@@ -35,6 +36,7 @@ function Routes() {
         path="/user/:username/createquiz"
         component={CreateQuiz}
       />
+      <PrivateRouteUser path="/user/:username/editquiz" component={EditQuiz} />
       <RouteWithHeader path="/user/:username" component={User} />
 
       <RouteWithHeader component={FourHundredFour} />
