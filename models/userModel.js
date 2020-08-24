@@ -27,20 +27,18 @@ const userSchema = Schema({
     minlength: 8,
     select: false,
   },
-  avatar: {
-    data: Buffer,
-    contentType: String,
-  },
   quizzesPlayed: [
     {
       creator: {
         type: Schema.Types.ObjectId,
         unique: true,
+        required: true,
       },
       name: String,
       _id: String,
       image: Object,
       score: Number,
+      required: true,
     },
   ],
   quizzesCreated: [
@@ -48,10 +46,12 @@ const userSchema = Schema({
       _id: {
         type: String,
         default: shortid.generate,
+        required: true,
       },
       creator: {
         type: Schema.Types.ObjectId,
         ref: 'User',
+        required: true,
       },
       creatorName: {
         type: String,
@@ -60,6 +60,7 @@ const userSchema = Schema({
       image: {
         data: String,
         contentType: String,
+        required: true,
       },
       name: {
         type: String,

@@ -11,6 +11,7 @@ const quizSchema = new Schema({
   creator: {
     type: Schema.Types.ObjectId,
     ref: 'User',
+    required: true,
   },
   creatorName: {
     type: String,
@@ -22,9 +23,9 @@ const quizSchema = new Schema({
   },
   name: {
     type: String,
-    required: true,
     minlength: 4,
     maxlength: 35,
+    required: true,
   },
   description: {
     type: String,
@@ -38,6 +39,7 @@ const quizSchema = new Schema({
   category: {
     type: String,
     lowercase: true,
+    required: true,
   },
   questions: [
     {
