@@ -1,5 +1,5 @@
 {
-  "name": "quiz_app",
+  "name": "quizby",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5000/",
@@ -36,13 +36,13 @@
     "validator": "^13.1.1"
   },
   "scripts": {
-    "sass": "node-sass src/basescss/main.scss src/components/app/App.css -w",
-    "server": "nodemon server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "concurrently --kill-others-on-fail \"npm run sass\" \"npm run server\" \"npm start\"",
+    "sass": "node-sass src/basescss/main.scss src/components/app/App.css -w",
+    "server": "nodemon server.js",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\""
