@@ -10,9 +10,6 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
   line-height: calc(1.5em + (1.55 - 1.5) * ((100vw - 21em) / (35 - 21))); }
-  @media (min-width: 670px) {
-    html {
-      font-size: 66%; } }
 
 body {
   box-sizing: border-box;
@@ -846,7 +843,9 @@ button {
     color: white; }
 
 .User {
-  width: 80%; }
+  width: 80%;
+  max-width: 55rem;
+  margin-bottom: 7rem; }
   .User__profile {
     margin-top: 3.2rem;
     display: flex;
@@ -855,8 +854,12 @@ button {
     margin-top: 3.2rem;
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 106%;
+    max-width: 40rem;
     align-self: center; }
+    @media (min-width: 370px) {
+      .User__stats {
+        width: 100%; } }
   .User__numbers {
     display: flex;
     flex-direction: column;
@@ -892,8 +895,20 @@ button {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     gap: 0.9rem; }
+    @media (min-width: 230px) {
+      .User__quizzes {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); } }
+    @media (min-width: 400px) {
+      .User__quizzes {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }
+    @media (min-width: 600px) {
+      .User__quizzes {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); } }
     .User__quizzes--created {
-      gap: 5.2rem 1.2rem; }
+      gap: 4.6rem 1.2rem; }
+      @media (min-width: 380px) {
+        .User__quizzes--created {
+          gap: 5.2rem 1.2rem; } }
   .User__created-quiz {
     height: 100%;
     top: 0;
@@ -903,11 +918,14 @@ button {
     width: 100%; }
   .User__action-buttons {
     width: 100%;
-    height: 3rem;
     margin-top: 0.8rem;
     position: absolute;
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    height: 2.5rem; }
+    @media (min-width: 380px) {
+      .User__action-buttons {
+        height: 3rem; } }
   .User__action-button {
     border-radius: 5px;
     width: 48%;

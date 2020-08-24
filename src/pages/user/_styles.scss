@@ -17,6 +17,8 @@
 
 .User {
   width: 80%;
+  max-width: 55rem;
+  margin-bottom: 7rem;
   &__profile {
     margin-top: 3.2rem;
     display: flex;
@@ -26,8 +28,12 @@
     margin-top: 3.2rem;
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 106%;
+    max-width: 40rem;
     align-self: center;
+    @include min-width(370px) {
+      width: 100%;
+    }
   }
 
   &__numbers {
@@ -71,10 +77,23 @@
   &__quizzes {
     margin-top: 0.8rem;
     display: grid;
+
+    @include min-width(230px) {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    @include min-width(400px) {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    @include min-width(600px) {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     gap: 0.9rem;
     &--created {
-      gap: 5.2rem 1.2rem;
+      @include min-width(380px) {
+        gap: 5.2rem 1.2rem;
+      }
+      gap: 4.6rem 1.2rem;
     }
   }
   &__item,
@@ -91,11 +110,15 @@
   }
   &__action-buttons {
     width: 100%;
-    height: 3rem;
+
     margin-top: 0.8rem;
     position: absolute;
     display: flex;
     justify-content: space-between;
+    @include min-width(380px) {
+      height: 3rem;
+    }
+    height: 2.5rem;
   }
   &__action-button {
     border-radius: 5px;
