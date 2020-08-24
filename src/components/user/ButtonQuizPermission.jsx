@@ -52,7 +52,7 @@ function ButtonQuizPermission({ quiz, maxLength, username }) {
         type="button"
         onClick={quizClicked}
       >
-        <span>{`${quiz.name.slice(1, maxLength)}...`}</span>
+        <span>{`${quiz.name.slice(0, maxLength)}...`}</span>
       </button>
       <div className="User__action-buttons">
         <button
