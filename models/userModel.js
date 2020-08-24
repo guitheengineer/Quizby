@@ -8,7 +8,6 @@ const { Schema } = require('mongoose');
 const userSchema = Schema({
   username: {
     type: String,
-    required: true,
     minlength: 3,
     maxlength: 20,
     unique: true,
@@ -23,7 +22,6 @@ const userSchema = Schema({
   },
   password: {
     type: String,
-    required: true,
     minlength: 8,
     select: false,
   },
@@ -32,13 +30,11 @@ const userSchema = Schema({
       creator: {
         type: Schema.Types.ObjectId,
         unique: true,
-        required: true,
       },
       name: String,
       _id: String,
       image: Object,
       score: Number,
-      required: true,
     },
   ],
   quizzesCreated: [
@@ -46,25 +42,27 @@ const userSchema = Schema({
       _id: {
         type: String,
         default: shortid.generate,
-        required: true,
       },
       creator: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
       },
       creatorName: {
         type: String,
         required: true,
       },
       image: {
-        data: String,
-        contentType: String,
-        required: true,
+        data: {
+          type: String,
+          required: true,
+        },
+        contentType: {
+          type: String,
+          required: true,
+        },
       },
       name: {
         type: String,
-        required: true,
         minlength: 4,
         maxlength: 35,
       },
@@ -82,13 +80,11 @@ const userSchema = Schema({
         {
           question: {
             type: String,
-            required: true,
             minlength: 3,
             maxlength: 140,
           },
           answer: {
             type: String,
-            required: true,
             minlength: 3,
             maxlength: 20,
           },
