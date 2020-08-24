@@ -6,7 +6,7 @@
   min-height: 4rem;
   max-height: 5.4rem;
   height: 7.7vh;
-  @include resp(700) {
+  @include min-width(700px) {
     height: 9vh;
   }
   display: flex;
@@ -14,7 +14,7 @@
   &--title {
     cursor: pointer;
     font-size: 1.4rem;
-    @include resp(700) {
+    @include min-width(700px) {
       font-size: 1.5rem;
     }
     color: #f3f3fb;
