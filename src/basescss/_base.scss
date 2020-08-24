@@ -1,17 +1,14 @@
-@mixin resp($breakpoint) {
-  @if ($breakpoint == 375) {
-    @media (min-width: 375px) {
+$output-media-width: true !default; // true = all, otherwise use a list of numeric values (eg. 320px 23em)
+@mixin min-width($bp) {
+  @if type-of($output-media-width) != list {
+    @media (min-width: $bp) {
       @content;
     }
-  }
-  @if ($breakpoint == 670) {
-    @media (min-width: 670px) {
-      @content;
-    }
-  }
-
-  @if ($breakpoint == 700) {
-    @media (min-width: 700px) {
+  } @else {
+    $output-bp: find-comparable($bp, $output-media-width);
+    @if not comparable($output-bp, $bp) {
+      @debug "Output breakpoint: #{$output-bp}, Chosen minimum width: #{$bp}";
+    } @else if $output-bp >= $bp {
       @content;
     }
   }
@@ -28,13 +25,7 @@
 
 html {
   font-size: 62.5%;
-  @include resp(670) {
-    font-size: 66%;
-  }
   box-sizing: border-box;
-  // @include respond(200) {
-  //   font-size: 62.5%;
-  // }
   line-height: calc(1.5em + (1.55 - 1.5) * ((100vw - 21em) / (35 - 21)));
 }
 
