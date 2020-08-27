@@ -21,8 +21,15 @@ export const checkIfUserExists = createAsyncThunk(
 
 export const getQuizzes = createAsyncThunk(
   'quizzesReducer/getQuizzes',
-  async () => {
-    const response = await fetch('/api/quizzes');
+  async (quizId) => {
+    const response = await fetch('/api/quizzes', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(quizId),
+    });
     const data = await response.json();
     return data;
   }
@@ -120,14 +127,14 @@ export const verifyUser = createAsyncThunk(
 
 export const saveQuizResult = createAsyncThunk(
   'userReducer/savequiz',
-  async ({ percentage, quizId, userId }) => {
-    await fetch('/api/user/savequiz', {
+  async ({ percentage, quizId, username }) => {
+    await fetch(`/api/user/${username}/savequiz`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ percentage, quizId, userId }),
+      body: JSON.stringify({ percentage, quizId }),
     });
   }
 );
