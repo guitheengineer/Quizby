@@ -1,4 +1,3 @@
-const changePhoto = require('./changePhoto');
 const checkIfUserExists = require('./checkIfUserExists');
 const checkIfEmailExists = require('./checkIfEmailExists');
 const saveQuizResult = require('./saveQuizResult');
@@ -8,7 +7,6 @@ const deleteQuiz = require('./deleteQuiz');
 const editQuiz = require('./editQuiz');
 
 module.exports = {
-  changePhoto,
   checkIfUserExists,
   checkIfEmailExists,
   saveQuizResult,
