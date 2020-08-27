@@ -1,10 +1,9 @@
 const { userModel, quizModel } = require('../../models');
 
 module.exports = async (req, res) => {
-  const { quizId, userId, percentage } = req.body;
-
+  const { quizId, percentage } = req.body;
+  const { username } = req.params;
   const quizPlayed = await quizModel.findById(quizId);
-
   const { creator, creatorName, name, _id, image } = quizPlayed;
 
   const quizData = {
@@ -15,10 +14,11 @@ module.exports = async (req, res) => {
     image,
     score: percentage,
   };
+  await quizModel.findByIdAndUpdate(_id, { $inc: { timesPlayed: 1 } });
 
   let doc;
   doc = await userModel.findOneAndUpdate(
-    { _id: userId, 'quizzesPlayed._id': quizId },
+    { username, 'quizzesPlayed._id': quizId },
     {
       'quizzesPlayed.$': quizData,
     },
@@ -26,8 +26,8 @@ module.exports = async (req, res) => {
   );
 
   if (doc === null) {
-    doc = await userModel.findByIdAndUpdate(
-      userId,
+    doc = await userModel.findOneAndUpdate(
+      { username },
       {
         $push: { quizzesPlayed: quizData },
       },
