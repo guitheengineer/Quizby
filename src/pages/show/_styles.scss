@@ -5,15 +5,15 @@
     flex: 1;
     &__image {
         position: relative;
-        flex: 1 1 40%;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        transform: scaleY(1.2);
+        flex: 1 1 45%;
     }
     div {
         .Show__playarea {
             width: 80%;
+
             h1 {
                 &::before {
                     position: absolute;

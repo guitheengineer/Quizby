@@ -7,10 +7,13 @@
   text-align: left;
   span {
     position: absolute;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 1);
     font: 1.4rem Overpass;
     font-size: clamp(1.4rem, 4.2vw, 1.8rem);
     left: 10%;
     bottom: 10%;
+    width: 80%;
+    overflow: hidden;
     color: white;
   }
 }
@@ -54,7 +57,7 @@
         left: 100%;
         top: 50%;
         transform: translateY(-50%);
-        height: 6.2rem;
+        height: 2rem;
       }
     }
   }
@@ -91,9 +94,9 @@
     gap: 0.9rem;
     &--created {
       @include min-width(380px) {
-        gap: 5.2rem 1.2rem;
+        gap: 5.2rem 0.9rem;
       }
-      gap: 4.6rem 1.2rem;
+      gap: 4.6rem 0.9rem;
     }
   }
   &__item,
