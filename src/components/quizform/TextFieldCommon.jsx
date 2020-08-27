@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeInput } from '../../slices/manipulateSlice';
 
-export default function TextFieldCommon({
+const TextFieldCommon = ({
   label,
   required,
   style,
@@ -12,7 +12,7 @@ export default function TextFieldCommon({
   maxLength,
   type,
   index,
-}) {
+}) => {
   const quizValue = useSelector((state) => {
     if (
       type === 'question' ||
@@ -45,7 +45,7 @@ export default function TextFieldCommon({
       inputProps={{ maxLength }}
     />
   );
-}
+};
 
 TextFieldCommon.propTypes = {
   label: PropTypes.string,
@@ -64,3 +64,5 @@ TextFieldCommon.defaultProps = {
   style: {},
   index: 0,
 };
+
+export default TextFieldCommon;

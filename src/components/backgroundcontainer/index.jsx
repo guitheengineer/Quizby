@@ -4,14 +4,16 @@ import { useSelector } from 'react-redux';
 import Menu from '../menu';
 import { selectGeneralReducer } from '../../slices/generalSlice';
 
-function BackgroundContainer({
+const BackgroundContainer = ({
   mgTop,
   minHeight,
   children,
   justifyContent,
   overflow,
   alignItems,
-}) {
+  top,
+  height,
+}) => {
   const { menuIsActive } = useSelector(selectGeneralReducer);
 
   const commonStyles = {
@@ -23,8 +25,11 @@ function BackgroundContainer({
     display: 'flex',
     flexDirection: 'column',
     transition: 'all 2s',
+    marginTop: mgTop,
+    top,
     alignItems,
     justifyContent,
+    height,
   };
   return (
     <>
@@ -35,14 +40,11 @@ function BackgroundContainer({
             ? {
                 ...commonStyles,
                 overflowY: 'hidden',
-                marginTop: 'auto',
-                height: '4rem',
               }
             : {
                 ...commonStyles,
                 overflow,
                 flex: '1 1 100%',
-                marginTop: mgTop,
                 minHeight,
               }
         }
@@ -64,15 +66,20 @@ BackgroundContainer.propTypes = {
   justifyContent: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   mgTop: PropTypes.string,
+  top: PropTypes.string,
   overflow: PropTypes.string,
   alignItems: PropTypes.string,
+  height: PropTypes.string,
 };
 
 BackgroundContainer.defaultProps = {
-  mgTop: '0px',
   minHeight: '0px',
   justifyContent: 'center',
   overflow: 'hidden',
   alignItems: 'normal',
+  top: '0px',
+  mgTop: 'auto',
+  height: '4rem',
 };
+
 export default BackgroundContainer;

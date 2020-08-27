@@ -1,27 +1,16 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ButtonQuiz from './ButtonQuiz';
-import { getRecommendedQuiz } from '../../asyncActions';
 
-function Recommended() {
-  const dispatch = useDispatch();
-  const { recommended } = useSelector((state) => state.quizzesReducer.quizzes);
+const Recommended = ({ recommended }) => (
+  <div className="Quizzes__recommended">
+    <span>Recommended</span>
+    <ButtonQuiz maxLength={40} quiz={recommended} />
+  </div>
+);
 
-  const { recommendedQuizFetchState } = useSelector(
-    (state) => state.quizzesReducer
-  );
-
-  useEffect(() => {
-    dispatch(getRecommendedQuiz());
-  }, []);
-  return (
-    recommendedQuizFetchState === 'fulfilled' && (
-      <div className="Quizzes__recommended">
-        <span>Recommended</span>
-        <ButtonQuiz quiz={recommended} />
-      </div>
-    )
-  );
-}
+Recommended.propTypes = {
+  recommended: PropTypes.object.isRequired,
+};
 
 export default Recommended;

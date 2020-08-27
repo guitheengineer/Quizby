@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ClipLoader } from 'react-spinners';
 import { Route } from 'react-router-dom';
 import BackgroundContainer from '../../components/backgroundcontainer';
-import { getQuizzes, searchQuizzes } from '../../asyncActions';
+import {
+  getQuizzes,
+  searchQuizzes,
+  getRecommendedQuiz,
+} from '../../asyncActions';
 import FetchError from '../../components/FetchError';
 import SearchQuizzes from '../../components/SearchQuizzes';
 import Categories from '../../components/quizzes/Categories';
@@ -12,28 +16,39 @@ import QuizList from '../../components/quizzes/QuizList';
 import QuizzesSearched from '../../components/quizzes/QuizzesSearched';
 import { selectQuizReducer } from '../../slices/quizzesSlice';
 
-function Quizzes() {
+const Quizzes = () => {
   const dispatch = useDispatch();
-  const { quizzesFetchState, query } = useSelector(selectQuizReducer);
-
+  const { quizzesFetchState, query, recommendedQuizFetchState } = useSelector(
+    selectQuizReducer
+  );
+  const { recommended } = useSelector((state) => state.quizzesReducer.quizzes);
+  console.log(quizzesFetchState);
   useEffect(() => {
+    dispatch(getRecommendedQuiz());
+    // get recommended, see what it's id and get quizzes without that id
     if (query === '') {
-      dispatch(getQuizzes());
+      if (recommendedQuizFetchState === 'fulfilled') {
+        console.log('itsfulfilled');
+        dispatch(getQuizzes(recommended._id));
+      }
     } else {
       dispatch(searchQuizzes(window.location.search.substring(3)));
     }
   }, [query]);
 
   function shouldQuizzesListAppear() {
-    if (quizzesFetchState === 'fulfilled' && query === '') {
+    if (
+      recommendedQuizFetchState === 'fulfilled' &&
+      quizzesFetchState === 'fulfilled' &&
+      query === ''
+    )
       return (
         <>
-          <Recommended />
           <QuizList label="Most played" type="mostPlayed" />
           <Categories />
         </>
       );
-    }
+
     if (quizzesFetchState === 'error') {
       return <FetchError fetchFunction={getQuizzes} />;
     }
@@ -66,11 +81,14 @@ function Quizzes() {
       />
       <div className="Quizzes__container">
         {shouldSearchAppear()}
+        {recommendedQuizFetchState === 'fulfilled' && (
+          <Recommended recommended={recommended} />
+        )}
         {shouldQuizzesListAppear()}
         {shouldQuizzesSearchAppear()}
       </div>
     </BackgroundContainer>
   );
-}
+};
 
 export default Quizzes;

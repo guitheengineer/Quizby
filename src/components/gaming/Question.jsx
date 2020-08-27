@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectQuizReducer } from '../../slices/quizzesSlice';
 
-function Question() {
+const Question = () => {
   const { currentQuiz, currentQuestion, currentQuestionAnswered } = useSelector(
     selectQuizReducer
   );
@@ -27,6 +27,6 @@ function Question() {
       {currentQuiz.questions[currentQuestion].question}
     </div>
   );
-}
+};
 
 export default Question;

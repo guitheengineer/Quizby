@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import { useSelector } from 'react-redux';
 import { selectFormReducer } from '../../slices/formSlice';
 
-export default function TextFieldUsername() {
+const TextFieldModifiedUsername = () => {
   const { errorExistsUsername, usernameExists } = useSelector(
     selectFormReducer
   );
@@ -26,4 +26,6 @@ export default function TextFieldUsername() {
       }}
     />
   );
-}
+};
+
+export default TextFieldModifiedUsername;

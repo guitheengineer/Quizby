@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Donut({ value, valueLabel, size, strokeWidth }) {
+const Donut = ({ value, valueLabel, size, strokeWidth }) => {
   const halfSize = size * 0.5;
   const radius = halfSize - strokeWidth * 0.5;
   const circumference = 2 * Math.PI * radius;
@@ -63,3 +63,6 @@ Donut.defaultProps = {
   size: 187,
   strokeWidth: 10,
 };
+
+
+export default Donut;

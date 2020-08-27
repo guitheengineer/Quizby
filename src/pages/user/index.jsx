@@ -11,7 +11,7 @@ import ButtonQuiz from '../../components/quizzes/ButtonQuiz';
 import Number from '../../components/user/Number';
 import ButtonQuizPermission from '../../components/user/ButtonQuizPermission';
 
-function User() {
+const User = () => {
   const { isAuthenticated, username } = useSelector(selectUserReducer);
   const { username: usernameParam } = useParams();
 
@@ -101,6 +101,6 @@ function User() {
       </div>
     </BackgroundContainer>
   );
-}
+};
 
 export default User;

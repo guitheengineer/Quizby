@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import ButtonQuiz from './ButtonQuiz';
 
-function QuizzesSearched() {
+const QuizzesSearched = () => {
   const { quizzesSearchedData } = useSelector(
     (selectorData) => selectorData.quizzesReducer.quizzes
   );
@@ -16,6 +16,6 @@ function QuizzesSearched() {
       </div>
     </div>
   );
-}
+};
 
 export default QuizzesSearched;

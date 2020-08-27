@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeImage } from '../../slices/manipulateSlice';
 import Notification from '../Notification';
 
-export default function ImageInput() {
+function ImageInput() {
   const [imageError, setImageError] = useState(false);
   const dispatch = useDispatch();
   const image = useSelector((state) => state.manipulateReducer.image);
@@ -58,3 +58,5 @@ export default function ImageInput() {
     </>
   );
 }
+
+export default ImageInput;

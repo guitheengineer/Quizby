@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import { useSelector } from 'react-redux';
 import { selectFormReducer } from '../../slices/formSlice';
 
-export default function TextFieldEmail() {
+const TextFieldModifiedEmail = () => {
   const { errorExistsEmail } = useSelector(selectFormReducer);
 
   return (
@@ -24,4 +24,6 @@ export default function TextFieldEmail() {
       }}
     />
   );
-}
+};
+
+export default TextFieldModifiedEmail;

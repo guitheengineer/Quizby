@@ -10,7 +10,7 @@ import TextFieldModifiedPassword from '../../textfields/TextFieldModifiedPasswor
 import TextFieldModifiedEmail from '../../textfields/TextFieldModifiedEmail';
 import { onSubmitForm, selectFormReducer } from '../../../slices/formSlice';
 
-export default function Login() {
+const Login = () => {
   const dispatch = useDispatch();
   const { loginError, loginState } = useSelector(selectFormReducer);
 
@@ -70,4 +70,6 @@ export default function Login() {
       </BackgroundContainer>
     </div>
   );
-}
+};
+
+export default Login;

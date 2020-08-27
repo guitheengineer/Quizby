@@ -5,7 +5,7 @@ import QuizForm from '../../components/quizform';
 import { editQuizThunk } from '../../asyncActions';
 import { selectManipulateReducer } from '../../slices/manipulateSlice';
 
-function EditQuiz() {
+const EditQuiz = () => {
   const { isEditing, editQuizFetchState } = useSelector(
     selectManipulateReducer
   );
@@ -24,6 +24,6 @@ function EditQuiz() {
       loadingState={editQuizFetchState}
     />
   );
-}
+};
 
 export default EditQuiz;

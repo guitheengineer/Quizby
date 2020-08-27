@@ -6,7 +6,7 @@ import TextFieldCategory from '../../components/TextFieldCategory';
 import { getCategoryQuiz } from '../../asyncActions';
 import { selectManipulateReducer } from '../../slices/manipulateSlice';
 
-function Category() {
+const Category = () => {
   const dispatch = useDispatch();
   const { category } = useSelector(selectManipulateReducer);
 
@@ -43,6 +43,6 @@ function Category() {
       </div>
     </BackgroundContainer>
   );
-}
+};
 
 export default Category;

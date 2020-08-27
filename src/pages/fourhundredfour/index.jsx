@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import BackgroundContainer from '../../components/backgroundcontainer';
 
-export default function FourHundredFour() {
+const FourHundredFour = () => {
   return (
     <BackgroundContainer>
       <div className="App__fourhundred">
@@ -21,4 +21,6 @@ export default function FourHundredFour() {
       </div>
     </BackgroundContainer>
   );
-}
+};
+
+export default FourHundredFour;

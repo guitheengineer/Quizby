@@ -4,7 +4,7 @@ import QuizForm from '../../components/quizform';
 import { sendForm } from '../../asyncActions';
 import { selectManipulateReducer } from '../../slices/manipulateSlice';
 
-function CreateQuiz() {
+const CreateQuiz = () => {
   const { saveQuizFetchState } = useSelector(selectManipulateReducer);
 
   return (
@@ -14,6 +14,6 @@ function CreateQuiz() {
       loadingState={saveQuizFetchState}
     />
   );
-}
+};
 
 export default CreateQuiz;

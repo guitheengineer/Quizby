@@ -7,7 +7,7 @@ import {
   selectFormReducer,
 } from '../../slices/formSlice';
 
-export default function TextFieldModifiedPassword() {
+const TextFieldModifiedPassword = () => {
   const dispatch = useDispatch();
   const { password, errorExistsPassword } = useSelector(selectFormReducer);
 
@@ -56,4 +56,6 @@ export default function TextFieldModifiedPassword() {
       }}
     />
   );
-}
+};
+
+export default TextFieldModifiedPassword;

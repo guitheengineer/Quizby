@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setQuery, selectQuizReducer } from '../../slices/quizzesSlice';
 import { getCurrentQuiz, deleteQuiz, getUserQuizzes } from '../../asyncActions';
 import { setEditQuiz } from '../../slices/manipulateSlice';
+import sliceName from '../../appUtils/sliceName';
 
-function ButtonQuizPermission({ quiz, maxLength, username }) {
+const ButtonQuizPermission = ({ quiz, maxLength, username }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { deleteQuizFetchState } = useSelector(selectQuizReducer);
@@ -19,7 +20,7 @@ function ButtonQuizPermission({ quiz, maxLength, username }) {
   function getQuizBackground() {
     if (quiz.image) {
       return {
-        backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0.27)), url('data:${quiz.image.contentType};base64,${quiz.image.data}')`,
+        backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('data:${quiz.image.contentType};base64,${quiz.image.data}')`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
       };
@@ -36,8 +37,6 @@ function ButtonQuizPermission({ quiz, maxLength, username }) {
   function editClicked() {
     dispatch(setEditQuiz(quiz));
     history.push(`/user/${username}/editquiz`);
-
-    // this function will get all quiz data and set to manipulateReducer, also changing the link to editqqiz
   }
 
   function deleteClicked() {
@@ -52,7 +51,7 @@ function ButtonQuizPermission({ quiz, maxLength, username }) {
         type="button"
         onClick={quizClicked}
       >
-        <span>{`${quiz.name.slice(0, maxLength)}...`}</span>
+        <span>{sliceName(quiz.name, maxLength)}</span>
       </button>
       <div className="User__action-buttons">
         <button
@@ -73,7 +72,7 @@ function ButtonQuizPermission({ quiz, maxLength, username }) {
       </div>
     </div>
   );
-}
+};
 
 ButtonQuizPermission.propTypes = {
   quiz: PropTypes.shape({

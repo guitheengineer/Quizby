@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { changeMenu } from '../../slices/generalSlice';
 import { getMenuIsActive } from '../../customhooks';
 
-function MenuIcon() {
+const MenuIcon = () => {
   const dispatch = useDispatch();
   const menuIsActive = getMenuIsActive();
 
@@ -19,6 +19,6 @@ function MenuIcon() {
       ))}
     </button>
   );
-}
+};
 
 export default MenuIcon;

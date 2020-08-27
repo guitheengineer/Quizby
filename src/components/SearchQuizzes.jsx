@@ -8,7 +8,7 @@ import { setQuery, selectQuizReducer } from '../slices/quizzesSlice';
 import { changeMenu } from '../slices/generalSlice';
 import { getMenuIsActive } from '../customhooks';
 
-function SearchQuizzes() {
+const SearchQuizzes = () => {
   const [menuSearched, setMenuSearched] = useState(false);
 
   const { query, quizSearchFetchState } = useSelector(selectQuizReducer);
@@ -66,6 +66,6 @@ function SearchQuizzes() {
       />
     </div>
   );
-}
+};
 
 export default SearchQuizzes;

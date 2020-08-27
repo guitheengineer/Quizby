@@ -10,7 +10,7 @@ import ButtonSaveQuiz from './ButtonSaveQuiz';
 import { setNewQuizId } from '../../slices/manipulateSlice';
 import Notification from '../Notification';
 
-function QuizForm({ functionType, className, type, loadingState }) {
+const QuizForm = ({ functionType, className, type, loadingState }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (type === 'create') {
@@ -39,7 +39,7 @@ function QuizForm({ functionType, className, type, loadingState }) {
       </>
     </BackgroundContainer>
   );
-}
+};
 
 QuizForm.propTypes = {
   className: PropTypes.string,

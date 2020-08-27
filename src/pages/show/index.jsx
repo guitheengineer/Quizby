@@ -7,7 +7,7 @@ import QuizList from '../../components/quizzes/QuizList';
 import { getQuiz, getMenuIsActive } from '../../customhooks';
 import { getQuizzes } from '../../asyncActions';
 
-function Show() {
+const Show = () => {
   const menuIsActive = getMenuIsActive();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -27,11 +27,11 @@ function Show() {
       return {
         backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0.27)), url('data:${image.contentType};base64,${image.data}')
         `,
-        flex: '1 1 40%',
+        flex: '1 1 45%',
       };
     }
     if (menuIsActive) {
-      return { backgroundColor: '#5255ca', flex: '0 0 90%' };
+      return { backgroundColor: '#5255ca', flex: '1 0 90%' };
     }
     return null;
   }
@@ -43,6 +43,7 @@ function Show() {
         justifyContent="normal"
         alignItems="center"
         overflow="normal"
+        mgTop="-15px"
       >
         <div className="Show__playarea">
           <h1>{name}</h1>
@@ -55,10 +56,14 @@ function Show() {
             Play
           </button>
         </div>
-        <QuizList label="Other quizzes" type="mostPlayed" />
+        <QuizList
+          className="Quizzes__sectiontwo--show"
+          label="Other quizzes"
+          type="mostPlayed"
+        />
       </BackgroundContainer>
     </div>
   );
-}
+};
 
 export default Show;

@@ -4,8 +4,9 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setQuery } from '../../slices/quizzesSlice';
 import { getCurrentQuiz } from '../../asyncActions';
+import sliceName from '../../appUtils/sliceName';
 
-function ButtonQuiz({ quiz, className, maxLength }) {
+const ButtonQuiz = ({ quiz, className, maxLength }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -17,7 +18,7 @@ function ButtonQuiz({ quiz, className, maxLength }) {
   function getQuizBackground() {
     if (quiz.image) {
       return {
-        backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0.27)), url('data:${quiz.image.contentType};base64,${quiz.image.data}')`,
+        backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('data:${quiz.image.contentType};base64,${quiz.image.data}')`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
       };
@@ -32,10 +33,10 @@ function ButtonQuiz({ quiz, className, maxLength }) {
       type="button"
       onClick={quizClicked}
     >
-      <span>{`${quiz.name.slice(0, maxLength)}...`}</span>
+      <span>{sliceName(quiz.name, maxLength)}</span>
     </button>
   ) : null;
-}
+};
 
 ButtonQuiz.propTypes = {
   quiz: PropTypes.shape({
@@ -49,7 +50,7 @@ ButtonQuiz.propTypes = {
 
 ButtonQuiz.defaultProps = {
   className: '',
-  maxLength: 40,
+  maxLength: 28,
 };
 
 export default ButtonQuiz;

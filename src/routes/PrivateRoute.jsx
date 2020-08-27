@@ -6,13 +6,13 @@ import Header from '../components/header';
 import { verifyUser } from '../asyncActions';
 import { selectUserReducer } from '../slices/userSlice';
 
-function PrivateRoute({
+const PrivateRoute = ({
   showlogo,
   style,
   title,
   component: Component,
   ...rest
-}) {
+}) => {
   const dispatch = useDispatch();
   const { isAuthenticated, checkAuth } = useSelector(selectUserReducer);
 
@@ -40,7 +40,7 @@ function PrivateRoute({
       />
     )
   );
-}
+};
 
 PrivateRoute.propTypes = {
   showlogo: PropTypes.bool,

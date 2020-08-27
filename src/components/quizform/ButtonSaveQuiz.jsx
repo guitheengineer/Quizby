@@ -9,7 +9,7 @@ import {
 } from '../../slices/manipulateSlice';
 import { selectUserReducer } from '../../slices/userSlice';
 
-function ButtonSaveQuiz({ title, functionType, loadingState }) {
+const ButtonSaveQuiz = ({ title, functionType, loadingState }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const {
@@ -61,7 +61,7 @@ function ButtonSaveQuiz({ title, functionType, loadingState }) {
       />
     </button>
   );
-}
+};
 
 ButtonSaveQuiz.propTypes = {
   title: PropTypes.string,

@@ -38,7 +38,7 @@ const currencies = [
   },
 ];
 
-export default function TextFieldCategory({ variant, style }) {
+const TextFieldCategory = ({ variant, style }) => {
   const { category: categoryParam } = useParams();
 
   const dispatch = useDispatch();
@@ -50,9 +50,9 @@ export default function TextFieldCategory({ variant, style }) {
     }
   }, []);
 
-  function changeCategory(e) {
+  const changeCategory = (e) => {
     dispatch(changeInput({ value: e.target.value, type: 'category', id: '' }));
-  }
+  };
 
   return (
     <TextField
@@ -73,7 +73,7 @@ export default function TextFieldCategory({ variant, style }) {
       ))}
     </TextField>
   );
-}
+};
 
 TextFieldCategory.propTypes = {
   variant: PropTypes.string,
@@ -84,3 +84,5 @@ TextFieldCategory.defaultProps = {
   variant: 'outlined',
   style: { marginTop: '2rem', font: '1.6rem Overpass' },
 };
+
+export default TextFieldCategory;

@@ -15,33 +15,28 @@ import PrivateRouteUser from './PrivateRouteUser';
 import Category from '../pages/category';
 import EditQuiz from '../pages/editquiz';
 
-function Routes() {
-  return (
-    <Switch>
-      <RouteWithHeader path="/quizzes/play/:id" component={Playing} />
-      <RouteWithHeader showlogo={false} path="/signup" component={Signup} />
-      <RouteWithHeader showlogo={false} path="/login" component={Login} />
-      <PrivateRoute
-        style={{ position: 'absolute', zIndex: 1 }}
-        path="/quizzes/show/:id"
-        component={Show}
-      />
-      <PrivateRoute path="/quizzes/done/:id" component={Done} />
-      <RouteWithHeader
-        path="/quizzes/category/:category"
-        component={Category}
-      />
-      <PrivateRoute path="/quizzes" component={Quizzes} />
-      <PrivateRouteUser
-        path="/user/:username/createquiz"
-        component={CreateQuiz}
-      />
-      <PrivateRouteUser path="/user/:username/editquiz" component={EditQuiz} />
-      <RouteWithHeader path="/user/:username" component={User} />
+const Routes = () => (
+  <Switch>
+    <RouteWithHeader path="/quizzes/play/:id" component={Playing} />
+    <RouteWithHeader showlogo={false} path="/signup" component={Signup} />
+    <RouteWithHeader showlogo={false} path="/login" component={Login} />
+    <PrivateRoute
+      style={{ position: 'absolute', zIndex: 1 }}
+      path="/quizzes/show/:id"
+      component={Show}
+    />
+    <PrivateRoute path="/quizzes/done/:id" component={Done} />
+    <RouteWithHeader path="/quizzes/category/:category" component={Category} />
+    <RouteWithHeader path="/quizzes" component={Quizzes} />
+    <PrivateRouteUser
+      path="/user/:username/createquiz"
+      component={CreateQuiz}
+    />
+    <PrivateRouteUser path="/user/:username/editquiz" component={EditQuiz} />
+    <RouteWithHeader path="/user/:username" component={User} />
 
-      <RouteWithHeader component={FourHundredFour} />
-    </Switch>
-  );
-}
+    <RouteWithHeader component={FourHundredFour} />
+  </Switch>
+);
 
 export default Routes;

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectQuizReducer } from '../../slices/quizzesSlice';
 
-export default function ListAnswers() {
+const ListAnswers = () => {
   const { historicOfAnswers } = useSelector(selectQuizReducer);
   return (
     <ul className="App__listiconanswers">
@@ -19,4 +19,6 @@ export default function ListAnswers() {
       )}
     </ul>
   );
-}
+};
+
+export default ListAnswers;

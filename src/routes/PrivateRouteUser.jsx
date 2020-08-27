@@ -6,13 +6,13 @@ import Header from '../components/header';
 import { verifyUser } from '../asyncActions';
 import { selectUserReducer } from '../slices/userSlice';
 
-export default function PrivateRouteUser({
+const PrivateRouteUser = ({
   showlogo,
   style,
   title,
   component: Component,
   ...rest
-}) {
+}) => {
   const dispatch = useDispatch();
   const { isAuthenticated, checkAuth, username } = useSelector(
     selectUserReducer
@@ -43,7 +43,7 @@ export default function PrivateRouteUser({
       />
     )
   );
-}
+};
 
 PrivateRouteUser.propTypes = {
   showlogo: PropTypes.string,
@@ -59,3 +59,5 @@ PrivateRouteUser.defaultProps = {
   title: 'Quizby',
   location: {},
 };
+
+export default PrivateRouteUser;

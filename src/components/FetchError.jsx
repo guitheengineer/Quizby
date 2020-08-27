@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-function FetchError({ fetchFunction }) {
+const FetchError = ({ fetchFunction }) => {
   const dispatch = useDispatch();
   function errorClicked() {
     dispatch(fetchFunction());
@@ -24,7 +24,7 @@ function FetchError({ fetchFunction }) {
       </button>
     </div>
   );
-}
+};
 
 FetchError.propTypes = {
   fetchFunction: PropTypes.func.isRequired,

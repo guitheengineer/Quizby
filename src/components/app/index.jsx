@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from '../../routes';
 
-function App() {
+const App = () => {
   const [innerHeight, setInnerHeight] = useState(window.innerHeight);
   useEffect(() => {
     function handleResize() {
@@ -21,6 +21,6 @@ function App() {
       </div>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

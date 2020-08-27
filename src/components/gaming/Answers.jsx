@@ -7,7 +7,7 @@ import {
   selectQuizReducer,
 } from '../../slices/quizzesSlice';
 
-function Answers() {
+const Answers = () => {
   const [isHover, setIsHover] = useState({ hovering: true, ans: null });
   const {
     currentQuiz,
@@ -76,6 +76,6 @@ function Answers() {
       ))}
     </div>
   );
-}
+};
 
 export default Answers;

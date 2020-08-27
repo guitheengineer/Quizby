@@ -11,7 +11,7 @@ import BackgroundContainer from '../../components/backgroundcontainer';
 import { getQuiz } from '../../customhooks';
 import { selectQuizReducer } from '../../slices/quizzesSlice';
 
-function Playing() {
+const Playing = () => {
   const {
     quizFetchState,
     userAnsweredCorrect,
@@ -69,6 +69,6 @@ function Playing() {
       )}
     </>
   );
-}
+};
 
 export default Playing;

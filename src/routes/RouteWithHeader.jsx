@@ -3,13 +3,13 @@ import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Header from '../components/header';
 
-function RouteWithHeader({
+const RouteWithHeader = ({
   showlogo,
   style,
   title,
   component: Component,
   ...rest
-}) {
+}) => {
   useEffect(() => {
     document.title = title;
   }, []);
@@ -24,7 +24,7 @@ function RouteWithHeader({
       )}
     />
   );
-}
+};
 
 RouteWithHeader.propTypes = {
   showlogo: PropTypes.bool,

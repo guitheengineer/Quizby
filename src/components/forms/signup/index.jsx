@@ -13,7 +13,7 @@ import TextFieldModifiedPassword from '../../textfields/TextFieldModifiedPasswor
 import TextFieldModifiedEmail from '../../textfields/TextFieldModifiedEmail';
 import { onSubmitForm } from '../../../slices/formSlice';
 
-function Signup() {
+const Signup = () => {
   const dispatch = useDispatch();
   const signupState = useSelector((data) => data.formReducer.signupState);
   return (
@@ -75,6 +75,6 @@ function Signup() {
       </BackgroundContainer>
     </div>
   );
-}
+};
 
 export default Signup;

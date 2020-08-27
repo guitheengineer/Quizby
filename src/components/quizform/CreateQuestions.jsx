@@ -13,7 +13,7 @@ const commonProps = {
   style: { marginTop: '1.6rem' },
 };
 
-function CreateQuestions() {
+const CreateQuestions = () => {
   const { creationQuizzes } = useSelector(selectManipulateReducer);
   const dispatch = useDispatch();
   function close(id) {
@@ -70,6 +70,6 @@ function CreateQuestions() {
       ))}
     </>
   );
-}
+};
 
 export default CreateQuestions;

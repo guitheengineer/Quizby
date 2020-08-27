@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addCreationQuiz } from '../../slices/manipulateSlice';
 
-function CreateButton() {
+const CreateButton = () => {
   const dispatch = useDispatch();
   function addQuiz() {
     dispatch(addCreationQuiz());
@@ -16,6 +16,6 @@ function CreateButton() {
       </div>
     </button>
   );
-}
+};
 
 export default CreateButton;

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Donut from '../../components/done/Donut';
 import BackgroundContainer from '../../components/backgroundcontainer';
@@ -7,15 +7,14 @@ import { resetUserStats } from '../../slices/quizzesSlice';
 import { saveQuizResult } from '../../asyncActions';
 import { setUser, selectUserReducer } from '../../slices/userSlice';
 
-function Done() {
+const Done = () => {
   const { done, percentage } = useSelector(
     (state) => state.quizzesReducer.userStats
   );
   const { isAuthenticated } = useSelector(selectUserReducer);
-  const userId = useSelector((state) => state.userReducer.id);
   const dispatch = useDispatch();
   const history = useHistory();
-  const quizId = window.location.pathname.split('/').pop();
+  const { id: quizId } = useParams();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -25,7 +24,7 @@ function Done() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch(saveQuizResult({ percentage, quizId, userId }));
+      dispatch(saveQuizResult({ percentage, quizId }));
     }
     if (!done) {
       history.goBack();
@@ -75,6 +74,6 @@ function Done() {
       </div>
     </BackgroundContainer>
   );
-}
+};
 
 export default Done;

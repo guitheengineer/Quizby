@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Notification({ callbackfunction, message }) {
+const Notification = ({ callbackfunction, message }) => {
   return (
     <div className="Notification" onAnimationEnd={() => callbackfunction()}>
       <div className="Notification__container">
@@ -10,7 +10,7 @@ function Notification({ callbackfunction, message }) {
       </div>
     </div>
   );
-}
+};
 
 Notification.propTypes = {
   message: PropTypes.string,
