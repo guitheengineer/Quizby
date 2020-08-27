@@ -2,18 +2,17 @@ const express = require('express');
 
 const router = express.Router();
 const {
-  changePhoto,
   saveQuizResult,
   newQuiz,
   getUserQuizzes,
   deleteQuiz,
   editQuiz,
 } = require('../controllers/user');
+const protect = require('../controllers/authentication/protect');
 
 router.get('/:username', getUserQuizzes);
-router.post('/changephoto', changePhoto);
-router.post('/:username/createquiz', newQuiz);
-router.post('/:username/deletequiz', deleteQuiz);
-router.post('/:username/editquiz', editQuiz);
-router.post('/savequiz', saveQuizResult);
+router.post('/:username/createquiz', newQuiz, protect);
+router.post('/:username/deletequiz', deleteQuiz, protect);
+router.post('/:username/editquiz', editQuiz, protect);
+router.post('/:username/savequiz', saveQuizResult, protect);
 module.exports = router;
