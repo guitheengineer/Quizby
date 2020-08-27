@@ -14,6 +14,6 @@ router.get('/quiz/:id', currentQuiz);
 router.get('/search', searchQuizzes);
 router.get('/recommended', getRecommendedQuiz);
 router.get('/category/:category', categoryQuiz);
-router.get('/', getQuizzes);
+router.post('/', getQuizzes);
 
 module.exports = router;
