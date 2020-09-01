@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import MenuIcon from '../menuicon';
+import MenuIcon from './menu/MenuIcon';
 
 const Header = ({ showlogo, style }) =>
   showlogo ? (

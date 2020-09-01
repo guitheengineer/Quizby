@@ -1,2 +1,2 @@
-export { default as getMenuIsActive } from './getMenuIsActive';
-export { default as getQuiz } from './getQuiz';
+export { default as setMenuIsActive } from './setMenuIsActive';
+export { default as setQuiz } from './setQuiz';

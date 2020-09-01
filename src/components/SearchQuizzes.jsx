@@ -4,15 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { setQuery, selectQuizReducer } from '../slices/quizzesSlice';
-import { changeMenu } from '../slices/generalSlice';
-import { getMenuIsActive } from '../customhooks';
+import { setQuery, selectQuizReducer } from '../slices/quizzes-slice';
+import { changeMenu } from '../slices/general-slice';
+import { setMenuIsActive } from '../customhooks';
 
 const SearchQuizzes = () => {
   const [menuSearched, setMenuSearched] = useState(false);
 
   const { query, quizSearchFetchState } = useSelector(selectQuizReducer);
-  const menuIsActive = getMenuIsActive();
+  const menuIsActive = setMenuIsActive();
 
   const dispatch = useDispatch();
   const history = useHistory();

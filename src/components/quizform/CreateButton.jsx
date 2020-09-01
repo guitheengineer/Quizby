@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addCreationQuiz } from '../../slices/manipulateSlice';
+import { addCreationQuiz } from '../../slices/manipulate-slice';
 
 const CreateButton = () => {
   const dispatch = useDispatch();

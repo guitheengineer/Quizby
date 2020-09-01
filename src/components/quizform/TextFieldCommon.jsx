@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeInput } from '../../slices/manipulateSlice';
+import { changeInput } from '../../slices/manipulate-slice';
 
 const TextFieldCommon = ({
   label,

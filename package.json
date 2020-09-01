@@ -42,11 +42,12 @@
     "eject": "react-scripts eject",
     "dev": "concurrently --kill-others-on-fail \"npm run sass\" \"npm run server\" \"npm start\"",
     "sass": "node-sass src/basescss/main.scss src/components/app/App.css -w",
-    "server": "nodemon server.js",
+    "server": "nodemon ",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\""
   },
+  "main": "server/index.js",
   "eslintConfig": {
     "extends": "react-app"
   },

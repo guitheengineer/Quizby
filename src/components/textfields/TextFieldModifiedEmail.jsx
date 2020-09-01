@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { useSelector } from 'react-redux';
-import { selectFormReducer } from '../../slices/formSlice';
+import { selectFormReducer } from '../../slices/form-slice';
 
 const TextFieldModifiedEmail = () => {
   const { errorExistsEmail } = useSelector(selectFormReducer);

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeImage } from '../../slices/manipulateSlice';
+import { changeImage } from '../../slices/manipulate-slice';
 import Notification from '../Notification';
 
 function ImageInput() {

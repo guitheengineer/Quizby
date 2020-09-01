@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   setPasswordVisibility,
   selectFormReducer,
-} from '../../slices/formSlice';
+} from '../../slices/form-slice';
 
 const TextFieldModifiedPassword = () => {
   const dispatch = useDispatch();

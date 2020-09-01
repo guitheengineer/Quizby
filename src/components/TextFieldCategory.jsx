@@ -9,7 +9,7 @@ import capitalize from '../appUtils/capitalize';
 import {
   changeInput,
   selectManipulateReducer,
-} from '../slices/manipulateSlice';
+} from '../slices/manipulate-slice';
 
 const currencies = [
   {

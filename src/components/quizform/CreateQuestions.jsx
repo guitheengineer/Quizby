@@ -4,7 +4,7 @@ import TextFieldCommon from './TextFieldCommon';
 import {
   selectManipulateReducer,
   removeCreatedQuiz,
-} from '../../slices/manipulateSlice';
+} from '../../slices/manipulate-slice';
 
 const commonProps = {
   multiline: true,

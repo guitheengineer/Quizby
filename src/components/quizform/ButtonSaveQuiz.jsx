@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectManipulateReducer,
   quizSaved,
-} from '../../slices/manipulateSlice';
-import { selectUserReducer } from '../../slices/userSlice';
+} from '../../slices/manipulate-slice';
+import { selectUserReducer } from '../../slices/user-slice';
 
 const ButtonSaveQuiz = ({ title, functionType, loadingState }) => {
   const dispatch = useDispatch();

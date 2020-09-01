@@ -7,7 +7,7 @@ import CreateQuestions from './CreateQuestions';
 import BackgroundContainer from '../backgroundcontainer';
 import CreateButton from './CreateButton';
 import ButtonSaveQuiz from './ButtonSaveQuiz';
-import { setNewQuizId } from '../../slices/manipulateSlice';
+import { setNewQuizId } from '../../slices/manipulate-slice';
 import Notification from '../Notification';
 
 const QuizForm = ({ functionType, className, type, loadingState }) => {

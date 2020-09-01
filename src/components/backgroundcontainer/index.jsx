@@ -1,8 +1,8 @@
 import React, { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import Menu from '../menu';
-import { selectGeneralReducer } from '../../slices/generalSlice';
+import Menu from '../header/menu';
+import { selectGeneralReducer } from '../../slices/general-slice';
 
 const BackgroundContainer = ({
   mgTop,
@@ -59,7 +59,7 @@ const BackgroundContainer = ({
       </div>
     </>
   );
-}
+};
 
 BackgroundContainer.propTypes = {
   minHeight: PropTypes.string,
