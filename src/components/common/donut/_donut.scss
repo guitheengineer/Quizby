@@ -1,0 +1,50 @@
+.Donut {
+  margin: 0 auto;
+  border-radius: 50%;
+  display: block;
+  &__track {
+    fill: transparent;
+    stroke: hsla(239, 40%, 91%, 1);
+    stroke-width: 26;
+  }
+  &__indicator {
+    fill: transparent;
+    stroke: #5255ca;
+    stroke-dasharray: 0 10000;
+    transition: all 2s ease;
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.15);
+  }
+  &__text {
+    display: flex;
+    flex-direction: column;
+    color: #5255ca;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: baseline;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__text-container {
+    font-size: 2.2rem;
+    font: bold 60px Lato;
+    position: relative;
+    display: flex;
+    margin: auto;
+  }
+  &__text-value {
+    position: relative;
+    font: bold 6rem Lato;
+  }
+  &__percentage {
+    font-size: 1.4rem;
+    position: absolute;
+    right: -1rem;
+    bottom: 0.8rem;
+  }
+  &__label {
+    font-size: 1.2rem;
+    margin: auto;
+  }
+}

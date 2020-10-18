@@ -3,15 +3,17 @@ import { quizModel } from '../../models';
 import catchAsync from '../../utils/catchAsync';
 
 export default catchAsync(async (req: Request, res: Response) => {
-  const name = req.query.q!.toString().toLowerCase();
+  if (req.query.q) {
+    const name = req.query.q.toString().toLowerCase();
 
-  const query = {
-    name: new RegExp(name, 'i'),
-  };
+    const query = {
+      name: new RegExp(name, 'i'),
+    };
 
-  const quizzesSearchedData = await quizModel.find(query).limit(8);
-  res.status(200).json({
-    status: 'success',
-    quizzesSearchedData,
-  });
+    const quizzesSearchedData = await quizModel.find(query).limit(8);
+    res.status(200).json({
+      status: 'success',
+      quizzesSearchedData,
+    });
+  }
 });
