@@ -21,9 +21,9 @@
         &::-webkit-file-upload-button {
             visibility: hidden;
         }
-        background-repeat: no-repeat !important;
-        background-position: center !important;
-        background-size: cover !important;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
         border-radius: 5px;
     }
     &__add {
@@ -91,6 +91,16 @@
         margin-top: 0.7rem;
         font: 1.6rem Overpass;
         color: rgba(10, 10, 31, 0.84);
+    }
+
+    &__name {
+        &--quiz-info {
+            margin-top: 2rem;
+            font: 1.6rem Overpass;
+        }
+        &--create {
+            margin-top: 1.6rem;
+        }
     }
     .MuiSelect-selectMenu {
         margin-top: -0.4rem;

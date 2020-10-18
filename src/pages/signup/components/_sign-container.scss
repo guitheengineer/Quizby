@@ -1,10 +1,14 @@
-.App {
+.Form-page {
   &__call {
     margin-left: 0.5rem;
   }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
   &__form {
     width: 80%;
-
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -38,12 +42,11 @@
     .MuiInputBase-root {
       margin-top: 0.3rem;
     }
-
-    &--loginerror {
-      margin-bottom: 1.5rem;
-      font: 1.5rem Roboto;
-      color: red;
-    }
+  }
+  &__login-error {
+    margin-bottom: 1.5rem;
+    font: 1.5rem Roboto;
+    color: red;
   }
 
   &__registerAdvice {

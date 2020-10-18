@@ -17,6 +17,7 @@
 }
 .Quizzes {
   &__container {
+    max-width: 50rem;
     width: 80%;
     align-self: center;
     justify-self: normal;
@@ -37,7 +38,6 @@
     }
     input {
       &::placeholder {
-        font: 1.8rem Overpass;
         color: rgba(22, 22, 69, 0.3);
       }
 
@@ -55,7 +55,6 @@
 
   &__recommended {
     @extend %section;
-    height: 17.3rem;
     button {
       position: relative;
       width: 100%;

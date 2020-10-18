@@ -1,0 +1,34 @@
+// Base scss
+@import "base";
+
+// Main components
+@import "../components/main/header/menu/menuicon";
+@import "../components/main/app/styles";
+@import "../components/main/header/styles";
+@import "../components/main/background-container/styles";
+@import "../components/main/header/menu/menu";
+
+// Common components
+@import "../components/common/presentation/styles";
+@import "../components/common/notification/notification";
+@import "../components/common/fetch-error/fetcherror";
+@import "../components/common/button-form/button";
+@import "../components/common/quiz-form/styles";
+@import "../components/common/donut/donut";
+@import "../pages/playing/components/answers";
+@import "../pages/playing/components/listiconanswers";
+@import "../pages/playing/components/infocounter";
+@import "../pages/playing/components/question";
+@import "../pages/signup/components/sign-container";
+@import "../pages/landing/components/quiz-demo";
+@import "../pages/landing/components/section";
+
+// Pages
+@import "../pages/four-hundred-four/styles";
+@import "../pages/quizzes/styles";
+@import "../pages/show/styles";
+@import "../pages/done/styles";
+@import "../pages/playing/styles";
+@import "../pages/user/styles";
+@import "../pages/category/styles";
+@import "../pages/landing/styles";

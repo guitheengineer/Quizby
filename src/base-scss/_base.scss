@@ -27,13 +27,14 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
   line-height: calc(1.5em + (1.55 - 1.5) * ((100vw - 21em) / (35 - 21)));
+  background-color: #5255ca;
 }
 
 body {
   box-sizing: border-box;
   overflow-x: hidden;
   background: rgb(248, 250, 247);
-  font: 1.6rem Overpass;
+  font: 1.6em Overpass;
 }
 
 ul {
@@ -42,4 +43,5 @@ ul {
 
 button {
   cursor: pointer;
+  font: inherit;
 }
