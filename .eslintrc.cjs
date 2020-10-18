@@ -6,8 +6,6 @@ module.exports = {
   },
   parser: '@typescript-eslint/parser',
   extends: [
-    'airbnb-typescript',
-    'airbnb/hooks',
     'plugin:@typescript-eslint/recommended',
     'plugin:jest/recommended',
     'prettier',
@@ -39,5 +37,8 @@ module.exports = {
     'no-use-before-define': 'off',
     'no-plusplus': 'off',
     'no-console': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
   },
 };
