@@ -1,28 +1,44 @@
-import React, { SyntheticEvent } from 'react';
-import { onSubmitForm, selectFormReducer } from 'slices/form-slice/form-slice';
-import { useAppSelector, useAppDispatch } from 'store';
+import React, { SyntheticEvent, useEffect } from 'react';
+import {
+  onSubmitForm,
+  selectFormReducer,
+} from '../../slices/form-slice/form-slice';
+import { useAppSelector, useAppDispatch } from '../../store';
 import {
   postSignup,
   checkIfUserExists,
   checkIfEmailExists,
-} from 'slices/form-slice/async-actions';
-import SignContainer from 'pages/signup/components';
+} from '../../slices/form-slice/async-actions';
+import SignContainer from '../../pages/signup/components';
 import { regexUsernameValidator, regexEmailValidator } from '../../utils/regex';
 import Presentation from '../../components/common/presentation/Presentation';
+import './components/sign-container.scss';
+import { useHistory } from 'react-router-dom';
 
 const Signup = () => {
   const dispatch = useAppDispatch();
   const { signupState } = useAppSelector(selectFormReducer);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (signupState === 'fulfilled') {
+      history.push('/quizzes');
+    }
+  }, [signupState]);
 
   const handleSubmit = (e: SyntheticEvent) => {
+    e.preventDefault();
+
     const target = e.target as typeof e.target & {
       username: { value: string };
       email: { value: string };
       password: { value: string };
     };
+
     const username = target.username.value;
     const email = target.email.value;
     const password = target.password.value;
+
     dispatch(
       onSubmitForm({
         username,
@@ -47,13 +63,12 @@ const Signup = () => {
         })
       );
     }
-    e.preventDefault();
   };
 
   return (
-    <div className="Form-page__container">
+    <div className="Sign__container">
       <Presentation
-        marginTop="-1.1rem"
+        marginTop="3.4rem"
         title="Signup"
         description="Register now and start playing quizzes from the community"
       />
