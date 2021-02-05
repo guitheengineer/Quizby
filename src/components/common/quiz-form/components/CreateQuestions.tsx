@@ -2,17 +2,14 @@ import React from 'react';
 import {
   selectManipulateReducer,
   removeCreatedQuiz,
-} from 'slices/manipulate-slice';
-import { useAppSelector, useAppDispatch } from 'store';
+} from '../../../../slices/manipulate-slice';
+import { useAppSelector, useAppDispatch } from '../../../../store';
 import TextFieldCommon from './TextFieldCommon';
 import TextFieldFakeAnswer from './TextFieldFakeAnswer';
 
 const CreateQuestions = () => {
   const dispatch = useAppDispatch();
   const { creationQuizzes } = useAppSelector(selectManipulateReducer);
-  const close = (_id: string) => {
-    dispatch(removeCreatedQuiz(_id));
-  };
 
   return (
     <>
@@ -24,7 +21,7 @@ const CreateQuestions = () => {
           <legend className="Quiz-form__quiz-legend">Question {i + 1}</legend>
           <button
             type="button"
-            onClick={() => close(quiz.id)}
+            onClick={() => dispatch(removeCreatedQuiz(quiz.id))}
             aria-label="Close quiz"
             className="Quiz-form__close"
           />
@@ -36,9 +33,21 @@ const CreateQuestions = () => {
             maxLength={140}
             index={i}
           />
-          {[...Array(4)].map((e, fakeIndex) => (
-            <TextFieldFakeAnswer number={fakeIndex} index={i} />
+          {[...Array(3)].map((e, fakeIndex) => (
+            <TextFieldFakeAnswer
+              key={fakeIndex}
+              number={fakeIndex + 1}
+              index={i}
+            />
           ))}
+          <TextFieldCommon
+            type="answer"
+            label="Answer"
+            required
+            multiline
+            maxLength={140}
+            index={i}
+          />
         </fieldset>
       ))}
     </>
