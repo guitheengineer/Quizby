@@ -1,0 +1,67 @@
+.Header {
+  //   height: 9.6%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 6rem;
+  padding: 0 25px;
+  @media (min-width: 700px) {
+    height: 9vh;
+    padding: 0 70px;
+  }
+  align-items: center;
+  &__title {
+    cursor: pointer;
+    font-size: 1.4rem;
+    @media (min-width: 700px) {
+      font-size: 1.5rem;
+    }
+    color: #f3f3fb;
+    &:hover {
+      border: solid rgba(255, 255, 255, 0.89); //
+      padding-bottom: 3px;
+      border-width: 0px 0px 1px 0px;
+      transition: all 0.5s;
+    }
+    border-color: #5255ca;
+  }
+  &__link {
+    text-decoration: none;
+  }
+
+  &__menu {
+    width: 80%;
+    align-self: center;
+    position: absolute;
+    top: 7rem;
+  }
+
+  &__list {
+    list-style-type: none;
+  }
+  &__item {
+    &:hover {
+      background: #0a0a1f;
+      opacity: 1;
+      transition: all 0.3s;
+    }
+
+    opacity: 0.9;
+    cursor: pointer;
+    letter-spacing: 0.02rem;
+    border-radius: 7px;
+    &:first-child {
+      margin-top: 2.5rem;
+    }
+    height: 5.5rem;
+    display: flex;
+    align-items: center;
+    font: 1.8rem Overpass;
+    color: #f3f3fb;
+  }
+  &__svg {
+    font-size: 1.9rem;
+    margin-left: 2rem;
+    margin: 0 2.2rem 0 2rem;
+  }
+}
