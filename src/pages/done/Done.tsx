@@ -1,12 +1,13 @@
 import React, { useEffect, useCallback } from 'react';
+import './done.scss';
 import { useHistory, useParams } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from 'store';
-import { selectUserReducer, setUser } from 'slices/user-slice/user-slice';
-import { saveQuizResult } from 'slices/user-slice/async-actions';
-import { resetUserStats } from 'slices/quizzes-slice';
-import BackgroundContainer from 'components/main/background-container';
-import playAgain from 'assets/icons/playagain.svg';
-import Donut from '../../components/common/donut/Donut';
+import { useAppSelector, useAppDispatch } from '../../store';
+import { selectUserReducer, setUser } from '../../slices/user-slice/user-slice';
+import { saveQuizResult } from '../../slices/user-slice/async-actions';
+import { resetUserStats } from '../../slices/quizzes-slice';
+import BackgroundContainer from '../../components/main/background-container';
+import playAgain from '../../assets/icons/playagain.svg';
+import { Donut, DonutLabel, DonutValue } from 'react-donut-component';
 
 interface ParamTypes {
   quizId: string;
@@ -37,9 +38,6 @@ const Done = () => {
   }, [done]);
 
   const conditionalPhrase = useCallback(() => {
-    if (percentage < 20) {
-      return 'Next time you will do better!';
-    }
     if (percentage < 45) {
       return 'Not so bad!';
     }
@@ -60,7 +58,14 @@ const Done = () => {
   return (
     <BackgroundContainer alignItems="center">
       <>
-        <Donut value={percentage} />
+        <Donut
+          className="Done__donut"
+          strokeWidth={11}
+          indicatorColor="#5255ca"
+          color="rgba(10, 10, 31, 0.9)"
+        >
+          <DonutValue className="Done__donut-text">{percentage}</DonutValue>
+        </Donut>
         <div className="Done__phrase">{conditionalPhrase()}</div>
         <div className="Done__button">
           <button
@@ -68,10 +73,10 @@ const Done = () => {
             className="Done__button--playagain"
             type="button"
           >
-            <img alt="Play again" src={playAgain} />
+            <img className="Done__img" alt="Play again" src={playAgain} />
           </button>
           <button
-            onClick={() => history.push('/')}
+            onClick={() => history.push('/quizzes')}
             className="Done__button--home"
             type="button"
           >
