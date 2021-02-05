@@ -1,17 +1,16 @@
 import React, { useState, useCallback, ChangeEvent } from 'react';
-import { changeImage, selectManipulateReducer } from 'slices/manipulate-slice';
-import Notification from 'components/common/notification';
-import { useAppSelector, useAppDispatch } from 'store';
-import putImage from 'assets/icons/put-image.svg';
+import {
+  changeImage,
+  selectManipulateReducer,
+} from '../../../../slices/manipulate-slice';
+import Notification from '../../../../components/common/notification';
+import { useAppSelector, useAppDispatch } from '../../../../store';
+import putImage from '../../../../assets/icons/put-image.svg';
 
 const ImageInput = () => {
   const dispatch = useAppDispatch();
   const [imageError, setImageError] = useState(false);
   const { image } = useAppSelector(selectManipulateReducer);
-
-  const resetImageError = useCallback(() => {
-    setImageError(false);
-  }, [image]);
 
   const imageChanged = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -41,7 +40,6 @@ const ImageInput = () => {
         style={{
           background:
             image.data && `url(data:${image.contentType};base64,${image.data})`,
-          border: '1px dashed #7ca0c0',
         }}
         onChange={imageChanged}
       />
@@ -53,12 +51,7 @@ const ImageInput = () => {
         />
         <span className="Quiz-form__text">Add image</span>
       </div>
-      {imageError && (
-        <Notification
-          callback={resetImageError}
-          message="Image size too big (max 5mb)"
-        />
-      )}
+      {imageError && <Notification message="Image size too big (max 5mb)" />}
     </>
   );
 };
