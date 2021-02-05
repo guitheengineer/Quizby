@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { selectManipulateReducer, quizSaved } from 'slices/manipulate-slice';
-import { selectUserReducer } from 'slices/user-slice/user-slice';
-import { useAppDispatch, useAppSelector } from 'store';
-import { QuizUser } from 'types';
+import {
+  resetLoadingState,
+  selectManipulateReducer,
+} from '../../../../slices/manipulate-slice';
+import { selectUserReducer } from '../../../../slices/user-slice/user-slice';
+import { useAppDispatch, useAppSelector } from '../../../../store';
+import { QuizUser } from '../../../../types';
 
 type Props = {
   title: string;
@@ -41,28 +44,26 @@ const ButtonSaveQuiz = ({
   useEffect(() => {
     if (loadingState === 'fulfilled') {
       history.push(`/quizzes/show/${quizId}`);
-      dispatch(quizSaved());
+      dispatch(resetLoadingState());
     }
   }, [loadingState]);
 
-  const saveQuiz = () => {
-    dispatch(
-      functionType({
-        quizId,
-        _id,
-        image,
-        username,
-        name,
-        description,
-        category,
-        creationQuizzes,
-      })
-    );
-  };
-
   return (
     <button
-      onClick={saveQuiz}
+      onClick={() => {
+        dispatch(
+          functionType({
+            quizId,
+            _id,
+            image,
+            username,
+            name,
+            description,
+            category,
+            creationQuizzes,
+          })
+        );
+      }}
       className="button button--save-quiz"
       type="submit"
     >
