@@ -1,8 +1,8 @@
 import React, { ChangeEvent } from 'react';
 import TextField, { OutlinedTextFieldProps } from '@material-ui/core/TextField';
-import { changeInput } from 'slices/manipulate-slice';
-import { useAppSelector, useAppDispatch } from 'store';
-import { Fields } from 'types';
+import { changeInput } from '../../../../slices/manipulate-slice';
+import { useAppSelector, useAppDispatch } from '../../../../store';
+import { Fields } from '../../../../types';
 
 type Props = Omit<OutlinedTextFieldProps, 'variant'> & {
   maxLength?: number;
@@ -13,7 +13,7 @@ type Props = Omit<OutlinedTextFieldProps, 'variant'> & {
 const TextFieldCommon = ({
   label = 'Text',
   required = false,
-  style = {},
+  style = { marginTop: 16 },
   multiline = false,
   maxLength = 140,
   type,
@@ -47,7 +47,7 @@ const TextFieldCommon = ({
       onChange={textChange}
       required={required}
       value={quizValue}
-      style={style}
+      style={type === 'question' ? null : style}
       multiline={multiline}
       inputProps={{ maxLength }}
     />
