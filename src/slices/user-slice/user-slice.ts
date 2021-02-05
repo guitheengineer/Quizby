@@ -1,10 +1,9 @@
 import { RootState } from '../../store/store';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { verifyUser, saveQuizResult } from './async-actions';
 
 interface SliceState {
   isAuthenticated: boolean;
-  checkAuth: boolean;
   username: string;
   email: string;
   _id: string | null;
@@ -13,7 +12,6 @@ interface SliceState {
 
 const initialState: SliceState = {
   isAuthenticated: false,
-  checkAuth: false,
   username: '',
   email: '',
   _id: '',
@@ -29,31 +27,27 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(verifyUser.pending, (state) => {
-      state.checkAuth = false;
-    });
     builder.addCase(
       verifyUser.fulfilled,
       (
         state,
         {
-          payload,
-        }: PayloadAction<{
-          user: { username: string; email: string; _id: string };
-        }>
+          payload: {
+            status,
+            response: { _id, email, username },
+          },
+        }
       ) => {
-        const { username, email, _id } = payload.user;
-        state.isAuthenticated = true;
-        state.username = username;
-        state.email = email;
-        state._id = _id;
-
-        state.checkAuth = true;
+        if (status === 'success') {
+          state._id = _id;
+          state.email = email;
+          state.username = username;
+          state.isAuthenticated = true;
+        }
       }
     );
     builder.addCase(verifyUser.rejected, (state) => {
       state.isAuthenticated = false;
-      state.checkAuth = true;
     });
     builder.addCase(saveQuizResult.rejected, (state) => {
       state.saveQuizFetchState = 'rejected';
