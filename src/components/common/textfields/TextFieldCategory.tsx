@@ -1,10 +1,14 @@
 import React, { useEffect, ChangeEvent, CSSProperties } from 'react';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import { useParams } from 'react-router-dom';
-import capitalize from 'utils/capitalize';
-import { changeInput, selectManipulateReducer } from 'slices/manipulate-slice';
-import { useAppSelector, useAppDispatch } from 'store';
+import { useHistory, useParams } from 'react-router-dom';
+import capitalize from '../../../utils/capitalize';
+import {
+  changeInput,
+  selectManipulateReducer,
+} from '../../../slices/manipulate-slice';
+import { useAppSelector, useAppDispatch } from '../../../store';
+import { useDispatch } from 'react-redux';
 
 const currencies: string[] = [
   'soccer',
@@ -21,6 +25,7 @@ type Props = {
   variant?: 'outlined' | 'standard' | 'filled' | undefined;
   style?: CSSProperties;
   className?: string;
+  signup?: boolean;
 };
 
 interface ParamTypes {
@@ -29,23 +34,15 @@ interface ParamTypes {
 
 const TextFieldCategory = ({
   variant = 'outlined',
-  style = { marginTop: '2rem', font: '1.6rem Overpass' },
+  style = { marginTop: '1.6rem', font: '1.6rem Overpass' },
   className,
+  signup = false,
 }: Props) => {
-  const dispatch = useAppDispatch();
   const { quizCategory } = useParams<ParamTypes>();
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   const { category } = useAppSelector(selectManipulateReducer);
-
-  useEffect(() => {
-    if (quizCategory) {
-      dispatch(changeInput({ value: quizCategory, type: 'category' }));
-    }
-  }, []);
-
-  const changeCategory = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(changeInput({ value: e.target.value, type: 'category' }));
-  };
-
   return (
     <TextField
       variant={variant}
@@ -53,8 +50,14 @@ const TextFieldCategory = ({
       fullWidth
       label="Category"
       required
-      onChange={changeCategory}
-      value={category}
+      value={signup ? quizCategory : category}
+      onChange={(e) => {
+        if (signup) {
+          dispatch(changeInput({ value: e.target.value, type: 'category' }));
+        } else {
+          history.push(`/quizzes/category/${e.target.value}`);
+        }
+      }}
       select
       style={style}
     >

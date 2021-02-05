@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextFieldCategory } from 'components/common/textfields';
+import { TextFieldCategory } from '../../../../components/common/textfields';
 import TextFieldCommon from './TextFieldCommon';
 import ImageInput from './ImageInput';
 
@@ -9,21 +9,14 @@ const QuizInfo = () => (
     <div className="Quiz-form__container">
       <ImageInput />
     </div>
-    <TextFieldCommon
-      type="name"
-      label="Quiz name"
-      className="quiz-info"
-      required
-      maxLength={35}
-    />
+    <TextFieldCommon type="name" label="Quiz name" required maxLength={35} />
     <TextFieldCommon
       type="description"
       label="Description"
-      className="quiz-info"
       maxLength={120}
       multiline
     />
-    <TextFieldCategory />
+    <TextFieldCategory signup />
   </section>
 );
 export default QuizInfo;
