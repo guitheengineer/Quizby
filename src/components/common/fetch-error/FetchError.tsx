@@ -1,28 +1,52 @@
-import React, { MouseEvent } from 'react';
-import { useAppDispatch } from 'store';
+import React, { ReactNode } from 'react';
+import './fetch-error.scss';
+import { useAppDispatch } from '../../../store';
 import fetchError from 'assets/error-images/fetch-error.png';
+import { useHistory } from 'react-router-dom';
+import { ThunkResponses } from '../../../types';
 
 type Props = {
-  fetch: any;
+  fetch?: any;
+  fetchState?: ThunkResponses;
+  type?: 'fetch' | 'common';
+  message?: string;
+  btnMessage?: string;
+  children?: ReactNode;
 };
 
-const FetchError = ({ fetch }: Props) => {
+const FetchError = ({
+  fetch,
+  fetchState = 'rejected',
+  type = 'fetch',
+  btnMessage = 'Try again',
+  children = 'Sorry, an error ocurred',
+}: Props) => {
   const dispatch = useAppDispatch();
-  const errorClicked = () => {
-    dispatch(fetch());
-  };
+  const history = useHistory();
   return (
-    <div className="App__fetcherror">
-      <img className="App__fetcherror--illustration" alt="" src={fetchError} />
-      <p className="App__fetcherror--message">Sorry, an error ocurred</p>
-      <button
-        type="button"
-        onClick={errorClicked}
-        className="App__fourhundred--button"
-      >
-        Try again
-      </button>
-    </div>
+    fetchState === 'rejected' && (
+      <div className="Fetch-error">
+        <img
+          className="Fetch-error__illustration"
+          alt="error"
+          src={fetchError}
+        />
+        <p className="Fetch-error__message">{children}</p>
+        <button
+          type="button"
+          onClick={() => {
+            if (type === 'fetch') {
+              dispatch(fetch());
+            } else {
+              history.push('/');
+            }
+          }}
+          className="Fetch-error__button"
+        >
+          {btnMessage}
+        </button>
+      </div>
+    )
   );
 };
 
