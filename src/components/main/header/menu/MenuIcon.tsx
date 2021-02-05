@@ -1,9 +1,10 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from 'store';
+import './menu-icon.scss';
+import { useAppDispatch, useAppSelector } from '../../../../store';
 import {
   changeMenu,
   selectMenuIsActive,
-} from 'slices/general-slice/general-slice';
+} from '../../../../slices/general-slice/general-slice';
 
 const MenuIcon = () => {
   const dispatch = useAppDispatch();
@@ -12,12 +13,17 @@ const MenuIcon = () => {
   return (
     <button
       type="button"
-      className="Header__menu-icon"
+      className="menu-icon"
       onClick={() => dispatch(changeMenu())}
     >
       {[...Array(3)].map((e, i) => (
         // eslint-disable-next-line react/no-array-index-key
-        <div key={i} className={menuIsActive ? 'clicked' : undefined} />
+        <div
+          key={i}
+          className={`menu-icon__bar ${
+            menuIsActive ? 'menu-icon__bar--clicked' : null
+          }`}
+        />
       ))}
     </button>
   );
