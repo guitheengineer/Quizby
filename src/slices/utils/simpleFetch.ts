@@ -1,16 +1,18 @@
-const simpleFetch = async (linkApi: string, token?: string) => {
-  let response;
-  if (!token) {
-    response = await fetch(`/api/${linkApi}`);
-  } else {
-    response = await fetch(`/api/${linkApi}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    });
-  }
-  return response.json();
+const simpleFetch = async (linkApi: string) => {
+  const token = localStorage.getItem('TOKEN');
+  const response = await fetch(
+    `/api/${linkApi}`,
+    token
+      ? {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      : {}
+  );
+
+  return await response.json();
 };
 
 export default simpleFetch;
