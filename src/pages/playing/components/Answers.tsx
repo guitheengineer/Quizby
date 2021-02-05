@@ -1,16 +1,16 @@
 import React, { useState, MouseEvent, useCallback } from 'react';
+import './answers.scss';
 import { isMobile } from 'react-device-detect';
 import {
   selectQuizReducer,
   setUserAnswer,
   nextQuestion,
-} from 'slices/quizzes-slice';
-import { useAppSelector, useAppDispatch } from 'store';
-import chevron from 'assets/icons/chevron.png';
+} from '../../../slices/quizzes-slice';
+import { useAppSelector, useAppDispatch } from '../../../store';
+import chevron from '../../../assets/icons/chevron.png';
 
 const Answers = () => {
   const dispatch = useAppDispatch();
-  const [isHover, setIsHover] = useState({ hovering: true, ans: null });
   const {
     currentQuiz,
     currentQuestion,
@@ -19,9 +19,6 @@ const Answers = () => {
     currentQuestionAnswered,
   } = useAppSelector(selectQuizReducer);
 
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    dispatch(setUserAnswer(e.currentTarget.value));
-  };
   const getBackgroundColor = useCallback(
     (clickedAnswer) => {
       const { answer } = currentQuiz.questions[currentQuestion];
@@ -36,10 +33,6 @@ const Answers = () => {
           border: '2px solid #f00',
         };
       }
-
-      if (isHover.hovering && clickedAnswer === isHover.ans) {
-        return { border: '2px solid #7b61ff', cursor: 'pointer' };
-      }
     },
     [userAnswer]
   );
@@ -51,26 +44,23 @@ const Answers = () => {
           dispatch(nextQuestion());
         }
       }}
-      style={{ userSelect: 'none' }}
-      className="App__playing--list"
+      className="Answers__list"
     >
       {currentAnswers.map((ans) => (
         <button
           type="button"
           disabled={currentQuestionAnswered}
           key={ans}
-          onMouseEnter={() => !isMobile && setIsHover({ hovering: true, ans })}
-          onMouseLeave={() => !isMobile && setIsHover({ hovering: false, ans })}
           style={getBackgroundColor(ans)}
-          onClick={() => handleClick(ans)}
+          onClick={() => dispatch(setUserAnswer(ans))}
           className={
             currentQuestionAnswered
-              ? 'App__playing--list--answer slideOutLeft'
-              : 'App__playing--list--answer slideInRight'
+              ? 'Answers__answer slideOutLeft'
+              : 'Answers__answer slideInRight'
           }
         >
           {ans}
-          <img alt="" className="App__playing--list--chevron" src={chevron} />
+          <img alt="" className="Answers__chevron" src={chevron} />
         </button>
       ))}
     </div>
