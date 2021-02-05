@@ -15,7 +15,7 @@ const LoaderSpinner = ({
   css,
 }: Props) => (
   <ClipLoader
-    loading={loadingState === 'loading'}
+    loading={loadingState === 'pending'}
     color={color}
     size={size}
     css={css}
