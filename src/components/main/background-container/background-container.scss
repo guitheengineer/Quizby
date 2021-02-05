@@ -1,0 +1,10 @@
+.Background-container {
+  width: 100%;
+  position: relative;
+  background-color: #f8faf7;
+  border-radius: 20px 20px 0px 0px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  transition: all 2s;
+}
