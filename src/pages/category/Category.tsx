@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from 'store';
-import { selectManipulateReducer } from 'slices/manipulate-slice';
-import { getCategoryQuiz } from 'slices/quizzes-slice/async-actions';
-import BackgroundContainer from 'components/main/background-container';
-import TextFieldCategory from 'components/common/textfields/TextFieldCategory';
+import './category.scss';
+import { useAppDispatch } from '../../store';
+import { getCategoryQuiz } from '../../slices/quizzes-slice/async-actions';
+import BackgroundContainer from '../../components/main/background-container';
+import TextFieldCategory from '../../components/common/textfields/TextFieldCategory';
 import QuizList from '../quizzes/components/QuizList';
+import { useParams } from 'react-router-dom';
 
 const Category = () => {
   const dispatch = useAppDispatch();
-  const { category } = useAppSelector(selectManipulateReducer);
+
+  const { quizCategory } = useParams<{ quizCategory: string }>();
 
   useEffect(() => {
-    dispatch(getCategoryQuiz(category));
-  }, [category]);
+    dispatch(getCategoryQuiz(quizCategory));
+  }, [quizCategory]);
 
   return (
     <BackgroundContainer
@@ -20,7 +22,7 @@ const Category = () => {
       alignItems="center"
       overflow="visible"
     >
-      <div className="Quizzes__container">
+      <div className="Quizzes">
         <TextFieldCategory className="Category__textfield" variant="filled" />
         <QuizList type="category" />
       </div>
