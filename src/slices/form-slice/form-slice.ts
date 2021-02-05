@@ -6,7 +6,7 @@ import {
   postSignup,
 } from './async-actions';
 import { regexUsernameValidator, regexEmailValidator } from '../../utils/regex';
-import { UserResponse } from '../../types';
+import { ThunkResponses, UserResponse } from '../../types';
 import { RootState } from '../../store/store';
 
 interface Error {
@@ -21,6 +21,7 @@ export interface SliceState {
     value: string;
     visible: boolean;
   };
+  usernameState: ThunkResponses;
   errorExistsUsername: Error;
   errorExistsEmail: Error;
   errorExistsPassword: Error;
@@ -35,6 +36,7 @@ export interface SliceState {
 const initialState: SliceState = {
   username: '',
   email: '',
+  usernameState: null,
   password: {
     value: '',
     visible: false,
@@ -72,9 +74,7 @@ export const formSlice = createSlice({
   name: 'formReducer',
   initialState,
   reducers: {
-    onSubmitForm: (state, action) => {
-      const { username, email, password } = action.payload;
-
+    onSubmitForm: (state, { payload: { username, email, password } }) => {
       state.username = username;
       state.email = email;
       state.password.value = password;
@@ -123,6 +123,7 @@ export const formSlice = createSlice({
     builder.addCase(
       checkIfUserExists.fulfilled,
       (state, { payload }: PayloadAction<CheckUser>) => {
+        state.usernameState = 'fulfilled';
         if (payload.userExists) {
           state.errorExistsUsername = {
             errorExists: true,
@@ -131,6 +132,12 @@ export const formSlice = createSlice({
         }
       }
     );
+    builder.addCase(checkIfUserExists.pending, (state) => {
+      state.usernameState = 'pending';
+    });
+    builder.addCase(checkIfUserExists.rejected, (state) => {
+      state.usernameState = 'rejected';
+    });
     builder.addCase(
       checkIfEmailExists.fulfilled,
       (state, { payload }: PayloadAction<CheckEmail>) => {
@@ -143,12 +150,14 @@ export const formSlice = createSlice({
       }
     );
     builder.addCase(postLogin.pending, (state) => {
-      state.loginState = 'loading';
+      state.loginState = 'pending';
     });
     builder.addCase(
       postLogin.fulfilled,
-      (state, { payload }: PayloadAction<Response>) => {
-        const { status, message, token, user } = payload;
+      (
+        state,
+        { payload: { status, message, token, user } }: PayloadAction<Response>
+      ) => {
         if (status === 'error') {
           state.loginError = {
             errorExists: true,
@@ -162,6 +171,7 @@ export const formSlice = createSlice({
           };
           localStorage.setItem('TOKEN', token);
           localStorage.setItem('USER', user._id);
+          localStorage.setItem('USERNAME', user.username);
         }
         state.loginState = 'fulfilled';
       }
@@ -174,11 +184,24 @@ export const formSlice = createSlice({
       state.loginState = 'rejected';
     });
     builder.addCase(postSignup.pending, (state) => {
-      state.signupState = 'loading';
+      state.signupState = 'pending';
     });
-    builder.addCase(postSignup.fulfilled, (state) => {
-      state.signupState = 'fulfilled';
-    });
+    builder.addCase(
+      postSignup.fulfilled,
+      (
+        state,
+        {
+          payload: {
+            response: { token, user },
+          },
+        }
+      ) => {
+        localStorage.setItem('TOKEN', token);
+        localStorage.setItem('USERNAME', user.username);
+
+        state.signupState = 'fulfilled';
+      }
+    );
     builder.addCase(postSignup.rejected, (state) => {
       state.signupState = 'rejected';
     });
