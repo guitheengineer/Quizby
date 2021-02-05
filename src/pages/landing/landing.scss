@@ -1,0 +1,68 @@
+.Landing {
+  max-width: 550px;
+  padding: 50px 25px;
+  &__menu {
+    width: 100%;
+    position: fixed;
+    background: red;
+  }
+  &__section-heading {
+    font-family: Roboto;
+    font-size: 3.7rem;
+    font-weight: 500;
+    color: #ffffff;
+
+    &--knowledge {
+      margin-top: 0;
+    }
+    margin-top: 80px;
+
+    &--custom {
+      font-size: 2.7rem;
+    }
+  }
+  &__section-button {
+    width: 100%;
+    height: 5rem;
+    font: 2rem Overpass;
+    margin-top: 2.9rem;
+    background: #0a0a1f;
+    border: 1px solid #0a0a1f;
+    border-radius: 8px;
+    letter-spacing: 0.035em;
+    color: #ececf9;
+  }
+  &__search-quizzes {
+    margin-top: 28px;
+    width: 100%;
+    display: block;
+  }
+  &__users {
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__user-img {
+    width: 46%;
+  }
+  &__categories {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr 1fr 1fr;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  &__categories-title {
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__category {
+    position: relative;
+    padding-top: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 0;
+  }
+}

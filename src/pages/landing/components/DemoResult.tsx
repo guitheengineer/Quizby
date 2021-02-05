@@ -13,29 +13,34 @@ const DemoResult = () => {
       {userAnswer === answer && (
         <img
           onAnimationEnd={() => setAnimationEnded(true)}
-          className="Landing__icon"
+          className="Quiz-demo__icon"
           src={correct}
         />
       )}
       {userAnswer && userAnswer !== answer && (
         <img
           onAnimationEnd={() => setAnimationEnded(true)}
-          className="Landing__icon"
+          className="Quiz-demo__icon"
           src={wrong}
         />
       )}
       {animationEnded && (
-        <Donut size={140} strokeWidth={7} className="Landing__donut">
-          <DonutValue>{answer}</DonutValue>
-          <DonutLabel style={{ fontSize: '44px' }}>
-            {userAnswer === answer ? 'Perfect' : 'Bad result'}
+        <Donut
+          indicatorColor="#5255ca"
+          trackColor="white"
+          size={160}
+          linecap="round"
+          color={'#5255CA'}
+          strokeWidth={8}
+          className="Quiz-demo__donut"
+        >
+          <DonutValue styleContainer={{ left: 3 }} className="Quiz-demo__value">
+            {userAnswer === answer ? 100 : 0}
+          </DonutValue>
+          <DonutLabel style={{ whiteSpace: 'nowrap' }}>
+            {userAnswer === answer ? 'Perfect score!' : 'Incorrect'}
           </DonutLabel>
         </Donut>
-        //   strokeWidth={7}
-        //   className="Landing__donut"
-        //   fontSize={44}
-        //   value={userAnswer === answer ? 100 : 0}
-        // />
       )}
     </>
   );
