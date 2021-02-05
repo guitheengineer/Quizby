@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { postFetch, simpleFetch } from 'utils';
+import { postFetch, simpleFetch } from '../../utils';
 import { ModifyQuiz } from '../../types';
 
 const reducer = 'userReducer';
@@ -14,7 +14,6 @@ export const saveQuizResult = createAsyncThunk(
     postFetch(`user/${username}/savequiz`, { percentage, quizId })
 );
 
-export const verifyUser = createAsyncThunk(
-  `${reducer}/verifyUser`,
-  async (token: string) => simpleFetch('verifyuser', token)
+export const verifyUser = createAsyncThunk(`${reducer}/verifyUser`, async () =>
+  simpleFetch('verifyuser')
 );
