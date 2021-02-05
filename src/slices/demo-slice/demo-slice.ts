@@ -9,7 +9,7 @@ interface SliceState {
 }
 
 const initialState: SliceState = {
-  question: 'Who was the first black president of America',
+  question: 'Who is the first black president of America',
   answer: 'Barack Obama',
   userAnswer: '',
   possibleAnswers: ['James Warren', 'Kanye West', 'Barack Obama'],

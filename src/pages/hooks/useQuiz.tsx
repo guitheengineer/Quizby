@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getCurrentQuiz } from 'slices/quizzes-slice/async-actions';
-import { selectQuiz } from 'slices/quizzes-slice';
-import { useAppDispatch, useAppSelector } from 'store';
+import { getCurrentQuiz } from '../../slices/quizzes-slice/async-actions';
+import { selectQuiz } from '../../slices/quizzes-slice';
+import { useAppDispatch, useAppSelector } from '../../store';
 
 interface ParamTypes {
   id: string;
