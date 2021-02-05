@@ -14,8 +14,11 @@ export const generalSlice = createSlice({
   initialState,
   reducers: {
     changeMenu: (state, { payload }: PayloadAction<boolean | undefined>) => {
-      if (!payload) state.menuIsActive = !state.menuIsActive;
-      else state.menuIsActive = payload;
+      if (payload === undefined) {
+        state.menuIsActive = !state.menuIsActive;
+      } else {
+        state.menuIsActive = payload;
+      }
     },
   },
 });
