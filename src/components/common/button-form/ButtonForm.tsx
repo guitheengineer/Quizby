@@ -1,4 +1,5 @@
 import React from 'react';
+import './button.scss';
 import LoaderSpinner from '../loader-spinner/LoaderSpinner';
 
 type Props = {

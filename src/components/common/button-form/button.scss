@@ -1,0 +1,25 @@
+.button {
+  box-shadow: 3px 3px 2px rgba(136, 136, 136, 0.45);
+  background-color: #5255ca;
+  border-radius: 0.5rem;
+  height: 4.9rem;
+  color: white;
+  border: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.05rem;
+  margin-top: 3.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:active {
+    box-shadow: inset 0px 6px 4px rgba(0, 0, 0, 0.13);
+  }
+  &--signup {
+    margin-top: 2.4rem;
+  }
+  &--save-quiz {
+    margin-bottom: 4rem;
+  }
+  cursor: pointer;
+}
