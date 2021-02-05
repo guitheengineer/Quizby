@@ -3,6 +3,7 @@ import { RouteProps } from 'react-router-dom';
 
 export interface UserResponse extends Pick<User, 'email' | 'password'> {
   _id: string;
+  username: string;
 }
 
 export interface QuizData extends QuizPercentage, UserSignup {}
@@ -33,7 +34,7 @@ export interface QuizForm extends QuizImage {
 }
 
 export interface QuizComplete extends QuizForm, QuizImage, QuizPercentage {
-  questions: any[];
+  questions: CreationQuizzes;
   _id: string;
 }
 
@@ -52,10 +53,21 @@ export interface Thunk {
   bodyToSend: any;
 }
 
+export type CreationQuizzes = [
+  {
+    id: string;
+    question: string;
+    fakeAnswer1: string;
+    fakeAnswer2: string;
+    fakeAnswer3: string;
+    answer: string;
+  }
+];
+
 export interface QuizUser extends QuizForm, QuizImage {
   quizId: string | null;
   username: string;
-  creationQuizzes: Quiz;
+  creationQuizzes: any[];
 }
 
 export type Fields =
@@ -73,7 +85,12 @@ export interface RouteCustomProps extends RouteProps {
   style?: CSSProperties;
   component: any;
   title?: string;
+  height?: 'page' | 'full';
+  showmenu?: boolean;
+  loading?: ThunkResponses;
 }
+
+export type ThunkResponses = 'fulfilled' | 'rejected' | 'pending' | null;
 
 export type QuizClient = Partial<Quiz>;
 
