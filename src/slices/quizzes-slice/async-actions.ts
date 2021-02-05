@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { postFetch, simpleFetch } from 'utils';
+import { postFetch, simpleFetch } from '../utils';
 import { ModifyQuiz } from '../../types';
 
 const reducer = 'quizzesReducer';
 
 export const quizzesAdded = createAsyncThunk(
   `${reducer}/quizzesAdded`,
-  async () => simpleFetch(`quizzes`)
+  async () => simpleFetch('quizzes')
 );
 
 export const getQuizzes = createAsyncThunk(

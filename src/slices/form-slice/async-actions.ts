@@ -23,5 +23,5 @@ export const postSignup = createAsyncThunk(
 
 export const checkIfEmailExists = createAsyncThunk(
   `${reducer}/checkIfEmailExists`,
-  async (email: string) => postFetch(`emailexists`, email)
+  async (email: string) => postFetch('emailexists', { email })
 );
