@@ -1,16 +1,24 @@
 import React, { useEffect, useCallback } from 'react';
+import './show.scss';
 import { useHistory } from 'react-router-dom';
-import BackgroundContainer from 'components/main/background-container';
-import { setQuery, quizzesAdded } from 'slices/quizzes-slice';
-import { useAppSelector, useAppDispatch } from 'store';
-import { selectGeneralReducer } from 'slices/general-slice/general-slice';
-import useQuiz from 'pages/hooks/useQuiz';
-import QuizList from 'pages/quizzes/components/QuizList';
+import BackgroundContainer from '../../components/main/background-container';
+import {
+  setQuery,
+  quizzesAdded,
+  selectQuizReducer,
+} from '../../slices/quizzes-slice';
+import { useAppSelector, useAppDispatch } from '../../store';
+import { selectGeneralReducer } from '../../slices/general-slice/general-slice';
+import useQuiz from '../../pages/hooks/useQuiz';
+import QuizList from '../../pages/quizzes/components/QuizList';
+import HoldLoading from '../../components/common/hold-loading/HoldLoading';
 
 const Show = () => {
   const dispatch = useAppDispatch();
   const history = useHistory();
   const { menuIsActive } = useAppSelector(selectGeneralReducer);
+  const { quizFetchState } = useAppSelector(selectQuizReducer);
+
   const { name, image, description, _id } = useQuiz();
 
   useEffect(() => {
@@ -42,13 +50,17 @@ const Show = () => {
         justifyContent="normal"
         alignItems="center"
         overflow="normal"
-        marginTop="-15px"
+        className="Show__background-container"
+        flex="initial"
+        isLoading={quizFetchState}
+        paddingBottom={30}
       >
         <>
           <div className="Show__playarea">
-            <h1>{name}</h1>
-            <p>{description}</p>
+            <h1 className="Show__title">{name}</h1>
+            <p className="Show__description">{description}</p>
             <button
+              className="Show__button"
               onClick={handlePlay}
               style={{ marginTop: description && '2.4rem' }}
               type="button"
@@ -57,12 +69,13 @@ const Show = () => {
             </button>
           </div>
           <QuizList
-            className="Quizzes__sectiontwo--show"
+            className="Show__list"
             label="Other quizzes"
             type="mostPlayed"
           />
         </>
       </BackgroundContainer>
+      <HoldLoading isLoading={quizFetchState} />
     </div>
   );
 };
