@@ -1,0 +1,16 @@
+.Presentation {
+  color: white;
+  width: 80%;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  position: relative;
+  &__title {
+    font: 2.4rem Overpass;
+  }
+  &__description {
+    margin: 0.7rem 0 0 0.2rem;
+    font: 300 1.4rem Overpass;
+    width: 90%;
+  }
+}
