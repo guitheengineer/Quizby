@@ -9,7 +9,7 @@ import {
 } from './async-actions';
 import { shuffleArray } from '../../utils';
 import { RootState } from '../../store/store';
-import { QuizClient } from 'types';
+import { ThunkResponses } from '../../types';
 
 interface SliceState {
   quizzes: {
@@ -18,7 +18,7 @@ interface SliceState {
     recommended: any;
     category: any;
   };
-  getUserQuizzesState: string;
+  getUserQuizzesState: ThunkResponses;
   userAnswer: string;
   currentAnswers: any[];
   currentQuiz: {
@@ -45,12 +45,12 @@ interface SliceState {
   currentQuestion: number;
   currentQuestionAnswered: boolean;
   userAnsweredCorrect: null | boolean;
-  quizzesFetchState: string;
-  quizSearchFetchState: string;
+  quizzesFetchState: ThunkResponses;
+  quizSearchFetchState: ThunkResponses;
   quizzesSearchedData: any[];
-  quizFetchState: string;
-  recommendedQuizFetchState: string;
-  deleteQuizFetchState: string;
+  quizFetchState: ThunkResponses;
+  recommendedQuizFetchState: ThunkResponses;
+  deleteQuizFetchState: ThunkResponses;
   historicOfAnswers: string[];
   query: string;
   quizzesPlayed: any[];
@@ -65,9 +65,9 @@ const initialState: SliceState = {
     mostPlayed: [],
     quizzesSearchedData: [],
     recommended: {},
-    category: {},
+    category: [],
   },
-  getUserQuizzesState: '',
+  getUserQuizzesState: null,
   userAnswer: '',
   currentAnswers: [],
   userStats: {
@@ -94,12 +94,12 @@ const initialState: SliceState = {
   currentQuestion: 0,
   currentQuestionAnswered: false,
   userAnsweredCorrect: null,
-  quizzesFetchState: '',
+  quizzesFetchState: null,
   quizzesSearchedData: [],
-  quizSearchFetchState: '',
-  quizFetchState: '',
-  recommendedQuizFetchState: '',
-  deleteQuizFetchState: '',
+  quizSearchFetchState: null,
+  quizFetchState: null,
+  recommendedQuizFetchState: null,
+  deleteQuizFetchState: null,
   historicOfAnswers: [],
   query: '',
   quizzesPlayed: [],
@@ -186,14 +186,18 @@ export const quizzesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(quizzesAdded.pending, (state) => {
-      state.quizzesFetchState = 'loading';
+      state.quizzesFetchState = 'pending';
     });
     builder.addCase(
       quizzesAdded.fulfilled,
-      (state, { payload }: PayloadAction<any>) => {
-        const { mostPlayed, recommended } = payload;
-        state.quizzes.mostPlayed = mostPlayed;
-        state.quizzes.recommended = recommended;
+      (state, { payload: { mostPlayed, recommended } }: PayloadAction<any>) => {
+        // verify if there's these quizzes before setting state
+        if (mostPlayed.length) {
+          state.quizzes.mostPlayed = mostPlayed;
+        }
+        if (recommended) {
+          state.quizzes.recommended = recommended;
+        }
         state.quizzesFetchState = 'fulfilled';
       }
     );
@@ -201,31 +205,25 @@ export const quizzesSlice = createSlice({
       state.quizzesFetchState = 'rejected';
     });
     builder.addCase(getCurrentQuiz.pending, (state) => {
-      state.quizFetchState = 'loading';
+      state.quizFetchState = 'pending';
     });
-    builder.addCase(
-      getCurrentQuiz.fulfilled,
-      (state, { payload }: PayloadAction<QuizClient>) => {
-        const { quiz }: any = payload;
-        state.currentQuiz = quiz;
-        const {
-          answer,
-          fakeAnswer1,
-          fakeAnswer2,
-          fakeAnswer3,
-        } = quiz.questions[state.currentQuestion];
+    builder.addCase(getCurrentQuiz.fulfilled, (state, { payload }) => {
+      const { quiz } = payload;
+      state.currentQuiz = quiz;
+      const { answer, fakeAnswer1, fakeAnswer2, fakeAnswer3 } = quiz.questions[
+        state.currentQuestion
+      ];
 
-        const groupAnswers = [fakeAnswer1, fakeAnswer2, fakeAnswer3, answer];
-        shuffleArray(groupAnswers);
-        state.currentAnswers = groupAnswers;
-        state.quizFetchState = 'fulfilled';
-      }
-    );
+      const groupAnswers = [fakeAnswer1, fakeAnswer2, fakeAnswer3, answer];
+      shuffleArray(groupAnswers);
+      state.currentAnswers = groupAnswers;
+      state.quizFetchState = 'fulfilled';
+    });
     builder.addCase(getCurrentQuiz.rejected, (state) => {
       state.quizFetchState = 'rejected';
     });
     builder.addCase(searchQuizzes.pending, (state) => {
-      state.quizSearchFetchState = 'loading';
+      state.quizSearchFetchState = 'pending';
     });
     builder.addCase(searchQuizzes.fulfilled, (state, { payload }) => {
       state.quizzes.quizzesSearchedData = payload.quizzesSearchedData;
@@ -238,17 +236,28 @@ export const quizzesSlice = createSlice({
       state.deleteQuizFetchState = 'rejected';
     });
     builder.addCase(deleteQuiz.fulfilled, (state) => {
-      state.deleteQuizFetchState = 'rejected';
+      state.deleteQuizFetchState = 'fulfilled';
     });
     builder.addCase(deleteQuiz.pending, (state) => {
-      state.deleteQuizFetchState = 'rejected';
+      state.deleteQuizFetchState = 'pending';
+    });
+    builder.addCase(getUserQuizzes.pending, (state) => {
+      state.getUserQuizzesState = 'pending';
+    });
+    builder.addCase(getUserQuizzes.rejected, (state) => {
+      state.getUserQuizzesState = 'rejected';
     });
     builder.addCase(
       getUserQuizzes.fulfilled,
       (
         state,
         {
-          payload,
+          payload: {
+            quizzes: { quizzesCreated, quizzesPlayed },
+            quizAverage,
+            countQuizzesCreated,
+            countQuizzesPlayed,
+          },
         }: PayloadAction<{
           quizzes: {
             quizzesPlayed: any[];
@@ -259,21 +268,16 @@ export const quizzesSlice = createSlice({
           countQuizzesPlayed: number;
         }>
       ) => {
-        const {
-          quizzes,
-          quizAverage,
-          countQuizzesCreated,
-          countQuizzesPlayed,
-        } = payload;
-        state.quizzesPlayed = quizzes.quizzesPlayed;
-        state.quizzesCreated = quizzes.quizzesCreated;
+        state.quizzesPlayed = quizzesPlayed;
+        state.quizzesCreated = quizzesCreated;
         state.quizAverage = quizAverage;
         state.countQuizzesCreated = countQuizzesCreated;
         state.countQuizzesPlayed = countQuizzesPlayed;
         state.getUserQuizzesState = 'fulfilled';
-        state.deleteQuizFetchState = '';
+        state.deleteQuizFetchState = null;
       }
     );
+
     builder.addCase(
       getCategoryQuiz.fulfilled,
       (state, { payload }: PayloadAction<string>) => {
