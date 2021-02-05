@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
+import './quiz-form.scss';
 import shortid from 'shortid';
-import { useAppDispatch } from 'store';
+import { useAppDispatch } from '../../../store';
 import QuizInfo from './components/QuizInfo';
 import CreateQuestions from './components/CreateQuestions';
 import BackgroundContainer from '../../main/background-container';
@@ -47,9 +48,7 @@ const QuizForm = ({
             loadingState={loadingState}
           />
         </div>
-        {loadingState === 'rejected' && (
-          <Notification callback={functionType} />
-        )}
+        {loadingState === 'rejected' && <Notification />}
       </>
     </BackgroundContainer>
   );
