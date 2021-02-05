@@ -3,15 +3,27 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useHistory } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { useAppSelector, useAppDispatch } from 'store';
-import { selectQuizReducer, setQuery } from 'slices/quizzes-slice';
-import { selectGeneralReducer, changeMenu } from 'slices/general-slice';
+import { useAppSelector, useAppDispatch } from '../../../store';
+import { selectQuizReducer, setQuery } from '../../../slices/quizzes-slice';
+import {
+  selectGeneralReducer,
+  changeMenu,
+} from '../../../slices/general-slice';
+import './search-quizzes.scss';
 
-const SearchQuizzes = () => {
+type Props = {
+  className?: string;
+  inputClassName?: string;
+  iconClassName?: string;
+};
+
+const SearchQuizzes = ({ className, inputClassName, iconClassName }: Props) => {
   const dispatch = useAppDispatch();
   const [menuSearched, setMenuSearched] = useState(false);
 
-  const { query, quizSearchFetchState } = useAppSelector(selectQuizReducer);
+  const { query, quizSearchFetchState, quizzesFetchState } = useAppSelector(
+    selectQuizReducer
+  );
   const { menuIsActive } = useAppSelector(selectGeneralReducer);
 
   const history = useHistory();
@@ -20,19 +32,13 @@ const SearchQuizzes = () => {
     const { value } = e.target;
     dispatch(setQuery(value));
     history.push(`/quizzes/search?q=${value}`);
-    if (menuIsActive === true) {
+    if (menuIsActive) {
       dispatch(changeMenu(false));
     }
   };
 
   useEffect(() => {
-    if (menuIsActive === false && query.length > 0) {
-      setMenuSearched(true);
-    }
-  }, [query]);
-
-  useEffect(() => {
-    let value;
+    let value: string;
     const linkQuery = decodeURI(window.location.search.substring(3));
     if (linkQuery && !query) {
       value = linkQuery;
@@ -42,10 +48,20 @@ const SearchQuizzes = () => {
     dispatch(setQuery(value));
   }, []);
 
+  useEffect(() => {
+    if (!menuIsActive && query.length) {
+      setMenuSearched(true);
+    }
+  }, [query]);
+
   return (
-    <div className="Quizzes__search">
-      <FontAwesomeIcon icon={faSearch} />
+    <div className={`Search-quizzes ${className}`}>
+      <FontAwesomeIcon
+        className={`Search-quizzes__icon ${iconClassName}`}
+        icon={faSearch}
+      />
       <input
+        className={`Search-quizzes__input ${inputClassName}`}
         value={query}
         key="searchquiz"
         ref={(input) => {
@@ -61,7 +77,10 @@ const SearchQuizzes = () => {
           right: 1.5rem;
         `}
         size="1.8rem"
-        loading={quizSearchFetchState === 'loading' && query !== ''}
+        loading={
+          (quizzesFetchState === 'pending' && query === '') ||
+          (quizSearchFetchState === 'pending' && query !== '')
+        }
         color="#5255CA"
       />
     </div>
