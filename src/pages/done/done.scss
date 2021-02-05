@@ -1,0 +1,42 @@
+.Done {
+  position: relative;
+  font-family: Lato;
+  &__donut-text {
+    font: bold 4.8rem lato;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #5255ca;
+    letter-spacing: 0.1em;
+  }
+  &__phrase {
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: rgba(10, 10, 31, 0.9);
+    margin-top: 3.2rem;
+  }
+  &__button {
+    margin-top: 3.2rem;
+    display: flex;
+    &--playagain {
+      cursor: pointer;
+      width: 4.3rem;
+      border: 1px solid #000000;
+      border-radius: 8px;
+      background-color: transparent;
+    }
+    &--home {
+      width: 11rem;
+      margin-left: 1.2rem;
+      font: 1.8rem Lato;
+      color: #ffffff;
+      background-color: #5255ca;
+      border: 0;
+      box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
+      height: 4.2rem;
+      cursor: pointer;
+    }
+  }
+  &__img {
+    margin-top: 5px;
+  }
+}
