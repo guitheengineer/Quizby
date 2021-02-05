@@ -10,10 +10,10 @@ const TextFieldModifiedUsername = () => {
     <TextField
       error={errorExistsUsername.errorExists}
       helperText={errorExistsUsername.errorDesc}
-      id="outlined-basic"
       label="Username"
       variant="outlined"
       type="username"
+      id="username"
       margin="normal"
       required
       FormHelperTextProps={{

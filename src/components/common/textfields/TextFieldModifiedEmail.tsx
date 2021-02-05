@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import { useAppSelector } from 'store';
+import { useAppSelector } from '../../../store';
 import { selectFormReducer } from '../../../slices/form-slice/form-slice';
 
 const TextFieldModifiedEmail = () => {
@@ -10,7 +10,7 @@ const TextFieldModifiedEmail = () => {
     <TextField
       error={errorExistsEmail.errorExists}
       helperText={errorExistsEmail.errorDesc}
-      id="outlined-basic"
+      id="email"
       label="Email"
       variant="outlined"
       type="email"

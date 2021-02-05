@@ -4,8 +4,8 @@ import { Visibility, VisibilityOff } from '@material-ui/icons';
 import {
   setPasswordVisibility,
   selectFormReducer,
-} from 'slices/form-slice/form-slice';
-import { useAppSelector, useAppDispatch } from 'store';
+} from '../../../slices/form-slice/form-slice';
+import { useAppSelector, useAppDispatch } from '../../../store';
 
 const TextFieldModifiedPassword = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +16,7 @@ const TextFieldModifiedPassword = () => {
       error={errorExistsPassword.errorExists}
       helperText={errorExistsPassword.errorDesc}
       required
-      id="outlined-basic"
+      id="password"
       label="Password"
       variant="outlined"
       type={password.visible ? 'text' : 'password'}
