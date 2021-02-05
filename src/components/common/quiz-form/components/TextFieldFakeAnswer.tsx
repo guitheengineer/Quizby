@@ -13,7 +13,7 @@ const TextFieldFakeAnswer = ({ number, index }: Props) => (
     label={`Fake Answer ${number}`}
     multiline
     required
-    maxLength={20}
+    maxLength={40}
     className="create"
     index={index}
   />
