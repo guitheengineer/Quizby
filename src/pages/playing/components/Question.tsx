@@ -1,6 +1,7 @@
 import React from 'react';
-import { selectQuizReducer } from 'slices/quizzes-slice';
-import { useAppSelector } from 'store';
+import './question.scss';
+import { selectQuizReducer } from '../../../slices/quizzes-slice';
+import { useAppSelector } from '../../../store';
 
 const Question = () => {
   const {
@@ -19,13 +20,13 @@ const Question = () => {
             }
           : undefined
       }
-      className={`App__playing--question ${
+      className={`Question ${
         currentQuestionAnswered
           ? 'slideOutLeftQuestion'
           : 'slideInRightQuestion'
       }`}
     >
-      <span className="App__playing--question--bf">-</span>
+      <span className="Question__before">-</span>
       {question}
     </div>
   );

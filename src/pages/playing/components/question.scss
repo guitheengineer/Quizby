@@ -1,0 +1,43 @@
+.Question {
+  width: 80%;
+  font-size: clamp(100%, 3.2vh, 2.4rem);
+  color: #0a0a1f;
+  max-width: 38.2rem;
+  line-height: calc(1.1em + 1vw);
+  &__before {
+    position: absolute;
+    margin-left: -1.5rem;
+    font-size: 2.5rem;
+    color: #cccdef;
+  }
+  // &::before {
+  //   display: block;
+  //   content: "";
+  //   width: 25%;
+  //   height: 2px;
+  //   background: #5255ca;
+  //   position: relative;
+  //   top: -1.8rem;
+  // }
+  // &--quotes {
+  //     font: 3.5rem "Passion One";
+  //     color: #cccdef;
+  //     position: absolute;
+  //     margin-top: -0.6rem;
+  //     &--one {
+  //         margin-left: -2.5rem;
+  //     }
+  //     &--two {
+  //         margin-left: 0.7rem;
+  //     }
+  // }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
