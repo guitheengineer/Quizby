@@ -1,40 +1,70 @@
-import React, { SyntheticEvent } from 'react';
-import ButtonForm from 'components/common/button-form';
-import BackgroundContainer from 'components/main/background-container';
+import React, { SyntheticEvent, useEffect } from 'react';
+import ButtonForm from '../../../components/common/button-form';
+import BackgroundContainer from '../../../components/main/background-container';
 import {
   TextFieldModifiedEmail,
   TextFieldModifiedPassword,
-} from 'components/common/textfields';
-import { Link } from 'react-router-dom';
+} from '../../../components/common/textfields';
+import { Link, useHistory } from 'react-router-dom';
+import {
+  onSubmitForm,
+  selectFormReducer,
+} from '../../../slices/form-slice/form-slice';
+import { useAppSelector } from '../../../store';
+import { useDispatch } from 'react-redux';
+import { regexEmailValidator } from '../../../utils';
+import { postLogin } from '../../../slices/form-slice/async-actions';
 
-type Props = {
-  loginState: string;
-  handleSubmit: (e: SyntheticEvent) => any;
-  loginError: {
-    errorExists: boolean;
-    errorDesc: string;
+const LoginContainer = () => {
+  const dispatch = useDispatch();
+  const { loginError, loginState } = useAppSelector(selectFormReducer);
+  const history = useHistory();
+  useEffect(() => {
+    if (loginState === 'fulfilled' && !loginError.errorExists) {
+      history.push('/quizzes');
+    }
+  }, [loginState]);
+
+  const handleSubmit = (e: SyntheticEvent) => {
+    e.preventDefault();
+
+    const target = e.target as typeof e.target & {
+      email: { value: string };
+      password: {
+        value: string;
+      };
+    };
+    const email = target.email.value;
+    const password = target.password.value;
+    dispatch(
+      onSubmitForm({
+        email,
+        password,
+      })
+    );
+    if (regexEmailValidator.test(email) && password.length >= 8) {
+      dispatch(postLogin({ email, password }));
+    }
   };
+  return (
+    <BackgroundContainer marginTop="3.2rem" minHeight="35.7rem">
+      <>
+        <form onSubmit={handleSubmit} className="Sign__form">
+          {loginError && (
+            <p className="Sign__login-error">{loginError.errorDesc}</p>
+          )}
+          <TextFieldModifiedEmail />
+          <TextFieldModifiedPassword />
+          <ButtonForm title="Login" loadingState={loginState} />
+        </form>
+        <div className="Sign__advice">
+          Still not registered?
+          <Link to="/signup">
+            <em className="Sign__call">Signup</em>
+          </Link>
+        </div>
+      </>
+    </BackgroundContainer>
+  );
 };
-
-const LoginContainer = ({ loginState, handleSubmit, loginError }: Props) => (
-  <BackgroundContainer marginTop="3.2rem" minHeight="35.7rem">
-    <>
-      <form onSubmit={handleSubmit} className="Form-page__form">
-        {loginError && (
-          <p className="Form__login-error">{loginError.errorDesc}</p>
-        )}
-        <TextFieldModifiedEmail />
-        <TextFieldModifiedPassword />
-        <ButtonForm title="Login" loadingState={loginState} />
-      </form>
-      <div className="App__registerAdvice">
-        Still not registered?
-        <Link to="/signup">
-          <em className="App__call">Signup</em>
-        </Link>
-      </div>
-    </>
-  </BackgroundContainer>
-);
-
 export default LoginContainer;
