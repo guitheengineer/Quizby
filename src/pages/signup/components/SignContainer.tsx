@@ -1,5 +1,6 @@
 import React, { SyntheticEvent } from 'react';
-import BackgroundContainer from 'components/main/background-container';
+import './sign-container.scss';
+import BackgroundContainer from '../../../components/main/background-container';
 import {
   TextFieldModifiedUsername,
   TextFieldModifiedEmail,
@@ -13,12 +14,12 @@ type Props = {
 };
 
 const SignContainer = ({ handleSubmit, loadingState }: Props) => (
-  <BackgroundContainer marginTop="2.7rem" minHeight="38.7rem">
-    <form onSubmit={handleSubmit} className="Form-page__form">
+  <BackgroundContainer width="100vw" marginTop="2.7rem" minHeight="33rem">
+    <form onSubmit={handleSubmit} className="Sign__form">
       <TextFieldModifiedUsername />
       <TextFieldModifiedEmail />
       <TextFieldModifiedPassword />
-      <ButtonForm loadingState={loadingState} />
+      <ButtonForm title="Signup" loadingState={loadingState} />
     </form>
   </BackgroundContainer>
 );
