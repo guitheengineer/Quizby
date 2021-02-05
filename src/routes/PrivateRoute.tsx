@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { RouteCustomProps } from 'types';
+import { RouteCustomProps } from '../types';
 import Header from '../components/main/header';
 import useDocumentTitle from './hooks/useDocumentTitle';
 import useVerifyUser from './hooks/useVerifyUser';
@@ -13,22 +13,21 @@ const PrivateRoute = ({
   ...rest
 }: RouteCustomProps) => {
   useDocumentTitle(title);
-  const { isAuthenticated, checkAuth } = useVerifyUser();
-  return checkAuth ? (
+  const { isAuthenticated } = useVerifyUser();
+
+  return isAuthenticated ? (
     <Route
       {...rest}
-      render={(props) =>
-        isAuthenticated ? (
-          <>
-            <Header showlogo={showlogo} style={style} />
-            <Component {...props} />
-          </>
-        ) : (
-          <Redirect to={{ pathname: '/', state: { from: props.location } }} />
-        )
-      }
+      render={(props) => (
+        <>
+          <Header showlogo={showlogo} style={style} />
+          <Component {...props} />
+        </>
+      )}
     />
-  ) : null;
+  ) : (
+    <Redirect to={{ pathname: '/' }} />
+  );
 };
 
 export default PrivateRoute;
