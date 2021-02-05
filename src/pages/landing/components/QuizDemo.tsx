@@ -1,36 +1,36 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from 'store';
-import { setDemoAnswer, selectDemoReducer } from 'slices/demo-slice';
+import './quiz-demo.scss';
+
+import { useAppDispatch, useAppSelector } from '../../../store';
+import { selectDemoReducer, setDemoAnswer } from '../../../slices/demo-slice';
 import DemoResult from './DemoResult';
 
 type Props = {
-  style: {};
+  style?: {};
 };
 
 const QuizDemo = ({ style }: Props) => {
-  const { possibleAnswers, userAnswer } = useAppSelector(selectDemoReducer);
+  const { possibleAnswers, userAnswer, question } = useAppSelector(
+    selectDemoReducer
+  );
+
   const dispatch = useAppDispatch();
-  const handleClick = (selectedAnswer: string) => {
-    dispatch(setDemoAnswer(selectedAnswer));
-  };
 
   return (
-    <div style={style} className="Landing__quiz-demo">
+    <div style={style} className="Quiz-demo">
       <div
-        className="Landing__quiz-container"
+        className="Quiz-demo__container"
         style={{ zIndex: userAnswer ? -2 : 1 }}
       >
-        <h3 className="Landing__quiz-heading">
-          Who was the first black president of America?
-        </h3>
-        <ul className="Landing__quiz-list">
+        <h3 className="Quiz-demo__heading">{question}</h3>
+        <ul className="Quiz-demo__list">
           {possibleAnswers.map((possibleAnswer) => (
             <li
               key={possibleAnswer}
-              onClick={() => handleClick(possibleAnswer)}
-              className="Landing__quiz-item"
+              onClick={() => dispatch(setDemoAnswer(possibleAnswer))}
+              className="Quiz-demo__item"
             >
-              <span className="Landing__quiz-span">{possibleAnswer}</span>
+              <span className="Quiz-demo__span">{possibleAnswer}</span>
             </li>
           ))}
         </ul>
