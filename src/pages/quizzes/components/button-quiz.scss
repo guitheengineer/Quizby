@@ -1,0 +1,31 @@
+.Button-quiz {
+  position: relative;
+  width: 100%;
+  border: 0;
+  padding-top: 65%;
+  min-height: 9.5rem;
+  border-radius: 5px;
+  display: block;
+  font-family: Overpass;
+  font-weight: 500;
+  background-color: #e8e8e8;
+
+  &:hover {
+    transition: transform 0.3s;
+    transform: scale(1.01);
+  }
+  transition: transform 0.3s;
+
+  &__title {
+    position: absolute;
+    left: 7.8%;
+    bottom: 9.93%;
+    font-family: Overpass;
+    font-size: clamp(1.4rem, 4.8vw, 1.8rem);
+    color: white;
+    width: 87%;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
