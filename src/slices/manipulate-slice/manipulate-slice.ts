@@ -1,3 +1,4 @@
+import { CreationQuizzes } from './../../types/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import shortid from 'shortid';
 import { sendForm, editQuizThunk } from './async-actions';
@@ -14,7 +15,7 @@ interface SliceState extends QuizForm {
 const initialState: SliceState = {
   saveQuizFetchState: '',
   editQuizFetchState: '',
-  _id: shortid.generate(),
+  _id: '',
   name: '',
   description: '',
   category: '',
@@ -50,8 +51,12 @@ const manipulateSlice = createSlice({
       };
       state.creationQuizzes.push(newQuiz);
     },
-    setEditQuiz: (state, { payload }: PayloadAction<QuizComplete>) => {
-      const { category, description, image, questions, _id, name } = payload;
+    setEditQuiz: (
+      state,
+      {
+        payload: { category, description, image, questions, _id, name },
+      }: PayloadAction<QuizComplete>
+    ) => {
       state.category = category;
       state.name = name;
       state._id = _id;
@@ -70,16 +75,17 @@ const manipulateSlice = createSlice({
     },
     changeImage: (
       state,
-      { payload }: PayloadAction<{ contentType: string; data: string }>
+      {
+        payload: { contentType, data },
+      }: PayloadAction<{ contentType: string; data: string }>
     ) => {
-      const { contentType, data } = payload;
       state.image.contentType = contentType;
       state.image.data = data;
     },
     changeInput: (
       state,
       {
-        payload,
+        payload: { value, type, index },
       }: PayloadAction<{
         value: string;
         type:
@@ -94,20 +100,19 @@ const manipulateSlice = createSlice({
         index?: number;
       }>
     ) => {
-      const { value, type, index } = payload;
       if (type === 'name' || type === 'category' || type === 'description') {
         state[type] = value;
       }
-      if (index) {
+      if (index !== undefined) {
         state.creationQuizzes[index][type] = value;
       }
     },
     setNewQuizId: (state, { payload }: PayloadAction<string>) => {
       state._id = payload;
     },
-    quizSaved: (state) => {
-      state.saveQuizFetchState = 'saved';
-      state.editQuizFetchState = 'saved';
+    resetLoadingState: (state) => {
+      state.editQuizFetchState = null;
+      state.saveQuizFetchState = null;
     },
   },
   extraReducers: (builder) => {
@@ -118,9 +123,13 @@ const manipulateSlice = createSlice({
       sendForm.fulfilled,
       (
         state,
-        { payload }: PayloadAction<{ data: { newQuiz: { _id: string } } }>
+        {
+          payload: {
+            response: { _id },
+          },
+        }
       ) => {
-        state._id = payload.data.newQuiz._id;
+        state._id = _id;
         state.saveQuizFetchState = 'fulfilled';
       }
     );
@@ -145,9 +154,9 @@ export const {
   removeCreatedQuiz,
   changeInput,
   changeImage,
-  quizSaved,
   setEditQuiz,
   setNewQuizId,
+  resetLoadingState,
 } = manipulateSlice.actions;
 
 export const selectManipulateReducer = (state: RootState) => state.manipulate;
