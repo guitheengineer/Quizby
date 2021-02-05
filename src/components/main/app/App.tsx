@@ -1,14 +1,13 @@
 import React from 'react';
-import './app.css';
 import { BrowserRouter } from 'react-router-dom';
-import { Routes } from 'routes';
-import AppContainer from './AppContainer';
+import './app.scss';
+import { Routes } from '../../../routes';
 
 const App = () => (
   <BrowserRouter>
-    <AppContainer>
+    <div className="App">
       <Routes />
-    </AppContainer>
+    </div>
   </BrowserRouter>
 );
 

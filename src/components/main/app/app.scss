@@ -1,0 +1,57 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  border: 0;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  line-height: calc(1.5em + (1.55 - 1.5) * ((100vw - 21em) / (35 - 21)));
+  background-color: #5255ca;
+}
+
+#root {
+  width: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font: 1.6em Overpass;
+  background: #5255ca;
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('../../../assets/background.png');
+  min-height: 100vh;
+}
+
+.info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.8rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
