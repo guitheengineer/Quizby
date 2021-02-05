@@ -1,0 +1,11 @@
+.Answer-animation {
+  width: 10rem;
+  height: auto;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+  opacity: 0;
+  animation: opacityOne 0.4s 0.2s ease-in forwards;
+}
