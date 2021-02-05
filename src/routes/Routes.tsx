@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
-import Landing from 'pages/landing/Landing';
+import Landing from '../pages/landing/Landing';
 import FourHundredFour from '../pages/four-hundred-four';
 import Signup from '../pages/signup';
 import Playing from '../pages/playing';
@@ -15,13 +15,14 @@ import User from '../pages/user';
 import PrivateRouteUser from './PrivateRouteUser';
 import Category from '../pages/category';
 import EditQuiz from '../pages/edit-quiz';
+import UnregisteredRoute from './UnregisteredRoute';
 
 const Routes = () => (
   <Switch>
     <RouteWithHeader path="/quizzes/play/:id" component={Playing} />
-    <RouteWithHeader showlogo={false} path="/signup" component={Signup} />
-    <RouteWithHeader showlogo={false} path="/login" component={Login} />
-    <PrivateRoute
+    <UnregisteredRoute showlogo={false} path="/signup" component={Signup} />
+    <UnregisteredRoute showlogo={false} path="/login" component={Login} />
+    <RouteWithHeader
       style={{ position: 'absolute', zIndex: 1 }}
       path="/quizzes/show/:id"
       component={Show}
@@ -38,7 +39,7 @@ const Routes = () => (
     />
     <PrivateRouteUser path="/user/:username/editquiz" component={EditQuiz} />
     <RouteWithHeader path="/user/:usernameParam" component={User} />
-    <RouteWithHeader path="/" component={Landing} />
+    <RouteWithHeader path="/" showmenu={false} component={Landing} />
     <RouteWithHeader component={FourHundredFour} />
   </Switch>
 );
