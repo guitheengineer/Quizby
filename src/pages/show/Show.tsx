@@ -17,7 +17,9 @@ const Show = () => {
   const dispatch = useAppDispatch();
   const history = useHistory();
   const { menuIsActive } = useAppSelector(selectGeneralReducer);
-  const { quizFetchState } = useAppSelector(selectQuizReducer);
+  const { quizFetchState, quizzesFetchState } = useAppSelector(
+    selectQuizReducer
+  );
 
   const { name, image, description, _id } = useQuiz();
 
@@ -39,26 +41,23 @@ const Show = () => {
       };
     }
     if (menuIsActive) {
-      return { backgroundColor: '#5255ca', flex: '1 0 90%' };
+      return { backgroundColor: '#5450c9', flex: '1 0 90%' };
     }
   }, [menuIsActive, image]);
 
   return (
-    <div className="Show">
-      <div style={displayQuizImage()} className="Show__image" />
-      <BackgroundContainer
-        justifyContent="normal"
-        alignItems="center"
-        overflow="normal"
-        className="Show__background-container"
-        flex="initial"
-        isLoading={quizFetchState}
-        paddingBottom={30}
-      >
-        <>
-          <div className="Show__playarea">
-            <h1 className="Show__title">{name}</h1>
-            <p className="Show__description">{description}</p>
+    <BackgroundContainer
+      justifyContent="initial"
+      className="Show__background-container"
+      isLoading={quizFetchState}
+    >
+      <div className="Show">
+        <div style={displayQuizImage()} className="Show__image" />
+
+        <div className="Show__playarea">
+          <h1 className="Show__title">{name}</h1>
+          <p className="Show__description">{description}</p>
+          {quizFetchState === 'fulfilled' && (
             <button
               className="Show__button"
               onClick={handlePlay}
@@ -67,16 +66,16 @@ const Show = () => {
             >
               Play
             </button>
-          </div>
-          <QuizList
-            className="Show__list"
-            label="Other quizzes"
-            type="mostPlayed"
-          />
-        </>
-      </BackgroundContainer>
-      <HoldLoading isLoading={quizFetchState} />
-    </div>
+          )}
+        </div>
+        <QuizList
+          className="Show__list"
+          label="Other quizzes"
+          type="mostPlayed"
+        />
+        <HoldLoading isLoading={[quizFetchState, quizzesFetchState]} />
+      </div>
+    </BackgroundContainer>
   );
 };
 
