@@ -9,7 +9,10 @@
   font-family: Overpass;
   font-weight: 500;
   background-color: #e8e8e8;
-
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.16);
+  &--recommended {
+    padding-top: 50%;
+  }
   &:hover {
     transition: transform 0.3s;
     transform: scale(1.01);

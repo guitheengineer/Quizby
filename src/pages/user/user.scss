@@ -21,22 +21,50 @@
 .User {
   width: 80%;
   max-width: 55rem;
-  margin-bottom: 7rem;
   position: relative;
+  &__info {
+    display: flex;
+    width: 100%;
+    @media (min-width: 370px) {
+      width: 80%;
+    }
+    @media (min-width: 500px) {
+      width: 60%;
+    }
+
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__create-quiz {
+    height: 3rem;
+    color: rgba(10, 10, 31, 0.76);
+    border: 1px solid rgba(82, 85, 202, 0.6);
+    border-radius: 5px;
+    min-width: 11rem;
+    font-size: 1.4rem;
+  }
   &__profile {
     margin-top: 3.2rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
     &::after {
       content: '';
       display: block;
-      width: 70%;
       height: 2px;
       background: #eeeeee;
-      left: 50%;
-      transform: translateX(-50%);
       position: relative;
       bottom: -35px;
+      width: 100%;
+      @media (min-width: 370px) {
+        width: 90%;
+      }
+      @media (min-width: 500px) {
+        width: 80%;
+      }
+      @media (min-width: 592px) {
+        width: 70%;
+      }
     }
   }
   &__stats {
@@ -83,13 +111,13 @@
     color: #80819c;
   }
   &__played {
-    margin-top: 4.6rem;
+    margin-top: 7rem;
   }
   &__title {
     font: 1.6rem Overpass;
     color: #0a0a1f;
     &--username {
-      text-align: center;
+      width: 100%;
     }
   }
   &__quizzes {
@@ -106,12 +134,12 @@
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 0.9rem;
+    gap: 1rem;
     &--created {
       @media (min-width: 380px) {
-        gap: 5.2rem 0.9rem;
+        gap: 5.2rem 1rem;
       }
-      gap: 4.6rem 0.9rem;
+      gap: 4.6rem 1rem;
     }
   }
   &__item,
@@ -136,7 +164,7 @@
     @media (min-width: 380px) {
       height: 3rem;
     }
-    height: 2.5rem;
+    height: 2.6rem;
   }
   &__action-button {
     border-radius: 5px;
@@ -144,16 +172,19 @@
     height: inherit;
     color: white;
     &--edit {
-      color: black;
-      border: 1px solid black;
+      color: #2e2e8f;
+      border: 1px solid #5255ca;
       background: transparent;
     }
     &--delete {
-      background-color: #f92f2f;
+      background: #f92f2f;
     }
   }
 
   &__created {
     margin-top: 6.2rem;
+    &--second {
+      margin-top: 4rem;
+    }
   }
 }

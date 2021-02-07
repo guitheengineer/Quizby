@@ -3,6 +3,7 @@
   font-size: 1.8rem;
   align-items: center;
   display: flex;
+  position: relative;
   &__input {
     &::placeholder {
       color: rgba(243, 243, 243, 0.8);

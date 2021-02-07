@@ -1,19 +1,35 @@
 .Show {
-  background-color: grey;
+  background-color: #f8faf7;
   display: flex;
   flex-direction: column;
-  flex: 1;
   width: 100%;
+  align-items: center;
+  margin-bottom: 40px;
   &__image {
     position: relative;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     flex: 1 1 45%;
+    width: 100%;
     min-height: 30vh;
+    &::after {
+      content: '';
+      display: block;
+      background: #f8faf7;
+      width: 20px;
+      height: 20px;
+      left: 0;
+      right: 0;
+      position: absolute;
+      border-radius: 20px 20px 0 0;
+      width: 100%;
+      bottom: 0px;
+    }
   }
   &__playarea {
     width: 80%;
+    position: relative;
   }
   &__title {
     &::before {
@@ -52,18 +68,8 @@
   }
   &__background-container {
     border-radius: 0;
-    &::after {
-      content: '';
-      display: block;
-      background: #f8faf7;
-      width: 20px;
-      height: 20px;
-      left: 0;
-      right: 0;
-      position: absolute;
-      border-radius: 20px 20px 0 0;
-      width: 100%;
-      top: -20px;
+    @media (min-width: 550px) {
+      border-radius: 20px;
     }
   }
 }
