@@ -7,7 +7,9 @@ import { saveQuizResult } from '../../slices/user-slice/async-actions';
 import { resetUserStats } from '../../slices/quizzes-slice';
 import BackgroundContainer from '../../components/main/background-container';
 import playAgain from '../../assets/icons/playagain.svg';
-import { Donut, DonutLabel, DonutValue } from 'react-donut-component';
+import { Donut, DonutValue } from 'react-donut-component';
+import HoldLoading from '../../components/common/hold-loading/HoldLoading';
+import useVerifyUser from '../../routes/hooks/useVerifyUser';
 
 interface ParamTypes {
   quizId: string;
@@ -19,13 +21,12 @@ const Done = () => {
     (state) => state.quizzes.userStats
   );
   const history = useHistory();
-  const { isAuthenticated, username } = useAppSelector(selectUserReducer);
+  const { isAuthenticated, username } = useVerifyUser();
+  const { saveQuizFetchState } = useAppSelector(selectUserReducer);
   const { quizId } = useParams<ParamTypes>();
 
   useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(setUser());
-    }
+    return () => dispatch(resetUserStats());
   }, []);
 
   useEffect(() => {
@@ -39,10 +40,10 @@ const Done = () => {
 
   const conditionalPhrase = useCallback(() => {
     if (percentage < 45) {
-      return 'Not so bad!';
+      return 'You can do better!';
     }
     if (percentage < 60) {
-      return 'You can do better!';
+      return 'Not so bad';
     }
     if (percentage < 80) {
       return 'Nice result!';
@@ -50,14 +51,10 @@ const Done = () => {
     return 'What a performance!';
   }, [percentage]);
 
-  const restartGame = () => {
-    dispatch(resetUserStats());
-    history.push(`/quizzes/play/${quizId}`);
-  };
-
   return (
     <BackgroundContainer alignItems="center">
       <>
+        <HoldLoading isLoading={saveQuizFetchState} />
         <Donut
           className="Done__donut"
           strokeWidth={11}
@@ -69,7 +66,10 @@ const Done = () => {
         <div className="Done__phrase">{conditionalPhrase()}</div>
         <div className="Done__button">
           <button
-            onClick={restartGame}
+            onClick={() => {
+              dispatch(resetUserStats());
+              history.push(`/quizzes/play/${quizId}`);
+            }}
             className="Done__button--playagain"
             type="button"
           >
