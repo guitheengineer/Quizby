@@ -1,13 +1,10 @@
 .Fetch-error {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-top: 3rem;
-  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  height: 100%;
+  flex: 1;
+  justify-content: center;
   &__img {
     width: 20.3rem;
   }
@@ -26,5 +23,6 @@
     font-size: 20px;
     width: 100%;
     color: white;
+    max-width: 250px;
   }
 }
