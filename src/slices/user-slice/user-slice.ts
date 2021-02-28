@@ -1,21 +1,22 @@
-import { RootState } from '../../store/store';
+import { RootState } from '../../store/rootReducer';
 import { createSlice } from '@reduxjs/toolkit';
 import { verifyUser, saveQuizResult } from './async-actions';
+import { ThunkResponses } from '../../types';
 
 interface SliceState {
-  isAuthenticated: boolean;
+  isAuthenticated: boolean | null;
   username: string;
   email: string;
   _id: string | null;
-  saveQuizFetchState: string;
+  saveQuizFetchState: ThunkResponses;
 }
 
 const initialState: SliceState = {
-  isAuthenticated: false,
+  isAuthenticated: null,
   username: '',
   email: '',
   _id: '',
-  saveQuizFetchState: '',
+  saveQuizFetchState: null,
 };
 
 export const userSlice = createSlice({
