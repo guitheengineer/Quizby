@@ -1,10 +1,11 @@
 import React from 'react';
 import './button.scss';
 import LoaderSpinner from '../loader-spinner/LoaderSpinner';
+import { ThunkResponses } from '../../../types';
 
 type Props = {
   title?: string;
-  loadingState: string;
+  loadingState: ThunkResponses;
   className?: string;
 };
 
