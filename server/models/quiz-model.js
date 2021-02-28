@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const shortid = require('shortid');
+const { nanoid } = require('nanoid');
 
 const { Schema, model } = mongoose;
 
 const quizSchema = new Schema({
   _id: {
     type: String,
-    default: shortid.generate,
+    default: () => nanoid(),
   },
   creator: {
     type: Schema.Types.ObjectId,

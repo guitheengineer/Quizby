@@ -1,7 +1,7 @@
 const validator = require('validator');
 const bcrypt = require('bcrypt');
-const shortid = require('shortid');
 const mongoose = require('mongoose');
+const { nanoid } = require('nanoid');
 
 const { Schema, model } = mongoose;
 
@@ -42,7 +42,7 @@ const userSchema = new Schema({
     {
       _id: {
         type: String,
-        default: shortid.generate,
+        default: () => nanoid(),
       },
       creator: {
         type: Schema.Types.ObjectId,
