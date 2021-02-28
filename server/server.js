@@ -5,8 +5,8 @@ if (result.error) {
 }
 
 process.on('uncaughtException', (err) => {
-  console.log('uncaughtException, shuting down the server');
-  console.log(err, ' <<err');
+  console.log('uncaughtException, shutting down the server');
+  console.log(err.message, err.name);
   process.exit(1);
 });
 
@@ -27,21 +27,16 @@ const port = process.env.PORT || 5000;
 
 const DB = process.env.DB || '';
 
-const connectApp = async () => {
-  try {
-    await mongoose.connect(DB, {
-      useNewUrlParser: true,
-      useFindAndModify: false,
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
-connectApp();
-
-mongoose.connection.on('connected', () => {
-  console.log('mongoose is connected');
+mongoose.connect(DB, {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
 });
+
+const db = mongoose.connection;
+db.on('error', () => console.log('error'));
+db.once('open', () => console.log('connected'));
 
 expressApp.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 expressApp.use(express.json({ limit: '50mb' }));
@@ -52,14 +47,9 @@ expressApp.use('/api/quizzes', quizzes);
 
 const server = expressApp.listen(port, () => console.log('server started'));
 
-process.on('SIGINT', () => {
-  server.close();
-});
-
-// app.use(globalErrorHandler);
 process.on('unhandledRejection', (err) => {
-  console.log('unhandledRejection, shuting down.');
-  console.log(err);
+  console.log('unhandledRejection, shutting down.');
+  console.log(err.name, err.message);
   server.close(() => {
     process.exit(1);
   });
