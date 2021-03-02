@@ -1,6 +1,5 @@
-import React, { useState, MouseEvent, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import './answers.scss';
-import { isMobile } from 'react-device-detect';
 import {
   selectQuizReducer,
   setUserAnswer,
@@ -34,7 +33,7 @@ const Answers = () => {
         };
       }
     },
-    [userAnswer]
+    [userAnswer, currentQuiz.questions, currentQuestion]
   );
 
   return (
