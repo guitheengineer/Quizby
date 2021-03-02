@@ -4,13 +4,14 @@ import Menu from '../header/menu';
 import {
   changeMenu,
   selectGeneralReducer,
-} from '../../../slices/general-slice/general-slice';
-import { useAppSelector } from '../../../store/store';
-import { ThunkResponses } from '../../../types';
+} from 'slices/general-slice/general-slice';
+import { useAppSelector } from 'store';
+import { ThunkResponses } from 'types';
 import { useDispatch } from 'react-redux';
+import FetchError from 'components/common/fetch-error/FetchError';
 
 type Props = CSSProperties & {
-  isLoading?: ThunkResponses;
+  isLoading?: ThunkResponses | ThunkResponses[];
   children: React.ReactElement;
   className?: string;
   fetch?: any;
@@ -18,15 +19,17 @@ type Props = CSSProperties & {
 
 const BackgroundContainer = ({
   children,
-  marginTop = 'auto',
+  marginTop,
   top = '0px',
   alignItems = 'normal',
   justifyContent = 'center',
   overflow = 'hidden',
-  paddingBottom = 0,
+  paddingBottom,
   isLoading = 'fulfilled',
   minHeight,
   className,
+  boxShadow,
+  borderRadius,
 }: Props) => {
   const { menuIsActive } = useAppSelector(selectGeneralReducer);
   const dispatch = useDispatch();
@@ -34,30 +37,40 @@ const BackgroundContainer = ({
     marginTop,
     top,
     alignItems,
+    boxShadow,
     justifyContent,
-    height: menuIsActive ? '6rem' : null,
+    height: menuIsActive ? 60 : undefined,
     paddingBottom,
+    borderRadius,
   };
   useEffect(() => {
-    dispatch(changeMenu(false));
-  }, []);
+    dispatch(changeMenu({ type: 'menuIsActive', isActive: false }));
+  }, [dispatch]);
 
   const inactiveMenu: CSSProperties = {
-    ...commonStyles,
-    overflowY: 'hidden',
-  };
-  const activeMenu: CSSProperties = {
     ...commonStyles,
     overflow,
     flex: '1 1 100%',
     minHeight,
   };
-  return isLoading === 'fulfilled' || isLoading === 'pending' ? (
+
+  const activeMenu: CSSProperties = {
+    ...commonStyles,
+    borderRadius: '20px 20px 0 0',
+    overflowY: 'hidden',
+  };
+
+  return (Array.isArray(isLoading) &&
+    isLoading.some((el) => el === 'fulfilled' || el === 'pending')) ||
+    isLoading === 'fulfilled' ||
+    isLoading === 'pending' ? (
     <>
       {menuIsActive && <Menu />}
       <div
-        className={`Background-container ${className}`}
-        style={menuIsActive ? inactiveMenu : activeMenu}
+        className={`Background-container ${
+          menuIsActive ? 'Background-container--menuActive' : null
+        } ${className} `}
+        style={menuIsActive ? activeMenu : inactiveMenu}
       >
         {Children.map(children, (child) =>
           cloneElement(child, {
@@ -66,6 +79,23 @@ const BackgroundContainer = ({
             }`,
           })
         )}
+      </div>
+    </>
+  ) : (Array.isArray(isLoading) && isLoading.some((el) => el === 'rejected')) ||
+    isLoading === 'rejected' ? (
+    <>
+      {menuIsActive && <Menu />}
+      <div
+        className={`Background-container ${
+          menuIsActive ? 'Background-container--menuActive' : null
+        } ${className} `}
+        style={
+          menuIsActive
+            ? { ...activeMenu, paddingBottom: 0 }
+            : { ...inactiveMenu, paddingBottom: 0 }
+        }
+      >
+        <FetchError />
       </div>
     </>
   ) : null;
