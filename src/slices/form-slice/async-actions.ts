@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import postFetch from '../utils/postFetch';
-import { UserSignup, UserClient } from '../../types';
+import { UserSignup, UserClient } from 'types';
 
 const reducer = 'formReducer';
 

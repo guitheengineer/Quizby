@@ -15,9 +15,9 @@ const CategoriesButton = ({
   const history = useHistory();
 
   useEffect(() => {
-    import(
-      `../../../assets/category-images/${title.toLowerCase()}.png`
-    ).then((img) => setImg(img.default));
+    import(`assets/category-images/${title.toLowerCase()}.png`).then((img) =>
+      setImg(img.default)
+    );
   }, [title]);
 
   return (

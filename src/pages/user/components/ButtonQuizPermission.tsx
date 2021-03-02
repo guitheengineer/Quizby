@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { setEditQuiz } from '../../../slices/manipulate-slice';
-import sliceName from '../../../utils/slice-name';
-import { useAppSelector, useAppDispatch } from '../../../store';
+import { setEditQuiz } from 'slices/manipulate-slice';
+import sliceName from 'utils/slice-name';
+import { useAppSelector, useAppDispatch } from 'store';
 import {
   getUserQuizzes,
   deleteQuiz,
   getCurrentQuiz,
-} from '../../../slices/quizzes-slice/async-actions';
-import { setQuery, selectQuizReducer } from '../../../slices/quizzes-slice';
-import { QuizComplete } from '../../../types';
+} from 'slices/quizzes-slice/async-actions';
+import { setQuery, selectQuizReducer } from 'slices/quizzes-slice';
+import { QuizComplete } from 'types';
 
 type Props = {
   quiz: QuizComplete;

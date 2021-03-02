@@ -1,11 +1,8 @@
-import React, { useState, useCallback, ChangeEvent } from 'react';
-import {
-  changeImage,
-  selectManipulateReducer,
-} from '../../../../slices/manipulate-slice';
-import Notification from '../../../../components/common/notification';
-import { useAppSelector, useAppDispatch } from '../../../../store';
-import putImage from '../../../../assets/icons/put-image.svg';
+import React, { useState, ChangeEvent } from 'react';
+import { changeImage, selectManipulateReducer } from 'slices/manipulate-slice';
+import Notification from 'components/common/notification';
+import { useAppSelector, useAppDispatch } from 'store';
+import putImage from 'assets/icons/put-image.svg';
 
 const ImageInput = () => {
   const dispatch = useAppDispatch();

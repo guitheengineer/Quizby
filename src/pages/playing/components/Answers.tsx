@@ -4,9 +4,9 @@ import {
   selectQuizReducer,
   setUserAnswer,
   nextQuestion,
-} from '../../../slices/quizzes-slice';
-import { useAppSelector, useAppDispatch } from '../../../store';
-import chevron from '../../../assets/icons/chevron.png';
+} from 'slices/quizzes-slice';
+import { useAppSelector, useAppDispatch } from 'store';
+import chevron from 'assets/icons/chevron.png';
 
 const Answers = () => {
   const dispatch = useAppDispatch();

@@ -1,13 +1,13 @@
 import React, { SyntheticEvent } from 'react';
 import './sign-container.scss';
-import BackgroundContainer from '../../../components/main/background-container';
+import BackgroundContainer from 'components/main/background-container';
 import {
   TextFieldModifiedUsername,
   TextFieldModifiedEmail,
   TextFieldModifiedPassword,
-} from '../../../components/common/textfields';
-import ButtonForm from '../../../components/common/button-form';
-import { ThunkResponses } from '../../../types';
+} from 'components/common/textfields';
+import ButtonForm from 'components/common/button-form';
+import { ThunkResponses } from 'types';
 
 type Props = {
   loadingState: ThunkResponses;

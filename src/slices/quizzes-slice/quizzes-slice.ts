@@ -7,9 +7,9 @@ import {
   deleteQuiz,
   quizzesAdded,
 } from './async-actions';
-import { shuffleArray } from '../../utils';
-import { RootState } from '../../store/rootReducer';
-import { ThunkResponses } from '../../types';
+import { shuffleArray } from 'utils';
+import { RootState } from 'store/rootReducer';
+import { ThunkResponses } from 'types';
 
 interface SliceState {
   quizzes: {

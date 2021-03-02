@@ -1,7 +1,7 @@
 import React from 'react';
 import './question.scss';
-import { selectQuizReducer } from '../../../slices/quizzes-slice';
-import { useAppSelector } from '../../../store';
+import { selectQuizReducer } from 'slices/quizzes-slice';
+import { useAppSelector } from 'store';
 
 const Question = () => {
   const {

@@ -1,7 +1,7 @@
 import React from 'react';
 import './hold-loading.scss';
 import { ClipLoader } from 'react-spinners';
-import { ThunkResponses } from '../../../types';
+import { ThunkResponses } from 'types';
 
 type Props = {
   isLoading: ThunkResponses | ThunkResponses[];

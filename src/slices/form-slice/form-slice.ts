@@ -5,9 +5,9 @@ import {
   postLogin,
   postSignup,
 } from './async-actions';
-import { regexUsernameValidator, regexEmailValidator } from '../../utils/regex';
-import { ThunkResponses, UserResponse } from '../../types';
-import { RootState } from '../../store/rootReducer';
+import { regexUsernameValidator, regexEmailValidator } from 'utils/regex';
+import { ThunkResponses, UserResponse } from 'types';
+import { RootState } from 'store/rootReducer';
 
 type Error = {
   errorExists: boolean;

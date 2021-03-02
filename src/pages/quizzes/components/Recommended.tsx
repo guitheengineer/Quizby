@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppSelector } from '../../../store';
+import { useAppSelector } from 'store';
 import ButtonQuiz from './ButtonQuiz';
 
 const Recommended = () => {
@@ -10,7 +10,7 @@ const Recommended = () => {
     <div className="Quizzes__recommended">
       <span>Recommended</span>
       <div className="Quizzes__recommended-wrapper">
-        <ButtonQuiz quiz={recommended} />
+        <ButtonQuiz className="Button-quiz--recommended" quiz={recommended} />
       </div>
     </div>
   );

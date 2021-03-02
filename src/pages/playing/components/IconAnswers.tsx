@@ -1,9 +1,9 @@
 import React from 'react';
 import './icon-answers.scss';
-import { useAppSelector } from '../../../store';
-import { selectQuizReducer } from '../../../slices/quizzes-slice';
-import rightAnswer from '../../../assets/icons/right-answer.svg';
-import wrongAnswer from '../../../assets/icons/wrong-answer.svg';
+import { useAppSelector } from 'store';
+import { selectQuizReducer } from 'slices/quizzes-slice';
+import rightAnswer from 'assets/icons/right-answer.svg';
+import wrongAnswer from 'assets/icons/wrong-answer.svg';
 
 const IconAnswers = () => {
   const { historicOfAnswers } = useAppSelector(selectQuizReducer);

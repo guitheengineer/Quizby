@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppSelector } from '../../../store';
-import { QuizClient } from '../../../types';
+import { useAppSelector } from 'store';
+import { QuizClient } from 'types';
 import ButtonQuiz from './ButtonQuiz';
 
 type Props = {

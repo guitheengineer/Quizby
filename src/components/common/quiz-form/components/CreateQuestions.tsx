@@ -2,8 +2,8 @@ import React from 'react';
 import {
   selectManipulateReducer,
   removeCreatedQuiz,
-} from '../../../../slices/manipulate-slice';
-import { useAppSelector, useAppDispatch } from '../../../../store';
+} from 'slices/manipulate-slice';
+import { useAppSelector, useAppDispatch } from 'store';
 import TextFieldCommon from './TextFieldCommon';
 import TextFieldFakeAnswer from './TextFieldFakeAnswer';
 

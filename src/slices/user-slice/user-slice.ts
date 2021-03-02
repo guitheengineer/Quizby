@@ -1,7 +1,7 @@
-import { RootState } from '../../store/rootReducer';
+import { RootState } from 'store/rootReducer';
 import { createSlice } from '@reduxjs/toolkit';
 import { verifyUser, saveQuizResult } from './async-actions';
-import { ThunkResponses } from '../../types';
+import { ThunkResponses } from 'types';
 
 interface SliceState {
   isAuthenticated: boolean | null;

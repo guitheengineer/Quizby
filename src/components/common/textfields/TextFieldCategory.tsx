@@ -1,13 +1,10 @@
-import React, { useEffect, ChangeEvent, CSSProperties } from 'react';
+import React, { CSSProperties } from 'react';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useHistory, useParams } from 'react-router-dom';
-import capitalize from '../../../utils/capitalize';
-import {
-  changeInput,
-  selectManipulateReducer,
-} from '../../../slices/manipulate-slice';
-import { useAppSelector, useAppDispatch } from '../../../store';
+import capitalize from 'utils/capitalize';
+import { changeInput, selectManipulateReducer } from 'slices/manipulate-slice';
+import { useAppSelector } from 'store';
 import { useDispatch } from 'react-redux';
 
 const currencies: string[] = [
@@ -25,7 +22,7 @@ type Props = {
   variant?: 'outlined' | 'standard' | 'filled' | undefined;
   style?: CSSProperties;
   className?: string;
-  signup?: boolean;
+  create?: boolean;
 };
 
 interface ParamTypes {
@@ -34,9 +31,9 @@ interface ParamTypes {
 
 const TextFieldCategory = ({
   variant = 'outlined',
-  style = { marginTop: '1.6rem', font: '1.6rem Overpass' },
+  style = { marginTop: '2rem', font: '1.6rem Overpass' },
   className,
-  signup = false,
+  create = false,
 }: Props) => {
   const { quizCategory } = useParams<ParamTypes>();
   const history = useHistory();
@@ -50,9 +47,9 @@ const TextFieldCategory = ({
       fullWidth
       label="Category"
       required
-      value={signup ? quizCategory : category}
+      value={create ? category : quizCategory}
       onChange={(e) => {
-        if (signup) {
+        if (create) {
           dispatch(changeInput({ value: e.target.value, type: 'category' }));
         } else {
           history.push(`/quizzes/category/${e.target.value}`);

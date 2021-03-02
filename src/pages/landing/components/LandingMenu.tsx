@@ -1,12 +1,9 @@
 import React, { ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {
-  changeMenu,
-  selectGeneralReducer,
-} from '../../../slices/general-slice';
-import { useAppDispatch, useAppSelector } from '../../../store';
-import '../components/landing-menu.scss';
+import { changeMenu, selectGeneralReducer } from 'slices/general-slice';
+import { useAppDispatch, useAppSelector } from 'store';
+import './landing-menu.scss';
 
 const LandingMenuItem = ({
   link,

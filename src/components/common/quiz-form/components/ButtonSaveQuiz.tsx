@@ -4,10 +4,10 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import {
   resetLoadingState,
   selectManipulateReducer,
-} from '../../../../slices/manipulate-slice';
-import { selectUserReducer } from '../../../../slices/user-slice/user-slice';
-import { useAppDispatch, useAppSelector } from '../../../../store';
-import { QuizUser, ThunkResponses } from '../../../../types';
+} from 'slices/manipulate-slice';
+import { selectUserReducer } from 'slices/user-slice/user-slice';
+import { useAppDispatch, useAppSelector } from 'store';
+import { QuizUser, ThunkResponses } from 'types';
 
 type Props = {
   title: string;

@@ -2,17 +2,17 @@ import React, { useEffect, useCallback } from 'react';
 import './user.scss';
 import { Clipboard, Crosshair, Coffee } from 'react-feather';
 import { Link, useParams } from 'react-router-dom';
-import BackgroundContainer from '../../components/main/background-container';
-import { useAppSelector, useAppDispatch } from '../../store';
-import { selectQuizReducer, getUserQuizzes } from '../../slices/quizzes-slice';
-import ButtonQuiz from '../../pages/quizzes/components/ButtonQuiz';
+import BackgroundContainer from 'components/main/background-container';
+import { useAppSelector, useAppDispatch } from 'store';
+import { selectQuizReducer, getUserQuizzes } from 'slices/quizzes-slice';
+import ButtonQuiz from 'pages/quizzes/components/ButtonQuiz';
 import ButtonQuizPermission from './components/ButtonQuizPermission';
 import Number from './components/Number';
-import { checkIfUserExists } from '../../slices/form-slice/async-actions';
-import { selectFormReducer } from '../../slices/form-slice/form-slice';
-import HoldLoading from '../../components/common/hold-loading/HoldLoading';
-import FetchError from '../../components/common/fetch-error/FetchError';
-import useVerifyUser from '../../routes/hooks/useVerifyUser';
+import { checkIfUserExists } from 'slices/form-slice/async-actions';
+import { selectFormReducer } from 'slices/form-slice/form-slice';
+import HoldLoading from 'components/common/hold-loading/HoldLoading';
+import FetchError from 'components/common/fetch-error/FetchError';
+import useVerifyUser from 'routes/hooks/useVerifyUser';
 
 type ParamTypes = {
   usernameParam: string;

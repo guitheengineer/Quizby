@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import './fetch-error.scss';
-import { useAppDispatch } from '../../../store';
+import { useAppDispatch } from 'store';
 import fetchError from 'assets/error-images/fetch-error.png';
 import { useHistory } from 'react-router-dom';
-import { ThunkResponses } from '../../../types';
+import { ThunkResponses } from 'types';
 
 type Props = {
   fetch?: any;

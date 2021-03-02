@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import './category.scss';
-import { useAppDispatch } from '../../store';
-import { getCategoryQuiz } from '../../slices/quizzes-slice/async-actions';
-import BackgroundContainer from '../../components/main/background-container';
-import TextFieldCategory from '../../components/common/textfields/TextFieldCategory';
+import { useAppDispatch } from 'store';
+import { getCategoryQuiz } from 'slices/quizzes-slice/async-actions';
+import BackgroundContainer from 'components/main/background-container';
+import TextFieldCategory from 'components/common/textfields/TextFieldCategory';
 import QuizList from '../quizzes/components/QuizList';
 import { useParams } from 'react-router-dom';
 

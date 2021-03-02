@@ -3,10 +3,10 @@ import './landing.scss';
 import { Link } from 'react-router-dom';
 import { QuizDemo } from './components';
 import LandingQuizzes from './components/LandingQuizzes';
-import player99 from '../../assets/stats-player99.png';
-import guilhermesnd from '../../assets/stats-guilhermeSND.png';
-import searchQuizzesImg from '../../assets/search-quizzes.png';
-import { CategoriesList } from '../../components/common/categories';
+import player99 from 'assets/stats-player99.png';
+import guilhermesnd from 'assets/stats-guilhermeSND.png';
+import searchQuizzesImg from 'assets/search-quizzes.png';
+import { CategoriesList } from 'components/common/categories';
 import LandingMenu from './components/LandingMenu';
 
 const Landing = () => (

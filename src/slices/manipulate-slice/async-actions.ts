@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { simpleFetch, postFetch } from '../utils';
-import { QuizData, QuizForm } from '../../types';
+import { simpleFetch, postFetch } from 'utils';
+import { QuizData, QuizForm } from 'types';
 
 const reducer = 'manipulateReducer';
 

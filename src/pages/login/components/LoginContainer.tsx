@@ -1,19 +1,16 @@
 import React, { SyntheticEvent, useEffect } from 'react';
-import ButtonForm from '../../../components/common/button-form';
-import BackgroundContainer from '../../../components/main/background-container';
+import ButtonForm from 'components/common/button-form';
+import BackgroundContainer from 'components/main/background-container';
 import {
   TextFieldModifiedEmail,
   TextFieldModifiedPassword,
-} from '../../../components/common/textfields';
+} from 'components/common/textfields';
 import { Link, useHistory } from 'react-router-dom';
-import {
-  onSubmitForm,
-  selectFormReducer,
-} from '../../../slices/form-slice/form-slice';
-import { useAppSelector } from '../../../store';
+import { onSubmitForm, selectFormReducer } from 'slices/form-slice/form-slice';
+import { useAppSelector } from 'store';
 import { useDispatch } from 'react-redux';
-import { regexEmailValidator } from '../../../utils';
-import { postLogin } from '../../../slices/form-slice/async-actions';
+import { regexEmailValidator } from 'utils';
+import { postLogin } from 'slices/form-slice/async-actions';
 
 const LoginContainer = () => {
   const dispatch = useDispatch();

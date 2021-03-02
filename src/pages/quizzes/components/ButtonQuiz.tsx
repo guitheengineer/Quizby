@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { getCurrentQuiz, setQuery } from '../../../slices/quizzes-slice';
-import { QuizClient } from '../../../types';
+import { getCurrentQuiz, setQuery } from 'slices/quizzes-slice';
+import { QuizClient } from 'types';
 import './button-quiz.scss';
 
 type Props = {

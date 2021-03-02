@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import './quizzes.scss';
-import BackgroundContainer from '../../components/main/background-container';
-import FetchError from '../../components/common/fetch-error/FetchError';
-import SearchQuizzes from '../../components/common/search-quizzes/SearchQuizzes';
-import { selectQuizReducer } from '../../slices/quizzes-slice';
+import BackgroundContainer from 'components/main/background-container';
+import FetchError from 'components/common/fetch-error/FetchError';
+import SearchQuizzes from 'components/common/search-quizzes/SearchQuizzes';
+import { selectQuizReducer } from 'slices/quizzes-slice';
 import {
   quizzesAdded,
   searchQuizzes,
-} from '../../slices/quizzes-slice/async-actions';
-import { useAppSelector, useAppDispatch } from '../../store';
+} from 'slices/quizzes-slice/async-actions';
+import { useAppSelector, useAppDispatch } from 'store';
 import { Location } from 'history';
-import { Categories } from '../../components/common/categories';
+import { Categories } from 'components/common/categories';
 import QuizList from './components/QuizList';
 import QuizzesSearched from './components/QuizzesSearched';
 import Recommended from './components/Recommended';

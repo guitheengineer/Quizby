@@ -1,13 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 import { sendForm, editQuizThunk } from './async-actions';
-import { RootState } from '../../store/rootReducer';
-import {
-  QuizCreation,
-  QuizForm,
-  QuizComplete,
-  ThunkResponses,
-} from '../../types';
+import { RootState } from 'store/rootReducer';
+import { QuizCreation, QuizForm, QuizComplete, ThunkResponses } from 'types';
 
 type SliceState = QuizForm & {
   saveQuizFetchState: ThunkResponses;

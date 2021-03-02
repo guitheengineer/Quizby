@@ -1,17 +1,14 @@
 import React, { SyntheticEvent, useEffect } from 'react';
-import {
-  onSubmitForm,
-  selectFormReducer,
-} from '../../slices/form-slice/form-slice';
-import { useAppSelector, useAppDispatch } from '../../store';
+import { onSubmitForm, selectFormReducer } from 'slices/form-slice/form-slice';
+import { useAppSelector, useAppDispatch } from 'store';
 import {
   postSignup,
   checkIfUserExists,
   checkIfEmailExists,
-} from '../../slices/form-slice/async-actions';
-import SignContainer from '../../pages/signup/components';
-import { regexUsernameValidator, regexEmailValidator } from '../../utils/regex';
-import Presentation from '../../components/common/presentation/Presentation';
+} from 'slices/form-slice/async-actions';
+import SignContainer from 'pages/signup/components';
+import { regexUsernameValidator, regexEmailValidator } from 'utils/regex';
+import Presentation from 'components/common/presentation/Presentation';
 import './components/sign-container.scss';
 import { useHistory } from 'react-router-dom';
 

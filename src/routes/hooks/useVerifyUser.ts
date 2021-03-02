@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store';
-import { verifyUser } from '../../slices/user-slice/async-actions';
-import { selectUserReducer } from '../../slices/user-slice/user-slice';
+import { useAppDispatch, useAppSelector } from 'store';
+import { verifyUser } from 'slices/user-slice/async-actions';
+import { selectUserReducer } from 'slices/user-slice/user-slice';
 
 const useVerifyUser = () => {
   const dispatch = useAppDispatch();
