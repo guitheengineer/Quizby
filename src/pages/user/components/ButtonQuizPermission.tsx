@@ -41,7 +41,7 @@ const ButtonQuizPermission = ({ quiz, maxLength = 40, username }: Props) => {
     if (deleteQuizFetchState === 'fulfilled') {
       dispatch(getUserQuizzes(username));
     }
-  }, [deleteQuizFetchState]);
+  }, [deleteQuizFetchState, dispatch, username]);
 
   const editClicked = () => {
     dispatch(setEditQuiz(quiz));
