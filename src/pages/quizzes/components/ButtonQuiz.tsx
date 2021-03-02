@@ -6,7 +6,7 @@ import { QuizClient } from '../../../types';
 import './button-quiz.scss';
 
 type Props = {
-  quiz: QuizClient;
+  quiz?: QuizClient;
   className?: string;
   titleClassName?: string;
 };
@@ -16,7 +16,7 @@ const ButtonQuiz = ({ quiz, className = '', titleClassName = '' }: Props) => {
   const dispatch = useDispatch();
 
   const quizClicked = () => {
-    if (quiz.name && quiz._id) {
+    if (quiz?.name && quiz._id) {
       history.push(`/quizzes/show/${quiz._id}`);
       dispatch(getCurrentQuiz(quiz._id));
     }
@@ -24,14 +24,14 @@ const ButtonQuiz = ({ quiz, className = '', titleClassName = '' }: Props) => {
   };
 
   const getQuizBackground = useCallback(() => {
-    if (quiz.image) {
+    if (quiz && quiz.image) {
       return {
         backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('data:${quiz.image.contentType};base64,${quiz.image.data}')`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
       };
     }
-  }, [quiz && quiz.image]);
+  }, [quiz]);
 
   return quiz ? (
     <button
