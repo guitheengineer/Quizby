@@ -5,15 +5,7 @@
   cursor: pointer;
   margin-left: auto;
   z-index: 99;
-  &--landing {
-    position: fixed;
-    right: 25px;
-    top: 24px;
 
-    @media (min-width: 700px) {
-      right: 71px;
-    }
-  }
   &__bar {
     transition: all 2s;
     width: 1.8rem;
@@ -42,11 +34,14 @@
 }
 
 @keyframes children {
-  from {
+  0% {
     opacity: 1;
     top: 0rem;
   }
-  to {
+  80% {
+    opacity: 0;
+  }
+  100% {
     top: 30rem;
     opacity: 0;
   }

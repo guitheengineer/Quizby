@@ -5,10 +5,25 @@
   width: 100%;
   min-height: 6rem;
   padding: 0 25px;
-  @media (min-width: 700px) {
-    height: 9vh;
-    padding: 0 70px;
+  @media (min-width: 550px) {
+    padding: 0 60px;
   }
+  max-width: 620px;
+  z-index: 3;
+  &--form {
+    position: absolute;
+  }
+  &--landing {
+    position: fixed;
+  }
+  &--show {
+    position: absolute;
+    z-index: 2;
+    @media (min-width: 550px) {
+      position: relative;
+    }
+  }
+
   align-items: center;
   &__title {
     cursor: pointer;
@@ -23,14 +38,25 @@
       border-width: 0px 0px 1px 0px;
       transition: all 0.5s;
     }
-    border-color: #5255ca;
+    border-color: #898aa3;
+  }
+  &__item-title {
+    position: absolute;
+    left: 75px;
+    font: 1.7rem Overpass;
   }
   &__link {
     text-decoration: none;
   }
 
   &__menu {
-    width: 80%;
+    width: 100%;
+    padding: 0 25px;
+    @media (min-width: 550px) {
+      padding: 0 60px;
+    }
+    margin-top: 14px;
+    max-width: 620px;
     align-self: center;
     position: absolute;
     top: 7rem;
@@ -40,24 +66,27 @@
     list-style-type: none;
   }
   &__item {
+    position: relative;
+    color: #f3f3fb;
+    opacity: 0.9;
+    cursor: pointer;
+    letter-spacing: 0.02rem;
+    border-radius: 7px;
+    height: 5.5rem;
+    display: flex;
+    align-items: center;
+    margin-top: 0.6rem;
+
+    height: 5rem;
+    &:first-child {
+      margin-top: 2.8rem;
+    }
+
     &:hover {
       background: #0a0a1f;
       opacity: 1;
       transition: all 0.3s;
     }
-
-    opacity: 0.9;
-    cursor: pointer;
-    letter-spacing: 0.02rem;
-    border-radius: 7px;
-    &:first-child {
-      margin-top: 2.5rem;
-    }
-    height: 5.5rem;
-    display: flex;
-    align-items: center;
-    font: 1.8rem Overpass;
-    color: #f3f3fb;
   }
   &__svg {
     font-size: 1.9rem;

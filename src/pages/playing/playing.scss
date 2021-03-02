@@ -1,6 +1,8 @@
 .Playing {
   position: relative;
-  background: #f8faf7;
+  background-image: url('../../assets/playing-background.png');
+  background-position: center;
+  background-size: cover;
   border-radius: 20px 20px 0 0;
   @media (min-width: 700px) {
     border-radius: 0;
