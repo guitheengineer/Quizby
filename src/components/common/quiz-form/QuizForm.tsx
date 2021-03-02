@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react';
 import './quiz-form.scss';
-import shortid from 'shortid';
-import { useAppDispatch } from '../../../store';
+import { useAppDispatch } from 'store';
 import QuizInfo from './components/QuizInfo';
 import CreateQuestions from './components/CreateQuestions';
-import BackgroundContainer from '../../main/background-container';
+import BackgroundContainer from 'components/main/background-container';
 import CreateButton from './components/CreateButton';
 import ButtonSaveQuiz from './components/ButtonSaveQuiz';
-import { setNewQuizId } from '../../../slices/manipulate-slice';
+import { setNewQuizId } from 'slices/manipulate-slice';
 import Notification from '../notification/Notification';
+import { ThunkResponses } from 'types';
+import { nanoid } from 'nanoid';
 
 type Props = {
   functionType: any;
   className?: string;
   type?: string;
-  loadingState: string;
+  loadingState: ThunkResponses;
 };
 
 const QuizForm = ({
@@ -27,9 +28,9 @@ const QuizForm = ({
 
   useEffect(() => {
     if (type === 'create') {
-      dispatch(setNewQuizId(shortid.generate()));
+      dispatch(setNewQuizId(nanoid()));
     }
-  }, []);
+  }, [dispatch, type]);
 
   return (
     <BackgroundContainer
