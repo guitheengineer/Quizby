@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 
-export default (title: string) => {
+const useDocumentTitle = (title: string) => {
   useEffect(() => {
     if (title) {
       document.title = title;
     } else {
       document.title = 'Quizby';
     }
-  }, []);
+  }, [title]);
 };
+
+export default useDocumentTitle;
