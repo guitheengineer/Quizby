@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
 type Props = {
   title: string;
-  buttonClassName: string;
+  buttonClassName?: string;
   titleClassName?: string;
 };
 
@@ -19,7 +18,7 @@ const CategoriesButton = ({
     import(
       `../../../assets/category-images/${title.toLowerCase()}.png`
     ).then((img) => setImg(img.default));
-  }, []);
+  }, [title]);
 
   return (
     <button
