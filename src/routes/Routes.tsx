@@ -7,7 +7,6 @@ import Playing from '../pages/playing';
 import Login from '../pages/login';
 import Quizzes from '../pages/quizzes';
 import RouteWithHeader from './RouteWithHeader';
-import PrivateRoute from './PrivateRoute';
 import Show from '../pages/show';
 import Done from '../pages/done';
 import CreateQuiz from '../pages/create-quiz/CreateQuiz';
@@ -20,14 +19,14 @@ import UnregisteredRoute from './UnregisteredRoute';
 const Routes = () => (
   <Switch>
     <RouteWithHeader path="/quizzes/play/:id" component={Playing} />
-    <UnregisteredRoute showlogo={false} path="/signup" component={Signup} />
-    <UnregisteredRoute showlogo={false} path="/login" component={Login} />
+    <UnregisteredRoute path="/signup" component={Signup} />
+    <UnregisteredRoute path="/login" component={Login} />
     <RouteWithHeader
-      style={{ position: 'absolute', zIndex: 1 }}
+      headerClassName="Header--show"
       path="/quizzes/show/:id"
       component={Show}
     />
-    <PrivateRoute path="/quizzes/done/:quizId" component={Done} />
+    <RouteWithHeader path="/quizzes/done/:quizId" component={Done} />
     <RouteWithHeader
       path="/quizzes/category/:quizCategory"
       component={Category}
@@ -39,7 +38,13 @@ const Routes = () => (
     />
     <PrivateRouteUser path="/user/:username/editquiz" component={EditQuiz} />
     <RouteWithHeader path="/user/:usernameParam" component={User} />
-    <RouteWithHeader path="/" showmenu={false} component={Landing} />
+    <RouteWithHeader
+      path="/"
+      exact
+      showmenu="landing"
+      headerClassName="Header--landing"
+      component={Landing}
+    />
     <RouteWithHeader component={FourHundredFour} />
   </Switch>
 );
