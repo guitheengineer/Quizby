@@ -71,9 +71,9 @@ const SearchQuizzes = ({ className, inputClassName, iconClassName }: Props) => {
       <ClipLoader
         css={`
           position: absolute;
-          right: 1.5rem;
+          right: 15px;
         `}
-        size="1.8rem"
+        size={18}
         loading={
           (quizzesFetchState === 'pending' && query === '') ||
           (quizSearchFetchState === 'pending' && query !== '')

@@ -30,7 +30,7 @@ const TextFieldModifiedPassword = () => {
       InputProps={{
         endAdornment: (
           <IconButton
-            style={{ marginRight: '-.7rem' }}
+            style={{ marginRight: '-7px' }}
             aria-label="toggle password visibility"
             onClick={() => dispatch(setPasswordVisibility())}
             edge="end"

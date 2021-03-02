@@ -61,7 +61,7 @@ const Show = () => {
             <button
               className="Show__button"
               onClick={handlePlay}
-              style={{ marginTop: description && '2.4rem' }}
+              style={{ marginTop: description && 24 }}
               type="button"
             >
               Play

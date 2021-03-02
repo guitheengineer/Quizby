@@ -26,6 +26,13 @@ export const userSlice = createSlice({
     setUser: (state) => {
       state._id = localStorage.getItem('USER');
     },
+    resetUser: (state) => {
+      state.isAuthenticated = null;
+      state.username = '';
+      state.email = '';
+      state._id = '';
+      state.saveQuizFetchState = null;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(
@@ -62,7 +69,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, resetUser } = userSlice.actions;
 
 export const selectUserReducer = (state: RootState) => state.user;
 

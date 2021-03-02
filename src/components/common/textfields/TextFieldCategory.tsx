@@ -31,7 +31,7 @@ interface ParamTypes {
 
 const TextFieldCategory = ({
   variant = 'outlined',
-  style = { marginTop: '2rem', font: '1.6rem Overpass' },
+  style = { marginTop: '20px', font: '16px Overpass' },
   className,
   create = false,
 }: Props) => {

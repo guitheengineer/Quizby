@@ -15,8 +15,8 @@ const Question = () => {
       style={
         question.length <= 25
           ? {
-              marginBottom: '1rem',
-              fontSize: 'clamp(2rem, 6vw, 2.4rem)',
+              marginBottom: 10,
+              fontSize: 'clamp(20px, 6vw, 24px)',
             }
           : undefined
       }
