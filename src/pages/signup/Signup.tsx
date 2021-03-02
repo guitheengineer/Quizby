@@ -24,7 +24,7 @@ const Signup = () => {
     if (signupState === 'fulfilled') {
       history.push('/quizzes');
     }
-  }, [signupState]);
+  }, [signupState, history]);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -68,7 +68,6 @@ const Signup = () => {
   return (
     <div className="Sign__container">
       <Presentation
-        marginTop="3.4rem"
         title="Signup"
         description="Register now and start playing quizzes from the community"
       />
