@@ -13,7 +13,7 @@ const CreateButton = () => {
     >
       <div className="Quiz-form__illustration">
         <img alt="" src={add} className="Quiz-form__put-icon" />
-        <p className="Quiz-form__insert">Add quiz</p>
+        <p className="Quiz-form__insert">Add question</p>
       </div>
     </button>
   );
