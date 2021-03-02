@@ -1,26 +1,80 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {
+  changeMenu,
+  selectGeneralReducer,
+} from '../../../slices/general-slice';
+import { useAppDispatch, useAppSelector } from '../../../store';
 import '../components/landing-menu.scss';
 
-const LandingMenu = ({ setMenuOpen }: { setMenuOpen: any }) => (
-  <div
-    onClick={(e) => {
-      if (e.target === e.currentTarget) {
-        setMenuOpen(false);
+const LandingMenuItem = ({
+  link,
+  children,
+}: {
+  link: string;
+  children: ReactNode;
+}) => {
+  const dispatch = useDispatch();
+  return (
+    <Link
+      onClick={() =>
+        dispatch(changeMenu({ type: 'isLandingMenuActive', isActive: false }))
       }
-    }}
-    className="landing-menu"
-  >
-    <ul>
-      <Link to={`/user/${localStorage.getItem('USERNAME')}`}>
-        <li className="landing-menu__item">Profile</li>
-      </Link>
+      to={link}
+    >
+      <li className="landing-menu__item">{children}</li>
+    </Link>
+  );
+};
 
-      <li className="landing-menu__item">Signup</li>
-      <li className="landing-menu__item">Profile</li>
-      <li className="landing-menu__item">Login</li>
-    </ul>
-  </div>
-);
+const LandingMenu = () => {
+  const dispatch = useAppDispatch();
+  const { isLandingMenuActive } = useAppSelector(selectGeneralReducer);
+  const username = localStorage.getItem('USERNAME');
+
+  return isLandingMenuActive ? (
+    <div
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          dispatch(
+            changeMenu({ type: 'isLandingMenuActive', isActive: false })
+          );
+        }
+      }}
+      className="landing-menu"
+    >
+      <ul>
+        {username ? (
+          <>
+            <LandingMenuItem link={`/user/${username}`}>
+              Profile
+            </LandingMenuItem>
+            <LandingMenuItem link={`/user/${username}/createquiz`}>
+              Create quizzes
+            </LandingMenuItem>
+            <LandingMenuItem link="/quizzes">Quizzes</LandingMenuItem>
+            <Link
+              to="/"
+              onClick={() => {
+                localStorage.removeItem('TOKEN');
+                localStorage.removeItem('USER');
+                localStorage.removeItem('USERNAME');
+              }}
+            >
+              <li className="landing-menu__item">Quit</li>
+            </Link>
+          </>
+        ) : (
+          <>
+            <LandingMenuItem link="/signup">Signup</LandingMenuItem>
+            <LandingMenuItem link="/login">Login</LandingMenuItem>
+            <LandingMenuItem link="/quizzes">Quizzes</LandingMenuItem>
+          </>
+        )}
+      </ul>
+    </div>
+  ) : null;
+};
 
 export default LandingMenu;
