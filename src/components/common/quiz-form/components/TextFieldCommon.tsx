@@ -1,8 +1,8 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import TextField, { OutlinedTextFieldProps } from '@material-ui/core/TextField';
-import { changeInput } from '../../../../slices/manipulate-slice';
-import { useAppSelector, useAppDispatch } from '../../../../store';
-import { Fields } from '../../../../types';
+import { changeInput } from 'slices/manipulate-slice';
+import { useAppSelector, useAppDispatch } from 'store';
+import { Fields } from 'types';
 
 type Props = Omit<OutlinedTextFieldProps, 'variant'> & {
   maxLength?: number;
@@ -13,7 +13,7 @@ type Props = Omit<OutlinedTextFieldProps, 'variant'> & {
 const TextFieldCommon = ({
   label = 'Text',
   required = false,
-  style = { marginTop: 16 },
+  style = { marginTop: 20 },
   multiline = false,
   maxLength = 140,
   type,
@@ -34,20 +34,18 @@ const TextFieldCommon = ({
     return state.manipulate[type];
   });
 
-  const textChange = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(changeInput({ value: e.target.value, type, index }));
-  };
-
   return (
     <TextField
       variant="outlined"
       className={`Quiz-form__name Quiz-form__name--${className}`}
       fullWidth
       label={label}
-      onChange={textChange}
+      onChange={(e) =>
+        dispatch(changeInput({ value: e.target.value, type, index }))
+      }
       required={required}
       value={quizValue}
-      style={type === 'question' ? null : style}
+      style={type === 'question' ? undefined : style}
       multiline={multiline}
       inputProps={{ maxLength }}
     />
