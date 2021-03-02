@@ -1,10 +1,6 @@
 import React from 'react';
 import './notification.scss';
 
-import { AsyncThunk } from '@reduxjs/toolkit';
-import { QuizForm as QuizFormType } from 'types';
-import QuizForm from '../quiz-form';
-
 type Props = {
   message?: string;
 };
