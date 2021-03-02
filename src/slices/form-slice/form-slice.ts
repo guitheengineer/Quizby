@@ -7,14 +7,14 @@ import {
 } from './async-actions';
 import { regexUsernameValidator, regexEmailValidator } from '../../utils/regex';
 import { ThunkResponses, UserResponse } from '../../types';
-import { RootState } from '../../store/store';
+import { RootState } from '../../store/rootReducer';
 
-interface Error {
+type Error = {
   errorExists: boolean;
   errorDesc: string | null;
-}
+};
 
-export interface SliceState {
+export type SliceState = {
   username: string;
   email: string;
   password: {
@@ -29,9 +29,9 @@ export interface SliceState {
     errorExists: boolean;
     errorDesc: string;
   };
-  loginState: string;
-  signupState: string;
-}
+  loginState: ThunkResponses;
+  signupState: ThunkResponses;
+};
 
 const initialState: SliceState = {
   username: '',
@@ -57,8 +57,8 @@ const initialState: SliceState = {
     errorExists: false,
     errorDesc: '',
   },
-  loginState: '',
-  signupState: '',
+  loginState: null,
+  signupState: null,
 };
 
 type CheckUser = { userExists: boolean };
