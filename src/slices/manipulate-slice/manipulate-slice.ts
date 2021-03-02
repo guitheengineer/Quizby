@@ -1,20 +1,31 @@
-import { CreationQuizzes } from './../../types/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import shortid from 'shortid';
+import { nanoid } from 'nanoid';
 import { sendForm, editQuizThunk } from './async-actions';
-import { RootState } from '../../store/store';
-import { QuizCreation, QuizForm, QuizComplete } from '../../types';
+import { RootState } from '../../store/rootReducer';
+import {
+  QuizCreation,
+  QuizForm,
+  QuizComplete,
+  ThunkResponses,
+} from '../../types';
 
-interface SliceState extends QuizForm {
-  saveQuizFetchState: string;
-  editQuizFetchState: string;
+type SliceState = QuizForm & {
+  saveQuizFetchState: ThunkResponses;
+  editQuizFetchState: ThunkResponses;
   isEditing: boolean;
-  creationQuizzes: any[];
-}
+  creationQuizzes: {
+    id: string;
+    question: string;
+    fakeAnswer1: string;
+    fakeAnswer2: string;
+    fakeAnswer3: string;
+    answer: string;
+  }[];
+};
 
 const initialState: SliceState = {
-  saveQuizFetchState: '',
-  editQuizFetchState: '',
+  saveQuizFetchState: null,
+  editQuizFetchState: null,
   _id: '',
   name: '',
   description: '',
@@ -26,7 +37,7 @@ const initialState: SliceState = {
   },
   creationQuizzes: [
     {
-      id: shortid.generate(),
+      id: nanoid(),
       question: '',
       fakeAnswer1: '',
       fakeAnswer2: '',
@@ -42,7 +53,7 @@ const manipulateSlice = createSlice({
   reducers: {
     addCreationQuiz: (state) => {
       const newQuiz: QuizCreation = {
-        id: shortid.generate(),
+        id: nanoid(),
         question: '',
         fakeAnswer1: '',
         fakeAnswer2: '',
@@ -102,8 +113,7 @@ const manipulateSlice = createSlice({
     ) => {
       if (type === 'name' || type === 'category' || type === 'description') {
         state[type] = value;
-      }
-      if (index !== undefined) {
+      } else if (index !== undefined) {
         state.creationQuizzes[index][type] = value;
       }
     },
