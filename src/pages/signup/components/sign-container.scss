@@ -1,17 +1,21 @@
 .Sign {
   &__background-container {
-    margin-bottom: 0;
+    margin: 0;
     border-radius: 20px 20px 0 0;
-    width: 100vw;
-    margin-top: 27px;
-    min-height: 33rem;
+    min-height: 39rem;
+
+    @media (min-width: 550px) {
+      border-radius: 20px;
+      margin-bottom: 7rem;
+      max-height: 420px;
+    }
   }
   &__call {
     margin-left: 0.5rem;
   }
   &__container {
+    flex: 1;
     width: 100%;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +25,11 @@
     display: flex;
     flex-direction: column;
     align-self: center;
-
+    height: 70%;
+    justify-content: space-around;
+    &--login {
+      max-height: 300px;
+    }
     .MuiInputBase-root {
       font: 1.6rem Overpass;
     }

@@ -7,19 +7,24 @@ import {
   TextFieldModifiedPassword,
 } from '../../../components/common/textfields';
 import ButtonForm from '../../../components/common/button-form';
+import { ThunkResponses } from '../../../types';
 
 type Props = {
-  loadingState: string;
+  loadingState: ThunkResponses;
   handleSubmit: (e: SyntheticEvent) => any;
 };
 
 const SignContainer = ({ handleSubmit, loadingState }: Props) => (
-  <BackgroundContainer width="100vw" marginTop="2.7rem" minHeight="33rem">
-    <form onSubmit={handleSubmit} className="Sign__form">
+  <BackgroundContainer className="Sign__background-container">
+    <form onSubmit={handleSubmit} className="Sign__form Sign__form--signup">
       <TextFieldModifiedUsername />
       <TextFieldModifiedEmail />
       <TextFieldModifiedPassword />
-      <ButtonForm title="Signup" loadingState={loadingState} />
+      <ButtonForm
+        className="button--signup"
+        title="Signup"
+        loadingState={loadingState}
+      />
     </form>
   </BackgroundContainer>
 );
