@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { changeMenu, selectGeneralReducer } from 'slices/general-slice';
+import { resetUser } from 'slices/user-slice';
 import { useAppDispatch, useAppSelector } from 'store';
 import './landing-menu.scss';
 
@@ -57,6 +58,7 @@ const LandingMenu = () => {
                 localStorage.removeItem('TOKEN');
                 localStorage.removeItem('USER');
                 localStorage.removeItem('USERNAME');
+                dispatch(resetUser());
               }}
             >
               <li className="landing-menu__item">Quit</li>
