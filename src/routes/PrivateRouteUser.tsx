@@ -16,23 +16,21 @@ const PrivateRouteUser = ({
   const { isAuthenticated, username } = useVerifyUser();
   useDocumentTitle(title);
 
-  return (
-    isAuthenticated && (
-      <Route
-        {...rest}
-        render={(props) =>
-          username === usernamePath ? (
-            <>
-              <Header showlogo={showlogo} style={style} />
-              <Component {...props} />
-            </>
-          ) : (
-            <Redirect to={{ pathname: '/', state: { from: props.location } }} />
-          )
-        }
-      />
-    )
-  );
+  return isAuthenticated ? (
+    <Route
+      {...rest}
+      render={(props) =>
+        username === usernamePath ? (
+          <>
+            <Header showlogo={showlogo} style={style} />
+            <Component {...props} />
+          </>
+        ) : (
+          <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+        )
+      }
+    />
+  ) : null;
 };
 
 export default PrivateRouteUser;
