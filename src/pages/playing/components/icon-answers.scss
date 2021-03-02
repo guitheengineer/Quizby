@@ -3,7 +3,7 @@
   width: 84%;
   top: 3vh;
   overflow: scroll;
-  height: 3.5rem;
+  height: 35px;
   align-items: center;
   margin-bottom: 2vh;
   position: absolute;
@@ -17,11 +17,11 @@
       margin: 0 0 0 2.5%;
     }
     &:not(:first-child) {
-      margin-left: 0.7rem;
+      margin-left: 7px;
     }
   }
   &__img {
-    width: 1.6rem;
+    width: 16px;
   }
 }
 

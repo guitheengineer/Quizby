@@ -8,8 +8,8 @@
   span {
     position: absolute;
     text-shadow: 1px 1px 6px rgba(0, 0, 0, 1);
-    font: 1.4rem Overpass;
-    font-size: clamp(1.4rem, 4.2vw, 1.8rem);
+    font: 14px Overpass;
+    font-size: clamp(14px, 4.2vw, 18px);
     left: 10%;
     bottom: 10%;
     width: 80%;
@@ -20,7 +20,7 @@
 
 .User {
   width: 80%;
-  max-width: 55rem;
+  max-width: 550px;
   position: relative;
   &__info {
     display: flex;
@@ -36,15 +36,15 @@
     align-items: center;
   }
   &__create-quiz {
-    height: 3rem;
+    height: 30px;
     color: rgba(10, 10, 31, 0.76);
     border: 1px solid rgba(82, 85, 202, 0.6);
     border-radius: 5px;
-    min-width: 11rem;
-    font-size: 1.4rem;
+    min-width: 110px;
+    font-size: 14px;
   }
   &__profile {
-    margin-top: 3.2rem;
+    margin-top: 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,11 +68,11 @@
     }
   }
   &__stats {
-    margin-top: 3.2rem;
+    margin-top: 32px;
     display: flex;
     justify-content: center;
     width: 106%;
-    max-width: 40rem;
+    max-width: 400px;
     align-self: center;
     @media (min-width: 370px) {
       width: 100%;
@@ -86,7 +86,7 @@
     align-items: center;
     width: 100%;
     position: relative;
-    height: 8.4rem;
+    height: 84px;
     &:not(:last-child) {
       &::after {
         content: '';
@@ -97,31 +97,31 @@
         left: 100%;
         top: 50%;
         transform: translateY(-50%);
-        height: 2rem;
+        height: 20px;
       }
     }
   }
   &__label {
-    margin-top: 0.8rem;
-    font: 1.8rem Overpass;
+    margin-top: 8px;
+    font: 18px Overpass;
     color: #5a5a72;
   }
   &__description {
-    font: 1.4rem Overpass;
+    font: 14px Overpass;
     color: #80819c;
   }
   &__played {
-    margin-top: 7rem;
+    margin-top: 70px;
   }
   &__title {
-    font: 1.6rem Overpass;
+    font-weight: 400;
     color: #0a0a1f;
     &--username {
       width: 100%;
     }
   }
   &__quizzes {
-    margin-top: 0.8rem;
+    margin-top: 8px;
     display: grid;
 
     @media (min-width: 230px) {
@@ -134,12 +134,12 @@
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 1rem;
+    gap: 10px;
     &--created {
       @media (min-width: 380px) {
-        gap: 5.2rem 1rem;
+        gap: 52px 10px;
       }
-      gap: 4.6rem 1rem;
+      gap: 46px 10px;
     }
   }
   &__item,
@@ -157,14 +157,14 @@
   &__action-buttons {
     width: 100%;
 
-    margin-top: 0.8rem;
+    margin-top: 8px;
     position: absolute;
     display: flex;
     justify-content: space-between;
     @media (min-width: 380px) {
-      height: 3rem;
+      height: 30px;
     }
-    height: 2.6rem;
+    height: 26px;
   }
   &__action-button {
     border-radius: 5px;
@@ -182,9 +182,9 @@
   }
 
   &__created {
-    margin-top: 6.2rem;
+    margin-top: 62px;
     &--second {
-      margin-top: 4rem;
+      margin-top: 40px;
     }
   }
 }

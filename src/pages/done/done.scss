@@ -5,37 +5,37 @@
     position: relative;
   }
   &__donut-text {
-    font: bold 4.8rem lato;
+    font: bold 48px lato;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     color: #5255ca;
     letter-spacing: 0.1em;
   }
   &__phrase {
     font-weight: 500;
-    font-size: 1.8rem;
+    font-size: 18px;
     color: rgba(10, 10, 31, 0.9);
-    margin-top: 3.2rem;
+    margin-top: 32px;
   }
   &__button {
-    margin-top: 3.2rem;
+    margin-top: 32px;
     display: flex;
     &--playagain {
       cursor: pointer;
-      width: 4.3rem;
+      width: 43px;
       border: 1px solid #000000;
       border-radius: 8px;
       background-color: transparent;
     }
     &--home {
-      width: 11rem;
-      margin-left: 1.2rem;
-      font: 1.8rem Lato;
+      width: 110px;
+      margin-left: 12px;
+      font: 18px Lato;
       color: #ffffff;
       background-color: #5255ca;
       border: 0;
       box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.15);
       border-radius: 8px;
-      height: 4.2rem;
+      height: 42px;
       cursor: pointer;
     }
   }

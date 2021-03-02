@@ -6,11 +6,11 @@
   flex: 1;
   justify-content: center;
   &__img {
-    width: 20.3rem;
+    width: 203px;
   }
   &__message {
-    margin-top: 2.5rem;
-    font: 2rem/138% Overpass;
+    margin-top: 25px;
+    font: 20px/138% Overpass;
     text-align: center;
     font-family: Overpass;
     color: #7a7ba2;
@@ -18,8 +18,8 @@
   &__button {
     background: #5255ca;
     border-radius: 8px;
-    height: 4.5rem;
-    margin-top: 2.4rem;
+    height: 45px;
+    margin-top: 24px;
     font-size: 20px;
     width: 100%;
     color: white;

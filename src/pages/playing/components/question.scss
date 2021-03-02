@@ -1,13 +1,13 @@
 .Question {
   width: 80%;
-  font-size: clamp(100%, 3.2vh, 2.4rem);
+  font-size: clamp(100%, 3.2vh, 24px);
   color: #0a0a1f;
-  max-width: 38.2rem;
+  max-width: 382px;
   line-height: calc(1.1em + 1vw);
   &__before {
     position: absolute;
-    margin-left: -1.5rem;
-    font-size: 2.5rem;
+    margin-left: -15px;
+    font-size: 25px;
     color: #cccdef;
   }
   // &::before {
@@ -17,18 +17,18 @@
   //   height: 2px;
   //   background: #5255ca;
   //   position: relative;
-  //   top: -1.8rem;
+  //   top: -18px;
   // }
   // &--quotes {
-  //     font: 3.5rem "Passion One";
+  //     font: 35px "Passion One";
   //     color: #cccdef;
   //     position: absolute;
-  //     margin-top: -0.6rem;
+  //     margin-top: -6px;
   //     &--one {
-  //         margin-left: -2.5rem;
+  //         margin-left: -25px;
   //     }
   //     &--two {
-  //         margin-left: 0.7rem;
+  //         margin-left: 7px;
   //     }
   // }
 }

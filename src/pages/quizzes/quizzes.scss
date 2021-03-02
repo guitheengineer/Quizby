@@ -1,10 +1,10 @@
 %section {
-  margin-top: 2.8rem;
+  margin-top: 28px;
   @media (min-width: 592px) {
-    margin-top: 4.2rem;
+    margin-top: 42px;
   }
   span {
-    font: 500 1.5rem Overpass;
+    font: 500 15px Overpass;
   }
   button {
     &:hover {
@@ -15,12 +15,12 @@
   }
 }
 %margin {
-  margin-top: 3.8rem;
+  margin-top: 38px;
   position: relative;
 }
 .Quizzes {
   font-family: Overpass;
-  max-width: 50rem;
+  max-width: 500px;
   padding: 0 25px;
   width: 100%;
   align-self: center;
@@ -37,24 +37,24 @@
     background: #0a0a1f;
     width: 100%;
     border: 0;
-    padding: 0 4rem 0 5.5rem;
-    height: 5rem;
+    padding: 0 40px 0 55px;
+    height: 50px;
     background: #e6e6ea;
     border-radius: 7px;
-    font-size: 1.8rem;
+    font-size: 18px;
   }
   &__recommended {
     @extend %margin;
   }
   &__recommended-wrapper {
-    margin-top: 0.8rem;
+    margin-top: 8px;
   }
   &__searched {
     @extend %margin;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    gap: 0.9rem;
+    gap: 9px;
   }
   &__search {
     @extend %margin;
@@ -62,23 +62,23 @@
     align-items: center;
   }
   &__icon {
-    font-size: 1.9rem;
+    font-size: 19px;
     position: absolute;
-    left: 2rem;
+    left: 20px;
     fill: rgba(22, 22, 69, 0.3);
   }
 
   &__list {
     @extend %section;
     &--show {
-      margin-bottom: 5.5rem;
+      margin-bottom: 55px;
     }
   }
   &__list-container {
     display: grid;
     grid-template: 1fr 1fr/ 1fr 1fr;
-    gap: 0.9rem;
-    margin-top: 0.8rem;
+    gap: 9px;
+    margin-top: 8px;
   }
 
   &__title {
@@ -87,7 +87,7 @@
     bottom: 10%;
     font-weight: 600;
     font-family: Overpass;
-    font-size: clamp(1.4rem, 4.2vw, 1.8rem);
+    font-size: clamp(14px, 4.2vw, 18px);
     color: rgba(255, 255, 255, 0.88);
     text-align: left;
     width: 85%;
@@ -107,7 +107,7 @@
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.16);
   }
   &__categories-title {
-    font-size: clamp(1.4rem, 4.2vw, 1.8rem);
+    font-size: clamp(14px, 4.2vw, 18px);
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -118,7 +118,7 @@
     display: grid;
     grid-template: 1fr 1fr/ 1fr 1fr 1fr 1fr;
     gap: 9px;
-    margin-top: 0.8rem;
+    margin-top: 8px;
   }
   &__not-found {
     position: absolute;

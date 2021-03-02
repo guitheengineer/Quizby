@@ -24,13 +24,13 @@
       outline: none;
     }
     align-items: center;
-    max-width: 38.2rem;
+    max-width: 382px;
   }
   &__answer {
     width: 100%;
     display: flex;
     background-color: #f8faf7;
-    padding-top: 0.3rem;
+    padding-top: 3px;
     &:hover {
       border: 2px solid #5450c9;
     }
@@ -52,12 +52,12 @@
     }
 
     align-items: center;
-    height: 5rem;
+    height: 50px;
     border: 1px solid #c1d2e1;
     border-radius: 8px;
-    font: 400 1.8rem Overpass;
+    font: 400 18px Overpass;
     color: hsla(240, 51%, 8%, 1);
-    padding-left: 2.8rem;
+    padding-left: 28px;
   }
   &__chevron {
     position: absolute;

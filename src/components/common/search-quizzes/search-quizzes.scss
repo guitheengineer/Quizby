@@ -1,6 +1,6 @@
 .Search-quizzes {
   font-family: Overpass;
-  font-size: 1.8rem;
+  font-size: 18px;
   align-items: center;
   display: flex;
   position: relative;
@@ -11,17 +11,17 @@
     color: white;
     width: 100%;
     border: 0;
-    padding: 1.5rem 1.5rem 1.5rem 6rem;
+    padding: 15px 15px 15px 60px;
     background: #5c60e7;
     border-radius: 7px;
   }
   &__icon {
-    font-size: 1.9rem;
+    font-size: 19px;
     position: absolute;
-    left: 2rem;
+    left: 20px;
     color: rgba(42, 42, 82, 0.582);
     &--menu {
-      font-size: 1.7rem;
+      font-size: 17px;
       color: white;
     }
   }

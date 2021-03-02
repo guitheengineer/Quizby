@@ -1,13 +1,13 @@
 .button {
   box-shadow: 3px 3px 2px rgba(136, 136, 136, 0.45);
   background-color: #5255ca;
-  border-radius: 0.5rem;
-  height: 4.9rem;
+  border-radius: 5px;
+  height: 49px;
   color: white;
   border: 0;
-  font-size: 1.6rem;
-  letter-spacing: 0.05rem;
-  margin-top: 3.5rem;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  margin-top: 35px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -16,11 +16,11 @@
     box-shadow: inset 0px 6px 4px rgba(0, 0, 0, 0.13);
   }
   &--signup {
-    min-height: 4.9rem;
-    margin-top: 2.4rem;
+    min-height: 49px;
+    margin-top: 24px;
   }
   &--save-quiz {
-    margin-bottom: 4rem;
+    margin-bottom: 40px;
   }
   cursor: pointer;
 }

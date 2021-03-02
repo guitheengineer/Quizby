@@ -11,7 +11,7 @@
   &__container {
     position: relative;
     width: 100%;
-    height: 16.2rem;
+    height: 162px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,57 +36,57 @@
     border-radius: 5px;
   }
   &__add {
-    margin-top: 0.6rem;
+    margin-top: 6px;
     display: flex;
     flex-direction: column;
     position: absolute;
     z-index: -1;
   }
   &__text {
-    margin-top: 0.5rem;
-    font: 1.6rem Overpass;
+    margin-top: 5px;
+    font: 16px Overpass;
     color: rgba(125, 126, 159, 0.89);
   }
   &__title {
-    margin: 3rem 0 0.8rem 0;
+    margin: 30px 0 8px 0;
     &--questions {
-      margin-bottom: -0.5rem;
+      margin-bottom: -5px;
     }
-    font: 1.6rem Overpass;
+    font: 16px Overpass;
     color: #0a0a1f;
   }
 
   &__quiz-creation {
-    margin-top: 1.6rem;
-    padding: 1.8rem 2.8rem 2.3rem 2.8rem;
+    margin-top: 16px;
+    padding: 18px 28px 23px 28px;
     border: 1px solid rgba(193, 210, 225, 0.59);
     border-radius: 5px;
     position: relative;
   }
   &__quiz-legend {
-    font: 1.3rem Overpass;
-    padding: 0 0.5rem;
+    font: 13px Overpass;
+    padding: 0 5px;
     color: #7e7f9e;
     position: relative;
   }
   &__close {
     position: absolute;
-    top: -0.2rem;
-    right: -0.8rem;
+    top: -2px;
+    right: -8px;
     border: 0;
-    width: 2rem;
-    height: 2rem;
+    width: 20px;
+    height: 20px;
     background: url('/x.svg') no-repeat;
     cursor: pointer;
   }
   &__create {
     width: 100%;
-    height: 15.3rem;
+    height: 153px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(193, 210, 225, 0.3);
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.04);
     border-radius: 5px;
-    margin-top: 1.8rem;
+    margin-top: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,23 +98,21 @@
     align-items: center;
   }
   &__insert {
-    margin-top: 0.7rem;
-    font: 1.6rem Overpass;
+    margin-top: 7px;
     color: rgba(10, 10, 31, 0.84);
   }
 
   &__name {
     &--quiz-info {
-      margin-top: 2rem;
-      font: 1.6rem Overpass;
+      margin-top: 20px;
     }
   }
   .MuiSelect-selectMenu {
-    margin-top: -0.4rem;
+    margin-top: -4px;
     min-height: 0.8em;
   }
   .MuiInputBase-root {
-    font: 1.6rem Overpass;
+    font: 16px Overpass;
   }
   // .MuiFormControl-root {
   //   &:not(:first-child) {
@@ -134,7 +132,7 @@
     top: -4px;
   }
   label {
-    font: 1.6rem Overpass;
+    font: 16px Overpass;
   }
   .MuiOutlinedInput-root:hover {
     border-color: pink;
@@ -144,7 +142,7 @@
     border-width: 1px;
   }
   .MuiInputBase-input {
-    height: 1rem;
+    height: 10px;
   }
 
   .PrivateNotchedOutline-legendLabelled-3 {
@@ -152,6 +150,6 @@
   }
 
   .MuiInputBase-root {
-    margin-top: 0.3rem;
+    margin-top: 3px;
   }
 }

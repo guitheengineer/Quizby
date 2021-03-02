@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  min-height: 6rem;
+  min-height: 60px;
   padding: 0 25px;
   @media (min-width: 550px) {
     padding: 0 60px;
@@ -27,9 +27,9 @@
   align-items: center;
   &__title {
     cursor: pointer;
-    font-size: 1.4rem;
+    font-size: 14px;
     @media (min-width: 700px) {
-      font-size: 1.5rem;
+      font-size: 15px;
     }
     color: #f3f3fb;
     &:hover {
@@ -43,7 +43,7 @@
   &__item-title {
     position: absolute;
     left: 75px;
-    font: 1.7rem Overpass;
+    font: 17px Overpass;
   }
   &__link {
     text-decoration: none;
@@ -59,7 +59,7 @@
     max-width: 620px;
     align-self: center;
     position: absolute;
-    top: 7rem;
+    top: 70px;
   }
 
   &__list {
@@ -70,16 +70,16 @@
     color: #f3f3fb;
     opacity: 0.9;
     cursor: pointer;
-    letter-spacing: 0.02rem;
+    letter-spacing: 0.2px;
     border-radius: 7px;
-    height: 5.5rem;
+    height: 55px;
     display: flex;
     align-items: center;
-    margin-top: 0.6rem;
+    margin-top: 6px;
 
-    height: 5rem;
+    height: 50px;
     &:first-child {
-      margin-top: 2.8rem;
+      margin-top: 28px;
     }
 
     &:hover {
@@ -89,8 +89,8 @@
     }
   }
   &__svg {
-    font-size: 1.9rem;
-    margin-left: 2rem;
-    margin: 0 2.2rem 0 2rem;
+    font-size: 19px;
+    margin-left: 20px;
+    margin: 0 22px 0 20px;
   }
 }
