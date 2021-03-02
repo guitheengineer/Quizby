@@ -29,13 +29,14 @@ const Quizzes = ({ location }: Props) => {
     } else {
       dispatch(searchQuizzes(location.search.substring(3)));
     }
-  }, [query]);
+  }, [query, dispatch, location.search]);
 
   return (
     <BackgroundContainer
       justifyContent="normal"
       alignItems="center"
       overflow="visible"
+      paddingBottom={50}
     >
       <div className="Quizzes">
         <SearchQuizzes
