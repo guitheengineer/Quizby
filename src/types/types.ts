@@ -86,7 +86,8 @@ export interface RouteCustomProps extends RouteProps {
   component: any;
   title?: string;
   height?: 'page' | 'full';
-  showmenu?: boolean;
+  showmenu?: boolean | 'landing';
+  headerClassName?: string;
   loading?: ThunkResponses;
 }
 
