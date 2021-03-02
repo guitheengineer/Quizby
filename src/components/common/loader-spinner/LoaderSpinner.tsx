@@ -1,8 +1,9 @@
 import React from 'react';
 import { ClipLoader } from 'react-spinners';
+import { ThunkResponses } from '../../../types';
 
 type Props = {
-  loadingState: string;
+  loadingState: ThunkResponses;
   color?: string;
   size?: string;
   css?: string;
