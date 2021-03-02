@@ -33,7 +33,7 @@ const SearchQuizzes = ({ className, inputClassName, iconClassName }: Props) => {
     dispatch(setQuery(value));
     history.push(`/quizzes/search?q=${value}`);
     if (menuIsActive) {
-      dispatch(changeMenu(false));
+      dispatch(changeMenu({ type: 'menuIsActive', isActive: false }));
     }
   };
 
@@ -46,13 +46,13 @@ const SearchQuizzes = ({ className, inputClassName, iconClassName }: Props) => {
       value = query;
     }
     dispatch(setQuery(value));
-  }, []);
+  }, [dispatch, query]);
 
   useEffect(() => {
     if (!menuIsActive && query.length) {
       setMenuSearched(true);
     }
-  }, [query]);
+  }, [query.length, menuIsActive]);
 
   return (
     <div className={`Search-quizzes ${className}`}>
@@ -81,7 +81,7 @@ const SearchQuizzes = ({ className, inputClassName, iconClassName }: Props) => {
           (quizzesFetchState === 'pending' && query === '') ||
           (quizSearchFetchState === 'pending' && query !== '')
         }
-        color="#5255CA"
+        color={!menuIsActive ? '#5255CA' : 'white'}
       />
     </div>
   );

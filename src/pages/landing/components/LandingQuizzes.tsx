@@ -10,7 +10,7 @@ const LandingQuizzes = () => {
 
   useEffect(() => {
     dispatch(quizzesAdded());
-  }, []);
+  }, [dispatch]);
 
   const {
     quizzes: { mostPlayed },

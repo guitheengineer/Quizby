@@ -23,7 +23,7 @@ const LoginContainer = () => {
     if (loginState === 'fulfilled' && !loginError.errorExists) {
       history.push('/quizzes');
     }
-  }, [loginState]);
+  }, [loginState, loginError.errorExists, history]);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -47,9 +47,9 @@ const LoginContainer = () => {
     }
   };
   return (
-    <BackgroundContainer marginTop="3.2rem" minHeight="35.7rem">
+    <BackgroundContainer className="Sign__background-container">
       <>
-        <form onSubmit={handleSubmit} className="Sign__form">
+        <form onSubmit={handleSubmit} className="Sign__form Sign__form--login">
           {loginError && (
             <p className="Sign__login-error">{loginError.errorDesc}</p>
           )}

@@ -14,10 +14,11 @@ const Category = () => {
 
   useEffect(() => {
     dispatch(getCategoryQuiz(quizCategory));
-  }, [quizCategory]);
+  }, [quizCategory, dispatch]);
 
   return (
     <BackgroundContainer
+      className="Category__background-container"
       justifyContent="normal"
       alignItems="center"
       overflow="visible"
