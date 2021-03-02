@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextFieldCategory } from '../../../../components/common/textfields';
+import { TextFieldCategory } from 'components/common/textfields';
 import TextFieldCommon from './TextFieldCommon';
 import ImageInput from './ImageInput';
 
@@ -16,7 +16,7 @@ const QuizInfo = () => (
       maxLength={120}
       multiline
     />
-    <TextFieldCategory signup />
+    <TextFieldCategory create />
   </section>
 );
 export default QuizInfo;
