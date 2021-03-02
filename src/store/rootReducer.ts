@@ -4,9 +4,9 @@ import user from 'slices/user-slice/user-slice';
 import general from 'slices/general-slice/general-slice';
 import manipulate from 'slices/manipulate-slice';
 import demo from 'slices/demo-slice';
-import { combineReducers } from '@reduxjs/toolkit';
+import { AnyAction, combineReducers } from '@reduxjs/toolkit';
 
-const rootReducer = combineReducers({
+const combinedReducers = combineReducers({
   general,
   user,
   form,
@@ -14,6 +14,13 @@ const rootReducer = combineReducers({
   manipulate,
   demo,
 });
+
+const rootReducer = (state: any, action: AnyAction) => {
+  if (action.type === 'userReducer/resetUser') {
+    state = undefined;
+  }
+  return combinedReducers(state, action);
+};
 
 export type RootState = ReturnType<typeof rootReducer>;
 
