@@ -15,7 +15,7 @@ const EditQuiz = () => {
     if (!isEditing) {
       history.goBack();
     }
-  }, []);
+  }, [history, isEditing]);
 
   return (
     <QuizForm
