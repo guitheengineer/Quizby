@@ -7,7 +7,7 @@ import {
 } from '../../../../slices/manipulate-slice';
 import { selectUserReducer } from '../../../../slices/user-slice/user-slice';
 import { useAppDispatch, useAppSelector } from '../../../../store';
-import { QuizUser } from '../../../../types';
+import { QuizUser, ThunkResponses } from '../../../../types';
 
 type Props = {
   title: string;
@@ -21,7 +21,7 @@ type Props = {
     creationQuizzes,
     category,
   }: QuizUser) => any;
-  loadingState: string;
+  loadingState: ThunkResponses;
 };
 
 const ButtonSaveQuiz = ({
@@ -46,7 +46,7 @@ const ButtonSaveQuiz = ({
       history.push(`/quizzes/show/${quizId}`);
       dispatch(resetLoadingState());
     }
-  }, [loadingState]);
+  }, [loadingState, dispatch, history, quizId]);
 
   return (
     <button
