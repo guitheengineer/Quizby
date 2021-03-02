@@ -1,17 +1,17 @@
 import React, { useEffect, useCallback } from 'react';
 import './show.scss';
 import { useHistory } from 'react-router-dom';
-import BackgroundContainer from '../../components/main/background-container';
+import BackgroundContainer from 'components/main/background-container';
 import {
   setQuery,
   quizzesAdded,
   selectQuizReducer,
-} from '../../slices/quizzes-slice';
-import { useAppSelector, useAppDispatch } from '../../store';
-import { selectGeneralReducer } from '../../slices/general-slice/general-slice';
-import useQuiz from '../../pages/hooks/useQuiz';
-import QuizList from '../../pages/quizzes/components/QuizList';
-import HoldLoading from '../../components/common/hold-loading/HoldLoading';
+} from 'slices/quizzes-slice';
+import { useAppSelector, useAppDispatch } from 'store';
+import { selectGeneralReducer } from 'slices/general-slice/general-slice';
+import useQuiz from 'components/hooks/useQuiz';
+import QuizList from 'pages/quizzes/components/QuizList';
+import HoldLoading from 'components/common/hold-loading/HoldLoading';
 
 const Show = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +25,7 @@ const Show = () => {
 
   useEffect(() => {
     dispatch(quizzesAdded());
-  }, []);
+  }, [dispatch]);
 
   const handlePlay = () => {
     history.push(`/quizzes/play/${_id}`);
