@@ -1,23 +1,33 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../store/store';
+import { RootState } from '../../store/rootReducer';
 
 interface SliceState {
   menuIsActive: boolean;
+  isLandingMenuActive: boolean;
 }
 
 const initialState: SliceState = {
   menuIsActive: false,
+  isLandingMenuActive: false,
 };
 
 export const generalSlice = createSlice({
   name: 'generalReducer',
   initialState,
   reducers: {
-    changeMenu: (state, { payload }: PayloadAction<boolean | undefined>) => {
-      if (payload === undefined) {
-        state.menuIsActive = !state.menuIsActive;
+    changeMenu: (
+      state,
+      {
+        payload: { type, isActive },
+      }: PayloadAction<{
+        type: 'menuIsActive' | 'isLandingMenuActive';
+        isActive?: boolean | undefined;
+      }>
+    ) => {
+      if (isActive === undefined) {
+        state[type] = !state[type];
       } else {
-        state.menuIsActive = payload;
+        state[type] = isActive;
       }
     },
   },
