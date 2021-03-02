@@ -8,7 +8,7 @@ import {
   quizzesAdded,
 } from './async-actions';
 import { shuffleArray } from '../../utils';
-import { RootState } from '../../store/store';
+import { RootState } from '../../store/rootReducer';
 import { ThunkResponses } from '../../types';
 
 interface SliceState {
@@ -134,7 +134,10 @@ export const quizzesSlice = createSlice({
         state.userStats.totalOfAnswers - state.userStats.totalAnswered;
       state.userStats.percentage =
         (100 * state.userStats.correctAnswers) / state.userStats.totalOfAnswers;
-      if (state.userStats.totalOfAnswers === state.userStats.totalAnswered) {
+      if (
+        state.userStats.totalAnswered > 0 &&
+        state.userStats.totalOfAnswers === state.userStats.totalAnswered
+      ) {
         state.userStats.done = true;
       }
     },
