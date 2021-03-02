@@ -6,12 +6,13 @@ import { selectUserReducer } from '../../slices/user-slice/user-slice';
 const useVerifyUser = () => {
   const dispatch = useAppDispatch();
   const { isAuthenticated, username } = useAppSelector(selectUserReducer);
+
   useEffect(() => {
     const token = localStorage.getItem('TOKEN');
     if (token) {
       dispatch(verifyUser());
     }
-  }, []);
+  }, [dispatch]);
 
   return { isAuthenticated, username };
 };
