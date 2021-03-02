@@ -10,6 +10,7 @@ const RouteWithHeader = ({
   title = 'Quizby',
   showmenu = true,
   component: Component,
+  headerClassName = '',
   ...rest
 }: RouteCustomProps) => {
   useDocumentTitle(title);
@@ -19,7 +20,12 @@ const RouteWithHeader = ({
       {...rest}
       render={(props) => (
         <>
-          <Header showlogo={showlogo} showmenu={showmenu} style={style} />
+          <Header
+            headerClassName={headerClassName}
+            showlogo={showlogo}
+            showmenu={showmenu}
+            style={style}
+          />
           <Component {...props} />
         </>
       )}
