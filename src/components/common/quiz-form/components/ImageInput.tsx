@@ -36,7 +36,8 @@ const ImageInput = () => {
         accept="image/*"
         style={{
           background:
-            image.data && `url(data:${image.contentType};base64,${image.data})`,
+            image.data &&
+            `url(data:${image.contentType};base64,${image.data}) no-repeat center`,
         }}
         onChange={imageChanged}
       />
