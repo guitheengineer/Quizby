@@ -53,7 +53,9 @@ const Done = () => {
           indicatorColor="#5255ca"
           color="rgba(10, 10, 31, 0.9)"
         >
-          <DonutValue className="Done__donut-text">{percentage}</DonutValue>
+          <DonutValue className="Done__donut-text">
+            {percentage.toFixed(0)}
+          </DonutValue>
         </Donut>
         <div className="Done__phrase">{conditionalPhrase()}</div>
         <div className="Done__button">
