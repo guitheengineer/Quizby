@@ -13,6 +13,7 @@ import { selectFormReducer } from 'slices/form-slice/form-slice';
 import HoldLoading from 'components/common/hold-loading/HoldLoading';
 import FetchError from 'components/common/fetch-error/FetchError';
 import useVerifyUser from 'routes/hooks/useVerifyUser';
+import { QuizComplete } from 'types';
 
 type ParamTypes = {
   usernameParam: string;
@@ -153,7 +154,9 @@ const User = () => {
                           : null
                       }`}
                     >
-                      {quizzesCreated.map((quiz: any) => chooseButton(quiz))}
+                      {quizzesCreated.map((quiz: QuizComplete) =>
+                        chooseButton(quiz)
+                      )}
                     </ul>
                   </>
                 ) : null}
