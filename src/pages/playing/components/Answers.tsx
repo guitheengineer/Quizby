@@ -16,6 +16,7 @@ const Answers = () => {
     currentAnswers,
     userAnswer,
     currentQuestionAnswered,
+    userStats,
   } = useAppSelector(selectQuizReducer);
 
   const getBackgroundColor = useCallback(
@@ -39,7 +40,7 @@ const Answers = () => {
   return (
     <div
       onAnimationEnd={() => {
-        if (currentQuestionAnswered) {
+        if (currentQuestionAnswered && !userStats.done) {
           dispatch(nextQuestion());
         }
       }}

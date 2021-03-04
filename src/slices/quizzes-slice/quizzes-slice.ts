@@ -142,30 +142,28 @@ export const quizzesSlice = createSlice({
       }
     },
     nextQuestion: (state) => {
+      // reset user stats after question is answered
       state.userAnswer = '';
       state.userAnsweredCorrect = null;
       state.currentQuestionAnswered = false;
+
+      // go to next question
       state.currentQuestion += 1;
-      if (state.currentQuestion === state.currentQuiz.questions.length) {
-        state.currentQuiz = {
-          creator: '',
-          name: '',
-          questions: [
-            {
-              question: '',
-              fakeAnswer1: '',
-              fakeAnswer2: '',
-              fakeAnswer3: '',
-              answer: '',
-            },
-          ],
-          description: '',
-          image: { data: '', contentType: '' },
-          timesPlayed: 0,
-        };
-        state.currentQuestion = 0;
-        state.currentAnswers = [];
-      }
+
+      // get answers
+      const {
+        answer,
+        fakeAnswer1,
+        fakeAnswer2,
+        fakeAnswer3,
+      } = state.currentQuiz?.questions[state.currentQuestion];
+
+      // shuffle answers
+      const groupAnswers = [fakeAnswer1, fakeAnswer2, fakeAnswer3, answer];
+      shuffleArray(groupAnswers);
+
+      // set current answers to shuffle ones
+      state.currentAnswers = groupAnswers;
     },
     setQuery: (state, { payload }: PayloadAction<string>) => {
       state.query = payload;
@@ -213,12 +211,20 @@ export const quizzesSlice = createSlice({
     builder.addCase(getCurrentQuiz.fulfilled, (state, { payload }) => {
       const { quiz } = payload;
       state.currentQuiz = quiz;
-      const { answer, fakeAnswer1, fakeAnswer2, fakeAnswer3 } = quiz.questions[
-        state.currentQuestion
-      ];
 
+      // get answers
+      const {
+        answer,
+        fakeAnswer1,
+        fakeAnswer2,
+        fakeAnswer3,
+      } = state.currentQuiz?.questions[state.currentQuestion];
+
+      // shuffle answers
       const groupAnswers = [fakeAnswer1, fakeAnswer2, fakeAnswer3, answer];
       shuffleArray(groupAnswers);
+
+      // set current answers to shuffle ones
       state.currentAnswers = groupAnswers;
       state.quizFetchState = 'fulfilled';
     });
