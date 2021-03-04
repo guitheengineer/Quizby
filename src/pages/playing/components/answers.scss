@@ -27,12 +27,15 @@
     max-width: 382px;
   }
   &__answer {
+    min-height: 50px;
+    padding: 14px 28px 14px 28px;
+    overflow-wrap: anywhere;
     width: 100%;
     display: flex;
     background-color: #f8faf7;
-    padding-top: 3px;
     &:hover {
       border: 2px solid #5450c9;
+      margin: -2px;
     }
     &:not(:last-child) {
       margin-bottom: 2vh;
@@ -52,12 +55,10 @@
     }
 
     align-items: center;
-    height: 50px;
     border: 1px solid #c1d2e1;
     border-radius: 8px;
     font: 400 18px Overpass;
     color: hsla(240, 51%, 8%, 1);
-    padding-left: 28px;
   }
   &__chevron {
     position: absolute;
