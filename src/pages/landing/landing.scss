@@ -1,6 +1,10 @@
 .Landing {
   max-width: 550px;
   padding: 120px 25px;
+
+  @media (max-width: 420px) {
+    padding: 90px 25px;
+  }
   &__menu {
     width: 100%;
     position: fixed;
