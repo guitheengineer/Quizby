@@ -19,7 +19,7 @@ const FetchError = ({
   fetch,
   fetchState = 'rejected',
   type = 'fetch',
-  btnMessage = 'Try again',
+  btnMessage,
   children = 'Sorry, an error ocurred',
   className = '',
 }: Props) => {
@@ -35,12 +35,12 @@ const FetchError = ({
           if (type === 'fetch') {
             dispatch(fetch());
           } else {
-            history.push('/');
+            history.push('/quizzes');
           }
         }}
         className="Fetch-error__button"
       >
-        {btnMessage}
+        {btnMessage || type === 'common' ? 'Go home' : 'Try again'}
       </button>
     </div>
   ) : null;
