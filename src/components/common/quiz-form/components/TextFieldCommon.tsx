@@ -8,6 +8,7 @@ type Props = Omit<OutlinedTextFieldProps, 'variant'> & {
   maxLength?: number;
   index?: number;
   type: Fields;
+  minLength?: number;
 };
 
 const TextFieldCommon = ({
@@ -19,6 +20,7 @@ const TextFieldCommon = ({
   type,
   index = 0,
   className,
+  minLength = 0,
 }: Props) => {
   const dispatch = useAppDispatch();
   const quizValue = useAppSelector((state) => {
@@ -39,6 +41,7 @@ const TextFieldCommon = ({
       variant="outlined"
       className={`Quiz-form__name Quiz-form__name--${className}`}
       fullWidth
+      error={quizValue.length < minLength}
       label={label}
       onChange={(e) =>
         dispatch(changeInput({ value: e.target.value, type, index }))

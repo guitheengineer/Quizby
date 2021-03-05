@@ -9,7 +9,13 @@ const QuizInfo = () => (
     <div className="Quiz-form__container">
       <ImageInput />
     </div>
-    <TextFieldCommon type="name" label="Quiz name" required maxLength={35} />
+    <TextFieldCommon
+      minLength={4}
+      type="name"
+      label="Quiz name"
+      required
+      maxLength={35}
+    />
     <TextFieldCommon
       type="description"
       label="Description"
