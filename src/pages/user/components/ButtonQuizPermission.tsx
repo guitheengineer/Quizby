@@ -10,6 +10,7 @@ import {
 } from 'slices/quizzes-slice/async-actions';
 import { setQuery, selectQuizReducer } from 'slices/quizzes-slice';
 import { QuizComplete } from 'types';
+import { useQuizBackground } from 'utils';
 
 type Props = {
   quiz: QuizComplete;
@@ -27,15 +28,8 @@ const ButtonQuizPermission = ({ quiz, maxLength = 40, username }: Props) => {
     dispatch(getCurrentQuiz(quiz._id));
     dispatch(setQuery(''));
   };
-  const getQuizBackground = () => {
-    if (quiz.image) {
-      return {
-        backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('data:${quiz.image.contentType};base64,${quiz.image.data}')`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-      };
-    }
-  };
+
+  const getQuizBackground = useQuizBackground(quiz);
 
   useEffect(() => {
     if (deleteQuizFetchState === 'fulfilled') {

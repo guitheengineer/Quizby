@@ -1,9 +1,10 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getCurrentQuiz, setQuery } from 'slices/quizzes-slice';
 import { QuizClient } from 'types';
 import './button-quiz.scss';
+import { useQuizBackground } from 'utils';
 
 type Props = {
   quiz?: QuizClient;
@@ -23,15 +24,7 @@ const ButtonQuiz = ({ quiz, className = '', titleClassName = '' }: Props) => {
     dispatch(setQuery(''));
   };
 
-  const getQuizBackground = useCallback(() => {
-    if (quiz && quiz.image) {
-      return {
-        backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('data:${quiz.image.contentType};base64,${quiz.image.data}')`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-      };
-    }
-  }, [quiz]);
+  const getQuizBackground = useQuizBackground(quiz);
 
   return quiz ? (
     <button
@@ -45,7 +38,7 @@ const ButtonQuiz = ({ quiz, className = '', titleClassName = '' }: Props) => {
       </span>
     </button>
   ) : (
-    <button type="button" disabled className="Button-quiz"></button>
+    <button type="button" disabled className="Button-quiz" />
   );
 };
 
