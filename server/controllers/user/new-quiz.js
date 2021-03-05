@@ -3,7 +3,7 @@ const { quizModel } = require('../../models');
 const AppError = require('../../utils/appError');
 const catchAsync = require('../../utils/catchAsync');
 
-module.exports = catchAsync(async (req, res) => {
+module.exports = catchAsync(async (req, res, next) => {
   const {
     quizId,
     _id: id,
@@ -15,10 +15,11 @@ module.exports = catchAsync(async (req, res) => {
     category,
   } = req.body;
 
+  // check if quiz already exists
   const quizExists = await quizModel.exists({ _id: quizId });
 
   if (quizExists) {
-    return new AppError('Quiz already exists', 409);
+    throw new AppError('Quiz already exists', 409);
   }
 
   const quizCreated = {
@@ -32,6 +33,8 @@ module.exports = catchAsync(async (req, res) => {
     questions: creationQuizzes,
   };
 
+  // update in the user model and quiz model
+  const newQuiz = await quizModel.create(quizCreated);
   await userModel.findByIdAndUpdate(
     id,
     {
@@ -41,8 +44,8 @@ module.exports = catchAsync(async (req, res) => {
     },
     { new: true }
   );
-  const newQuiz = await quizModel.create(quizCreated);
 
+  // send response with created quiz
   res.status(200).json({
     status: 'success',
     response: newQuiz,
