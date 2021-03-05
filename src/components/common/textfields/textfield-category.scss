@@ -1,0 +1,9 @@
+.MuiFilledInput-underline::before {
+  display: none !important;
+}
+.MuiFilledInput-underline::after {
+  display: none !important;
+}
+.MuiFilledInput-root {
+  border-radius: 7px !important;
+}

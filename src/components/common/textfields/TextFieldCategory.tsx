@@ -6,6 +6,7 @@ import capitalize from 'utils/capitalize';
 import { changeInput, selectManipulateReducer } from 'slices/manipulate-slice';
 import { useAppSelector } from 'store';
 import { useDispatch } from 'react-redux';
+import './textfield-category.scss';
 
 const currencies: string[] = [
   'soccer',
