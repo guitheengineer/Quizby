@@ -49,7 +49,9 @@ const QuizForm = ({
             loadingState={loadingState}
           />
         </div>
-        {loadingState === 'rejected' && <Notification />}
+        {loadingState === 'rejected' && (
+          <Notification message="Please, verify if all required fields are filled correctly or try again later" />
+        )}
       </>
     </BackgroundContainer>
   );
