@@ -95,7 +95,7 @@ const BackgroundContainer = ({
             : { ...inactiveMenu, paddingBottom: 0 }
         }
       >
-        <FetchError />
+        <FetchError type="common" />
       </div>
     </>
   ) : null;
