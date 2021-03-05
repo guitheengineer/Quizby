@@ -28,14 +28,13 @@
   }
   &__answer {
     min-height: 50px;
-    padding: 14px 28px 14px 28px;
+    padding: 12px 28px;
     overflow-wrap: anywhere;
     width: 100%;
     display: flex;
     background-color: #f8faf7;
     &:hover {
       border: 2px solid #5450c9;
-      margin: -2px;
     }
     &:not(:last-child) {
       margin-bottom: 2vh;

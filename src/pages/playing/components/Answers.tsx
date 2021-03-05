@@ -7,6 +7,7 @@ import {
 } from 'slices/quizzes-slice';
 import { useAppSelector, useAppDispatch } from 'store';
 import chevron from 'assets/icons/chevron.png';
+import { useHistory } from 'react-router';
 
 const Answers = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +19,7 @@ const Answers = () => {
     currentQuestionAnswered,
     userStats,
   } = useAppSelector(selectQuizReducer);
-
+  const history = useHistory();
   const getBackgroundColor = useCallback(
     (clickedAnswer) => {
       const { answer } = currentQuiz.questions[currentQuestion];
@@ -40,17 +41,20 @@ const Answers = () => {
   return (
     <div
       onAnimationEnd={() => {
+        if (userStats.done) {
+          history.push(`/quizzes/done/${currentQuiz._id}`);
+        }
         if (currentQuestionAnswered && !userStats.done) {
           dispatch(nextQuestion());
         }
       }}
       className="Answers__list"
     >
-      {currentAnswers.map((ans) => (
+      {currentAnswers.map((ans, i) => (
         <button
           type="button"
           disabled={currentQuestionAnswered}
-          key={ans}
+          key={i}
           style={getBackgroundColor(ans)}
           onClick={() => dispatch(setUserAnswer(ans))}
           className={
