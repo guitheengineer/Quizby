@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import './category.scss';
-import { useAppDispatch } from 'store';
+import { useAppDispatch, useAppSelector } from 'store';
 import { getCategoryQuiz } from 'slices/quizzes-slice/async-actions';
 import BackgroundContainer from 'components/main/background-container';
 import TextFieldCategory from 'components/common/textfields/TextFieldCategory';
 import QuizList from '../quizzes/components/QuizList';
 import { useParams } from 'react-router-dom';
+import { selectQuizReducer } from 'slices/quizzes-slice';
+import LoaderSpinner from 'components/common/loader-spinner';
 
 const Category = () => {
   const dispatch = useAppDispatch();
@@ -15,7 +17,7 @@ const Category = () => {
   useEffect(() => {
     dispatch(getCategoryQuiz(quizCategory));
   }, [quizCategory, dispatch]);
-
+  const { categoryFetchState } = useAppSelector(selectQuizReducer);
   return (
     <BackgroundContainer
       className="Category__background-container"
@@ -24,7 +26,18 @@ const Category = () => {
       overflow="visible"
     >
       <div className="Quizzes">
-        <TextFieldCategory className="Category__textfield" variant="filled" />
+        <div className="Category__field-container">
+          <TextFieldCategory className="Category__textfield" variant="filled" />
+          <LoaderSpinner
+            css={`
+              position: absolute;
+              top: 14px;
+              right: 30px;
+            `}
+            loadingState={categoryFetchState}
+            size={20}
+          />
+        </div>
         <QuizList type="category" />
       </div>
     </BackgroundContainer>

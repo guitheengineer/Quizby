@@ -5,7 +5,7 @@ import { ThunkResponses } from 'types';
 type Props = {
   loadingState: ThunkResponses;
   color?: string;
-  size?: string;
+  size?: string | number;
   css?: string;
 };
 

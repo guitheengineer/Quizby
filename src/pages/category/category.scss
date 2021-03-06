@@ -1,8 +1,12 @@
 .Category {
   &__textfield {
-    margin-top: 36px !important;
+    margin-top: 0px !important;
     border-radius: 5px;
     background-color: white;
+  }
+  &__field-container {
+    position: relative;
+    margin-top: 36px;
   }
   &__container {
     width: 85%;
