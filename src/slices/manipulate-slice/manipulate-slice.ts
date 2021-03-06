@@ -46,6 +46,15 @@ const manipulateSlice = createSlice({
   name: 'manipulateReducer',
   initialState,
   reducers: {
+    resetQuizInfo: (state) => {
+      state._id = nanoid();
+      state.name = initialState.name;
+      state.description = initialState.description;
+      state.category = initialState.category;
+      state.isEditing = initialState.isEditing;
+      state.image = initialState.image;
+      state.creationQuizzes = initialState.creationQuizzes;
+    },
     addCreationQuiz: (state) => {
       const newQuiz: QuizCreation = {
         id: nanoid(),
@@ -124,20 +133,10 @@ const manipulateSlice = createSlice({
     builder.addCase(sendForm.pending, (state) => {
       state.saveQuizFetchState = 'pending';
     });
-    builder.addCase(
-      sendForm.fulfilled,
-      (
-        state,
-        {
-          payload: {
-            response: { _id },
-          },
-        }
-      ) => {
-        state._id = _id;
-        state.saveQuizFetchState = 'fulfilled';
-      }
-    );
+    builder.addCase(sendForm.fulfilled, (state, { payload }) => {
+      state._id = payload.response._id;
+      state.saveQuizFetchState = 'fulfilled';
+    });
     builder.addCase(sendForm.rejected, (state) => {
       state.saveQuizFetchState = 'rejected';
     });
@@ -162,6 +161,7 @@ export const {
   setEditQuiz,
   setNewQuizId,
   resetLoadingState,
+  resetQuizInfo,
 } = manipulateSlice.actions;
 
 export const selectManipulateReducer = (state: RootState) => state.manipulate;
