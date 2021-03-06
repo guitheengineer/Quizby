@@ -5,3 +5,4 @@ export { default as postFetch } from 'slices/utils/postFetch';
 export * from './regex';
 export { default as shuffleArray } from './shuffle-array';
 export { default as simpleFetch } from 'slices/utils/simpleFetch';
+export { default as useQuizBackground } from './use-quiz-background';
