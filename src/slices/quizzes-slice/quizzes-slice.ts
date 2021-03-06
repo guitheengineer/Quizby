@@ -50,6 +50,7 @@ interface SliceState {
   quizzesSearchedData: any[];
   quizFetchState: ThunkResponses;
   recommendedQuizFetchState: ThunkResponses;
+  categoryFetchState: ThunkResponses;
   deleteQuizFetchState: ThunkResponses;
   historicOfAnswers: string[];
   query: string;
@@ -95,6 +96,7 @@ const initialState: SliceState = {
   currentQuestionAnswered: false,
   userAnsweredCorrect: null,
   quizzesFetchState: null,
+  categoryFetchState: null,
   quizzesSearchedData: [],
   quizSearchFetchState: null,
   quizFetchState: null,
@@ -286,13 +288,19 @@ export const quizzesSlice = createSlice({
         state.deleteQuizFetchState = null;
       }
     );
-
     builder.addCase(
       getCategoryQuiz.fulfilled,
       (state, { payload }: PayloadAction<string>) => {
         state.quizzes.category = payload;
+        state.categoryFetchState = 'fulfilled';
       }
     );
+    builder.addCase(getCategoryQuiz.pending, (state) => {
+      state.categoryFetchState = 'pending';
+    });
+    builder.addCase(getCategoryQuiz.rejected, (state) => {
+      state.categoryFetchState = 'rejected';
+    });
   },
 });
 
