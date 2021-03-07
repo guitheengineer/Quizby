@@ -1,12 +1,12 @@
-import React from 'react';
 import './quiz-demo.scss';
 
 import { useAppDispatch, useAppSelector } from 'store';
 import { selectDemoReducer, setDemoAnswer } from 'slices/demo-slice';
 import DemoResult from './DemoResult';
+import { CSSProperties } from '@material-ui/styles';
 
 type Props = {
-  style?: {};
+  style?: CSSProperties;
 };
 
 const QuizDemo = ({ style }: Props) => {
