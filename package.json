@@ -11,10 +11,10 @@
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
     "@reduxjs/toolkit": "^1.5.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^7.2.1",
-    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -23,6 +23,7 @@
     "mongoose": "^5.11.17",
     "nanoid": "^3.1.20",
     "node": "^14.15.2",
+    "node-sass": "4.14.1",
     "react": "^17.0.0",
     "react-device-detect": "^1.15.0",
     "react-dom": "^17.0.0",
@@ -30,10 +31,10 @@
     "react-feather": "^2.0.9",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.4",
+    "react-scripts": "^4.0.1",
     "react-spinners": "^0.9.0",
     "redux": "^4.0.5",
-    "typescript": "^4.2.2",
+    "typescript": "^4.2.3",
     "validator": "^13.5.2"
   },
   "scripts": {
@@ -41,7 +42,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm start\"",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn start\"",
     "server": "nodemon ./server/server.js",
     "lint": "eslint --fix",
     "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\""
@@ -96,7 +97,6 @@
     "git-commit-msg-linter": "^2.7.0",
     "husky": "^4.3.6",
     "lint-staged": "^10.5.3",
-    "node-sass": "^4.14.1",
     "prettier": "^2.2.1"
   }
 }
