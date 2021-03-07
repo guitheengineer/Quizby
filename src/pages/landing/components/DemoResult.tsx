@@ -1,32 +1,12 @@
-import React, { useState } from 'react';
 import { useAppSelector } from 'store';
 import { selectDemoReducer } from 'slices/demo-slice';
-import correct from 'assets/icons/correct.svg';
-import wrong from 'assets/icons/wrong.svg';
 import { Donut, DonutValue, DonutLabel } from 'react-donut-component';
 
 const DemoResult = () => {
-  const [animationEnded, setAnimationEnded] = useState(false);
   const { userAnswer, answer } = useAppSelector(selectDemoReducer);
   return (
     <>
-      {userAnswer === answer && (
-        <img
-          onAnimationEnd={() => setAnimationEnded(true)}
-          className="Quiz-demo__icon"
-          alt="correct"
-          src={correct}
-        />
-      )}
-      {userAnswer && userAnswer !== answer && (
-        <img
-          onAnimationEnd={() => setAnimationEnded(true)}
-          className="Quiz-demo__icon"
-          alt="wrong"
-          src={wrong}
-        />
-      )}
-      {animationEnded && (
+      {userAnswer && (
         <span className="Quiz-demo__wrapper">
           <Donut
             indicatorColor="#5255ca"
@@ -45,7 +25,7 @@ const DemoResult = () => {
               {userAnswer === answer ? 100 : 0}
             </DonutValue>
             <DonutLabel style={{ whiteSpace: 'nowrap' }}>
-              {userAnswer === answer ? 'Perfect score!' : 'Incorrect'}
+              {userAnswer === answer ? 'Perfect score!' : 'Incorrect :('}
             </DonutLabel>
           </Donut>
         </span>
