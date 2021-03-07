@@ -69,23 +69,4 @@
   &__span {
     margin-top: 4px;
   }
-  &__icon {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    animation: IconAnimation 2s forwards;
-  }
-
-  @keyframes IconAnimation {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
 }
