@@ -1,4 +1,4 @@
-import React, { Children, cloneElement, CSSProperties, useEffect } from 'react';
+import { Children, cloneElement, CSSProperties, useEffect } from 'react';
 import './background-container.scss';
 import Menu from '../header/menu';
 import {

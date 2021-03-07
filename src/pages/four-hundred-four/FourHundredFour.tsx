@@ -1,4 +1,3 @@
-import React from 'react';
 import './four-hundred-four.scss';
 import { Link } from 'react-router-dom';
 import fourZeroFour from 'assets/error-images/404.png';

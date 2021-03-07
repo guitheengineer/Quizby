@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect } from 'react';
+import { SyntheticEvent, useEffect } from 'react';
 import { onSubmitForm, selectFormReducer } from 'slices/form-slice/form-slice';
 import { useAppSelector, useAppDispatch } from 'store';
 import {

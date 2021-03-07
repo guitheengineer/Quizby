@@ -1,4 +1,3 @@
-import React from 'react';
 import './landing.scss';
 import { Link } from 'react-router-dom';
 import { QuizDemo } from './components';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { addCreationQuiz } from 'slices/manipulate-slice';
 import { useAppDispatch } from 'store';
 import add from 'assets/icons/add.svg';

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { quizzesAdded, selectQuizReducer } from 'slices/quizzes-slice';
 import { useAppSelector } from 'store';

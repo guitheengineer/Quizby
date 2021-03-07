@@ -1,4 +1,3 @@
-import React from 'react';
 import { Route } from 'react-router-dom';
 import { RouteCustomProps } from 'types';
 import Header from 'components/main/header';

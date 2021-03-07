@@ -1,4 +1,3 @@
-import React from 'react';
 import './hold-loading.scss';
 import { ClipLoader } from 'react-spinners';
 import { ThunkResponses } from 'types';

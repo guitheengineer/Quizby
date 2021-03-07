@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import './user.scss';
 import { Clipboard, Crosshair, Coffee } from 'react-feather';
 import { Link, useParams } from 'react-router-dom';

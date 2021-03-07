@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch } from 'store';
 import QuizInfo from './components/QuizInfo';
 import CreateQuestions from './components/CreateQuestions';

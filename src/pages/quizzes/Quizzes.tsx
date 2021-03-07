@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import './quizzes.scss';
 import BackgroundContainer from 'components/main/background-container';
 import FetchError from 'components/common/fetch-error/FetchError';

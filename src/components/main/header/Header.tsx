@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import './header.scss';
 import { Link } from 'react-router-dom';
 import MenuIcon from './menu/MenuIcon';

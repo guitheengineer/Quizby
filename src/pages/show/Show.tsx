@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import './show.scss';
 import { useHistory } from 'react-router-dom';
 import BackgroundContainer from 'components/main/background-container';

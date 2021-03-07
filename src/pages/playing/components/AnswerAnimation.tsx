@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAppSelector } from 'store';
 import { selectQuizReducer } from 'slices/quizzes-slice';
 import correct from 'assets/icons/correct.svg';

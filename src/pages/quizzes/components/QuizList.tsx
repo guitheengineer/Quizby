@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useAppSelector } from 'store';
 import { QuizClient } from 'types';
 import ButtonQuiz from './ButtonQuiz';

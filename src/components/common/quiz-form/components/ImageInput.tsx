@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent } from 'react';
 import { changeImage, selectManipulateReducer } from 'slices/manipulate-slice';
 import Notification from 'components/common/notification';
 import { useAppSelector, useAppDispatch } from 'store';

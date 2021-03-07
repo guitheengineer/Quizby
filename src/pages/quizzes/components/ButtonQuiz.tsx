@@ -1,4 +1,3 @@
-import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getCurrentQuiz, setQuery } from 'slices/quizzes-slice';

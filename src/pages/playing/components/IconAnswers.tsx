@@ -1,4 +1,3 @@
-import React from 'react';
 import './icon-answers.scss';
 import { useAppSelector } from 'store';
 import { selectQuizReducer } from 'slices/quizzes-slice';

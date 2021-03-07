@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import QuizForm from 'components/common/quiz-form';
 import {
   resetQuizInfo,

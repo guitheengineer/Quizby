@@ -1,4 +1,3 @@
-import React from 'react';
 import FetchError from 'components/common/fetch-error/FetchError';
 import LoaderSpinner from 'components/common/loader-spinner/LoaderSpinner';
 import BackgroundContainer from 'components/main/background-container';

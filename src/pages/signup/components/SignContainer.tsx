@@ -1,4 +1,4 @@
-import React, { SyntheticEvent } from 'react';
+import { SyntheticEvent } from 'react';
 import './sign-container.scss';
 import BackgroundContainer from 'components/main/background-container';
 import {

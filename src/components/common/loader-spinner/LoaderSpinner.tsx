@@ -1,4 +1,3 @@
-import React from 'react';
 import { ClipLoader } from 'react-spinners';
 import { ThunkResponses } from 'types';
 

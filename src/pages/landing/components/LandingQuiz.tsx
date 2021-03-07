@@ -1,4 +1,3 @@
-import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { selectQuizReducer } from 'slices/quizzes-slice';
 import { useAppSelector } from 'store';

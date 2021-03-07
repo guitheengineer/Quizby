@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect } from 'react';
+import { SyntheticEvent, useEffect } from 'react';
 import ButtonForm from 'components/common/button-form';
 import BackgroundContainer from 'components/main/background-container';
 import {

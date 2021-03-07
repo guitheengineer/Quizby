@@ -1,4 +1,3 @@
-import React from 'react';
 import { CategoriesButton } from '../categories';
 
 type Props = {

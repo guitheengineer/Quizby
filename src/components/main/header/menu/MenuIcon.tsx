@@ -1,4 +1,3 @@
-import React from 'react';
 import './menu-icon.scss';
 import { useAppDispatch, useAppSelector } from 'store';
 import {

@@ -1,4 +1,3 @@
-import React from 'react';
 import CategoriesList from './CategoriesList';
 
 const Categories = () => (

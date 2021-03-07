@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import '../header.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {

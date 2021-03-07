@@ -1,4 +1,3 @@
-import React from 'react';
 import { changeMenu, selectGeneralReducer } from 'slices/general-slice';
 import { useAppDispatch, useAppSelector } from 'store';
 

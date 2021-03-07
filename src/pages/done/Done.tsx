@@ -1,5 +1,5 @@
 import { useHistory, useParams } from 'react-router-dom';
-import React, { useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import './done.scss';
 import { useAppSelector, useAppDispatch } from 'store';
 import { selectUserReducer } from 'slices/user-slice/user-slice';

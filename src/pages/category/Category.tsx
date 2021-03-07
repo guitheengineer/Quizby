@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import './category.scss';
 import { useAppDispatch, useAppSelector } from 'store';
 import { getCategoryQuiz } from 'slices/quizzes-slice/async-actions';

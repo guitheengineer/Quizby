@@ -1,4 +1,3 @@
-import React from 'react';
 import Presentation from 'components/common/presentation';
 import LoginContainer from './components/LoginContainer';
 

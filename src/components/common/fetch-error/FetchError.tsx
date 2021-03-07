@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import './fetch-error.scss';
 import { useAppDispatch } from 'store';
 import fetchError from 'assets/error-images/fetch-error.png';

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { setEditQuiz } from 'slices/manipulate-slice';
 import sliceName from 'utils/slice-name';

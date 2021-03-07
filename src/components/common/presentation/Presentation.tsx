@@ -1,4 +1,3 @@
-import React from 'react';
 import LandingIconMenu from 'pages/landing/components/LandingIconMenu';
 import LandingMenu from 'pages/landing/components/LandingMenu';
 import './presentation.scss';

@@ -1,4 +1,3 @@
-import React from 'react';
 import TextField, { OutlinedTextFieldProps } from '@material-ui/core/TextField';
 import { changeInput } from 'slices/manipulate-slice';
 import { useAppSelector, useAppDispatch } from 'store';
