@@ -69,12 +69,12 @@
   }
   &__close {
     position: absolute;
-    top: -2px;
+    top: -20px;
     right: -8px;
     border: 0;
     width: 20px;
     height: 20px;
-    background: url('/x.svg') no-repeat;
+    background: url('../../../assets/icons/x.svg') no-repeat;
     cursor: pointer;
   }
   &__create {

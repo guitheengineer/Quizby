@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import './quiz-form.scss';
 import { useAppDispatch } from 'store';
 import QuizInfo from './components/QuizInfo';
 import CreateQuestions from './components/CreateQuestions';
@@ -10,6 +9,7 @@ import { setNewQuizId } from 'slices/manipulate-slice';
 import Notification from '../notification/Notification';
 import { ThunkResponses } from 'types';
 import { nanoid } from 'nanoid';
+import './quiz-form.scss';
 
 type Props = {
   functionType: any;
