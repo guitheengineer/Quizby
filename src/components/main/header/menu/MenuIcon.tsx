@@ -1,13 +1,10 @@
 import './menu-icon.scss';
 import { useAppDispatch, useAppSelector } from 'store';
-import {
-  changeMenu,
-  selectMenuIsActive,
-} from 'slices/general-slice/general-slice';
+import { changeMenu } from 'slices/general-slice';
 
 const MenuIcon = () => {
   const dispatch = useAppDispatch();
-  const menuIsActive = useAppSelector(selectMenuIsActive);
+  const menuIsActive = useAppSelector((state) => state.general.menuIsActive);
 
   return (
     <button

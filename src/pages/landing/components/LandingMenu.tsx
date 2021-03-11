@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { changeMenu, selectGeneralReducer } from 'slices/general-slice';
+import { changeMenu } from 'slices/general-slice';
 import { resetUser } from 'slices/user-slice';
 import { useAppDispatch, useAppSelector } from 'store';
 import './landing-menu.scss';
@@ -28,7 +28,7 @@ const LandingMenuItem = ({
 
 const LandingMenu = () => {
   const dispatch = useAppDispatch();
-  const { isLandingMenuActive } = useAppSelector(selectGeneralReducer);
+  const { isLandingMenuActive } = useAppSelector((state) => state.general);
   const username = localStorage.getItem('USERNAME');
 
   return isLandingMenuActive ? (

@@ -1,10 +1,12 @@
 import { useHistory } from 'react-router-dom';
-import { selectQuizReducer } from 'slices/quizzes-slice';
 import { useAppSelector } from 'store';
 
 const LandingQuiz = ({ quiz }: { quiz: any }) => {
   const history = useHistory();
-  const { quizzesFetchState } = useAppSelector(selectQuizReducer);
+
+  const quizzesFetchState = useAppSelector(
+    (state) => state.quizzes.quizzesFetchState
+  );
   return quizzesFetchState === 'fulfilled' && quiz ? (
     <div className="Landing-quizzes__quiz">
       <div

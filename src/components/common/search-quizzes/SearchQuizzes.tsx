@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useHistory } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { useAppSelector, useAppDispatch } from 'store';
-import { selectQuizReducer, setQuery } from 'slices/quizzes-slice';
-import { selectGeneralReducer, changeMenu } from 'slices/general-slice';
+import { setQuery } from 'slices/quizzes-slice';
+import { changeMenu } from 'slices/general-slice';
 import './search-quizzes.scss';
 
 type Props = {
@@ -19,9 +19,9 @@ const SearchQuizzes = ({ className, inputClassName, iconClassName }: Props) => {
   const [menuSearched, setMenuSearched] = useState(false);
 
   const { query, quizSearchFetchState, quizzesFetchState } = useAppSelector(
-    selectQuizReducer
+    (state) => state.quizzes
   );
-  const { menuIsActive } = useAppSelector(selectGeneralReducer);
+  const { menuIsActive } = useAppSelector((state) => state.general);
 
   const history = useHistory();
 

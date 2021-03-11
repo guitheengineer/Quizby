@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import './category.scss';
 import { useAppDispatch, useAppSelector } from 'store';
-import { getCategoryQuiz } from 'slices/quizzes-slice/async-actions';
+import { getCategoryQuiz } from 'slices/quizzes-slice';
 import BackgroundContainer from 'components/main/background-container';
 import TextFieldCategory from 'components/common/textfields/TextFieldCategory';
 import QuizList from '../quizzes/components/QuizList';
 import { useParams } from 'react-router-dom';
-import { selectQuizReducer } from 'slices/quizzes-slice';
 import LoaderSpinner from 'components/common/loader-spinner';
 
 const Category = () => {
@@ -17,7 +16,7 @@ const Category = () => {
   useEffect(() => {
     dispatch(getCategoryQuiz(quizCategory));
   }, [quizCategory, dispatch]);
-  const { categoryFetchState } = useAppSelector(selectQuizReducer);
+  const { categoryFetchState } = useAppSelector((state) => state.quizzes);
   return (
     <BackgroundContainer
       className="Category__background-container"

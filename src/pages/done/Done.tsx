@@ -2,7 +2,6 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useEffect, useCallback } from 'react';
 import './done.scss';
 import { useAppSelector, useAppDispatch } from 'store';
-import { selectUserReducer } from 'slices/user-slice/user-slice';
 import { resetUserStats } from 'slices/quizzes-slice';
 import BackgroundContainer from 'components/main/background-container';
 import playAgain from 'assets/icons/playagain.svg';
@@ -19,7 +18,7 @@ const Done = () => {
     (state) => state.quizzes.userStats
   );
   const history = useHistory();
-  const { saveQuizFetchState } = useAppSelector(selectUserReducer);
+  const { saveQuizFetchState } = useAppSelector((state) => state.user);
   const { quizId } = useParams<ParamTypes>();
 
   useEffect(() => {

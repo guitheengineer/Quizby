@@ -1,9 +1,9 @@
-import { changeMenu, selectGeneralReducer } from 'slices/general-slice';
+import { changeMenu } from 'slices/general-slice';
 import { useAppDispatch, useAppSelector } from 'store';
 
 const LandingIconMenu = ({ className = '' }: { className?: string }) => {
   const dispatch = useAppDispatch();
-  const { isLandingMenuActive } = useAppSelector(selectGeneralReducer);
+  const { isLandingMenuActive } = useAppSelector((state) => state.general);
 
   return (
     <button

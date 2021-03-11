@@ -1,7 +1,7 @@
-import form from 'slices/form-slice/form-slice';
+import form from 'slices/form-slice';
 import quizzes from 'slices/quizzes-slice';
-import user from 'slices/user-slice/user-slice';
-import general from 'slices/general-slice/general-slice';
+import user from 'slices/user-slice';
+import general from 'slices/general-slice';
 import manipulate from 'slices/manipulate-slice';
 import demo from 'slices/demo-slice';
 import { AnyAction, combineReducers } from '@reduxjs/toolkit';

@@ -4,7 +4,7 @@ import {
   resetQuizInfo,
   selectManipulateReducer,
 } from 'slices/manipulate-slice';
-import { sendForm } from 'slices/manipulate-slice/async-actions';
+import { sendForm } from 'slices/manipulate-slice';
 import { useAppSelector } from 'store';
 import { useDispatch } from 'react-redux';
 

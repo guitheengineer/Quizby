@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { setEditQuiz } from 'slices/manipulate-slice';
-import sliceName from 'utils/slice-name';
+import { sliceName } from 'utils';
 import { useAppSelector, useAppDispatch } from 'store';
 import {
   getUserQuizzes,
   deleteQuiz,
   getCurrentQuiz,
-} from 'slices/quizzes-slice/async-actions';
-import { setQuery, selectQuizReducer } from 'slices/quizzes-slice';
+} from 'slices/quizzes-slice';
+import { setQuery } from 'slices/quizzes-slice';
 import { QuizComplete } from 'types';
 import { useQuizBackground } from 'utils';
 
@@ -21,7 +21,7 @@ type Props = {
 const ButtonQuizPermission = ({ quiz, maxLength = 40, username }: Props) => {
   const dispatch = useAppDispatch();
   const history = useHistory();
-  const { deleteQuizFetchState } = useAppSelector(selectQuizReducer);
+  const { deleteQuizFetchState } = useAppSelector((state) => state.quizzes);
   const { _id: quizId } = quiz;
   const quizClicked = () => {
     history.push(`/quizzes/show/${quiz._id}`);

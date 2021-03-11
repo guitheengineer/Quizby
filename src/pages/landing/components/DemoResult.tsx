@@ -1,9 +1,8 @@
 import { useAppSelector } from 'store';
-import { selectDemoReducer } from 'slices/demo-slice';
 import { Donut, DonutValue, DonutLabel } from 'react-donut-component';
 
 const DemoResult = () => {
-  const { userAnswer, answer } = useAppSelector(selectDemoReducer);
+  const { userAnswer, answer } = useAppSelector((state) => state.demo);
   return (
     <>
       {userAnswer && (

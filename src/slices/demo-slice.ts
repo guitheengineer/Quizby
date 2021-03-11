@@ -1,4 +1,3 @@
-import { RootState } from 'store/rootReducer';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface SliceState {
@@ -28,7 +27,5 @@ const demoSlice = createSlice({
 });
 
 export const { setDemoAnswer } = demoSlice.actions;
-
-export const selectDemoReducer = (state: RootState) => state.demo;
 
 export default demoSlice.reducer;

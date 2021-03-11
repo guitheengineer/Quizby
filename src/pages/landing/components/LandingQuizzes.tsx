@@ -1,20 +1,19 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { quizzesAdded, selectQuizReducer } from 'slices/quizzes-slice';
-import { useAppSelector } from 'store';
+import { quizzesAdded } from 'slices/quizzes-slice';
+import { useAppDispatch, useAppSelector } from 'store';
 import './landing-quizzes.scss';
 import LandingQuiz from './LandingQuiz';
 
 const LandingQuizzes = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(quizzesAdded());
   }, [dispatch]);
 
-  const {
-    quizzes: { mostPlayed },
-  } = useAppSelector(selectQuizReducer);
+  const mostPlayed = useAppSelector(
+    (state) => state.quizzes.quizzes.mostPlayed
+  );
 
   return (
     <div className="Landing-quizzes">

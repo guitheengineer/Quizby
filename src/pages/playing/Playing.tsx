@@ -3,11 +3,10 @@ import Game from './components/Game';
 import useQuiz from 'components/hooks/useQuiz';
 import './playing.scss';
 import { useAppSelector } from 'store';
-import { selectQuizReducer } from 'slices/quizzes-slice';
 
 const Playing = () => {
   useQuiz();
-  const { currentQuestionAnswered } = useAppSelector(selectQuizReducer);
+  const { currentQuestionAnswered } = useAppSelector((state) => state.quizzes);
   return (
     <>
       <Game />

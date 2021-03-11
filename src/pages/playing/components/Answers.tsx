@@ -1,10 +1,6 @@
 import { useCallback } from 'react';
 import './answers.scss';
-import {
-  selectQuizReducer,
-  setUserAnswer,
-  nextQuestion,
-} from 'slices/quizzes-slice';
+import { setUserAnswer, nextQuestion } from 'slices/quizzes-slice';
 import { useAppSelector, useAppDispatch } from 'store';
 import chevron from 'assets/icons/chevron.png';
 import { useHistory } from 'react-router';
@@ -18,7 +14,7 @@ const Answers = () => {
     userAnswer,
     currentQuestionAnswered,
     userStats,
-  } = useAppSelector(selectQuizReducer);
+  } = useAppSelector((state) => state.quizzes);
   const history = useHistory();
   const getBackgroundColor = useCallback(
     (clickedAnswer) => {

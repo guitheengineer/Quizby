@@ -1,8 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
-import { sendForm, editQuizThunk } from './async-actions';
 import { RootState } from 'store/rootReducer';
-import { QuizCreation, QuizForm, QuizComplete, ThunkResponses } from 'types';
+import {
+  QuizCreation,
+  QuizForm,
+  QuizComplete,
+  ThunkResponses,
+  QuizData,
+} from 'types';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { simpleFetch, postFetch } from './fetch-utils';
 
 type SliceState = QuizForm & {
   saveQuizFetchState: ThunkResponses;
@@ -41,6 +48,24 @@ const initialState: SliceState = {
     },
   ],
 };
+
+const reducer = 'manipulateReducer';
+
+export const sendForm = createAsyncThunk(
+  `${reducer}/sendForm`,
+  async (quizData: QuizForm) => postFetch('user/:id/createquiz', quizData)
+);
+
+export const getQuizEdit = createAsyncThunk(
+  `${reducer}/getQuizEdit`,
+  async (id: string) => simpleFetch(`quizzes/quiz/${id}`)
+);
+
+export const editQuizThunk = createAsyncThunk(
+  `${reducer}/editQuizThunk`,
+  async (quizData: QuizData) =>
+    postFetch(`user/${quizData.username}/editquiz`, quizData)
+);
 
 const manipulateSlice = createSlice({
   name: 'manipulateReducer',

@@ -1,5 +1,4 @@
 import './question.scss';
-import { selectQuizReducer } from 'slices/quizzes-slice';
 import { useAppSelector } from 'store';
 
 const Question = () => {
@@ -7,7 +6,7 @@ const Question = () => {
     currentQuiz,
     currentQuestion,
     currentQuestionAnswered,
-  } = useAppSelector(selectQuizReducer);
+  } = useAppSelector((state) => state.quizzes);
   const { question } = currentQuiz.questions[currentQuestion];
   return (
     <div

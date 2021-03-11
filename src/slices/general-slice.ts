@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from 'store/rootReducer';
 
 interface SliceState {
   menuIsActive: boolean;
@@ -34,10 +33,5 @@ export const generalSlice = createSlice({
 });
 
 export const { changeMenu } = generalSlice.actions;
-
-export const selectMenuIsActive = (state: RootState) =>
-  state.general.menuIsActive;
-
-export const selectGeneralReducer = (state: RootState) => state.general;
 
 export default generalSlice.reducer;

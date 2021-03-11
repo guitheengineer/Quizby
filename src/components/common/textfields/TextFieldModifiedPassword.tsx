@@ -1,14 +1,13 @@
 import { TextField, IconButton } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-import {
-  setPasswordVisibility,
-  selectFormReducer,
-} from 'slices/form-slice/form-slice';
+import { setPasswordVisibility } from 'slices/form-slice';
 import { useAppSelector, useAppDispatch } from 'store';
 
 const TextFieldModifiedPassword = () => {
   const dispatch = useAppDispatch();
-  const { password, errorExistsPassword } = useAppSelector(selectFormReducer);
+  const { password, errorExistsPassword } = useAppSelector(
+    (state) => state.form
+  );
 
   return (
     <TextField

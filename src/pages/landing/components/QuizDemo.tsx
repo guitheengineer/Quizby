@@ -1,7 +1,7 @@
 import './quiz-demo.scss';
 
 import { useAppDispatch, useAppSelector } from 'store';
-import { selectDemoReducer, setDemoAnswer } from 'slices/demo-slice';
+import { setDemoAnswer } from 'slices/demo-slice';
 import DemoResult from './DemoResult';
 import { CSSProperties } from '@material-ui/styles';
 
@@ -11,7 +11,7 @@ type Props = {
 
 const QuizDemo = ({ style }: Props) => {
   const { possibleAnswers, userAnswer, question } = useAppSelector(
-    selectDemoReducer
+    (state) => state.demo
   );
 
   const dispatch = useAppDispatch();

@@ -1,8 +1,10 @@
-import { RootState } from 'store/rootReducer';
 import { createSlice } from '@reduxjs/toolkit';
-import { verifyUser, saveQuizResult } from './async-actions';
 import { ThunkResponses } from 'types';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { postFetch, simpleFetch } from './fetch-utils';
+import { ModifyQuiz } from 'types';
 
+const reducer = 'userReducer';
 interface SliceState {
   isAuthenticated: boolean | null;
   username: string;
@@ -18,6 +20,20 @@ const initialState: SliceState = {
   _id: '',
   saveQuizFetchState: null,
 };
+
+export const saveQuizResult = createAsyncThunk(
+  `${reducer}/savequiz`,
+  async ({
+    percentage,
+    quizId,
+    username,
+  }: Pick<ModifyQuiz, 'percentage' | 'quizId' | 'username'>) =>
+    postFetch(`user/${username}/savequiz`, { percentage, quizId })
+);
+
+export const verifyUser = createAsyncThunk(`${reducer}/verifyUser`, async () =>
+  simpleFetch('verifyuser')
+);
 
 export const userSlice = createSlice({
   name: 'userReducer',
@@ -70,7 +86,5 @@ export const userSlice = createSlice({
 });
 
 export const { setUser, resetUser } = userSlice.actions;
-
-export const selectUserReducer = (state: RootState) => state.user;
 
 export default userSlice.reducer;

@@ -4,12 +4,11 @@ import { Clipboard, Crosshair, Coffee } from 'react-feather';
 import { Link, useParams } from 'react-router-dom';
 import BackgroundContainer from 'components/main/background-container';
 import { useAppSelector, useAppDispatch } from 'store';
-import { selectQuizReducer, getUserQuizzes } from 'slices/quizzes-slice';
+import { getUserQuizzes } from 'slices/quizzes-slice';
 import ButtonQuiz from 'pages/quizzes/components/ButtonQuiz';
 import ButtonQuizPermission from './components/ButtonQuizPermission';
 import Number from './components/Number';
-import { checkIfUserExists } from 'slices/form-slice/async-actions';
-import { selectFormReducer } from 'slices/form-slice/form-slice';
+import { checkIfUserExists } from 'slices/form-slice';
 import HoldLoading from 'components/common/hold-loading/HoldLoading';
 import FetchError from 'components/common/fetch-error/FetchError';
 import useVerifyUser from 'routes/hooks/useVerifyUser';
@@ -22,7 +21,7 @@ type ParamTypes = {
 const User = () => {
   const dispatch = useAppDispatch();
   const { errorExistsUsername, usernameState } = useAppSelector(
-    selectFormReducer
+    (state) => state.form
   );
 
   const { usernameParam } = useParams<ParamTypes>();
@@ -36,7 +35,7 @@ const User = () => {
     countQuizzesCreated,
     deleteQuizFetchState,
     getUserQuizzesState,
-  } = useAppSelector(selectQuizReducer);
+  } = useAppSelector((state) => state.quizzes);
 
   useEffect(() => {
     dispatch(checkIfUserExists(usernameParam));

@@ -1,9 +1,8 @@
 import TextField from '@material-ui/core/TextField';
 import { useAppSelector } from 'store';
-import { selectFormReducer } from 'slices/form-slice/form-slice';
 
 const TextFieldModifiedUsername = () => {
-  const { errorExistsUsername } = useAppSelector(selectFormReducer);
+  const { errorExistsUsername } = useAppSelector((state) => state.form);
 
   return (
     <TextField

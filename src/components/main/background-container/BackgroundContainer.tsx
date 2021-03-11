@@ -1,10 +1,7 @@
 import { Children, cloneElement, CSSProperties, useEffect } from 'react';
 import './background-container.scss';
 import Menu from '../header/menu';
-import {
-  changeMenu,
-  selectGeneralReducer,
-} from 'slices/general-slice/general-slice';
+import { changeMenu } from 'slices/general-slice';
 import { useAppSelector } from 'store';
 import { ThunkResponses } from 'types';
 import { useDispatch } from 'react-redux';
@@ -31,7 +28,7 @@ const BackgroundContainer = ({
   boxShadow,
   borderRadius,
 }: Props) => {
-  const { menuIsActive } = useAppSelector(selectGeneralReducer);
+  const { menuIsActive } = useAppSelector((state) => state.general);
   const dispatch = useDispatch();
   const commonStyles: CSSProperties = {
     marginTop,

@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { render } from 'utils';
+import { render } from 'test-util';
 import { QuizDemo } from 'pages/landing/components';
 
 test('if home quiz correct answer works correctly', async () => {

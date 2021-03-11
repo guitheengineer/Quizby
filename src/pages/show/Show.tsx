@@ -2,13 +2,8 @@ import { useEffect, useCallback } from 'react';
 import './show.scss';
 import { useHistory } from 'react-router-dom';
 import BackgroundContainer from 'components/main/background-container';
-import {
-  setQuery,
-  quizzesAdded,
-  selectQuizReducer,
-} from 'slices/quizzes-slice';
+import { setQuery, quizzesAdded } from 'slices/quizzes-slice';
 import { useAppSelector, useAppDispatch } from 'store';
-import { selectGeneralReducer } from 'slices/general-slice/general-slice';
 import useQuiz from 'components/hooks/useQuiz';
 import QuizList from 'pages/quizzes/components/QuizList';
 import HoldLoading from 'components/common/hold-loading/HoldLoading';
@@ -16,9 +11,9 @@ import HoldLoading from 'components/common/hold-loading/HoldLoading';
 const Show = () => {
   const dispatch = useAppDispatch();
   const history = useHistory();
-  const { menuIsActive } = useAppSelector(selectGeneralReducer);
+  const { menuIsActive } = useAppSelector((state) => state.general);
   const { quizFetchState, quizzesFetchState } = useAppSelector(
-    selectQuizReducer
+    (state) => state.quizzes
   );
 
   const { name, image, description, _id } = useQuiz();

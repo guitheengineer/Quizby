@@ -5,7 +5,6 @@ import {
   resetLoadingState,
   selectManipulateReducer,
 } from 'slices/manipulate-slice';
-import { selectUserReducer } from 'slices/user-slice/user-slice';
 import { useAppDispatch, useAppSelector } from 'store';
 import { QuizUser, ThunkResponses } from 'types';
 
@@ -39,7 +38,7 @@ const ButtonSaveQuiz = ({
     category,
     _id: quizId,
   } = useAppSelector(selectManipulateReducer);
-  const { _id, username } = useAppSelector(selectUserReducer);
+  const { _id, username } = useAppSelector((state) => state.user);
 
   useEffect(() => {
     if (loadingState === 'fulfilled') {

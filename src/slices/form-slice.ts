@@ -1,18 +1,39 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {
-  checkIfUserExists,
-  checkIfEmailExists,
-  postLogin,
-  postSignup,
-} from './async-actions';
 import { regexUsernameValidator, regexEmailValidator } from 'utils/regex';
 import { ThunkResponses, UserResponse } from 'types';
-import { RootState } from 'store/rootReducer';
 
 type Error = {
   errorExists: boolean;
   errorDesc: string | null;
 };
+
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import postFetch from './fetch-utils/post-fetch';
+import { UserSignup, UserClient } from 'types';
+
+const reducer = 'formReducer';
+
+export const checkIfUserExists = createAsyncThunk(
+  `${reducer}/checkIfUserExists`,
+  (value: string) => postFetch('userexists', { username: value })
+);
+
+export const postLogin = createAsyncThunk(
+  `${reducer}/postLogin`,
+  async ({ email, password }: UserClient) =>
+    postFetch('login', { email, password })
+);
+
+export const postSignup = createAsyncThunk(
+  `${reducer}/postSignup`,
+  async ({ username, email, password }: UserSignup) =>
+    postFetch('signup', { username, email, password })
+);
+
+export const checkIfEmailExists = createAsyncThunk(
+  `${reducer}/checkIfEmailExists`,
+  async (email: string) => postFetch('emailexists', { email })
+);
 
 export type SliceState = {
   username: string;
@@ -209,7 +230,5 @@ export const formSlice = createSlice({
 });
 
 export const { setPasswordVisibility, onSubmitForm } = formSlice.actions;
-
-export const selectFormReducer = (state: RootState) => state.form;
 
 export default formSlice.reducer;
