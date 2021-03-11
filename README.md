@@ -23,6 +23,10 @@ In Quizby users can:
 - [x] And play quizzes
 
 ## Screens
+<div>
+<img width="700"  src="https://i.ibb.co/7rwGPn9/photo-collage.pngg" />
+</div>
+
 
 
 
