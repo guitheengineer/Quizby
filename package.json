@@ -23,7 +23,7 @@
     "mongoose": "^5.11.17",
     "nanoid": "^3.1.20",
     "node": "^14.15.2",
-    "node-sass": "4.14.1",
+    "node-sass": "7.0.0",
     "react": "^17.0.0",
     "react-device-detect": "^1.15.0",
     "react-dom": "^17.0.0",
